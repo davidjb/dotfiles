@@ -64,7 +64,7 @@ install () {
 
     mkdir -p ~/.buildout/{eggs,downloads,configs}
     cp $DIR/buildout/* ~/.buildout/
-    sed -i "s/\${whoami}/`whoami`/g" $/.buildout/default.cfg
+    sed -i "s/\${whoami}/`whoami`/g" ~/.buildout/default.cfg
    
     mkdir -p ~/.ssh
     cp $DIR/ssh/* ~/.ssh/
