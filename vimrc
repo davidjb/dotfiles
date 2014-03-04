@@ -37,8 +37,6 @@ Bundle 'MarcWeber/ultisnips'
 Bundle 'honza/vim-snippets'
 "let g:UltiSnips = {}
 
-" XXX This could replace a lot of the above.
-
 " Status bar improvement
 " XXX Not currently working
 Bundle 'Lokaltog/powerline'

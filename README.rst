@@ -15,6 +15,17 @@ Pass the script a directory name or path to customise install location::
 To Do
 =====
 
+* Refinement of vimrc configuration
+* Handle private aliases for Bashrc
+* Determine other standard dependencies for development
 * Automate installation of:
 
   * Virtualenv-wrapper
+  * grin
+  *
+
+Copyright
+=========
+
+Nope, nothing.  Just use what you'd like, how you'd like to use it.
+Spot and report an error and win a gold star.
