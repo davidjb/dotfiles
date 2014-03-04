@@ -7,6 +7,8 @@
 "Actual syntax checking and error highlighting for Python as per work
 " machine.
 "Powerline isn't working. Does it need to be installed?
+"
+let Foobar='local'
 
 set nocompatible
 filetype off
