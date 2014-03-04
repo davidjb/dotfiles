@@ -17,6 +17,7 @@ To Do
 
 * Refinement of vimrc configuration
 * Handle private aliases for Bashrc
+* Handle private SSH configuration
 * Determine other standard dependencies for development
 * Automate installation of:
 
