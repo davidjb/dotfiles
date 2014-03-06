@@ -28,6 +28,7 @@ alias toclip='xclip -selection clipboard'
 alias fromclip='xclip -o'
 
 # System administration
+alias serve='python -m SimpleHTTPServer 8000'
 alias port='netstat -tulpn | grep'
 alias hash-wpa2-passwd='python -c "import getpass; print(getpass.getpass())" | iconv -t utf16le | openssl md4'
 function gen-passwd() {
