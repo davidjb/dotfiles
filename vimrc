@@ -1,14 +1,9 @@
 "Todo:
-"<c-P> seems to supertab menu
-"<tab> does ultisnips; check if vim-snippets are responsible for
-"  Python def and class extensions
-"Someone opens a Scratch pad window
-"Ultisnips and supertab have failed
 "Actual syntax checking and error highlighting for Python as per work
 " machine.
+" Snippets from Zope -- test if working on given file
 "Powerline isn't working. Does it need to be installed?
 "
-let Foobar='local'
 
 set nocompatible
 filetype off
@@ -25,34 +20,46 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'tpope/vim-fugitive'                 
 
 " Completion support; requires Vim 7.3.584
+" Press <TAB> to complete, <C-Space> to semantically complete
+" Automatically integrates with Ultisnips
 Bundle 'Valloric/YouCompleteMe'             
-
-" Tab completion menu
-Bundle 'ervandew/supertab'
-let g:SuperTabMappingForward = '<nul>'
+let g:ycm_complete_in_comments = 1
+let g:ycm_use_ultisnips_completer = 1
+"let g:ycm_collect_identifiers_from_comments_and_strings = 0
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_always_populate_location_list = 1
+"let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
 
 " Snippets
 Bundle 'vim-scripts/tlib'
-Bundle 'MarcWeber/ultisnips'
+Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
+Bundle 'zedr/zope-snipmate-bundle'
 "let g:UltiSnips = {}
+let g:UltiSnipsExpandTrigger="<c-j>"    " Compatibility with YouCompleteMe
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+"   let g:UltiSnipsSnippetDirectories=["UltiSnips", "mycoolsnippets"]
+
+"Auto indent detection
+Bundle 'ciaranm/detectindent'
+
+" Insert-mode autocompletion for quotes, parentheses & brackets
+Bundle 'Raimondi/delimitMate'
+
+
 
 " Status bar improvement
 " XXX Not currently working
 Bundle 'Lokaltog/powerline'
 "set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
-" Python syntax highlighting
-Bundle 'hdima/python-syntax'
-au FileType python let python_highlight_all=1
 "Bundle 'klen/python-mode'
 
 "Syntax error detection
-Bundle 'scrooloose/syntastic'
-let g:syntastic_check_on_open=1
-
-"Auto indent detection
-Bundle 'ciaranm/detectindent'
+"Bundle 'scrooloose/syntastic'
+"let g:syntastic_check_on_open=1
 
 
 """"""""""""""""""""
@@ -92,7 +99,7 @@ set laststatus=2                  " Always show status line
 set confirm                       " Save/exit confirmation
 
 " Don't edit these type of files
-set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.swp
+set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.pyo,*.swp
 
 "Optional useful settings
 "set number                        " Line numbering
@@ -112,6 +119,9 @@ command! CleanWhitespace %s/\s\+$//e
 """""""""""""
 "Key Mappings
 """""""""""""
+
+" Easy out from input mode
+inoremap jk <Esc>
 
 " Movement - work more logically with wrapped lines
 noremap j gj
@@ -138,6 +148,9 @@ nnoremap  <s-up>     Vk
 nnoremap  <s-down>   Vj
 nnoremap  <s-right>  vl
 nnoremap  <s-left>   vh
+
+" \g - Move to the element/variable declaration
+nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 
 " Control + L - Shortcut for wrapping lines
@@ -191,7 +204,7 @@ au!
     au FileType python set omnifunc=pythoncomplete#Complete
     au FileType python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
     au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-    "au FileType python set list listchars=tab:»·,trail:·
+    au FileType python set list listchars=tab:»·,trail:·
 
     " Fix "smart" indenting of Python comments
     au FileType python inoremap # X<c-h>#
@@ -201,8 +214,10 @@ au!
     " CoffeeScript filetype customisations
     au FileType coffee setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 
-    " ZCML support
-    au BufNewFile,BufRead *.zcml,*.zpt setf xml
+    " Python file support 
+    au BufNewFile,BufRead *.pt set filetype=html.pt
+    au BufNewFile,BufRead *.zcml set filetype=xml.zcml
+    au BufNewFile,BufRead *.zpt set filetype=xml.zpt
     au FileType xml let g:detectindent_preferred_expandtab = 1 | let g:detectindent_preferred_indent = 2
 
 augroup END

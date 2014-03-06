@@ -37,19 +37,23 @@ dependencies () {
     install_update_git https://github.com/kennethreitz/autoenv.git ~/.autoenv
 }
 
+remove () {
+    rm -rf ~/.bashrc ~/.bash_aliases ~/.bash_logout ~/.environment \
+       ~/.gitconfig ~/.profile ~/.pypirc ~/.zopeskel ~/.vimrc ~/.vim
+}
+
 vundle ()
 {
     install_update_git https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle 
 
-    ln -s $DIR/vimrc ~/.vimrc
     vim +BundleInstall +qall
 
     mkdir -p ~/.vim/ftdetect/
     ln -s ~/.vim/bundle/ultisnips/ftdetect/* ~/.vim/ftdetect/
 
-	pushd ~/.vim/bundle/YouCompleteMe
-	./install.sh --clang-completer
-	popd
+    pushd ~/.vim/bundle/YouCompleteMe
+    ./install.sh --clang-completer --omnisharp-completer
+    popd
 }
 
 install () {
@@ -60,6 +64,7 @@ install () {
     ln -s $DIR/gitconfig ~/.gitconfig
     ln -s $DIR/profile ~/.profile
     ln -s $DIR/pypirc ~/.pypirc
+    ln -s $DIR/vimrc ~/.vimrc
     ln -s $DIR/zopeskel ~/.zopeskel
 
     mkdir -p ~/.buildout/{eggs,downloads,configs}
@@ -68,11 +73,23 @@ install () {
    
     mkdir -p ~/.ssh
     cp $DIR/ssh/* ~/.ssh/
+
+    vundle
 }
 
+#Run the script
 
 dependencies
-vundle
+
+while true; do
+    read -p "Do you want to remove existing files? " yn
+    case $yn in
+        [Yy]* ) remove; break;;
+        [Nn]* ) break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
 install
 
 #Not working yet
