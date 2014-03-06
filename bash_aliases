@@ -30,6 +30,7 @@ alias fromclip='xclip -o'
 # System administration
 alias serve='python -m SimpleHTTPServer 8000'
 alias port='netstat -tulpn | grep'
+alias ssl-text='openssl x509 -text -noout -in'
 alias hash-wpa2-passwd='python -c "import getpass; print(getpass.getpass())" | iconv -t utf16le | openssl md4'
 function gen-passwd() {
     python -c "import random, string; print('Generated this: ' + ''.join(random.choice(string.letters + string.digits) for i in range(random.randint(24,32))))"
