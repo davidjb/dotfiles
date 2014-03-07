@@ -49,6 +49,9 @@ Bundle 'ciaranm/detectindent'
 " Insert-mode autocompletion for quotes, parentheses & brackets
 Bundle 'Raimondi/delimitMate'
 
+" Intense commenting superpower
+Bundle 'scrooloose/nerdcommenter'
+
 
 
 " Status bar improvement
