@@ -6,6 +6,7 @@
 "
 
 set nocompatible
+set t_Co=256
 filetype off
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
@@ -42,7 +43,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "   let g:UltiSnipsSnippetDirectories=["UltiSnips", "mycoolsnippets"]
 
-"Auto indent detection
+" Auto indent detection
 Bundle 'ciaranm/detectindent'
 
 " Insert-mode autocompletion for quotes, parentheses & brackets
@@ -51,15 +52,11 @@ Bundle 'Raimondi/delimitMate'
 
 
 " Status bar improvement
-" XXX Not currently working
 Bundle 'Lokaltog/powerline'
-"set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+
 
 "Bundle 'klen/python-mode'
-
-"Syntax error detection
-"Bundle 'scrooloose/syntastic'
-"let g:syntastic_check_on_open=1
 
 
 """"""""""""""""""""

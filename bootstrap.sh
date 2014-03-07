@@ -33,8 +33,12 @@ dependencies () {
 		vim \
 		cmake \
 		git \
+		mono-xbuild \
+		mercurial \
 		xclip
+    sudo pip install --upgrade ipython
     install_update_git https://github.com/kennethreitz/autoenv.git ~/.autoenv
+
 }
 
 remove () {
@@ -44,13 +48,24 @@ remove () {
 
 vundle ()
 {
-    install_update_git https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle 
+    #Dependencies for Powerline
+    pip install --user mercurial psutil
+    echo 'fs.inotify.max_user_watches=16384' | sudo tee --append /etc/sysctl.conf
+    echo 16384 | sudo tee /proc/sys/fs/inotify/max_user_watches
 
+    # Install all Vundle bundles
+    install_update_git https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle 
     vim +BundleInstall +qall
 
+    # Powerline configuration
+    mkdir ~/.config/powerline
+    cp -R ~/.vim/bundle/powerline/powerline/config_files/* ~/.config/powerline/
+
+    # Snippets and type detection
     mkdir -p ~/.vim/ftdetect/
     ln -s ~/.vim/bundle/ultisnips/ftdetect/* ~/.vim/ftdetect/
 
+    # Compile YCM support
     pushd ~/.vim/bundle/YouCompleteMe
     ./install.sh --clang-completer --omnisharp-completer
     popd

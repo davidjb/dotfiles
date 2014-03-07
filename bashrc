@@ -9,13 +9,16 @@ export HISTCONTROL=ignorespace:ignoredups
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-color_prompt=yes
-if [ "$color_prompt" = yes ]; then
-    PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='\u@\h:\w\$ '
-fi
-unset color_prompt 
+#color_prompt=yes
+#if [ "$color_prompt" = yes ]; then
+    #PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+#else
+    #PS1='\u@\h:\w\$ '
+#fi
+#unset color_prompt 
+
+# Powerline
+. ~/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh
 
 # Enable programmable completion features for bash
 if [ -f /etc/bash_completion ]; then
