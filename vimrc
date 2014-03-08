@@ -2,7 +2,6 @@
 "Actual syntax checking and error highlighting for Python as per work
 " machine.
 " Snippets from Zope -- test if working on given file
-"Powerline isn't working. Does it need to be installed?
 "
 
 set nocompatible
@@ -14,19 +13,13 @@ call vundle#rc()
 "Auto installer of plugins
 Bundle 'gmarik/vundle'
 
-" \\ movement to anywhere - w (words), f (chars), j (lines)
-Bundle 'Lokaltog/vim-easymotion'
-
-" Git management: Gstatus, Gcommit, etc
-Bundle 'tpope/vim-fugitive'                 
-
 " Completion support; requires Vim 7.3.584
 " Press <TAB> to complete, <C-Space> to semantically complete
 " Automatically integrates with Ultisnips
 Bundle 'Valloric/YouCompleteMe'             
 let g:ycm_complete_in_comments = 1
 let g:ycm_use_ultisnips_completer = 1
-"let g:ycm_collect_identifiers_from_comments_and_strings = 0
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_always_populate_location_list = 1
@@ -43,8 +36,18 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "   let g:UltiSnipsSnippetDirectories=["UltiSnips", "mycoolsnippets"]
 
-" Auto indent detection
-Bundle 'ciaranm/detectindent'
+" Status bar improvement
+Bundle 'Lokaltog/powerline'
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+
+" \\ movement to anywhere - w (words), f (chars), j (lines)
+Bundle 'Lokaltog/vim-easymotion'
+
+" Git management: Gstatus, Gcommit, etc
+Bundle 'tpope/vim-fugitive'                 
+
+" Syntax, indenting and filetype plugins for Git
+Bundle 'tpope/vim-git'
 
 " Insert-mode autocompletion for quotes, parentheses & brackets
 Bundle 'Raimondi/delimitMate'
@@ -52,14 +55,24 @@ Bundle 'Raimondi/delimitMate'
 " Intense commenting superpower
 Bundle 'scrooloose/nerdcommenter'
 
+" File browser and explorer: Nerdtree
+Bundle 'scrooloose/nerdtree'
 
+" Auto indent detection
+Bundle 'ciaranm/detectindent'
 
-" Status bar improvement
-Bundle 'Lokaltog/powerline'
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+" Colour tool
+Bundle 'Rykka/colorv.vim'
+
 
 
 "Bundle 'klen/python-mode'
+
+"Options
+"Bundle 'leshill/vim-json'
+"Bundle 'pangloss/vim-javascript'
+"let javascript_enable_domhtmlcss = 1
+
 
 
 """"""""""""""""""""
@@ -152,12 +165,14 @@ nnoremap  <s-left>   vh
 " \g - Move to the element/variable declaration
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-
 " Control + L - Shortcut for wrapping lines
 map <c-l> gq
 
 " Control + E - Replace visual selection
 vnoremap <C-e> "ey:%s/<C-R>e//gc<left><left><left>
+
+" Control + N - file browser
+map <C-n> :NERDTreeToggle<CR>
 
 " F2 - Toggle paste mode
 nnoremap <F2> :set invpaste paste?<CR>
@@ -188,6 +203,9 @@ au!
     """"""""""""""""""""""""
     "  All types of files  "
     """"""""""""""""""""""""
+    " Open file browser if nothing edited
+    au vimenter * if !argc() | NERDTree | endif
+
     " Switch to the directory of the current file, unless it's a help file.
     au BufEnter * if &ft != 'help' | silent! cd %:p:h | endif
 
@@ -198,7 +216,7 @@ au!
         \ endif
 
     " Detect indentation of all files
-    autocmd BufReadPost * :DetectIndent
+    au BufReadPost * :DetectIndent
 
     " Python-specific filetype customisations
     au FileType python set omnifunc=pythoncomplete#Complete
