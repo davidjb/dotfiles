@@ -60,6 +60,8 @@ vundle ()
     # Powerline configuration
     mkdir ~/.config/powerline
     cp -R ~/.vim/bundle/powerline/powerline/config_files/* ~/.config/powerline/
+    rm -rf ~/.config/powerline/config.json
+    ln -s $DIR/powerline/config.json ~/.config/powerline/
 
     # Snippets and type detection
     mkdir -p ~/.vim/ftdetect/
