@@ -16,6 +16,14 @@ To Do
 =====
 
 * Refinement of vimrc configuration
+  
+  * Indentation support - eg follow existing indents in Python or
+    other data structures
+  * YouCompleteMe scratch/preview window open until end parethesis
+  * YouCompleteMe syntax highlighting and error detection
+  * Python support (refactoring etc)
+  * Rykka/riv support for Sphinx documentation (syntax checking, C-E key?)
+
 * Handle private aliases for Bashrc
 * Handle private SSH configuration
 * Determine other standard dependencies for development

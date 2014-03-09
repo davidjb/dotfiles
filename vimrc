@@ -46,9 +46,6 @@ Bundle 'Lokaltog/vim-easymotion'
 " Git management: Gstatus, Gcommit, etc
 Bundle 'tpope/vim-fugitive'                 
 
-" Syntax, indenting and filetype plugins for Git
-Bundle 'tpope/vim-git'
-
 " Insert-mode autocompletion for quotes, parentheses & brackets
 Bundle 'Raimondi/delimitMate'
 
@@ -64,15 +61,38 @@ Bundle 'ciaranm/detectindent'
 " Colour tool
 Bundle 'Rykka/colorv.vim'
 
+" Repeat support for .
+Bundle 'tpope/vim-repeat'
+
+" Ability to easily change surrounding elements (eg cs[from][to])
+Bundle 'tpope/vim-surround'
+
+" Sets of useful mappings about [ and ]
+Bundle 'tpope/vim-unimpaired'
+
+" Alignment for C-style variables, definitions, comments, tables
+Bundle 'vim-scripts/Align'
 
 
-"Bundle 'klen/python-mode'
+""""""""""""""""""""""""""""""""
+" Sytax/filetype support bundles
+""""""""""""""""""""""""""""""""
+Bundle 'tpope/vim-git'
+Bundle 'leshill/vim-json'
+" HAML, LESS, SASS 
+Bundle 'tpope/vim-haml'
+" reST
+Bundle 'Rykka/riv.vim'
+Bundle 'pangloss/vim-javascript'
+let javascript_enable_domhtmlcss = 1
+
+
+
+" Python editng superpowers
+" XXX Conflicts with another plugin on completion (Rope?)
+" Bundle 'klen/python-mode'
 
 "Options
-"Bundle 'leshill/vim-json'
-"Bundle 'pangloss/vim-javascript'
-"let javascript_enable_domhtmlcss = 1
-
 
 
 """"""""""""""""""""
@@ -137,8 +157,12 @@ command! CleanWhitespace %s/\s\+$//e
 inoremap jk <Esc>
 
 " Movement - work more logically with wrapped lines
-noremap j gj
-noremap k gk
+map j gj
+map k gk
+
+" Movement - easily move to start/end of lines
+map H ^
+map L $
 
 " <space> - toggles folds opened and closed
 nnoremap <space> za
@@ -164,6 +188,9 @@ nnoremap  <s-left>   vh
 
 " \g - Move to the element/variable declaration
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" \rt - Convert all tabs in document
+map <leader>rt ggVG :retab<CR>
 
 " Control + L - Shortcut for wrapping lines
 map <c-l> gq
@@ -215,28 +242,44 @@ au!
         \   exe "normal g`\"" |
         \ endif
 
+    " Different types of file support 
+    au BufNewFile,BufRead *.htm,*.html set filetype=html.css.javascript
+    au FileType html.css.javascript set nocindent autoindent smartindent
+
+    au BufNewFile,BufRead *.css,*.less set filetype=css
+
+    au BufNewFile,BufRead *.sass set filetype=sass
+    
+    au BufNewFile,BufRead *.rb,*.rbw,*.gem,*.gemspec,[rR]akefile,*.rake,*.thor set filetype=ruby
+    au BufNewFile,BufRead *.erb set filetype=eruby
+    au FileType eruby set nocindent autoindent smartindent
+    
+    au BufNewFile,BufRead *.js set filetype=javascript
+    au FileType javascript set nocindent autoindent smartindent
+
+    au BufNewFile,BufRead *.coffee set filetype=coffee
+    au FileType coffee setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+
+    au BufNewFile,BufRead *.pt set filetype=html.pt
+    au BufNewFile,BufRead *.zcml set filetype=xml.zcml
+    au BufNewFile,BufRead *.zpt set filetype=xml.zpt
+    "au FileType xml let g:detectindent_preferred_expandtab = 1 | let g:detectindent_preferred_indent = 2
+
+
     " Detect indentation of all files
     au BufReadPost * :DetectIndent
 
+
+    " XXX Unknown consequences here
     " Python-specific filetype customisations
     au FileType python set omnifunc=pythoncomplete#Complete
     au FileType python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
     au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
     au FileType python set list listchars=tab:»·,trail:·
-
     " Fix "smart" indenting of Python comments
     au FileType python inoremap # X<c-h>#
     " For detectindent
     au FileType python let g:detectindent_preferred_expandtab = 1 | let g:detectindent_preferred_indent = 4
-
-    " CoffeeScript filetype customisations
-    au FileType coffee setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
-
-    " Python file support 
-    au BufNewFile,BufRead *.pt set filetype=html.pt
-    au BufNewFile,BufRead *.zcml set filetype=xml.zcml
-    au BufNewFile,BufRead *.zpt set filetype=xml.zpt
-    au FileType xml let g:detectindent_preferred_expandtab = 1 | let g:detectindent_preferred_indent = 2
 
 augroup END
 endif
