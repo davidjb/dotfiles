@@ -30,12 +30,17 @@ install_update_git () {
 
 dependencies () {
     sudo apt-get install -y \
-		vim \
-		cmake \
-		git \
-		mono-xbuild \
-		mercurial \
-		xclip
+	vim \
+	cmake \
+	git \
+	mercurial \
+	mono-xbuild \
+	mono-dmcs 
+
+    sudo apt-get install -y \
+		xclip \
+		pngcrush
+
     sudo pip install --upgrade ipython
     install_update_git https://github.com/kennethreitz/autoenv.git ~/.autoenv
 
@@ -43,7 +48,8 @@ dependencies () {
 
 remove () {
     rm -rf ~/.bashrc ~/.bash_aliases ~/.bash_logout ~/.environment \
-       ~/.gitconfig ~/.profile ~/.pypirc ~/.zopeskel ~/.vimrc ~/.vim
+       ~/.gitconfig ~/.profile ~/.pypirc ~/.zopeskel ~/.vimrc ~/.vim \
+       ~/.config/powerline ~/.gvimrc
 }
 
 vundle ()
@@ -62,6 +68,8 @@ vundle ()
     cp -R ~/.vim/bundle/powerline/powerline/config_files/* ~/.config/powerline/
     rm -rf ~/.config/powerline/config.json
     ln -s $DIR/powerline/config.json ~/.config/powerline/
+    rm -rf ~/.config/powerline/colorschemes/vim/default.json
+    ln -s $DIR/powerline/colorschemes/vim/default.json ~/.config/powerline/colorschemes/vim/default.json
 
     # Snippets and type detection
     mkdir -p ~/.vim/ftdetect/
@@ -79,10 +87,15 @@ install () {
     ln -s $DIR/bash_logout ~/.bash_logout
     ln -s $DIR/environment ~/.environment
     ln -s $DIR/gitconfig ~/.gitconfig
+    ln -s $DIR/vimrc ~/.gvimrc
     ln -s $DIR/profile ~/.profile
-    ln -s $DIR/pypirc ~/.pypirc
     ln -s $DIR/vimrc ~/.vimrc
     ln -s $DIR/zopeskel ~/.zopeskel
+
+
+    # Contain local data 
+    mkdir -p ~/.bash_private
+    cp -s $DIR/pypirc ~/.pypirc
 
     mkdir -p ~/.buildout/{eggs,downloads,configs}
     cp $DIR/buildout/* ~/.buildout/
@@ -91,11 +104,11 @@ install () {
     mkdir -p ~/.ssh
     cp $DIR/ssh/* ~/.ssh/
 
+    # Initialise vim and configuration
     vundle
 }
 
-#Run the script
-
+#Run the install script
 dependencies
 
 while true; do
@@ -108,6 +121,3 @@ while true; do
 done
 
 install
-
-#Not working yet
-#wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf -O ~/.fonts/PowerlineSymbols.otf

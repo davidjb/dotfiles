@@ -79,12 +79,13 @@ Bundle 'vim-scripts/Align'
 """"""""""""""""""""""""""""""""
 Bundle 'tpope/vim-git'
 Bundle 'leshill/vim-json'
+Bundle 'pangloss/vim-javascript'
+let javascript_enable_domhtmlcss = 1
 " HAML, LESS, SASS 
 Bundle 'tpope/vim-haml'
 " reST
 Bundle 'Rykka/riv.vim'
-Bundle 'pangloss/vim-javascript'
-let javascript_enable_domhtmlcss = 1
+let g:riv_python_rst_hl = 1
 
 
 
@@ -138,16 +139,20 @@ set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.pyo,*.swp
 "set number                        " Line numbering
 
 
+"""""""""""""""""""""""""""""""
+"  Colourisation and styling  "
+"""""""""""""""""""""""""""""""
+highlight Search term=standout ctermfg=0 ctermbg=11 guifg=Black guibg=Yellow
+
+
 """"""""""""""
 "  Commands  "
 """"""""""""""
 
 " Red-dotted colouring on leading whitespace in Python files (or all files?)
 " Continuous syntax checking within Python files
-" Push to github, test on fresh box
 
-" Clean up trailing whitespace in file
-command! CleanWhitespace %s/\s\+$//e
+" Clean up trailing whitespace in filecommand! CleanWhitespace %s/\s\+$//e
 
 """""""""""""
 "Key Mappings
@@ -163,6 +168,10 @@ map k gk
 " Movement - easily move to start/end of lines
 map H ^
 map L $
+
+" Visual indenting should stay selected
+vmap < <gv
+vmap > >gv
 
 " <space> - toggles folds opened and closed
 nnoremap <space> za
@@ -196,7 +205,7 @@ map <leader>rt ggVG :retab<CR>
 map <c-l> gq
 
 " Control + E - Replace visual selection
-vnoremap <C-e> "ey:%s/<C-R>e//gc<left><left><left>
+"vnoremap <C-e> "ey:%s/<C-R>e//gc<left><left><left>
 
 " Control + N - file browser
 map <C-n> :NERDTreeToggle<CR>

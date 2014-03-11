@@ -17,6 +17,9 @@ To Do
 
 * Refinement of vimrc configuration
   
+  * Indentation of reST files - changes indent levels but changes
+    from implicit to explicit numbering (or unordered to ordered)
+  * reST files: backspacing before a nested list double-backspaces
   * Indentation support - eg follow existing indents in Python or
     other data structures
   * YouCompleteMe scratch/preview window open until end parethesis
@@ -38,3 +41,9 @@ Copyright
 
 Nope, nothing.  Just use what you'd like, how you'd like to use it.
 Spot and report an error and win a gold star.
+
+
+Notes
+=====
+
+* ``box`` and ``bbox`` snippets for a comment box
