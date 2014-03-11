@@ -41,7 +41,7 @@ dependencies () {
 		xclip \
 		pngcrush
 
-    sudo pip install --upgrade ipython
+    sudo pip install --upgrade ipython grin
     install_update_git https://github.com/kennethreitz/autoenv.git ~/.autoenv
 
 }
