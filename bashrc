@@ -38,5 +38,13 @@ fi
 # Enable autoenv
 . ~/.autoenv/activate.sh
 
+# Enable private Bash includes
+shopt -s nullglob
+for file in ~/.bash_private/*
+do
+    . $file
+done
+shopt -u nullglob
+
 #. /usr/local/bin/virtualenvwrapper.sh
 #export WORKON_HOME=~/buildout

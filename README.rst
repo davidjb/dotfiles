@@ -46,4 +46,10 @@ Spot and report an error and win a gold star.
 Notes
 =====
 
-* ``box`` and ``bbox`` snippets for a comment box
+* Vim:
+  
+  * ``box`` and ``bbox`` snippets for a comment box
+
+* Bash:
+  
+  * Put private bash files into ``.bash_private``
