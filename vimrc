@@ -36,7 +36,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "   let g:UltiSnipsSnippetDirectories=["UltiSnips", "mycoolsnippets"]
 
-" Status bar improvement
+" Uber status bar improvement
 Bundle 'Lokaltog/powerline'
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
@@ -93,13 +93,10 @@ let g:riv_python_rst_hl = 1
 " XXX Conflicts with another plugin on completion (Rope?)
 " Bundle 'klen/python-mode'
 
-"Options
-
 
 """"""""""""""""""""
 "Extra configuration
 """"""""""""""""""""
-
 syntax on                         " Syntax highlighting
 filetype plugin on                " Filetype detection
 filetype plugin indent on         " Indentation
