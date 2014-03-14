@@ -34,7 +34,11 @@ To Do
 
   * Virtualenv-wrapper
   * grin
-  *
+  * Dependencies for Syntastic - syntax checkers
+
+    * Python
+    * YAML
+    * ...
 
 Copyright
 =========

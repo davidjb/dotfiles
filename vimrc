@@ -40,6 +40,9 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 Bundle 'Lokaltog/powerline'
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
+" Syntax checking for Vim
+Bundle 'scrooloose/syntastic'
+
 " \\ movement to anywhere - w (words), f (chars), j (lines)
 Bundle 'Lokaltog/vim-easymotion'
 
@@ -64,6 +67,9 @@ Bundle 'Rykka/colorv.vim'
 " Repeat support for .
 Bundle 'tpope/vim-repeat'
 
+" Repeat support for visual selection
+Bundle 'vim-scripts/visualrepeat'
+
 " Ability to easily change surrounding elements (eg cs[from][to])
 Bundle 'tpope/vim-surround'
 
@@ -83,9 +89,13 @@ Bundle 'pangloss/vim-javascript'
 let javascript_enable_domhtmlcss = 1
 " HAML, LESS, SASS 
 Bundle 'tpope/vim-haml'
+" YAML
+Bundle 'avakhov/vim-yaml'
 " reST
 Bundle 'Rykka/riv.vim'
 let g:riv_python_rst_hl = 1
+" Salt SLS
+Bundle 'saltstack/salt-vim'
 
 
 
