@@ -46,7 +46,8 @@ Bundle 'scrooloose/syntastic'
 " \\ movement to anywhere - w (words), f (chars), j (lines)
 Bundle 'Lokaltog/vim-easymotion'
 
-" Git management: Gstatus, Gcommit, etc
+" Git management: Gstatus, Gcommit, Gblame, Gmove, Ggrep, Gbrowse
+" Use with -/p for status and patching.
 Bundle 'tpope/vim-fugitive'                 
 
 " Insert-mode autocompletion for quotes, parentheses & brackets
