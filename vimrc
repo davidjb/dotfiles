@@ -142,6 +142,7 @@ set shortmess+=a                  " Use short statuses for [+] [RO] [w]
 set ruler                         " Turn line number and column cursor on
 set report=0                      " Always report if any lines changed
 set laststatus=2                  " Always show status line
+set noshowmode                    " Hide the default mode text below statusline
 set confirm                       " Save/exit confirmation
 
 " Don't edit these type of files
