@@ -17,6 +17,10 @@ shopt -s checkwinsize
 #fi
 #unset color_prompt 
 
+# Use vi editing mode for commands
+# This is in beta testing
+set -o vi
+
 # Powerline
 . ~/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh
 
