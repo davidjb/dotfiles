@@ -55,6 +55,10 @@ Bundle 'Raimondi/delimitMate'
 
 " Intense commenting superpower
 Bundle 'scrooloose/nerdcommenter'
+let g:NERDCustomDelimiters = {
+   \ 'yaml': { 'left': '#' },
+   \ 'sls': { 'left': '#' }
+   \ }
 
 " File browser and explorer: Nerdtree
 Bundle 'scrooloose/nerdtree'
