@@ -12,34 +12,6 @@ Pass the script a directory name or path to customise install location::
     ./bootstrap.sh /path/to/install
 
 
-To Do
-=====
-
-* Refinement of vimrc configuration
-  
-  * Indentation of reST files - changes indent levels but changes
-    from implicit to explicit numbering (or unordered to ordered)
-  * reST files: backspacing before a nested list double-backspaces
-  * Indentation support - eg follow existing indents in Python or
-    other data structures
-  * YouCompleteMe scratch/preview window open until end parethesis
-  * YouCompleteMe syntax highlighting and error detection
-  * Python support (refactoring etc)
-  * Rykka/riv support for Sphinx documentation (syntax checking, C-E key?)
-
-* Handle private aliases for Bashrc
-* Handle private SSH configuration
-* Determine other standard dependencies for development
-* Automate installation of:
-
-  * Virtualenv-wrapper
-  * grin
-  * Dependencies for Syntastic - syntax checkers
-
-    * Python
-    * YAML
-    * ...
-
 Copyright
 =========
 
@@ -54,8 +26,29 @@ Notes
   
   * ``box`` and ``bbox`` snippets for a comment box
   * Check syntax reporting with ``:SyntasticInfo``
+  * Fix PEP8 issues in Python with ``:PymodeLintAuto``
 
 * Bash:
   
   * Put private bash files into ``.bash_private``. Anything inside this folder
     will be ``source``'d automatically.
+
+To Do
+=====
+
+* Refinement of vimrc configuration
+  
+  * Indentation of reST files - changes indent levels but changes
+    from implicit to explicit numbering (or unordered to ordered)
+  * reST files: backspacing before a nested list double-backspaces
+  * YouCompleteMe scratch/preview window open until end parethesis
+  * Python support (refactoring etc)
+  * Rykka/riv support for Sphinx documentation (syntax checking, C-E key?)
+  * PyMode and Rope for refactoring support
+
+* Handle private aliases for Bashrc
+* Handle private SSH configuration
+* Determine other standard dependencies for development
+* Automate installation of:
+
+  * Virtualenv-wrapper
