@@ -42,6 +42,16 @@ set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 " Syntax checking for Vim
 Bundle 'scrooloose/syntastic'
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_css = ['csslint']
+let g:syntastic_html_checkers = ['tidy']
+let g:syntastic_javascript_checkers = ['jslint']
+let g:syntastic_json_checkers = ['jsonlint']
+let g:syntastic_python_checkers = ['py3kwarn', 'pylama']
+let g:syntastic_rst_checkers = ['rstcheck']
+let g:syntastic_yaml_checkers = ['jsyaml']
 
 " \\ movement to anywhere - w (words), f (chars), j (lines)
 Bundle 'Lokaltog/vim-easymotion'
@@ -91,7 +101,7 @@ Bundle 'vim-scripts/Align'
 Bundle 'tpope/vim-git'
 Bundle 'leshill/vim-json'
 Bundle 'pangloss/vim-javascript'
-let javascript_enable_domhtmlcss = 1
+let g:javascript_enable_domhtmlcss = 1
 " HAML, LESS, SASS 
 Bundle 'tpope/vim-haml'
 " YAML
@@ -101,7 +111,9 @@ Bundle 'Rykka/riv.vim'
 let g:riv_python_rst_hl = 1
 " Salt SLS
 Bundle 'saltstack/salt-vim'
-
+" VimL Checking
+Bundle 'ynkdir/vim-vimlparser'
+Bundle 'syngan/vim-vimlint'
 
 
 " Python editng superpowers
@@ -115,6 +127,7 @@ Bundle 'saltstack/salt-vim'
 syntax on                         " Syntax highlighting
 filetype plugin on                " Filetype detection
 filetype plugin indent on         " Indentation
+set encoding=utf-8                " Set preferred char encoding
 set backspace=indent,eol,start    " Backspace over everything
 set formatoptions-=t              " Stop auto wrapping of text
 set scrolloff=4                   " Keep x lines above an below the cursor
@@ -272,7 +285,7 @@ au!
 
     au BufNewFile,BufRead *.sass set filetype=sass
     
-    au BufNewFile,BufRead *.rb,*.rbw,*.gem,*.gemspec,[rR]akefile,*.rake,*.thor set filetype=ruby
+    au BufNewFile,BufRead *.rb,*.rbw,*.gem,*.gemspec,[rR]akefile,*.rake,*.thor,Vagrantfile set filetype=ruby
     au BufNewFile,BufRead *.erb set filetype=eruby
     au FileType eruby set nocindent autoindent smartindent
     
@@ -287,10 +300,8 @@ au!
     au BufNewFile,BufRead *.zpt set filetype=xml.zpt
     "au FileType xml let g:detectindent_preferred_expandtab = 1 | let g:detectindent_preferred_indent = 2
 
-
     " Detect indentation of all files
     au BufReadPost * :DetectIndent
-
 
     " XXX Unknown consequences here
     " Python-specific filetype customisations
@@ -302,6 +313,17 @@ au!
     au FileType python inoremap # X<c-h>#
     " For detectindent
     au FileType python let g:detectindent_preferred_expandtab = 1 | let g:detectindent_preferred_indent = 4
+
+    " Omni completion for filetypes
+    " Configured by default on Ubuntu installation of Vim
+    "au FileType python set omnifunc=pythoncomplete#Complete
+    "au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+    "au FileType html set omnifunc=htmlcomplete#CompleteTags
+    "au FileType css set omnifunc=csscomplete#CompleteCSS
+    "au FileType xml set omnifunc=xmlcomplete#CompleteTags
+    "au FileType php set omnifunc=phpcomplete#CompletePHP
+    "au FileType c set omnifunc=ccomplete#Complete
+
 
 augroup END
 endif

@@ -56,4 +56,5 @@ Notes
 
 * Bash:
   
-  * Put private bash files into ``.bash_private``
+  * Put private bash files into ``.bash_private``. Anything inside this folder
+    will be ``source``'d automatically.

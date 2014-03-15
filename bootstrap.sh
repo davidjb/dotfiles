@@ -32,18 +32,45 @@ dependencies () {
     sudo apt-get install -y \
 	vim \
 	cmake \
+	mono-xbuild \
+	mono-dmcs \
 	git \
 	mercurial \
-	mono-xbuild \
-	mono-dmcs 
+	node \
+	npm \
+	libxml2-utils \ #xmllint
+	tidy
 
     sudo apt-get install -y \
 		xclip \
 		pngcrush
 
-    sudo pip install --upgrade ipython grin
     install_update_git https://github.com/kennethreitz/autoenv.git ~/.autoenv
+    
+    # Global Python-based tools
+    sudo pip install --upgrade ipython grin
 
+    # Local Python-based tools
+    mkdir -p $DIR/tools
+    virtualenv $DIR/tools/python
+    pushd $DIR/tools/python
+    . bin/activate
+    pip install --upgrade \
+	py3kwarn \
+	pylama \
+	rstcheck \
+	nodeenv
+    popd
+
+    # Local Node.js based tools
+    mkdir -p $DIR/tools/nodejs
+    pushd $DIR/tools/nodejs
+    npm install \
+	csslint \
+	jsonlint \
+	jslint \
+	js-yaml
+    popd
 }
 
 remove () {
@@ -121,3 +148,4 @@ while true; do
 done
 
 install
+install_tools
