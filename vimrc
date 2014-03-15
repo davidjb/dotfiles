@@ -43,6 +43,7 @@ set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 " Syntax checking for Vim
 Bundle 'scrooloose/syntastic'
 let g:syntastic_aggregate_errors = 1
+let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_css = ['csslint']
@@ -74,7 +75,8 @@ let g:NERDCustomDelimiters = {
 Bundle 'scrooloose/nerdtree'
 
 " Auto indent detection
-Bundle 'ciaranm/detectindent'
+"Bundle 'ciaranm/detectindent'
+"let g:detectindent_max_lines_to_analyse = 32
 
 " Colour tool
 Bundle 'Rykka/colorv.vim'
@@ -117,8 +119,11 @@ Bundle 'syngan/vim-vimlint'
 
 
 " Python editng superpowers
+Bundle 'klen/python-mode'
+let g:pymode_lint_on_write = 0 | let g:pymode_lint_message = 0 | let g:pymode_syntax = 0
 " XXX Conflicts with another plugin on completion (Rope?)
-" Bundle 'klen/python-mode'
+let g:pymode_rope = 0
+
 
 
 """"""""""""""""""""
@@ -169,6 +174,7 @@ set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.pyo,*.swp
 "  Colourisation and styling  "
 """""""""""""""""""""""""""""""
 highlight Search term=standout ctermfg=0 ctermbg=11 guifg=Black guibg=Yellow
+highlight SpellBad term=reverse ctermbg=224 ctermfg=0 gui=undercurl guisp=Red
 
 
 """"""""""""""
@@ -225,8 +231,10 @@ nnoremap  <s-left>   vh
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " \rt - Convert all tabs in document
-map <leader>rt ggVG :retab<CR>
+map <leader>rt ggVG:retab<CR>
 
+" Control + A - Shortcut for syntax checking
+map <c-a> :SyntasticCheck<CR>:Errors<CR>
 " Control + L - Shortcut for wrapping lines
 map <c-l> gq
 
@@ -279,7 +287,7 @@ au!
 
     " Different types of file support 
     au BufNewFile,BufRead *.htm,*.html set filetype=html.css.javascript
-    au FileType html.css.javascript set nocindent autoindent smartindent
+    au FileType html.css.javascript set nocindent
 
     au BufNewFile,BufRead *.css,*.less set filetype=css
 
@@ -287,10 +295,10 @@ au!
     
     au BufNewFile,BufRead *.rb,*.rbw,*.gem,*.gemspec,[rR]akefile,*.rake,*.thor,Vagrantfile set filetype=ruby
     au BufNewFile,BufRead *.erb set filetype=eruby
-    au FileType eruby set nocindent autoindent smartindent
+    au FileType eruby set nocindent 
     
     au BufNewFile,BufRead *.js set filetype=javascript
-    au FileType javascript set nocindent autoindent smartindent
+    au FileType javascript set nocindent
 
     au BufNewFile,BufRead *.coffee set filetype=coffee
     au FileType coffee setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
@@ -299,20 +307,22 @@ au!
     au BufNewFile,BufRead *.zcml set filetype=xml.zcml
     au BufNewFile,BufRead *.zpt set filetype=xml.zpt
     "au FileType xml let g:detectindent_preferred_expandtab = 1 | let g:detectindent_preferred_indent = 2
+    "au FileType python let g:detectindent_preferred_expandtab = 1 | let g:detectindent_preferred_indent = 4
 
+    " XXX May want to prefer expandtab for all files
     " Detect indentation of all files
-    au BufReadPost * :DetectIndent
+    "au BufReadPost * :DetectIndent
 
     " XXX Unknown consequences here
     " Python-specific filetype customisations
-    au FileType python set omnifunc=pythoncomplete#Complete
+    "au FileType python set omnifunc=pythoncomplete#Complete
     au FileType python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
-    au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+    " Show hidden characters in files
     au FileType python set list listchars=tab:»·,trail:·
     " Fix "smart" indenting of Python comments
     au FileType python inoremap # X<c-h>#
     " For detectindent
-    au FileType python let g:detectindent_preferred_expandtab = 1 | let g:detectindent_preferred_indent = 4
+    "au FileType python let g:detectindent_preferred_expandtab = 1 | let g:detectindent_preferred_indent = 4
 
     " Omni completion for filetypes
     " Configured by default on Ubuntu installation of Vim
