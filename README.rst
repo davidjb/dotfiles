@@ -53,6 +53,7 @@ Notes
 * Vim:
   
   * ``box`` and ``bbox`` snippets for a comment box
+  * Check syntax reporting with ``:SyntasticInfo``
 
 * Bash:
   
