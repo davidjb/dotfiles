@@ -1,3 +1,4 @@
+# vim:tw=78:ft=sh
 # Enable color support of commands 
 if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
