@@ -36,14 +36,18 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "   let g:UltiSnipsSnippetDirectories=["UltiSnips", "mycoolsnippets"]
 
-" Status bar improvement
+" Uber status bar improvement
 Bundle 'Lokaltog/powerline'
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+
+" Syntax checking for Vim
+Bundle 'scrooloose/syntastic'
 
 " \\ movement to anywhere - w (words), f (chars), j (lines)
 Bundle 'Lokaltog/vim-easymotion'
 
-" Git management: Gstatus, Gcommit, etc
+" Git management: Gstatus, Gcommit, Gblame, Gmove, Ggrep, Gbrowse
+" Use with -/p for status and patching.
 Bundle 'tpope/vim-fugitive'                 
 
 " Insert-mode autocompletion for quotes, parentheses & brackets
@@ -51,6 +55,10 @@ Bundle 'Raimondi/delimitMate'
 
 " Intense commenting superpower
 Bundle 'scrooloose/nerdcommenter'
+let g:NERDCustomDelimiters = {
+   \ 'yaml': { 'left': '#' },
+   \ 'sls': { 'left': '#' }
+   \ }
 
 " File browser and explorer: Nerdtree
 Bundle 'scrooloose/nerdtree'
@@ -63,6 +71,9 @@ Bundle 'Rykka/colorv.vim'
 
 " Repeat support for .
 Bundle 'tpope/vim-repeat'
+
+" Repeat support for visual selection
+Bundle 'vim-scripts/visualrepeat'
 
 " Ability to easily change surrounding elements (eg cs[from][to])
 Bundle 'tpope/vim-surround'
@@ -83,9 +94,13 @@ Bundle 'pangloss/vim-javascript'
 let javascript_enable_domhtmlcss = 1
 " HAML, LESS, SASS 
 Bundle 'tpope/vim-haml'
+" YAML
+Bundle 'avakhov/vim-yaml'
 " reST
 Bundle 'Rykka/riv.vim'
 let g:riv_python_rst_hl = 1
+" Salt SLS
+Bundle 'saltstack/salt-vim'
 
 
 
@@ -93,13 +108,10 @@ let g:riv_python_rst_hl = 1
 " XXX Conflicts with another plugin on completion (Rope?)
 " Bundle 'klen/python-mode'
 
-"Options
-
 
 """"""""""""""""""""
 "Extra configuration
 """"""""""""""""""""
-
 syntax on                         " Syntax highlighting
 filetype plugin on                " Filetype detection
 filetype plugin indent on         " Indentation
@@ -130,6 +142,7 @@ set shortmess+=a                  " Use short statuses for [+] [RO] [w]
 set ruler                         " Turn line number and column cursor on
 set report=0                      " Always report if any lines changed
 set laststatus=2                  " Always show status line
+set noshowmode                    " Hide the default mode text below statusline
 set confirm                       " Save/exit confirmation
 
 " Don't edit these type of files
