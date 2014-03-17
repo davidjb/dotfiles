@@ -65,6 +65,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'Raimondi/delimitMate'
 let g:delimitMate_expand_space = 1
 let g:delimitMate_expand_cr = 1
+let g:delimitMate_jump_expansion = 1
 
 " Intense commenting superpower
 Bundle 'scrooloose/nerdcommenter'
@@ -311,20 +312,17 @@ au!
     "au FileType xml let g:detectindent_preferred_expandtab = 1 | let g:detectindent_preferred_indent = 2
     "au FileType python let g:detectindent_preferred_expandtab = 1 | let g:detectindent_preferred_indent = 4
 
+    " Python-specific filetype customisations
+    " Fix "smart" indenting of Python comments
+    au FileType python inoremap # X<c-h>#
+    " Show hidden characters in files
+    au FileType python set list listchars=tab:»·,trail:·
+    " Allow """ comments to work in Python files
+    au FileType python let b:delimitMate_nesting_quotes = ['"']
+
     " XXX May want to prefer expandtab for all files
     " Detect indentation of all files
     "au BufReadPost * :DetectIndent
-
-    " XXX Unknown consequences here
-    " Python-specific filetype customisations
-    "au FileType python set omnifunc=pythoncomplete#Complete
-    au FileType python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
-    " Show hidden characters in files
-    au FileType python set list listchars=tab:»·,trail:·
-    " Fix "smart" indenting of Python comments
-    au FileType python inoremap # X<c-h>#
-    " For detectindent
-    "au FileType python let g:detectindent_preferred_expandtab = 1 | let g:detectindent_preferred_indent = 4
 
     " Omni completion for filetypes
     " Configured by default on Ubuntu installation of Vim
