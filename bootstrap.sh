@@ -2,20 +2,9 @@
 #   git clone git@github.com:davidjb/dotfiles.git; cd dotfiles; ./bootstrap.sh
 # Inspired by https://github.com/inlineblock/DotFiles
 
-#This will become a much better provisioning system later
-
-cd "$(dirname "$0")"
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-#Change ~ to be wherever we want, if set
-if [ $1 ]; then
-	HOME="$1"
-fi
-
-if [ ! -d ~ ]; then
-	mkdir -p ~
-fi
-
+##########################
+#  Installation helpers  #
+##########################
 install_update_git () {
     repository=$1
     path=$2
@@ -28,7 +17,22 @@ install_update_git () {
     fi
 }
 
+install_step () {
+    while true; do
+        read -p "$1 (y/n) " yn
+        case $yn in
+            [Yy]* ) $2; break;;
+            [Nn]* ) break;;
+            * ) echo "Please answer yes or no.";;
+        esac
+    done
+}
+
+#########################
+#  Configuration steps  #
+#########################
 dependencies () {
+    #libxml2-utils provides xmllint
     sudo apt-get install -y \
 	vim \
 	cmake \
@@ -38,7 +42,7 @@ dependencies () {
 	mercurial \
 	node \
 	npm \
-	libxml2-utils \ #xmllint
+	libxml2-utils \
 	tidy
 
     sudo apt-get install -y \
@@ -79,16 +83,19 @@ remove () {
        ~/.config/powerline ~/.gvimrc
 }
 
-vundle ()
-{
+vundle () {
+    install_update_git https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle 
+    vim +BundleInstall +qall
+}
+
+vim_configuration () {
     #Dependencies for Powerline
     pip install --user mercurial psutil
     echo 'fs.inotify.max_user_watches=16384' | sudo tee --append /etc/sysctl.conf
     echo 16384 | sudo tee /proc/sys/fs/inotify/max_user_watches
 
     # Install all Vundle bundles
-    install_update_git https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle 
-    vim +BundleInstall +qall
+    vundle
 
     # Powerline configuration
     mkdir ~/.config/powerline
@@ -119,7 +126,6 @@ install () {
     ln -s $DIR/vimrc ~/.vimrc
     ln -s $DIR/zopeskel ~/.zopeskel
 
-
     # Contain local data 
     mkdir -p ~/.bash_private
     cp -s $DIR/pypirc ~/.pypirc
@@ -132,20 +138,25 @@ install () {
     cp $DIR/ssh/* ~/.ssh/
 
     # Initialise vim and configuration
-    vundle
+    vim_configuration
 }
 
-#Run the install script
-dependencies
+#########################
+#  Execute instalation  #
+#########################
+cd "$(dirname "$0")"
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-while true; do
-    read -p "Do you want to remove existing files? " yn
-    case $yn in
-        [Yy]* ) remove; break;;
-        [Nn]* ) break;;
-        * ) echo "Please answer yes or no.";;
-    esac
-done
+#Change ~ to be wherever we want, if set via first argument
+if [ $1 ]; then
+	HOME="$1"
+fi
 
-install
-install_tools
+if [ ! -d ~ ]; then
+	mkdir -p ~
+fi
+
+install_step "Do you want to install dependencies?" dependencies
+install_step "Do you want to remove existing files?" remove 
+install_step "Do you want to install the configuration?" install
+install_step "Re-run Vim's plugin installation?" vundle
