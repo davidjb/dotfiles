@@ -123,7 +123,7 @@ Bundle 'syngan/vim-vimlint'
 
 " Python editng superpowers
 Bundle 'klen/python-mode'
-let g:pymode_lint_on_write = 0 | let g:pymode_lint_message = 0 | let g:pymode_syntax = 0
+let g:pymode_lint_on_write = 0 | let g:pymode_lint_message = 0 | let g:pymode_syntax = 0 | let g:pymode_syntax_all = 0
 " XXX Conflicts with another plugin on completion (Rope?)
 let g:pymode_rope = 0
 
@@ -237,7 +237,7 @@ nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 map <leader>rt ggVG:retab<CR>
 
 " Control + A - Shortcut for syntax checking
-map <c-a> :SyntasticCheck<CR>:Errors<CR>
+"map <c-a> :SyntasticCheck<CR>:Errors<CR>
 " Control + L - Shortcut for wrapping lines
 map <c-l> gq
 
@@ -319,6 +319,8 @@ au!
     au FileType python set list listchars=tab:»·,trail:·
     " Allow """ comments to work in Python files
     au FileType python let b:delimitMate_nesting_quotes = ['"']
+    " Disable <> characters in delimitMate
+    au FileType python let b:delimitMate_matchpairs = "(:),[:],{:}"
 
     " XXX May want to prefer expandtab for all files
     " Detect indentation of all files
