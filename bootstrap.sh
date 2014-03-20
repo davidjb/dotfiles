@@ -60,10 +60,11 @@ dependencies () {
     pushd $DIR/tools/python
     . bin/activate
     pip install --upgrade \
-	py3kwarn \
-	pylama \
-	rstcheck \
-	nodeenv
+        py3kwarn \
+        pylama \
+        rstcheck \
+        pygments \
+        nodeenv
     popd
 
     # Local Node.js based tools
