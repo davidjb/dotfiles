@@ -16,7 +16,7 @@ Bundle 'gmarik/vundle'
 " Completion support; requires Vim 7.3.584
 " Press <TAB> to complete, <C-Space> to semantically complete
 " Automatically integrates with Ultisnips
-Bundle 'Valloric/YouCompleteMe'             
+Bundle 'Valloric/YouCompleteMe'
 let g:ycm_complete_in_comments = 1
 let g:ycm_use_ultisnips_completer = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
@@ -59,7 +59,7 @@ Bundle 'Lokaltog/vim-easymotion'
 
 " Git management: Gstatus, Gcommit, Gblame, Gmove, Ggrep, Gbrowse
 " Use with -/p for status and patching.
-Bundle 'tpope/vim-fugitive'                 
+Bundle 'tpope/vim-fugitive'
 
 " Insert-mode autocompletion for quotes, parentheses & brackets
 Bundle 'Raimondi/delimitMate'
@@ -165,6 +165,7 @@ set report=0                      " Always report if any lines changed
 set laststatus=2                  " Always show status line
 set noshowmode                    " Hide the default mode text below statusline
 set confirm                       " Save/exit confirmation
+set list listchars=tab:»·,trail:· " Show hidden characters in files
 
 " Don't edit these type of files
 set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.pyo,*.swp
@@ -295,11 +296,11 @@ au!
     au BufNewFile,BufRead *.css,*.less set filetype=css
 
     au BufNewFile,BufRead *.sass set filetype=sass
-    
+
     au BufNewFile,BufRead *.rb,*.rbw,*.gem,*.gemspec,[rR]akefile,*.rake,*.thor,Vagrantfile set filetype=ruby
     au BufNewFile,BufRead *.erb set filetype=eruby
     au FileType eruby set nocindent 
-    
+
     au BufNewFile,BufRead *.js set filetype=javascript
     au FileType javascript set nocindent
 
@@ -315,8 +316,6 @@ au!
     " Python-specific filetype customisations
     " Fix "smart" indenting of Python comments
     au FileType python inoremap # X<c-h>#
-    " Show hidden characters in files
-    au FileType python set list listchars=tab:»·,trail:·
     " Allow """ comments to work in Python files
     au FileType python let b:delimitMate_nesting_quotes = ['"']
     " Disable <> characters in delimitMate
