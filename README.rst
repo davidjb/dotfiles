@@ -36,6 +36,7 @@ Notes
 To Do
 =====
 
+* Support for multiple operating systems (Mac and Linux)
 * Refinement of vimrc configuration
   
   * Indentation of reST files - changes indent levels but changes
@@ -52,3 +53,4 @@ To Do
 * Automate installation of:
 
   * Virtualenv-wrapper
+
