@@ -13,10 +13,10 @@ fi
 
 # Custom aliases
 alias ack='ACK_PAGER_COLOR="less -x4SRFX" /usr/bin/ack-grep -a -C 1 --follow'
-alias calc='gcalctool &'
+alias calc='gnome-calculator &'
 alias l='ls -FC'
-alias la='ls -FA'
-alias ll='ls -Fl'
+alias la='ls -FAh'
+alias ll='ls -Flh'
 alias find='find -L'
 alias findfile='find -L . -iname'
 alias fix='tset'
@@ -30,7 +30,7 @@ alias fromclip='xclip -o'
 
 # System administration
 alias serve='python -m SimpleHTTPServer 8000'
-alias port='netstat -tulpn | grep'
+alias port='sudo netstat -tulpn | grep'
 alias ssl-text='openssl x509 -text -noout -in'
 alias hash-wpa2-passwd='python -c "import getpass; print(getpass.getpass())" | iconv -t utf16le | openssl md4'
 function gen-passwd() {
