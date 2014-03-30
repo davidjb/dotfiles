@@ -2,7 +2,7 @@
 # Enable color support of commands 
 if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
-    alias ls='ls --color=auto'
+    alias ls='ls -F --color=auto'
     alias dir='ls --color=auto --format=vertical'
     alias vdir='ls --color=auto --format=long'
 
@@ -14,9 +14,9 @@ fi
 # Custom aliases
 alias ack='ACK_PAGER_COLOR="less -x4SRFX" /usr/bin/ack-grep -a -C 1 --follow'
 alias calc='gcalctool &'
-alias l='ls -CF'
-alias la='ls -A'
-alias ll='ls -l'
+alias l='ls -FC'
+alias la='ls -FA'
+alias ll='ls -Fl'
 alias find='find -L'
 alias findfile='find -L . -iname'
 alias fix='tset'
