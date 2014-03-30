@@ -11,6 +11,12 @@ Pass the script a directory name or path to customise install location::
 
     ./bootstrap.sh /path/to/install
 
+Useful notes
+------------
+
+For useful notes, snippets, and general information, take a look
+at `NOTES <https://github.com/davidjb/dotfiles/blob/master/NOTES.rst>`_.
+
 
 Copyright
 =========
@@ -18,20 +24,6 @@ Copyright
 Nope, nothing.  Just use what you'd like, how you'd like to use it.
 Spot and report an error and win a gold star.
 
-
-Notes
-=====
-
-* Vim:
-  
-  * ``box`` and ``bbox`` snippets for a comment box
-  * Check syntax reporting with ``:SyntasticInfo``
-  * Fix PEP8 issues in Python with ``:PymodeLintAuto``
-
-* Bash:
-  
-  * Put private bash files into ``.bash_private``. Anything inside this folder
-    will be ``source``'d automatically.
 
 To Do
 =====
