@@ -1,6 +1,7 @@
 #!/bin/bash -x
 #   git clone git@github.com:davidjb/dotfiles.git; cd dotfiles; ./bootstrap.sh
 # Inspired by https://github.com/inlineblock/DotFiles
+# vim:tw=78:ft=sh
 
 ##########################
 #  Installation helpers  #
@@ -34,25 +35,20 @@ install_step () {
 dependencies () {
     #libxml2-utils provides xmllint
     sudo apt-get install -y \
-	vim \
-	cmake \
-	mono-xbuild \
-	mono-dmcs \
-	git \
-	mercurial \
-	node \
-	npm \
-	libxml2-utils \
-	tidy
-
-    sudo apt-get install -y \
-		xclip \
-		pngcrush
+        vim \
+        gvim \
+        cmake \
+        mono-xbuild \
+        mono-dmcs \
+        git \
+        mercurial \
+        xclip \
+        node \
+        npm \
+        libxml2-utils \
+        tidy
 
     install_update_git https://github.com/kennethreitz/autoenv.git ~/.autoenv
-    
-    # Global Python-based tools
-    sudo pip install --upgrade ipython grin
 
     # Local Python-based tools
     mkdir -p $DIR/tools
@@ -63,7 +59,6 @@ dependencies () {
         py3kwarn \
         pylama \
         rstcheck \
-        pygments \
         nodeenv
     popd
 
@@ -71,11 +66,27 @@ dependencies () {
     mkdir -p $DIR/tools/nodejs
     pushd $DIR/tools/nodejs
     npm install \
-	csslint \
-	jsonlint \
-	jslint \
-	js-yaml
+        csslint \
+        jsonlint \
+        jslint \
+        js-yaml
     popd
+}
+
+applications () {
+    # Skype installation is fairly evil.
+    sudo dpkg --add-architecture i386
+    sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
+    sudo apt-get update
+
+    sudo apt-get install -y \
+        pngcrush \
+        pidgin \
+        pidgin-skype \
+        skype
+
+    # Global Python-based tools
+    sudo pip install --upgrade ipython grin
 }
 
 remove () {
@@ -134,7 +145,7 @@ install () {
     mkdir -p ~/.buildout/{eggs,downloads,configs}
     cp $DIR/buildout/* ~/.buildout/
     sed -i "s/\${whoami}/`whoami`/g" ~/.buildout/default.cfg
-   
+
     mkdir -p ~/.ssh
     cp $DIR/ssh/* ~/.ssh/
 
@@ -150,14 +161,16 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 #Change ~ to be wherever we want, if set via first argument
 if [ $1 ]; then
-	HOME="$1"
+    HOME="$1"
 fi
 
 if [ ! -d ~ ]; then
-	mkdir -p ~
+    mkdir -p ~
 fi
 
 install_step "Do you want to install dependencies?" dependencies
 install_step "Do you want to remove existing files?" remove 
 install_step "Do you want to install the configuration?" install
 install_step "Re-run Vim's plugin installation?" vundle
+install_step "Do you want to install applications?" applications
+
