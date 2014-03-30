@@ -1,5 +1,5 @@
-David's dotfiles
-================
+davidjb's dotfiles
+==================
 
 Run the included ``bootstrap.sh`` script and it will install the included settings files
 into the current user's home directory::  
