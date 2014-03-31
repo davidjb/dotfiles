@@ -17,5 +17,11 @@ Vim
 * ``box`` and ``bbox`` snippets for a comment box
 * ``:SyntasticInfo`` - check syntax reporting
 * ``:PymodeLintAuto`` - fix PEP8 issues in Python
+* ``q[:/?]`` - opens quickedit window for commands, search
 
-  
+
+General commands
+----------------
+
+* ``chown`` and ``chmod`` can use ``--reference=file`` to copy permissions or
+  ownership.
