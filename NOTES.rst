@@ -4,11 +4,20 @@ Useful information
 Bash
 ----
 
-* ``cd -`` returns to previous directory
-* ``\command`` - appending a backslash avoids aliasing
+dotfiles
+~~~~~~~~
 
 * Put private bash files into ``.bash_private``. Anything inside this folder
   will be ``source``'d automatically.
+
+
+Built-ins
+~~~~~~~~~
+
+* ``cd -`` returns to previous directory
+* ``\command`` - appending a backslash avoids aliasing
+* ``^R`` - reverse history search
+* ``^P`` and ``^N`` - previous and next command cycling
 
 
 Vim
