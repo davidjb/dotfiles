@@ -13,6 +13,7 @@ fi
 
 # Custom aliases
 alias ack='ACK_PAGER_COLOR="less -x4SRFX" /usr/bin/ack-grep -a -C 1 --follow'
+alias apt-whatprovides='apt-cache policy'
 alias calc='gnome-calculator &'
 alias l='ls -FC'
 alias la='ls -FAh'
