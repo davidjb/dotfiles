@@ -240,7 +240,9 @@ map <leader>rt ggVG:retab<CR>
 " Control + A - Shortcut for syntax checking
 "map <c-a> :SyntasticCheck<CR>:Errors<CR>
 " Control + L - Shortcut for wrapping lines
-map <c-l> gq
+nmap <c-l> gqip
+vmap <c-l> gq
+
 
 " Control + E - Replace visual selection
 "vnoremap <C-e> "ey:%s/<C-R>e//gc<left><left><left>
