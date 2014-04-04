@@ -166,6 +166,7 @@ set laststatus=2                  " Always show status line
 set noshowmode                    " Hide the default mode text below statusline
 set confirm                       " Save/exit confirmation
 set list listchars=tab:»·,trail:· " Show hidden characters in files
+let g:mapleader=";"               " Change the leader key to something typable
 
 " Don't edit these type of files
 set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.pyo,*.swp
