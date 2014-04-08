@@ -24,6 +24,7 @@ alias fix='tset'
 alias history-search='history | grep '
 alias scp-compressed='scp -C -o CompressionLevel=9'
 #alias wget='wget --no-check-certificate'
+alias vimgit='vim . +Gstatus +"resize +5"'
 
 # Use with pipes as input or output
 alias toclip='xclip -selection clipboard'
