@@ -24,6 +24,8 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_always_populate_location_list = 1
 "let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
+"let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
+
 
 " Snippets
 Bundle 'vim-scripts/tlib'
@@ -123,9 +125,10 @@ Bundle 'syngan/vim-vimlint'
 
 " Python editng superpowers
 Bundle 'klen/python-mode'
-let g:pymode_lint_on_write = 0 | let g:pymode_lint_message = 0 | let g:pymode_syntax = 0 | let g:pymode_syntax_all = 0
+let g:pymode_lint_on_write = 0 | let g:pymode_lint_message = 0 | let g:pymode_syntax = 0 | let g:pymode_syntax_all = 0 | let g:pymode_trim_whitespaces = 0
+let g:pymode_rope_show_doc_bind = '<c-e>d'
 " XXX Conflicts with another plugin on completion (Rope?)
-let g:pymode_rope = 0
+"let g:pymode_rope = 0
 
 
 
@@ -170,6 +173,16 @@ let g:mapleader=";"               " Change the leader key to something typable
 
 " Don't edit these type of files
 set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.pyo,*.swp
+
+" Map escape sequences to their Alt combinations
+"for start in ['A', 'a']
+    "let c=start
+    "while c <= nr2char(25+char2nr(start))
+        "exec "set <A-".c.">=\e".c
+        "exec "imap \e".c." <A-".c.">"
+        "let c=nr2char(1+char2nr(c))
+    "endw
+"endfor
 
 "Optional useful settings
 "set number                        " Line numbering
