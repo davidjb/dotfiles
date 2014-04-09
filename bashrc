@@ -6,9 +6,15 @@
 # See bash(1) for more options
 export HISTCONTROL=ignorespace:ignoredups
 
-# Check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+
+# autocd - Automatic cd to directories
+# cdspell - Simple spell check for cd
+# checkjobs - Output job information on attempting to exit
+# checkwinsize - Check window size after commands and update LINES/COLUMNS
+# cmdhist - Save multi-line commands as same history entry
+# For remainder of options, see "list of shopt options" in the bash man page.
+shopt -s autocd cdspell checkjobs checkwinsize cmdhist expand_aliases extglob extquote force_fignore interactive_comments progcomp promptvars sourcepath
 
 #color_prompt=yes
 #if [ "$color_prompt" = yes ]; then
