@@ -252,12 +252,12 @@ nmap <c-l> gqip
 vmap <c-l> gq
 
 " Control + N - file browser
-map <C-n> :NERDTreeToggle<cr>
+map <C-n> :NERDTreeToggle<CR>
 
 " Control + C,V - system clipboard handling
 " Pasting enables paste mode, then pastes, placing the cursor after the paste
 vmap <c-c> "+y
-nmap <c-v> :set paste<cr>j"+gP:set nopaste<cr>
+nmap <c-v> :set paste<CR>"+gp:set nopaste<CR>
 imap <c-v> <esc><c-v>i
 
 " ;g - Move to the element/variable declaration
