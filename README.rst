@@ -45,4 +45,5 @@ To Do
 * Automate installation of:
 
   * Virtualenv-wrapper
+  * zest.releaser with aliases
 
