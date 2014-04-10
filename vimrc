@@ -169,6 +169,8 @@ set laststatus=2                  " Always show status line
 set noshowmode                    " Hide the default mode text below statusline
 set confirm                       " Save/exit confirmation
 set list listchars=tab:»·,trail:· " Show hidden characters in files
+set mouse=a                       " Enable mouse support for terminal
+set spelllang=en_au               " Configure spelling support for AU English
 let g:mapleader=";"               " Change the leader key to something typable
 
 " Don't edit these type of files
@@ -245,47 +247,40 @@ nnoremap  <s-down>   Vj
 nnoremap  <s-right>  vl
 nnoremap  <s-left>   vh
 
-" \g - Move to the element/variable declaration
-nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-" \rt - Convert all tabs in document
-map <leader>rt ggVG:retab<CR>
-
-" Control + A - Shortcut for syntax checking
-"map <c-a> :SyntasticCheck<CR>:Errors<CR>
 " Control + L - Shortcut for wrapping lines
 nmap <c-l> gqip
 vmap <c-l> gq
 
-
-" Control + E - Replace visual selection
-"vnoremap <C-e> "ey:%s/<C-R>e//gc<left><left><left>
-
 " Control + N - file browser
-map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<cr>
+
+" Control + C,V - system clipboard handling
+vmap <c-c> "+y
+nmap <c-v> :set paste<cr>j"+gP:set nopaste<cr>
+imap <c-v> <esc><c-v>i
+
+" ;g - Move to the element/variable declaration
+nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" ;rt - Convert all tabs in document
+nnoremap <leader>rt ggVG:retab<CR>
+
+" ;e - Shortcut for syntax checking
+map <leader>e :SyntasticCheck<CR>:Errors<CR>
+
+" ;r - Replace visual selection
+vnoremap <leader>r "ey:%s/<C-R>e//gc<left><left><left>
 
 " F2 - Toggle paste mode
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 
-" F8 - Toggle spelling
-" http://vimdoc.sourceforge.net/htmldoc/spell.html
-if v:version >= 700
-function! <SID>ToggleSpell()
-   if &spell != 1
-       setlocal spell spelllang=en_au
-   else
-       setlocal spell!
-   endif
-endfunction
-nnoremap <silent> <F8> <ESC>:call <SID>ToggleSpell()<CR>
-endif
 
 """"""""""""""
 " Autocommands
 """"""""""""""
 "Whenever vimrc is saved, re-source it.
-autocmd! bufwritepost .vimrc source %
+autocmd! bufwritepost .vimrc,vimrc source %
 
 if has("autocmd")
 augroup vimrcEx
