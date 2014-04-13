@@ -258,7 +258,7 @@ map <C-n> :NERDTreeToggle<CR>
 " Pasting enables paste mode, then pastes, placing the cursor after the paste
 vmap <c-c> "+y
 nmap <c-v> :set paste<CR>"+gp:set nopaste<CR>
-imap <c-v> <esc><c-v>i
+"imap <c-v> <esc><c-v>i
 
 " ;g - Move to the element/variable declaration
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
