@@ -19,8 +19,10 @@ shopt -s checkwinsize
 #unset color_prompt 
 
 # Use vi editing mode for commands
-# This is in beta testing
 set -o vi
+
+# Disable terminal flow via ^S and ^Q
+stty -ixon
 
 # Powerline
 . ~/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh
