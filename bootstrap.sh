@@ -97,9 +97,21 @@ applications () {
 }
 
 remove () {
-    rm -rf ~/.bashrc ~/.bash_aliases ~/.bash_logout ~/.environment \
-       ~/.gitconfig ~/.profile ~/.pypirc ~/.zopeskel ~/.vimrc ~/.vim \
-       ~/.config/powerline ~/.gvimrc
+    rm -rf \
+        ~/.bashrc \
+        ~/.config/powerline \
+        ~/.bash_aliases \
+        ~/.bash_logout \
+        ~/.environment \
+        ~/.gitconfig \
+        ~/.gitignore-global \
+        ~/.gvimrc \
+        ~/.profile \
+        ~/.pypirc \
+        ~/.screenrc \
+        ~/.vimrc \
+        ~/.vim \
+        ~/.zopeskel
 }
 
 vundle () {
@@ -143,6 +155,7 @@ install () {
     ln -s $DIR/gitignore-global ~/.gitignore-global
     ln -s $DIR/vimrc ~/.gvimrc
     ln -s $DIR/profile ~/.profile
+    ln -s $DIR/screenrc ~/.screenrc
     ln -s $DIR/vimrc ~/.vimrc
     ln -s $DIR/zopeskel ~/.zopeskel
 
