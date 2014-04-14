@@ -16,9 +16,15 @@ Built-ins
 
 * ``cd -`` returns to previous directory
 * ``\command`` - appending a backslash avoids aliasing
-* ``^R`` - reverse history search
-* ``^P`` and ``^N`` - previous and next command cycling*
+* ``basename`` and ``dirname`` for filename and directory respectively
+  from a given path
 
+* ``^R`` - reverse history search
+* Emacs mode:
+
+  * ``C-p`` and ``C-n`` - previous and next command cycling
+  * ``C-f``, ``C-b`` - next/previous characters
+  * ``M-f``, ``M-b`` - next/previous word
 
 Vim
 ---
@@ -35,3 +41,5 @@ General commands
 
 * ``chown`` and ``chmod`` can use ``--reference=file`` to copy permissions or
   ownership.
+* ``cat /etc/*-release`` will reveal the distribution and version of any
+  Linux machine.
