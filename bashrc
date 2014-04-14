@@ -6,6 +6,9 @@
 # See bash(1) for more options
 export HISTCONTROL=ignorespace:ignoredups
 
+# Configure terminal for 256 colours
+export TERM=xterm-256color
+
 # Check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
