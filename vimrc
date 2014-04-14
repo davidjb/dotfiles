@@ -325,6 +325,9 @@ au!
     "au FileType xml let g:detectindent_preferred_expandtab = 1 | let g:detectindent_preferred_indent = 2
     "au FileType python let g:detectindent_preferred_expandtab = 1 | let g:detectindent_preferred_indent = 4
 
+    " Handle Control-Enter in rST documents
+    au FileType rst inoremap <NL> <esc>:RivListNew<CR>A
+
     " Python-specific filetype customisations 
     " Fix smart indenting of Python comments
     au FileType python inoremap # X<c-h>#
