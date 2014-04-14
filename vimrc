@@ -113,7 +113,7 @@ let g:javascript_enable_domhtmlcss = 1
 Bundle 'tpope/vim-haml'
 " YAML
 Bundle 'avakhov/vim-yaml'
-" reST
+" reST - disable riv syntax highlighting and use Syntastic
 Bundle 'Rykka/riv.vim'
 let g:riv_python_rst_hl = 1
 " Salt SLS
@@ -325,8 +325,8 @@ au!
     "au FileType xml let g:detectindent_preferred_expandtab = 1 | let g:detectindent_preferred_indent = 2
     "au FileType python let g:detectindent_preferred_expandtab = 1 | let g:detectindent_preferred_indent = 4
 
-    " Python-specific filetype customisations
-    " Fix "smart" indenting of Python comments
+    " Python-specific filetype customisations 
+    " Fix smart indenting of Python comments
     au FileType python inoremap # X<c-h>#
     " Allow """ comments to work in Python files
     au FileType python let b:delimitMate_nesting_quotes = ['"']
