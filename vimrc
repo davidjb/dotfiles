@@ -54,9 +54,13 @@ let g:syntastic_javascript_checkers = ['jslint']
 let g:syntastic_json_checkers = ['jsonlint']
 let g:syntastic_python_checkers = ['py3kwarn', 'pylama']
 let g:syntastic_rst_checkers = ['rstcheck']
+let g:syntastic_rst_rstcheck_quiet_messages = {"regex": [
+            \ '\v"(ref|abbr|term|menuselection|ifconfig|glossary)"',
+            \ 'Undefined substitution referenced: "project-',
+            \ ]}
 let g:syntastic_yaml_checkers = ['jsyaml']
 
-" \\ movement to anywhere - w (words), f (chars), j (lines)
+" <leader><leader> movement to anywhere - w (words), f (chars), j (lines)
 Bundle 'Lokaltog/vim-easymotion'
 
 " Git management: Gstatus, Gcommit, Gblame, Gmove, Ggrep, Gbrowse
@@ -113,7 +117,7 @@ let g:javascript_enable_domhtmlcss = 1
 Bundle 'tpope/vim-haml'
 " YAML
 Bundle 'avakhov/vim-yaml'
-" reST - disable riv syntax highlighting and use Syntastic
+" reST - Highlight DocStrings in Python files
 Bundle 'Rykka/riv.vim'
 let g:riv_python_rst_hl = 1
 " Salt SLS
@@ -127,6 +131,7 @@ Bundle 'syngan/vim-vimlint'
 Bundle 'klen/python-mode'
 let g:pymode_lint_on_write = 0 | let g:pymode_lint_message = 0 | let g:pymode_syntax = 0 | let g:pymode_syntax_all = 0 | let g:pymode_trim_whitespaces = 0
 let g:pymode_rope_show_doc_bind = '<c-e>d'
+let g:pymode_syntax_slow_sync = 1
 " XXX Conflicts with another plugin on completion (Rope?)
 "let g:pymode_rope = 0
 
@@ -163,6 +168,7 @@ set showmode                      " Show type of mode being used
 set noerrorbells                  " Don't bell or blink
 set showcmd                       " Show paritial command at bottom of screen
 set shortmess+=a                  " Use short statuses for [+] [RO] [w]  
+set number                        " Turn line numbering on
 set ruler                         " Turn line number and column cursor on
 set report=0                      " Always report if any lines changed
 set laststatus=2                  " Always show status line
@@ -187,7 +193,6 @@ set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.pyo,*.swp
 "endfor
 
 "Optional useful settings
-"set number                        " Line numbering
 
 
 """""""""""""""""""""""""""""""
@@ -260,17 +265,20 @@ vmap <c-c> "+y
 nmap <c-v> :set paste<CR>"+gp:set nopaste<CR>
 "imap <c-v> <esc><c-v>i
 
+" ;e - Shortcut for syntax checking
+map <leader>e :SyntasticCheck<CR>:Errors<CR>
+
 " ;g - Move to the element/variable declaration
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" ;r - Replace visual selection
+vnoremap <leader>r "ey:%s/<C-R>e//gc<left><left><left>
 
 " ;rt - Convert all tabs in document
 nnoremap <leader>rt ggVG:retab<CR>
 
-" ;e - Shortcut for syntax checking
-map <leader>e :SyntasticCheck<CR>:Errors<CR>
-
-" ;r - Replace visual selection
-vnoremap <leader>r "ey:%s/<C-R>e//gc<left><left><left>
+" ;v - Open vimrc
+nmap <leader>v :tabedit $MYVIMRC<CR>
 
 " F2 - Toggle paste mode
 nnoremap <F2> :set invpaste paste?<CR>
@@ -280,8 +288,6 @@ set pastetoggle=<F2>
 """"""""""""""
 " Autocommands
 """"""""""""""
-"Whenever vimrc is saved, re-source it.
-autocmd! bufwritepost .vimrc,vimrc source %
 
 if has("autocmd")
 augroup vimrcEx
@@ -289,6 +295,9 @@ au!
     """"""""""""""""""""""""
     "  All types of files  "
     """"""""""""""""""""""""
+    "Whenever vimrc is saved, re-source it.
+    au bufwritepost .vimrc,vimrc source $MYVIMRC
+
     " Open file browser if nothing edited
     au vimenter * if !argc() | NERDTree | endif
 
@@ -302,26 +311,32 @@ au!
         \ endif
 
     " Different types of file support 
-    au BufNewFile,BufRead *.htm,*.html set filetype=html.css.javascript
-    au FileType html.css.javascript set nocindent
+    au BufNewFile,BufRead *.htm,*.html setlocal filetype=html.css.javascript
+    au FileType html.css.javascript setlocal nocindent
 
-    au BufNewFile,BufRead *.css,*.less set filetype=css
+    au BufNewFile,BufRead *.css,*.less setlocal filetype=css
 
-    au BufNewFile,BufRead *.sass set filetype=sass
+    au BufNewFile,BufRead *.sass setlocal filetype=sass
 
-    au BufNewFile,BufRead *.rb,*.rbw,*.gem,*.gemspec,[rR]akefile,*.rake,*.thor,Vagrantfile set filetype=ruby
-    au BufNewFile,BufRead *.erb set filetype=eruby
-    au FileType eruby set nocindent 
+    au BufNewFile,BufRead *.rb,*.rbw,*.gem,*.gemspec,[rR]akefile,*.rake,*.thor,Vagrantfile setlocal filetype=ruby
+    au BufNewFile,BufRead *.erb setlocal filetype=eruby
+    au FileType eruby setlocal nocindent 
 
-    au BufNewFile,BufRead *.js set filetype=javascript
-    au FileType javascript set nocindent
+    au BufNewFile,BufRead *.js setlocal filetype=javascript
+    au FileType javascript setlocal nocindent
 
-    au BufNewFile,BufRead *.coffee set filetype=coffee
+    au BufNewFile,BufRead *.coffee setlocal filetype=coffee
     au FileType coffee setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 
-    au BufNewFile,BufRead *.pt set filetype=html.pt
-    au BufNewFile,BufRead *.zcml set filetype=xml.zcml
-    au BufNewFile,BufRead *.zpt set filetype=xml.zpt
+    au BufNewFile,BufRead *.pt setlocal filetype=html.pt
+    au BufNewFile,BufRead *.zcml setlocal filetype=xml.zcml
+    au BufNewFile,BufRead *.zpt setlocal filetype=xml.zpt
+    au FileType html.pt,xml.zpt let g:syntastic_html_tidy_ignore_errors = [
+                \ 'discarding unexpected </metal',
+                \ 'proprietary attribute "tal:',
+                \ 'proprietary attribute "xmlns:',
+                \ 'proprietary attribute "metal:',
+                \ '<metal:' ]
     "au FileType xml let g:detectindent_preferred_expandtab = 1 | let g:detectindent_preferred_indent = 2
     "au FileType python let g:detectindent_preferred_expandtab = 1 | let g:detectindent_preferred_indent = 4
 

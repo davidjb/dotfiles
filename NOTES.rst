@@ -26,6 +26,7 @@ Built-ins
   * ``C-f``, ``C-b`` - next/previous characters
   * ``M-f``, ``M-b`` - next/previous word
 
+
 Vim
 ---
 
