@@ -80,6 +80,8 @@ applications () {
     sudo apt-get update
 
     sudo apt-get install -y \
+        htop \
+        lynx \
         pngcrush \
         pidgin \
         pidgin-skype \
