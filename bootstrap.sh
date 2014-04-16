@@ -84,9 +84,13 @@ applications () {
     # Skype installation is fairly evil.
     sudo dpkg --add-architecture i386
     sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
+    sudo apt-add-repository ppa:ubuntu-wine/ppa
+
+    # Update all package information!
     sudo apt-get update
 
     sudo apt-get install -y \
+        wine1.7
         ldap-utils \
         htop \
         lynx \
