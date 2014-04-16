@@ -6,6 +6,11 @@
 # See bash(1) for more options
 export HISTCONTROL=ignorespace:ignoredups
 
+# Configure terminal for 256 colours
+export TERM=xterm-256color
+
+# Check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
 # autocd - Automatic cd to directories
@@ -25,8 +30,10 @@ shopt -s autocd cdspell checkjobs checkwinsize cmdhist expand_aliases extglob ex
 #unset color_prompt 
 
 # Use vi editing mode for commands
-# This is in beta testing
 set -o vi
+
+# Disable terminal flow via ^S and ^Q
+stty -ixon
 
 # Powerline
 . ~/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh

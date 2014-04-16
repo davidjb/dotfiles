@@ -13,6 +13,7 @@ fi
 
 # Custom aliases
 alias ack='ACK_PAGER_COLOR="less -x4SRFX" /usr/bin/ack-grep -a -C 1 --follow'
+alias apt-whatprovides='apt-cache policy'
 alias calc='gnome-calculator &'
 alias l='ls -FC'
 alias la='ls -FAh'
@@ -23,6 +24,7 @@ alias fix='tset'
 alias history-search='history | grep '
 alias scp-compressed='scp -C -o CompressionLevel=9'
 #alias wget='wget --no-check-certificate'
+alias vimgit='vim . +Gstatus +"resize +5"'
 
 # Use with pipes as input or output
 alias toclip='xclip -selection clipboard'

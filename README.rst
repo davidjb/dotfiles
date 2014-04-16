@@ -29,6 +29,8 @@ To Do
 =====
 
 * Support for multiple operating systems (Mac and Linux)
+* Support for Buildout/Virtualenv environments for Python inside Vim
+  and for Python-mode.
 * Refinement of vimrc configuration
   
   * Indentation of reST files - changes indent levels but changes
@@ -45,4 +47,5 @@ To Do
 * Automate installation of:
 
   * Virtualenv-wrapper
+  * zest.releaser with aliases
 

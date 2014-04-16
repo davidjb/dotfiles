@@ -17,6 +17,13 @@ install_update_git () {
         git clone $repository $path
     fi
 }
+cp_if_missing () {
+    original=$1
+    target=$2
+    if [ ! -e $target ]; then
+        cp $1 $2
+    fi
+}
 
 install_step () {
     while true; do
@@ -93,9 +100,21 @@ applications () {
 }
 
 remove () {
-    rm -rf ~/.bashrc ~/.bash_aliases ~/.bash_logout ~/.environment \
-       ~/.gitconfig ~/.profile ~/.pypirc ~/.zopeskel ~/.vimrc ~/.vim \
-       ~/.config/powerline ~/.gvimrc
+    rm -rf \
+        ~/.bashrc \
+        ~/.config/powerline \
+        ~/.bash_aliases \
+        ~/.bash_logout \
+        ~/.environment \
+        ~/.gitconfig \
+        ~/.gitignore-global \
+        ~/.gvimrc \
+        ~/.profile \
+        ~/.pypirc \
+        ~/.screenrc \
+        ~/.vimrc \
+        ~/.vim \
+        ~/.zopeskel
 }
 
 vundle () {
@@ -136,21 +155,23 @@ install () {
     ln -s $DIR/bash_logout ~/.bash_logout
     ln -s $DIR/environment ~/.environment
     ln -s $DIR/gitconfig ~/.gitconfig
+    ln -s $DIR/gitignore-global ~/.gitignore-global
     ln -s $DIR/vimrc ~/.gvimrc
     ln -s $DIR/profile ~/.profile
+    ln -s $DIR/screenrc ~/.screenrc
     ln -s $DIR/vimrc ~/.vimrc
     ln -s $DIR/zopeskel ~/.zopeskel
 
     # Contain local data 
     mkdir -p ~/.bash_private
-    cp -s $DIR/pypirc ~/.pypirc
+    cp_if_missing $DIR/pypirc ~/.pypirc
 
     mkdir -p ~/.buildout/{eggs,downloads,configs}
-    cp $DIR/buildout/* ~/.buildout/
+    cp_if_missing $DIR/buildout/default.cfg ~/.buildout/default.cfg
     sed -i "s/\${whoami}/`whoami`/g" ~/.buildout/default.cfg
 
     mkdir -p ~/.ssh
-    cp $DIR/ssh/* ~/.ssh/
+    cp_if_missing $DIR/ssh/config ~/.ssh/config
 
     # Initialise vim and configuration
     vim_configuration
