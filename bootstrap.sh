@@ -90,7 +90,8 @@ applications () {
     sudo apt-get update
 
     sudo apt-get install -y \
-        wine1.7
+        wine1.7 \
+        rsnapshot \
         ldap-utils \
         htop \
         lynx \
