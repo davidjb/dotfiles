@@ -247,8 +247,8 @@ highlight IndentGuidesOdd ctermbg=236
 """""""""""""
 
 " YouCompleteMe support
-nnoremap <leader>jd :YcmCompleter GoTo<CR>
-nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
+nmap <leader>jd :YcmCompleter GoTo<CR>
+nmap <leader>jf :YcmCompleter GoToDefinition<CR>
 
 " Easy out from input mode
 inoremap jk <Esc>
