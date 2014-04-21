@@ -13,6 +13,9 @@ call vundle#rc()
 "Auto installer of plugins
 Bundle 'gmarik/vundle'
 
+" Local vimrc support
+Bundle 'MarcWeber/vim-addon-local-vimrc'
+
 " Completion support; requires Vim 7.3.584
 " Press <TAB> to complete, <C-Space> to semantically complete
 " Automatically integrates with Ultisnips
@@ -20,9 +23,12 @@ Bundle 'Valloric/YouCompleteMe'
 let g:ycm_complete_in_comments = 1
 let g:ycm_use_ultisnips_completer = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_always_populate_location_list = 1
+"let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_autoclose_preview_window_after_completion = 0
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_server_use_vim_stdout = 0
+let g:ycm_server_keep_logfiles = 1
 "let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
 "let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
 
@@ -131,7 +137,10 @@ Bundle 'syngan/vim-vimlint'
 Bundle 'klen/python-mode'
 let g:pymode_lint_on_write = 0 | let g:pymode_lint_message = 0 | let g:pymode_syntax = 0 | let g:pymode_syntax_all = 0 | let g:pymode_trim_whitespaces = 0
 let g:pymode_rope_show_doc_bind = '<c-e>d'
-let g:pymode_syntax_slow_sync = 1
+let g:pymode_rope = 0
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope_autoimport_import_after_complete = 1
+
 " XXX Conflicts with another plugin on completion (Rope?)
 "let g:pymode_rope = 0
 
@@ -214,6 +223,10 @@ highlight SpellBad term=reverse ctermbg=224 ctermfg=0 gui=undercurl guisp=Red
 """""""""""""
 "Key Mappings
 """""""""""""
+
+" YouCompleteMe support
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
+nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
 
 " Easy out from input mode
 inoremap jk <Esc>

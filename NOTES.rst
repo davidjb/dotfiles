@@ -22,11 +22,20 @@ Bash
   will be ``source``'d automatically.
 
 
+
 Vim
 ---
 
+* ``.vimrc`` files can be locally added to any directory. Files within the
+  directory or its children will automatically use that configuration as well
+  as the user-level configuration.
 * ``box`` and ``bbox`` snippets for a comment box
 * ``:SyntasticInfo`` - check syntax reporting
 * ``:PymodeLintAuto`` - fix PEP8 issues in Python
-
+* ``pclose`` will close the preview window 
   
+Vim and Buildout
+----------------
+
+#. See https://github.com/davidjb/buildout-vim for a how-to.
+
