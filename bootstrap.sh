@@ -86,21 +86,33 @@ applications () {
     # Skype installation is fairly evil.
     sudo dpkg --add-architecture i386
     sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
+
+    # Wine
     sudo apt-add-repository ppa:ubuntu-wine/ppa
+
+    # Virtualbox
+    sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib"
+    wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
 
     # Update all package information!
     sudo apt-get update
 
     # Install all the packages!
     sudo apt-get install -y \
-        wine1.7
         ldap-utils \
         htop \
         lynx \
         pngcrush \
         pidgin \
         pidgin-skype \
-        skype
+        skype \
+        wine1.7 \
+        virtualbox-4.3
+
+    # Vagrant
+    wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.5.3_x86_64.deb -O /tmp/vagrant.deb
+    sudo dpkg -i /tmp/vagrant.deb
+
 
     # Global Python-based tools
     sudo pip install --upgrade ipython grin
