@@ -102,6 +102,9 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
+" Tag handling
+Bundle 'tpope/vim-ragtag'
+
 " Colour tool
 Bundle 'Rykka/colorv.vim'
 
