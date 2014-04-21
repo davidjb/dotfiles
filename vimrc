@@ -93,6 +93,13 @@ Bundle 'scrooloose/nerdtree'
 "Bundle 'ciaranm/detectindent'
 "let g:detectindent_max_lines_to_analyse = 32
 
+" Indent guides
+Bundle 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+
 " Colour tool
 Bundle 'Rykka/colorv.vim'
 
@@ -152,6 +159,7 @@ let g:pymode_rope_autoimport_import_after_complete = 1
 syntax on                         " Syntax highlighting
 filetype plugin on                " Filetype detection
 filetype plugin indent on         " Indentation
+set background=light              " Explicitly set background color
 set encoding=utf-8                " Set preferred char encoding
 set backspace=indent,eol,start    " Backspace over everything
 set formatoptions-=t              " Stop auto wrapping of text
@@ -209,6 +217,8 @@ set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.pyo,*.swp
 """""""""""""""""""""""""""""""
 highlight Search term=standout ctermfg=0 ctermbg=11 guifg=Black guibg=Yellow
 highlight SpellBad term=reverse ctermbg=224 ctermfg=0 gui=undercurl guisp=Red
+highlight IndentGuidesEven ctermbg=244
+highlight IndentGuidesOdd ctermbg=236
 
 
 """"""""""""""
