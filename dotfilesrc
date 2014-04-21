@@ -1,0 +1,15 @@
+[dotfiles]
+repository = ~/dotfiles
+externals = {
+    '.gvimrc': '~/dotfiles/vimrc'
+    }
+ignore = [
+    '*.rst',
+    'buildout',
+    'bootstrap.sh',
+    'powerline',
+    'ssh',
+    'tools',
+    '*.swp',
+    '.*'
+    ]

@@ -66,6 +66,8 @@ dependencies () {
         py3kwarn \
         pylama \
         rstcheck \
+        pygments \
+        dotfiles \
         nodeenv
     popd
 
@@ -89,6 +91,7 @@ applications () {
     # Update all package information!
     sudo apt-get update
 
+    # Install all the packages!
     sudo apt-get install -y \
         wine1.7
         ldap-utils \
@@ -105,18 +108,8 @@ applications () {
 
 remove () {
     rm -rf \
-        ~/.bashrc \
         ~/.config/powerline \
-        ~/.bash_aliases \
-        ~/.bash_logout \
-        ~/.environment \
-        ~/.gitconfig \
-        ~/.gitignore-global \
-        ~/.gvimrc \
-        ~/.profile \
         ~/.pypirc \
-        ~/.screenrc \
-        ~/.vimrc \
         ~/.vim \
         ~/.zopeskel
 }
@@ -129,8 +122,11 @@ vundle () {
 vim_configuration () {
     #Dependencies for Powerline
     pip install --user mercurial psutil
-    echo 'fs.inotify.max_user_watches=16384' | sudo tee --append /etc/sysctl.conf
-    echo 16384 | sudo tee /proc/sys/fs/inotify/max_user_watches
+    if ! grep -q ^fs.inotify.max_user_watches /etc/sysctl.conf
+    then
+        echo 'fs.inotify.max_user_watches=16384' | sudo tee --append /etc/sysctl.conf
+        echo 16384 | sudo tee /proc/sys/fs/inotify/max_user_watches
+    fi
 
     # Install all Vundle bundles
     vundle
@@ -153,18 +149,14 @@ vim_configuration () {
     popd
 }
 
+sync_dotfiles() {
+    dotfiles --sync --force
+}
+
 install () {
-    ln -s $DIR/bashrc ~/.bashrc
-    ln -s $DIR/bash_aliases ~/.bash_aliases
-    ln -s $DIR/bash_logout ~/.bash_logout
-    ln -s $DIR/environment ~/.environment
-    ln -s $DIR/gitconfig ~/.gitconfig
-    ln -s $DIR/gitignore-global ~/.gitignore-global
-    ln -s $DIR/vimrc ~/.gvimrc
-    ln -s $DIR/profile ~/.profile
-    ln -s $DIR/screenrc ~/.screenrc
-    ln -s $DIR/vimrc ~/.vimrc
-    ln -s $DIR/zopeskel ~/.zopeskel
+    ln -s $DIR/dotfilesrc ~/.dotfilesrc
+    dotfiles --check
+    install_step "Are you sure you wish to replace these files?" sync_dotfiles
 
     # Contain local data 
     mkdir -p ~/.bash_private
