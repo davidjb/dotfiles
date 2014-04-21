@@ -32,6 +32,8 @@ let g:ycm_server_keep_logfiles = 1
 "let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
 "let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
 
+" JavaScript parsing and integration with YouCompleteMe
+Bundle 'marijnh/tern_for_vim'
 
 " Snippets
 Bundle 'vim-scripts/tlib'
@@ -124,8 +126,15 @@ Bundle 'vim-scripts/Align'
 """"""""""""""""""""""""""""""""
 Bundle 'tpope/vim-git'
 Bundle 'leshill/vim-json'
+
+" XXX Research options
+"Bundle 'davidjb/vim-web-indent'
+Bundle 'jelera/vim-javascript-syntax'
 Bundle 'pangloss/vim-javascript'
+" XXX see https://github.com/othree/javascript-libraries-syntax.vim
+Bundle 'othree/javascript-libraries-syntax.vim'
 let g:javascript_enable_domhtmlcss = 1
+
 " HAML, LESS, SASS 
 Bundle 'tpope/vim-haml'
 " YAML
@@ -354,6 +363,9 @@ au!
 
     au BufNewFile,BufRead *.js setlocal filetype=javascript
     au FileType javascript setlocal nocindent
+    au FileType javascript nmap <leader>jd :TernDef<CR>
+    au FileType javascript nmap <leader>jt :TernType<CR>
+    au FileType javascript nmap <leader>jr :TernRename<CR>
 
     au BufNewFile,BufRead *.coffee setlocal filetype=coffee
     au FileType coffee setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with

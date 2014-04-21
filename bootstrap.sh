@@ -123,8 +123,7 @@ remove () {
     rm -rf \
         ~/.config/powerline \
         ~/.pypirc \
-        ~/.vim \
-        ~/.zopeskel
+        ~/.vim
 }
 
 vundle () {
@@ -155,6 +154,11 @@ vim_configuration () {
     # Snippets and type detection
     mkdir -p ~/.vim/ftdetect/
     ln -s ~/.vim/bundle/ultisnips/ftdetect/* ~/.vim/ftdetect/
+
+    # Term for Vim support
+    pushd ~/.vim/bundle/tern_for_vim
+    npm install
+    popd
 
     # Compile YCM support
     pushd ~/.vim/bundle/YouCompleteMe
