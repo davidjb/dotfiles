@@ -99,6 +99,7 @@ applications () {
 
     # Install all the packages!
     sudo apt-get install -y \
+        rsnapshot \
         ldap-utils \
         htop \
         lynx \

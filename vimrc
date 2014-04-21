@@ -284,8 +284,15 @@ map <leader>e :SyntasticCheck<CR>:Errors<CR>
 " ;g - Move to the element/variable declaration
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-" ;r - Replace visual selection
-vnoremap <leader>r "ey:%s/<C-R>e//gc<left><left><left>
+" ;r - Replace selection
+function! ReplaceOnLine() range
+    let replacement = nr2char(getchar())
+    execute a:firstline . "," . a:lastline . 's/\S/' . replacement . '/g'
+endfunction
+noremap <leader>rc :call ReplaceOnLine()<CR>
+vnoremap <leader>rv "ey:%s/<C-R>e//gc<left><left><left>
+
+" ======================
 
 " ;rt - Convert all tabs in document
 nnoremap <leader>rt ggVG:retab<CR>
