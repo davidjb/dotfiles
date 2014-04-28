@@ -116,6 +116,8 @@ Bundle 'vim-scripts/visualrepeat'
 
 " Ability to easily change surrounding elements (eg cs[from][to])
 Bundle 'tpope/vim-surround'
+let g:surround_{char2nr('t')} = "``\r``"
+let g:surround_{char2nr('e')} = "**\r**"
 
 " Sets of useful mappings about [ and ]
 Bundle 'tpope/vim-unimpaired'

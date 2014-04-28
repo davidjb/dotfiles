@@ -32,7 +32,11 @@ Vim
 * ``box`` and ``bbox`` snippets for a comment box
 * ``:SyntasticInfo`` - check syntax reporting
 * ``:PymodeLintAuto`` - fix PEP8 issues in Python
-* ``pclose`` will close the preview window 
+* ``pclose`` will close the preview window
+* Surroundings:
+
+  + ``yswt`` - the ``t`` is for literal text
+  + ``yswe`` - the ``e`` is for strongly emphasised text
   
 Vim and Buildout
 ----------------
