@@ -105,6 +105,10 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 " Tag handling
 Bundle 'tpope/vim-ragtag'
 
+" Tag movement
+Bundle 'gcmt/breeze.vim'
+let g:breeze_active_filetypes = "*.pt,*.zpt,*.mako,*.php"
+
 " Colour tool
 Bundle 'Rykka/colorv.vim'
 
@@ -116,6 +120,8 @@ Bundle 'vim-scripts/visualrepeat'
 
 " Ability to easily change surrounding elements (eg cs[from][to])
 Bundle 'tpope/vim-surround'
+let g:surround_{char2nr('t')} = "``\r``"
+let g:surround_{char2nr('e')} = "**\r**"
 
 " Sets of useful mappings about [ and ]
 Bundle 'tpope/vim-unimpaired'
@@ -127,9 +133,13 @@ Bundle 'vim-scripts/Align'
 """"""""""""""""""""""""""""""""
 " Sytax/filetype support bundles
 """"""""""""""""""""""""""""""""
+" Git files
 Bundle 'tpope/vim-git'
+
+" JSON
 Bundle 'leshill/vim-json'
 
+" JavaScript
 " XXX Research options
 "Bundle 'davidjb/vim-web-indent'
 Bundle 'jelera/vim-javascript-syntax'
@@ -138,19 +148,32 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'othree/javascript-libraries-syntax.vim'
 let g:javascript_enable_domhtmlcss = 1
 
-" HAML, LESS, SASS 
+" HAML, LESS, SASS
 Bundle 'tpope/vim-haml'
+
 " YAML
 Bundle 'avakhov/vim-yaml'
+
 " reST - Highlight DocStrings in Python files
-Bundle 'Rykka/riv.vim'
+" Improvement for auto-numbered lists
+" See https://github.com/Rykka/riv.vim/pull/59
+Bundle 'davidjb/riv.vim'
 let g:riv_python_rst_hl = 1
+
 " Salt SLS
 Bundle 'saltstack/salt-vim'
+
 " VimL Checking
 Bundle 'ynkdir/vim-vimlparser'
 Bundle 'syngan/vim-vimlint'
 
+" GPG support
+Bundle 'jamessan/vim-gnupg'
+function! SetGPGOptions()
+    set foldlevel=1
+    set foldclose=all
+    set foldopen=insert
+endfunction
 
 " Python editng superpowers
 Bundle 'klen/python-mode'
@@ -231,6 +254,7 @@ highlight Search term=standout ctermfg=0 ctermbg=11 guifg=Black guibg=Yellow
 highlight SpellBad term=reverse ctermbg=224 ctermfg=0 gui=undercurl guisp=Red
 highlight IndentGuidesEven ctermbg=244
 highlight IndentGuidesOdd ctermbg=236
+highlight MatchParen term=reverse ctermbg=239 guibg=Cyan
 
 
 """"""""""""""
@@ -245,6 +269,15 @@ highlight IndentGuidesOdd ctermbg=236
 """""""""""""
 "Key Mappings
 """""""""""""
+
+" Breeze support
+" XXX Should only be applied to tag-based files
+nmap <leader>tf :BreezeJumpF<CR>
+nmap <leader>tb :BreezeJumpB<CR>
+nmap <leader>tsf :BreezeNextSibling<CR>
+nmap <leader>tsb :BreezePrevSibling<CR>
+nmap <leader>tp :BreezeParent<CR>
+nmap <leader>tw :BreezeWhatsWrong<CR>
 
 " YouCompleteMe support
 nmap <leader>jd :YcmCompleter GoTo<CR>
@@ -353,6 +386,7 @@ au!
         \ endif
 
     " Different types of file support 
+    au BufReadCmd,FileReadCmd *.\(gpg\|asc\|pgp\) call SetGPGOptions()
     au BufNewFile,BufRead *.htm,*.html setlocal filetype=html.css.javascript
     au FileType html.css.javascript setlocal nocindent
 
@@ -385,8 +419,12 @@ au!
     "au FileType xml let g:detectindent_preferred_expandtab = 1 | let g:detectindent_preferred_indent = 2
     "au FileType python let g:detectindent_preferred_expandtab = 1 | let g:detectindent_preferred_indent = 4
 
+    " Correctly detect rst files as rst, not vim files
+    "au BufRead,BufNewFile *.rst setfiletype rst
     " Handle Control-Enter in rST documents
     au FileType rst inoremap <NL> <esc>:RivListNew<CR>A
+    " rst documents - ensure . isn't part of character ranges
+    au FileType rst set iskeyword-=. | set textwidth=78 | set formatoptions-=c
 
     " Python-specific filetype customisations 
     " Fix smart indenting of Python comments

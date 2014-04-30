@@ -35,14 +35,14 @@ alias serve='python -m SimpleHTTPServer 8000'
 alias port='sudo netstat -tulpn | grep'
 alias ssl-text='openssl x509 -text -noout -in'
 alias hash-wpa2-passwd='python -c "import getpass; print(getpass.getpass())" | iconv -t utf16le | openssl md4'
-function gen-passwd() {
-    python -c "import random, string; print('Generated this: ' + ''.join(random.choice(string.letters + string.digits) for i in range(random.randint(24,32))))"
-}
-function gen-passwd-punc() {
-    python -c "import random, string; print('Generated this: ' + ''.join(random.choice(string.printable[:-10]) for i in range(random.randint(24,32))))"
-}
-function csr-generate() { 
-    openssl req -out $1.csr -new -newkey rsa:3072 -nodes -keyout $1.key
+function csr-generate() {
+    if [ -z $1 ] || [[ $1 == '--help' ]] || [[ $1 == '-h' ]]; then
+        echo 'Usage: csr-generate hostname.example.org [openssl-options]'
+        echo 'Any arbitrary options passed to csr-generate will be passed'
+        echo 'to the `openssl req` command.'
+        return
+    fi
+    openssl req -out $1.csr -new -newkey rsa:3072 -nodes -keyout $1.key "${@:2}"
 }
 
 # Development
