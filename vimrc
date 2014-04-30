@@ -148,17 +148,21 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'othree/javascript-libraries-syntax.vim'
 let g:javascript_enable_domhtmlcss = 1
 
-" HAML, LESS, SASS 
+" HAML, LESS, SASS
 Bundle 'tpope/vim-haml'
+
 " YAML
 Bundle 'avakhov/vim-yaml'
+
 " reST - Highlight DocStrings in Python files
 " Improvement for auto-numbered lists
 " See https://github.com/Rykka/riv.vim/pull/59
 Bundle 'davidjb/riv.vim'
 let g:riv_python_rst_hl = 1
+
 " Salt SLS
 Bundle 'saltstack/salt-vim'
+
 " VimL Checking
 Bundle 'ynkdir/vim-vimlparser'
 Bundle 'syngan/vim-vimlint'
