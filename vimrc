@@ -419,8 +419,12 @@ au!
     "au FileType xml let g:detectindent_preferred_expandtab = 1 | let g:detectindent_preferred_indent = 2
     "au FileType python let g:detectindent_preferred_expandtab = 1 | let g:detectindent_preferred_indent = 4
 
+    " Correctly detect rst files as rst, not vim files
+    "au BufRead,BufNewFile *.rst setfiletype rst
     " Handle Control-Enter in rST documents
     au FileType rst inoremap <NL> <esc>:RivListNew<CR>A
+    " rst documents - ensure . isn't part of character ranges
+    au FileType rst set iskeyword-=. | set textwidth=78 | set formatoptions-=c
 
     " Python-specific filetype customisations 
     " Fix smart indenting of Python comments
