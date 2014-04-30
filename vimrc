@@ -167,6 +167,13 @@ Bundle 'saltstack/salt-vim'
 Bundle 'ynkdir/vim-vimlparser'
 Bundle 'syngan/vim-vimlint'
 
+" GPG support
+Bundle 'jamessan/vim-gnupg'
+function! SetGPGOptions()
+    set foldlevel=1
+    set foldclose=all
+    set foldopen=insert
+endfunction
 
 " Python editng superpowers
 Bundle 'klen/python-mode'
@@ -379,6 +386,7 @@ au!
         \ endif
 
     " Different types of file support 
+    au BufReadCmd,FileReadCmd *.\(gpg\|asc\|pgp\) call SetGPGOptions()
     au BufNewFile,BufRead *.htm,*.html setlocal filetype=html.css.javascript
     au FileType html.css.javascript setlocal nocindent
 
