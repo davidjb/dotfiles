@@ -105,6 +105,10 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 " Tag handling
 Bundle 'tpope/vim-ragtag'
 
+" Tag movement
+Bundle 'gcmt/breeze.vim'
+let g:breeze_active_filetypes = "*.pt,*.zpt,*.mako,*.php"
+
 " Colour tool
 Bundle 'Rykka/colorv.vim'
 
@@ -129,9 +133,13 @@ Bundle 'vim-scripts/Align'
 """"""""""""""""""""""""""""""""
 " Sytax/filetype support bundles
 """"""""""""""""""""""""""""""""
+" Git files
 Bundle 'tpope/vim-git'
+
+" JSON
 Bundle 'leshill/vim-json'
 
+" JavaScript
 " XXX Research options
 "Bundle 'davidjb/vim-web-indent'
 Bundle 'jelera/vim-javascript-syntax'
@@ -235,6 +243,7 @@ highlight Search term=standout ctermfg=0 ctermbg=11 guifg=Black guibg=Yellow
 highlight SpellBad term=reverse ctermbg=224 ctermfg=0 gui=undercurl guisp=Red
 highlight IndentGuidesEven ctermbg=244
 highlight IndentGuidesOdd ctermbg=236
+highlight MatchParen term=reverse ctermbg=239 guibg=Cyan
 
 
 """"""""""""""
@@ -249,6 +258,15 @@ highlight IndentGuidesOdd ctermbg=236
 """""""""""""
 "Key Mappings
 """""""""""""
+
+" Breeze support
+" XXX Should only be applied to tag-based files
+nmap <leader>tf :BreezeJumpF<CR>
+nmap <leader>tb :BreezeJumpB<CR>
+nmap <leader>tsf :BreezeNextSibling<CR>
+nmap <leader>tsb :BreezePrevSibling<CR>
+nmap <leader>tp :BreezeParent<CR>
+nmap <leader>tw :BreezeWhatsWrong<CR>
 
 " YouCompleteMe support
 nmap <leader>jd :YcmCompleter GoTo<CR>

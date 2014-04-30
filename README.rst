@@ -61,7 +61,6 @@ To Do
   
   * Indentation of reST files - changes indent levels but changes
     from implicit to explicit numbering (or unordered to ordered)
-  * reST files: backspacing before a nested list double-backspaces
   * YouCompleteMe scratch/preview window open until end parethesis
   * Python support (refactoring etc)
   * PyMode and Rope for refactoring support
