@@ -116,6 +116,7 @@ applications () {
         pidgin \
         pidgin-skype \
         skype \
+        dosbox \
         wine1.7 \
         virtualbox-4.3
 
