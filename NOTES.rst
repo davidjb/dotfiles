@@ -37,7 +37,7 @@ Vim
 
   + ``yswt`` - the ``t`` is for literal text
   + ``yswe`` - the ``e`` is for strongly emphasised text
-  
+
 Vim and Buildout
 ----------------
 
