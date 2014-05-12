@@ -22,6 +22,7 @@ alias find='find -L'
 alias findfile='find -L . -iname'
 alias fix='tset'
 alias history-search='history | grep '
+alias rcd='cd -P .' # Real cd
 alias scp-compressed='scp -C -o CompressionLevel=9'
 #alias wget='wget --no-check-certificate'
 alias vimgit='vim . +Gstatus +"resize +5"'
