@@ -4,6 +4,7 @@ Useful information
 Bash
 ----
 
+* ``apropos`` -- search man pages for commands
 * ``cd -`` returns to previous directory
 * ``\command`` - appending a backslash avoids aliasing
 * ``shopt`` - configure shell options
