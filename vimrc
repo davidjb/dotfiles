@@ -348,9 +348,9 @@ noremap <leader>rc :call ReplaceOnLine()<CR>
 vnoremap <leader>rv "ey:%s/<C-R>e//gc<left><left><left>
 
 " ======================
-
+	
 " ;rt - Convert all tabs in document
-nnoremap <leader>rt ggVG:retab<CR>
+nnoremap <leader>rt :retab<CR>
 
 " ;v - Open vimrc
 nmap <leader>v :tabedit $MYVIMRC<CR>
