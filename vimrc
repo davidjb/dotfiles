@@ -16,6 +16,9 @@ Bundle 'gmarik/vundle'
 " Local vimrc support
 Bundle 'MarcWeber/vim-addon-local-vimrc'
 
+" Open file:line formatted input
+Bundle 'bogado/file-line'
+
 " Completion support; requires Vim 7.3.584
 " Press <TAB> to complete, <C-Space> to semantically complete
 " Automatically integrates with Ultisnips
@@ -300,8 +303,6 @@ vmap > >gv
 
 " <space> - toggles folds opened and closed
 nnoremap <space> za
-
-" <space> - in visual mode creates a fold over the marked range
 vnoremap <space> zf
 
 " * and # - Search for selected text when used in visual mode
@@ -319,6 +320,10 @@ nnoremap  <s-up>     Vk
 nnoremap  <s-down>   Vj
 nnoremap  <s-right>  vl
 nnoremap  <s-left>   vh
+
+" m, M - Add new lines without insert mode
+nmap m o<Esc>
+nmap <s-m> O<Esc>
 
 " Control + L - Shortcut for wrapping lines
 nmap <c-l> gqip
@@ -374,7 +379,7 @@ au!
     au bufwritepost .vimrc,vimrc source $MYVIMRC
 
     " Open file browser if nothing edited
-    au vimenter * if !argc() | NERDTree | endif
+    "au vimenter * if !argc() | NERDTree | endif
 
     " Switch to the directory of the current file, unless it's a help file.
     au BufEnter * if &ft != 'help' | silent! cd %:p:h | endif
@@ -386,9 +391,13 @@ au!
         \ endif
 
     " Different types of file support 
+    au FileType json map <leader>jp :%!json_xs -f json -t json-pretty<CR>
+    au FileType json map <leader>jm :%!json_xs -f json -t json<CR>
+
     au BufReadCmd,FileReadCmd *.\(gpg\|asc\|pgp\) call SetGPGOptions()
     au BufNewFile,BufRead *.htm,*.html setlocal filetype=html.css.javascript
     au FileType html.css.javascript setlocal nocindent
+    au FileType html.css.javascript SyntasticToggleMode
 
     au BufNewFile,BufRead *.css,*.less setlocal filetype=css
 
