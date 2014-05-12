@@ -24,6 +24,9 @@ cp_if_missing () {
         cp $1 $2
     fi
 }
+command_exists () {
+    command -v $1 &> /dev/null
+}
 
 install_step () {
     while true; do
@@ -84,15 +87,21 @@ dependencies () {
 
 applications () {
     # Skype installation is fairly evil.
-    sudo dpkg --add-architecture i386
-    sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
+    if ! command_exists skype; then
+        sudo dpkg --add-architecture i386
+        sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
+    fi
 
     # Wine
-    sudo apt-add-repository ppa:ubuntu-wine/ppa
+    if ! command_exists wine; then
+        sudo apt-add-repository ppa:ubuntu-wine/ppa
+    fi
 
     # Virtualbox
-    sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib"
-    wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
+    if ! command_exists VirtualBox; then
+        sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib"
+        wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
+    fi
 
     # Update all package information!
     sudo apt-get update
@@ -111,13 +120,14 @@ applications () {
         wine1.7 \
         virtualbox-4.3
 
-    # Vagrant
-    wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.5.3_x86_64.deb -O /tmp/vagrant.deb
-    sudo dpkg -i /tmp/vagrant.deb
-
+    if ! command_exists vagrant; then
+        # Vagrant
+        wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.5.3_x86_64.deb -O /tmp/vagrant.deb
+        sudo dpkg -i /tmp/vagrant.deb
+    fi
 
     # Global Python-based tools
-    sudo pip install --upgrade ipython grin
+    sudo pip install --upgrade ipython grin zest.releaser
 }
 
 remove () {
