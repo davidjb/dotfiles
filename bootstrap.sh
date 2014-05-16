@@ -46,7 +46,7 @@ dependencies () {
     #libxml2-utils provides xmllint
     sudo apt-get install -y \
         vim \
-        gvim \
+        vim-gtk \
         cmake \
         mono-xbuild \
         mono-dmcs \
@@ -81,7 +81,8 @@ dependencies () {
         csslint \
         jsonlint \
         jslint \
-        js-yaml
+        js-yaml \
+        grunt-cli
     popd
 }
 
@@ -111,6 +112,7 @@ applications () {
         rsnapshot \
         ldap-utils \
         htop \
+        libav-tools \
         lynx \
         pngcrush \
         pidgin \
