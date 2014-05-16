@@ -53,7 +53,8 @@ dependencies () {
         git \
         mercurial \
         xclip \
-        node \
+        nodejs \
+        nodejs-legacy \
         npm \
         libxml2-utils \
         tidy
