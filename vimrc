@@ -142,6 +142,10 @@ Bundle 'tpope/vim-unimpaired'
 " Alignment for C-style variables, definitions, comments, tables
 Bundle 'vim-scripts/Align'
 
+" Sudo editing support
+Bundle 'chrisbra/SudoEdit.vim'
+let g:sudo_no_gui=1
+
 
 """"""""""""""""""""""""""""""""
 " Sytax/filetype support bundles
