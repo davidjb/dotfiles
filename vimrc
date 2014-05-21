@@ -27,11 +27,13 @@ let g:ycm_complete_in_comments = 1
 let g:ycm_use_ultisnips_completer = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_always_populate_location_list = 1
-"let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_min_num_of_chars_for_completion = 1
+let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_autoclose_preview_window_after_completion = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_server_use_vim_stdout = 0
-let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_use_vim_stdout = 1
+let g:ycm_server_log_level = 'debug'
+let g:ycm_server_keep_logfiles = 0
 "let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
 "let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
 
@@ -59,7 +61,7 @@ let g:syntastic_aggregate_errors = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
-let g:syntastic_css = ['csslint']
+let g:syntastic_css_checkers = ['csslint']
 let g:syntastic_html_checkers = ['tidy']
 let g:syntastic_javascript_checkers = ['jslint']
 let g:syntastic_json_checkers = ['jsonlint']
@@ -151,7 +153,14 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'othree/javascript-libraries-syntax.vim'
 let g:javascript_enable_domhtmlcss = 1
 
-" HAML, LESS, SASS
+" CSS
+"Bundle 'skammer/vim-css-color'
+"Bundle 'hail2u/vim-css3-syntax'
+
+" LESS
+Bundle 'groenewege/vim-less'
+
+" HAML, SASS, SCSS
 Bundle 'tpope/vim-haml'
 
 " YAML
@@ -399,9 +408,10 @@ au!
     au FileType html.css.javascript setlocal nocindent
     au FileType html.css.javascript SyntasticToggleMode
 
-    au BufNewFile,BufRead *.css,*.less setlocal filetype=css
-
+    au BufNewFile,BufRead *.css setlocal filetype=css
     au BufNewFile,BufRead *.sass setlocal filetype=sass
+
+    au FileType less let g:ycm_seed_identifiers_with_syntax = 1
 
     au BufNewFile,BufRead *.rb,*.rbw,*.gem,*.gemspec,[rR]akefile,*.rake,*.thor,Vagrantfile setlocal filetype=ruby
     au BufNewFile,BufRead *.erb setlocal filetype=eruby

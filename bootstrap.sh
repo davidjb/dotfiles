@@ -79,6 +79,7 @@ dependencies () {
     mkdir -p $DIR/tools/nodejs
     pushd $DIR/tools/nodejs
     npm install \
+        less \
         csslint \
         jsonlint \
         jslint \
