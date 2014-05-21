@@ -63,6 +63,14 @@ let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_css_checkers = ['csslint']
 let g:syntastic_html_checkers = ['tidy']
+let g:syntastic_html_tidy_ignore_errors=[
+            \ '<tal:',
+            \ '<metal:',
+            \ 'proprietary attribute "metal:',
+            \ 'proprietary attribute "tal:"',
+            \ 'discarding unexpected </tal:',
+            \ 'discarding unexpected </metal:'
+            \ ]
 let g:syntastic_javascript_checkers = ['jslint']
 let g:syntastic_json_checkers = ['jsonlint']
 let g:syntastic_python_checkers = ['py3kwarn', 'pylama']
@@ -284,6 +292,7 @@ highlight MatchParen term=reverse ctermbg=239 guibg=Cyan
 
 " Breeze support
 " XXX Should only be applied to tag-based files
+map <leader>te :BreezeMatchTag<CR>
 nmap <leader>tf :BreezeJumpF<CR>
 nmap <leader>tb :BreezeJumpB<CR>
 nmap <leader>tsf :BreezeNextSibling<CR>
@@ -353,7 +362,7 @@ map <leader>e :SyntasticCheck<CR>:Errors<CR>
 " ;g - Move to the element/variable declaration
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-" ;r - Replace selection
+" ;rc, ;rv - Replace all characters in selection
 function! ReplaceOnLine() range
     let replacement = nr2char(getchar())
     execute a:firstline . "," . a:lastline . 's/\S/' . replacement . '/g'
@@ -361,8 +370,6 @@ endfunction
 noremap <leader>rc :call ReplaceOnLine()<CR>
 vnoremap <leader>rv "ey:%s/<C-R>e//gc<left><left><left>
 
-" ======================
-	
 " ;rt - Convert all tabs in document
 nnoremap <leader>rt :retab<CR>
 
@@ -405,6 +412,7 @@ au!
 
     au BufReadCmd,FileReadCmd *.\(gpg\|asc\|pgp\) call SetGPGOptions()
     au BufNewFile,BufRead *.htm,*.html setlocal filetype=html.css.javascript
+    au FileType html.css.javascript setlocal foldmethod=manual
     au FileType html.css.javascript setlocal nocindent
     au FileType html.css.javascript SyntasticToggleMode
 
