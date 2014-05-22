@@ -48,7 +48,12 @@ Vim
   + ``yswf`` - the ``f`` is for functions
   + ``yswt`` - the ``t`` is for markup tags
 
-* Windows:  resize with ``<c-w>_ | =``
+* Windows:
+
+  + Resize with ``<c-w>_ | =``
+  + Swap with ``<c-w>R``
+  + Break out into tab: ``<c-w>T``
+  + Close all windows except current: ``<c-w>o``
 
 Vim and Buildout
 ----------------
