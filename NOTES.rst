@@ -38,7 +38,11 @@ Vim
 
   + ``yswt`` - the ``t`` is for literal text
   + ``yswe`` - the ``e`` is for strongly emphasised text
-  
+  + ``yswf`` - the ``f`` is for functions
+  + ``yswt`` - the ``t`` is for markup tags
+
+* Windows:  resize with ``<c-w>_ | =``
+
 Vim and Buildout
 ----------------
 
