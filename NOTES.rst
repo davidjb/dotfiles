@@ -21,8 +21,15 @@ Bash
 
 * Put private bash files into ``.bash_private``. Anything inside this folder
   will be ``source``'d automatically.
+* ``!$`` - last argument of last command
 
+Default Emacs bindings
+~~~~~~~~~~~~~~~~~~~~~~
 
+* ``^/`` - undo
+* ``^P``, ``^N`` - previous/next
+* ``M+b``, ``M+f`` - move forward backwards, forwards
+* ``^w``, ``M+d`` -  - delete word backards, forwards
 
 Vim
 ---

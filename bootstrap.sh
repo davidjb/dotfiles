@@ -47,6 +47,7 @@ dependencies () {
     sudo apt-get install -y \
         vim \
         vim-gtk \
+        exuberant-ctags \
         cmake \
         mono-xbuild \
         mono-dmcs \

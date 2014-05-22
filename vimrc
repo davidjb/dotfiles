@@ -63,6 +63,14 @@ let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_css_checkers = ['csslint']
 let g:syntastic_html_checkers = ['tidy']
+let g:syntastic_html_tidy_ignore_errors=[
+            \ '<tal:',
+            \ '<metal:',
+            \ 'proprietary attribute "metal:',
+            \ 'proprietary attribute "tal:"',
+            \ 'discarding unexpected </tal:',
+            \ 'discarding unexpected </metal:'
+            \ ]
 let g:syntastic_javascript_checkers = ['jslint']
 let g:syntastic_json_checkers = ['jsonlint']
 let g:syntastic_python_checkers = ['py3kwarn', 'pylama']
@@ -107,6 +115,25 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
+" Browser for tags within source code files
+Bundle 'jszakmeister/rst2ctags'
+Bundle 'majutsushi/tagbar'
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_type_rst = {
+    \ 'ctagstype': 'rst',
+    \ 'ctagsbin' : '~/.vim/bundle/rst2ctags/rst2ctags.py',
+    \ 'ctagsargs' : '-f - --sort=yes',
+    \ 'kinds' : [
+        \ 's:sections',
+        \ 'i:images'
+    \ ],
+    \ 'sro' : '|',
+    \ 'kind2scope' : {
+        \ 's' : 'section',
+    \ },
+    \ 'sort': 0,
+\ }
+
 " Tag handling
 Bundle 'tpope/vim-ragtag'
 
@@ -133,6 +160,10 @@ Bundle 'tpope/vim-unimpaired'
 
 " Alignment for C-style variables, definitions, comments, tables
 Bundle 'vim-scripts/Align'
+
+" Sudo editing support
+Bundle 'chrisbra/SudoEdit.vim'
+let g:sudo_no_gui=1
 
 
 """"""""""""""""""""""""""""""""
@@ -206,12 +237,23 @@ let g:pymode_rope_autoimport_import_after_complete = 1
 syntax on                         " Syntax highlighting
 filetype plugin on                " Filetype detection
 filetype plugin indent on         " Indentation
+" Experimental
+set ttimeout
+set ttimeoutlen=100
+set wildmenu
+set display+=lastline
+set tabpagemax=50
+
+" Exterimental
+set autoread                      " Automatically re-read unchanged files
+set fileformats+=mac              " Enable EOL detection for Mac files
+set autoindent                    " Copy indent to new line
+set backspace=indent,eol,start    " Backspace over everything
 set background=light              " Explicitly set background color
 set encoding=utf-8                " Set preferred char encoding
-set backspace=indent,eol,start    " Backspace over everything
 set formatoptions-=t              " Stop auto wrapping of text
-set scrolloff=4                   " Keep x lines above an below the cursor
-set autoindent                    " Indenting follows previous line
+set nrformats-=octal              " Avoid numbers with leading zeros
+set scrolloff=5                   " Keep x lines above an below the cursor
 set smartindent                   " Intelligent identing
 set smarttab                      " Tab char at start of line
 set expandtab                     " Expand tabs to spaces
@@ -226,7 +268,7 @@ set ignorecase                    " Case insensitive searches
 set smartcase                     " ...unless Vim thinks otherwise.
 set hlsearch                      " Highlight search results
 set incsearch                     " Incrementally search for results
-set history=100                   " Increased history size
+set history=1000                  " Increased history size
 set showfulltag                   " Show tag and tidied search pattern as match 
 set showmode                      " Show type of mode being used
 set noerrorbells                  " Don't bell or blink
@@ -247,6 +289,17 @@ let g:mapleader=";"               " Change the leader key to something typable
 
 " Don't edit these type of files
 set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.pyo,*.swp
+
+" Borrowed from tpope/vim-sensible
+" Allow color schemes to do bright colors without forcing bold.
+if &t_Co == 8 && $TERM !~# '^linux'
+    set t_Co=16
+endif
+
+" Load matchit.vim, but only if the user hasn't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+    runtime! macros/matchit.vim
+endif
 
 " Map escape sequences to their Alt combinations
 "for start in ['A', 'a']
@@ -279,6 +332,7 @@ highlight MatchParen term=reverse ctermbg=239 guibg=Cyan
 " Continuous syntax checking within Python files
 
 " Clean up trailing whitespace in filecommand! CleanWhitespace %s/\s\+$//e
+"
 
 """""""""""""
 "Key Mappings
@@ -286,6 +340,7 @@ highlight MatchParen term=reverse ctermbg=239 guibg=Cyan
 
 " Breeze support
 " XXX Should only be applied to tag-based files
+map <leader>te :BreezeMatchTag<CR>
 nmap <leader>tf :BreezeJumpF<CR>
 nmap <leader>tb :BreezeJumpB<CR>
 nmap <leader>tsf :BreezeNextSibling<CR>
@@ -361,7 +416,7 @@ map <leader>e :SyntasticCheck<CR>:Errors<CR>
 " ;g - Move to the element/variable declaration
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-" ;r - Replace selection
+" ;rc, ;rv - Replace all characters in selection
 function! ReplaceOnLine() range
     let replacement = nr2char(getchar())
     execute a:firstline . "," . a:lastline . 's/\S/' . replacement . '/g'
@@ -369,10 +424,8 @@ endfunction
 noremap <leader>rc :call ReplaceOnLine()<CR>
 vnoremap <leader>rv "ey:%s/<C-R>e//gc<left><left><left>
 
-" ======================
-
 " ;rt - Convert all tabs in document
-nnoremap <leader>rt ggVG:retab<CR>
+nnoremap <leader>rt :retab<CR>
 
 " ;v - Open vimrc
 nmap <leader>v :tabedit $MYVIMRC<CR>
@@ -413,6 +466,7 @@ au!
 
     au BufReadCmd,FileReadCmd *.\(gpg\|asc\|pgp\) call SetGPGOptions()
     au BufNewFile,BufRead *.htm,*.html setlocal filetype=html.css.javascript
+    au FileType html.css.javascript setlocal foldmethod=manual
     au FileType html.css.javascript setlocal nocindent
     au FileType html.css.javascript SyntasticToggleMode
 
