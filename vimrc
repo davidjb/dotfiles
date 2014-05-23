@@ -165,6 +165,9 @@ Bundle 'vim-scripts/Align'
 Bundle 'chrisbra/SudoEdit.vim'
 let g:sudo_no_gui=1
 
+" Tmux compatibility support
+Bundle 'christoomey/vim-tmux-navigator'
+
 
 """"""""""""""""""""""""""""""""
 " Sytax/filetype support bundles
@@ -386,12 +389,6 @@ nnoremap  <s-up>     Vk
 nnoremap  <s-down>   Vj
 nnoremap  <s-right>  vl
 nnoremap  <s-left>   vh
-
-" Ctrl + jklh - Window navigation
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-nnoremap <C-L> <C-W>l
-nnoremap <C-H> <C-W>h
 
 " m, M - Add new lines without insert mode
 nmap m o<Esc>
