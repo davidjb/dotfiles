@@ -240,14 +240,14 @@ let g:pymode_rope_autoimport_import_after_complete = 1
 syntax on                         " Syntax highlighting
 filetype plugin on                " Filetype detection
 filetype plugin indent on         " Indentation
-" Experimental
+" VVV Experimental
 set ttimeout
 set ttimeoutlen=100
-set wildmenu
 set display+=lastline
 set tabpagemax=50
-
-" Exterimental
+" ^^^ Exterimental
+set wildmode=longest,list         " Bash-like filename completion
+set wildmenu                      " Enable command line completion
 set autoread                      " Automatically re-read unchanged files
 set fileformats+=mac              " Enable EOL detection for Mac files
 set autoindent                    " Copy indent to new line
