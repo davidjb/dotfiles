@@ -112,6 +112,8 @@ applications () {
 
     # Install all the packages!
     sudo apt-get install -y \
+        screen \
+        tmux \
         rsnapshot \
         ldap-utils \
         htop \

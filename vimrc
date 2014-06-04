@@ -31,9 +31,9 @@ let g:ycm_min_num_of_chars_for_completion = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_autoclose_preview_window_after_completion = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_server_use_vim_stdout = 1
+let g:ycm_server_use_vim_stdout = 0
 let g:ycm_server_log_level = 'debug'
-let g:ycm_server_keep_logfiles = 0
+let g:ycm_server_keep_logfiles = 1
 "let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
 "let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
 
@@ -165,6 +165,9 @@ Bundle 'vim-scripts/Align'
 Bundle 'chrisbra/SudoEdit.vim'
 let g:sudo_no_gui=1
 
+" Tmux compatibility support
+Bundle 'christoomey/vim-tmux-navigator'
+
 
 """"""""""""""""""""""""""""""""
 " Sytax/filetype support bundles
@@ -237,14 +240,14 @@ let g:pymode_rope_autoimport_import_after_complete = 1
 syntax on                         " Syntax highlighting
 filetype plugin on                " Filetype detection
 filetype plugin indent on         " Indentation
-" Experimental
+" VVV Experimental
 set ttimeout
 set ttimeoutlen=100
-set wildmenu
 set display+=lastline
 set tabpagemax=50
-
-" Exterimental
+" ^^^ Exterimental
+set wildmode=longest,list         " Bash-like filename completion
+set wildmenu                      " Enable command line completion
 set autoread                      " Automatically re-read unchanged files
 set fileformats+=mac              " Enable EOL detection for Mac files
 set autoindent                    " Copy indent to new line
@@ -272,8 +275,10 @@ set history=1000                  " Increased history size
 set showfulltag                   " Show tag and tidied search pattern as match 
 set showmode                      " Show type of mode being used
 set noerrorbells                  " Don't bell or blink
+set splitbelow                    " New splits open below
+set splitright                    " New splits open to the right
 set showcmd                       " Show paritial command at bottom of screen
-set shortmess+=a                  " Use short statuses for [+] [RO] [w]  
+set shortmess+=a                  " Use short statuses for [+] [RO] [w]
 set number                        " Turn line numbering on
 set ruler                         " Turn line number and column cursor on
 set report=0                      " Always report if any lines changed
@@ -389,9 +394,9 @@ nnoremap  <s-left>   vh
 nmap m o<Esc>
 nmap <s-m> O<Esc>
 
-" Control + L - Shortcut for wrapping lines
-nmap <c-l> gqip
-vmap <c-l> gq
+" Control + U - Shortcut for unifying (wrapping) lines
+nmap <c-u> gqip
+vmap <c-u> gq
 
 " Control + N - file browser
 map <C-n> :NERDTreeToggle<CR>

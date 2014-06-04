@@ -45,6 +45,15 @@ Vim
 
   + ``yswt`` - the ``t`` is for literal text
   + ``yswe`` - the ``e`` is for strongly emphasised text
+  + ``yswf`` - the ``f`` is for functions
+  + ``yswt`` - the ``t`` is for markup tags
+
+* Windows:
+
+  + Resize with ``<c-w>_ | =``
+  + Swap with ``<c-w>R``
+  + Break out into tab: ``<c-w>T``
+  + Close all windows except current: ``<c-w>o``
 
 Vim and Buildout
 ----------------
