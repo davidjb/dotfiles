@@ -26,6 +26,13 @@ alias rcd='cd -P .' # Real cd
 alias scp-compressed='scp -C -o CompressionLevel=9'
 #alias wget='wget --no-check-certificate'
 alias vimgit='vim . +Gstatus +"resize +5"'
+function flac-conversion() {
+    for file in *.flac
+    do
+        converted_name=$(echo $file | sed 's/flac/mp3/')
+        avconv -i $file -b 320k $converted_name
+    done
+}
 
 # Use with pipes as input or output
 alias toclip='xclip -selection clipboard'
