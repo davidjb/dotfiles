@@ -12,6 +12,8 @@ if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
 fi
 
 # Custom aliases
+alias o='gnome-open'
+alias monitor-off='xset dpms force off'
 alias ack='ACK_PAGER_COLOR="less -x4SRFX" /usr/bin/ack-grep -a -C 1 --follow'
 alias apt-whatprovides='apt-cache policy'
 alias calc='gnome-calculator &'
