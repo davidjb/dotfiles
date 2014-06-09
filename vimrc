@@ -191,6 +191,12 @@ let g:javascript_enable_domhtmlcss = 1
 "Bundle 'skammer/vim-css-color'
 "Bundle 'hail2u/vim-css3-syntax'
 
+" HTML
+Bundle 'rstacruz/sparkup'
+let g:sparkupExecuteMapping = '<Leader>h'
+let g:sparkupNextMapping = '<Leader>n'
+let g:sparkupMapsNormal = 1
+
 " LESS
 Bundle 'groenewege/vim-less'
 
