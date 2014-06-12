@@ -145,6 +145,14 @@ applications () {
     sudo pip install --upgrade ipython grin zest.releaser
 }
 
+google_drive () {
+    # Symlink all home sub-directories
+    for dir in ~/google-drive/Working-Environment/*
+    do
+        ln -s $dir .
+    done
+}
+
 remove () {
     rm -rf \
         ~/.config/powerline \
@@ -236,4 +244,5 @@ install_step "Do you want to remove existing files?" remove
 install_step "Do you want to install the configuration?" install
 install_step "Re-run Vim's plugin installation?" vundle
 install_step "Do you want to install applications?" applications
+install_step "Do you want to configure Google Drive aliases?" google_drive
 
