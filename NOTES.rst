@@ -1,6 +1,20 @@
 Useful information
 ==================
 
+Firefox
+-------
+
+* Adblock Plus
+* Session Manger
+* Firebug
+* VimFx
+
+Chrome
+------
+
+* Adblock Plus
+* Freshstart Session Manager
+
 Bash
 ----
 

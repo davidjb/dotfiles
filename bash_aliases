@@ -12,6 +12,8 @@ if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
 fi
 
 # Custom aliases
+alias o='gnome-open'
+alias monitor-off='xset dpms force off'
 alias ack='ACK_PAGER_COLOR="less -x4SRFX" /usr/bin/ack-grep -a -C 1 --follow'
 alias apt-whatprovides='apt-cache policy'
 alias calc='gnome-calculator &'
@@ -26,6 +28,13 @@ alias rcd='cd -P .' # Real cd
 alias scp-compressed='scp -C -o CompressionLevel=9'
 #alias wget='wget --no-check-certificate'
 alias vimgit='vim . +Gstatus +"resize +5"'
+function flac-conversion() {
+    for file in *.flac
+    do
+        converted_name=$(echo $file | sed 's/flac/mp3/')
+        avconv -i $file -b 320k $converted_name
+    done
+}
 
 # Use with pipes as input or output
 alias toclip='xclip -selection clipboard'

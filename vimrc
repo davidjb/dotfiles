@@ -94,6 +94,10 @@ let g:delimitMate_expand_space = 1
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_jump_expansion = 1
 
+" Coloured matching parentheses
+Bundle 'kien/rainbow_parentheses.vim'
+
+
 " Intense commenting superpower
 Bundle 'scrooloose/nerdcommenter'
 let g:NERDCustomDelimiters = {
@@ -190,6 +194,12 @@ let g:javascript_enable_domhtmlcss = 1
 " CSS
 "Bundle 'skammer/vim-css-color'
 "Bundle 'hail2u/vim-css3-syntax'
+
+" HTML
+Bundle 'rstacruz/sparkup'
+let g:sparkupExecuteMapping = '<Leader>h'
+let g:sparkupNextMapping = '<Leader>n'
+let g:sparkupMapsNormal = 1
 
 " LESS
 Bundle 'groenewege/vim-less'
@@ -456,6 +466,12 @@ au!
         \ if line("'\"") > 0 && line("'\"") <= line("$") |
         \   exe "normal g`\"" |
         \ endif
+
+    " Always colourise parentheses
+    au VimEnter * RainbowParenthesesToggle
+    au Syntax * RainbowParenthesesLoadRound
+    au Syntax * RainbowParenthesesLoadSquare
+    au Syntax * RainbowParenthesesLoadBraces
 
     " Different types of file support 
     au FileType json map <leader>jp :%!json_xs -f json -t json-pretty<CR>

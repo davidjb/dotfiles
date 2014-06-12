@@ -75,3 +75,11 @@ To Do
   * Virtualenv-wrapper
   * zest.releaser with aliases
 
+Thanks
+======
+
+Thanks for all the various plugin mainainers for their awesome work.  My life
+wouldn't be the same. Thanks also to the various resources below for allowing
+me to tweak my configuration to be "just right":
+
+* http://stevelosh.com/blog/2010/09/coming-home-to-vim
