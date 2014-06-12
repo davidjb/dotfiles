@@ -107,6 +107,13 @@ applications () {
         wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
     fi
 
+    # Insync
+    if ! command_exists insync; then
+        sudo add-apt-repository "deb http://apt.insynchq.com/ubuntu $(lsb_release -sc) non-free contrib"
+        wget -qO - https://d2t3ff60b2tol4.cloudfront.net/services@insynchq.com.gpg.key | sudo apt-key add -
+    fi
+
+
     # Update all package information!
     sudo apt-get update
 
@@ -125,7 +132,8 @@ applications () {
         skype \
         dosbox \
         wine1.7 \
-        virtualbox-4.3
+        virtualbox-4.3 \
+        insync
 
     if ! command_exists vagrant; then
         # Vagrant
