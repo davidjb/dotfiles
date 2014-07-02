@@ -119,6 +119,7 @@ applications () {
 
     # Install all the packages!
     sudo apt-get install -y \
+        pwgen \
         screen \
         tmux \
         rsnapshot \
