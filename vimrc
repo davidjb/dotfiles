@@ -528,6 +528,8 @@ au!
     au FileType python let b:delimitMate_nesting_quotes = ['"']
     " Disable <> characters in delimitMate
     au FileType python let b:delimitMate_matchpairs = "(:),[:],{:}"
+    " Shortcut for fixing PEP8 issues
+    au FileType python nmap <leader>f :PymodeLintAuto<CR>:SyntasticCheck<CR>
 
     " XXX May want to prefer expandtab for all files
     " Detect indentation of all files
