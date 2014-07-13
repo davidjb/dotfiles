@@ -215,6 +215,7 @@ Bundle 'avakhov/vim-yaml'
 " See https://github.com/Rykka/riv.vim/pull/59
 Bundle 'davidjb/riv.vim'
 let g:riv_python_rst_hl = 1
+let g:riv_ignored_nmaps='>,<'
 
 " Salt SLS
 Bundle 'saltstack/salt-vim'
