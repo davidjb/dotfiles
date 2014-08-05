@@ -118,6 +118,8 @@ applications () {
         ldap-utils \
         htop \
         libav-tools \
+        librsvg2-bin \
+        wakeonlan \
         lynx \
         pngcrush \
         pidgin \
@@ -147,6 +149,12 @@ remove () {
 vundle () {
     install_update_git https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle 
     vim +BundleInstall +qall
+}
+
+compile_ycm () {
+    pushd ~/.vim/bundle/YouCompleteMe
+    ./install.sh --clang-completer --omnisharp-completer
+    popd
 }
 
 vim_configuration () {
@@ -179,9 +187,7 @@ vim_configuration () {
     popd
 
     # Compile YCM support
-    pushd ~/.vim/bundle/YouCompleteMe
-    ./install.sh --clang-completer --omnisharp-completer
-    popd
+    compile_ycm
 }
 
 sync_dotfiles() {
@@ -227,5 +233,6 @@ install_step "Do you want to install dependencies?" dependencies
 install_step "Do you want to remove existing files?" remove 
 install_step "Do you want to install the configuration?" install
 install_step "Re-run Vim's plugin installation?" vundle
+install_step "Re-run YouCompleteMe compilation?" compile_ycm
 install_step "Do you want to install applications?" applications
 
