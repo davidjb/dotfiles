@@ -46,7 +46,7 @@ Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'zedr/zope-snipmate-bundle'
 "let g:UltiSnips = {}
-let g:UltiSnipsExpandTrigger="<c-j>"    " Compatibility with YouCompleteMe
+let g:UltiSnipsExpandTrigger="<c-x>"    " Compatibility with YouCompleteMe
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "   let g:UltiSnipsSnippetDirectories=["UltiSnips", "mycoolsnippets"]
