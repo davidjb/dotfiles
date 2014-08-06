@@ -212,8 +212,9 @@ Bundle 'avakhov/vim-yaml'
 " reST - Highlight DocStrings in Python files
 " Improvement for auto-numbered lists
 " See https://github.com/Rykka/riv.vim/pull/59
-Bundle 'davidjb/riv.vim'
+Bundle 'Rykka/riv.vim'
 let g:riv_python_rst_hl = 1
+let g:riv_ignored_vmaps='>,<'
 
 " Salt SLS
 Bundle 'saltstack/salt-vim'
