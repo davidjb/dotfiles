@@ -107,11 +107,20 @@ applications () {
         wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
     fi
 
+    # Insync
+    if ! command_exists insync; then
+        sudo add-apt-repository "deb http://apt.insynchq.com/ubuntu $(lsb_release -sc) non-free contrib"
+        wget -qO - https://d2t3ff60b2tol4.cloudfront.net/services@insynchq.com.gpg.key | sudo apt-key add -
+    fi
+
+
     # Update all package information!
     sudo apt-get update
 
     # Install all the packages!
     sudo apt-get install -y \
+        gnome-raw-thumbnailer \
+        pwgen \
         screen \
         tmux \
         rsnapshot \
@@ -127,7 +136,8 @@ applications () {
         skype \
         dosbox \
         wine1.7 \
-        virtualbox-4.3
+        virtualbox-4.3 \
+        insync
 
     if ! command_exists vagrant; then
         # Vagrant
@@ -137,6 +147,14 @@ applications () {
 
     # Global Python-based tools
     sudo pip install --upgrade ipython grin zest.releaser
+}
+
+google_drive () {
+    # Symlink all home sub-directories
+    for dir in ~/google-drive/Working-Environment/*
+    do
+        ln -s $dir .
+    done
 }
 
 remove () {
@@ -236,4 +254,5 @@ install_step "Do you want to install the configuration?" install
 install_step "Re-run Vim's plugin installation?" vundle
 install_step "Re-run YouCompleteMe compilation?" compile_ycm
 install_step "Do you want to install applications?" applications
+install_step "Do you want to configure Google Drive aliases?" google_drive
 
