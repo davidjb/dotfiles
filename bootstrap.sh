@@ -170,6 +170,7 @@ vim_configuration () {
     vundle
 
     # Powerline configuration
+    sudo pip install -e ~/.vim/bundle/powerline
     mkdir ~/.config/powerline
     cp -R ~/.vim/bundle/powerline/powerline/config_files/* ~/.config/powerline/
     rm -rf ~/.config/powerline/config.json

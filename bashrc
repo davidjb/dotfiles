@@ -36,6 +36,7 @@ set -o vi
 stty -ixon
 
 # Powerline
+powerline-daemon -q
 . ~/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh
 
 # Enable programmable completion features for bash
