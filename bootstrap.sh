@@ -132,6 +132,9 @@ applications () {
         uvcdynctrl \
         guvcview \
         optipng \
+        librsvg2-bin \
+        wakeonlan \
+        lynx \
         pngcrush \
         lynx \
         pidgin \
@@ -172,6 +175,12 @@ vundle () {
     vim +BundleInstall +qall
 }
 
+compile_ycm () {
+    pushd ~/.vim/bundle/YouCompleteMe
+    ./install.sh --clang-completer --omnisharp-completer
+    popd
+}
+
 vim_configuration () {
     #Dependencies for Powerline
     pip install --user mercurial psutil
@@ -185,6 +194,7 @@ vim_configuration () {
     vundle
 
     # Powerline configuration
+    sudo pip install -e ~/.vim/bundle/powerline
     mkdir ~/.config/powerline
     cp -R ~/.vim/bundle/powerline/powerline/config_files/* ~/.config/powerline/
     rm -rf ~/.config/powerline/config.json
@@ -202,9 +212,7 @@ vim_configuration () {
     popd
 
     # Compile YCM support
-    pushd ~/.vim/bundle/YouCompleteMe
-    ./install.sh --clang-completer --omnisharp-completer
-    popd
+    compile_ycm
 }
 
 sync_dotfiles() {
@@ -250,6 +258,7 @@ install_step "Do you want to install dependencies?" dependencies
 install_step "Do you want to remove existing files?" remove 
 install_step "Do you want to install the configuration?" install
 install_step "Re-run Vim's plugin installation?" vundle
+install_step "Re-run YouCompleteMe compilation?" compile_ycm
 install_step "Do you want to install applications?" applications
 install_step "Do you want to configure Google Drive aliases?" google_drive
 

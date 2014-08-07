@@ -32,7 +32,7 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_autoclose_preview_window_after_completion = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_server_use_vim_stdout = 0
-let g:ycm_server_log_level = 'debug'
+let g:ycm_server_log_level = 'warn'
 let g:ycm_server_keep_logfiles = 1
 "let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
 "let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
@@ -46,14 +46,13 @@ Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'zedr/zope-snipmate-bundle'
 "let g:UltiSnips = {}
-let g:UltiSnipsExpandTrigger="<c-j>"    " Compatibility with YouCompleteMe
+let g:UltiSnipsExpandTrigger="<c-x>"    " Compatibility with YouCompleteMe
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "   let g:UltiSnipsSnippetDirectories=["UltiSnips", "mycoolsnippets"]
 
 " Uber status bar improvement
-Bundle 'Lokaltog/powerline'
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " Syntax checking for Vim
 Bundle 'scrooloose/syntastic'
@@ -213,9 +212,9 @@ Bundle 'avakhov/vim-yaml'
 " reST - Highlight DocStrings in Python files
 " Improvement for auto-numbered lists
 " See https://github.com/Rykka/riv.vim/pull/59
-Bundle 'davidjb/riv.vim'
+Bundle 'Rykka/riv.vim'
 let g:riv_python_rst_hl = 1
-let g:riv_ignored_nmaps='>,<'
+let g:riv_ignored_vmaps='>,<'
 
 " Salt SLS
 Bundle 'saltstack/salt-vim'

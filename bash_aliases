@@ -42,6 +42,12 @@ alias toclip='xclip -selection clipboard'
 alias fromclip='xclip -o'
 
 # System administration
+function ssh-copy-public-key () {
+    if [ -z $1 ] || [[ $1 == '--help' ]] || [[ $1 == '-h' ]]; then
+        echo 'Usage: ssh-copy-public-key key.pub hostname.example.org'
+    fi
+    cat $1 | ssh $2 "cat >> .ssh/authorized_keys"
+}
 alias serve='python -m SimpleHTTPServer 8000'
 alias port='sudo netstat -tulpn | grep'
 alias ssl-text='openssl x509 -text -noout -in'
