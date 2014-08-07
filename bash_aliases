@@ -24,6 +24,7 @@ alias find='find -L'
 alias findfile='find -L . -iname'
 alias fix='tset'
 alias history-search='history | grep '
+alias nautilus-fallback='dbus-launch nautilus --no-desktop'
 alias rcd='cd -P .' # Real cd
 alias scp-compressed='scp -C -o CompressionLevel=9'
 #alias wget='wget --no-check-certificate'

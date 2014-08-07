@@ -127,8 +127,13 @@ applications () {
         ldap-utils \
         htop \
         libav-tools \
-        lynx \
+        libjpeg-turbo-progs \
+        v4l-utils \
+        uvcdynctrl \
+        guvcview \
+        optipng \
         pngcrush \
+        lynx \
         pidgin \
         pidgin-skype \
         skype \
