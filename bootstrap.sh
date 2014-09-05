@@ -134,6 +134,7 @@ applications () {
         pidgin \
         pidgin-skype \
         skype \
+        inkscape \
         dosbox \
         wine1.7 \
         virtualbox-4.3 \

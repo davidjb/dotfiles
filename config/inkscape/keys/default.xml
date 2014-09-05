@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<keys name="Inkscape default">
+
+  <!-- Fit the page to the current selection -->
+  <bind action="FitCanvasToSelection" />
+
+  <!-- Fit the page to the drawing -->
+  <bind action="FitCanvasToDrawing" />
+
+  <!-- Fit the page to the current selection or the drawing if there is no selection -->
+  <bind key="F" modifiers="Ctrl,Alt,Shift" action="FitCanvasToSelectionOrDrawing" />
+
+</keys>
