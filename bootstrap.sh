@@ -119,6 +119,7 @@ applications () {
 
     # Install all the packages!
     sudo apt-get install -y \
+        molly-guard \
         gnome-raw-thumbnailer \
         pwgen \
         screen \
@@ -127,10 +128,16 @@ applications () {
         ldap-utils \
         htop \
         libav-tools \
+        libjpeg-turbo-progs \
+        v4l-utils \
+        uvcdynctrl \
+        guvcview \
+        optipng \
         librsvg2-bin \
         wakeonlan \
         lynx \
         pngcrush \
+        lynx \
         pidgin \
         pidgin-skype \
         skype \

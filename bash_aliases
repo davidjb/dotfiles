@@ -9,6 +9,8 @@ if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+
+    alias less='less -r'
 fi
 
 # Custom aliases
@@ -24,6 +26,7 @@ alias find='find -L'
 alias findfile='find -L . -iname'
 alias fix='tset'
 alias history-search='history | grep '
+alias nautilus-fallback='dbus-launch nautilus --no-desktop'
 alias rcd='cd -P .' # Real cd
 alias scp-compressed='scp -C -o CompressionLevel=9'
 #alias wget='wget --no-check-certificate'
