@@ -113,6 +113,12 @@ applications () {
         wget -qO - https://d2t3ff60b2tol4.cloudfront.net/services@insynchq.com.gpg.key | sudo apt-key add -
     fi
 
+    # Nagstamon
+    if ! command_exists nagstamon; then
+        wget -O /tmp/nagstamon.deb https://nagstamon.ifw-dresden.de/files-nagstamon/stable/nagstamon_1.0.1_all.deb
+        sudo dpkg -i /tmp/nagstamon.deb
+    fi
+
 
     # Update all package information!
     sudo apt-get update
