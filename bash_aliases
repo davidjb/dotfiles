@@ -42,6 +42,9 @@ function flac-conversion() {
 # Use with pipes as input or output
 alias toclip='xclip -selection clipboard'
 alias fromclip='xclip -o'
+function catclip () {
+    cat $1 | toclip
+}
 
 # System administration
 function ssh-copy-public-key () {
@@ -61,7 +64,7 @@ function csr-generate() {
         echo 'to the `openssl req` command.'
         return
     fi
-    openssl req -out $1.csr -new -newkey rsa:3072 -nodes -keyout $1.key "${@:2}"
+    openssl req -out $1.csr -new -newkey rsa:4096 -nodes -keyout $1.key "${@:2}"
 }
 
 # Development
