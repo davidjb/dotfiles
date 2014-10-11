@@ -151,11 +151,12 @@ applications () {
         dosbox \
         wine1.7 \
         virtualbox-4.3 \
+        salt-ssh \
         insync
 
     if ! command_exists vagrant; then
         # Vagrant
-        wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.5.3_x86_64.deb -O /tmp/vagrant.deb
+        wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.5_x86_64.deb -O /tmp/vagrant.deb
         sudo dpkg -i /tmp/vagrant.deb
     fi
 
