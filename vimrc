@@ -219,6 +219,9 @@ let g:riv_ignored_vmaps='>,<'
 " Salt SLS
 Bundle 'saltstack/salt-vim'
 
+" Jinja2
+Bundle 'Glench/Vim-Jinja2-Syntax'
+
 " VimL Checking
 Bundle 'ynkdir/vim-vimlparser'
 Bundle 'syngan/vim-vimlint'
