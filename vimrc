@@ -220,7 +220,7 @@ let g:riv_python_rst_hl = 1
 let g:riv_ignored_vmaps='>,<'
 
 " Salt SLS
-Bundle 'davidjb/salt-vim'
+Bundle 'saltstack/salt-vim'
 let g:sls_use_jinja_syntax = 1
 
 " Jinja2
