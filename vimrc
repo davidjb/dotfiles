@@ -13,6 +13,9 @@ call vundle#rc()
 "Auto installer of plugins
 Bundle 'gmarik/vundle'
 
+" Library of common functions
+Bundle 'vim-scripts/ingo-library'
+
 " Local vimrc support
 Bundle 'MarcWeber/vim-addon-local-vimrc'
 
