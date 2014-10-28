@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 #   git clone git@github.com:davidjb/dotfiles.git; cd dotfiles; ./bootstrap.sh
 # Inspired by https://github.com/inlineblock/DotFiles
 # vim:tw=78:ft=sh
@@ -189,6 +189,7 @@ vundle () {
 
 compile_ycm () {
     pushd ~/.vim/bundle/YouCompleteMe
+    git submodule update --init --recursive
     ./install.sh --clang-completer --omnisharp-completer
     popd
 }
