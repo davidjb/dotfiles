@@ -1,6 +1,14 @@
 Useful information
 ==================
 
+Tmux
+----
+
+https://github.com/tmux-plugins/tmux-resurrect
+https://github.com/tpope/vim-obsession
+https://github.com/tmux-plugins/tmux-yank
+https://github.com/tmux-plugins/tmux-copycat
+
 Firefox
 -------
 

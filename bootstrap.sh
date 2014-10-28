@@ -162,6 +162,9 @@ applications () {
 
     # Global Python-based tools
     sudo pip install --upgrade ipython grin zest.releaser
+
+    # Tmux plugins
+    install_update_git https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 }
 
 google_drive () {
