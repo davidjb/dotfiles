@@ -125,6 +125,8 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 Bundle 'jszakmeister/rst2ctags'
 Bundle 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
+let g:tagbar_sort = 0
 let g:tagbar_type_rst = {
     \ 'ctagstype': 'rst',
     \ 'ctagsbin' : '~/.vim/bundle/rst2ctags/rst2ctags.py',
