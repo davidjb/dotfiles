@@ -5,7 +5,6 @@ Tmux
 ----
 
 https://github.com/tmux-plugins/tmux-resurrect
-https://github.com/tpope/vim-obsession
 https://github.com/tmux-plugins/tmux-yank
 https://github.com/tmux-plugins/tmux-copycat
 
@@ -76,6 +75,7 @@ Vim
   + Swap with ``<c-w>R``
   + Break out into tab: ``<c-w>T``
   + Close all windows except current: ``<c-w>o``
+  + Save state with ``:Obsession /save/path``
 
 Vim and Buildout
 ----------------

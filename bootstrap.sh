@@ -183,7 +183,7 @@ remove () {
 }
 
 vundle () {
-    install_update_git https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle 
+    install_update_git https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
     vim +BundleInstall +qall
 }
 

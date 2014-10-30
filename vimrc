@@ -19,6 +19,9 @@ Bundle 'vim-scripts/ingo-library'
 " Local vimrc support
 Bundle 'MarcWeber/vim-addon-local-vimrc'
 
+" Obsession.vim: window positions and current state
+Bundle 'tpope/vim-obsession'
+
 " Open file:line formatted input
 Bundle 'bogado/file-line'
 
