@@ -130,6 +130,9 @@ applications () {
         pwgen \
         screen \
         tmux \
+        gimp \
+        gimp-gmic \
+        gmic \
         rsnapshot \
         ldap-utils \
         htop \
