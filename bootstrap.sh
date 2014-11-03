@@ -232,6 +232,14 @@ vim_configuration () {
     rm -rf ~/.config/powerline/colorschemes/vim/default.json
     ln_if_missing $DIR/powerline/colorschemes/vim/default.json ~/.config/powerline/colorschemes/vim/default.json
 
+    # Powerline font install
+    mkdir -p ~/.fonts
+    wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf -O ~/.fonts/PowerlineSymbols.otf
+    fc-cache -vf ~/.fonts/
+    mkdir -p ~/.config/fontconfig/conf.d
+    wget https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf -O ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
+
+
     # Snippets and type detection
     mkdir -p ~/.vim/ftdetect/
     ln_if_missing -s ~/.vim/bundle/ultisnips/ftdetect/* ~/.vim/ftdetect/
