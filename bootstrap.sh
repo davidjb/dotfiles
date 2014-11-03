@@ -104,6 +104,11 @@ dependencies () {
 }
 
 applications () {
+    # Ubuntu Tweak
+    if ! command_exists ubuntu-tweak; then
+        sudo add-apt-repository ppa:tualatrix/ppa
+    fi
+
     # Skype installation is fairly evil.
     if ! command_exists skype; then
         sudo dpkg --add-architecture i386
@@ -167,9 +172,10 @@ applications () {
         inkscape \
         dosbox \
         wine1.7 \
-        virtualbox-4.3 \
+        #virtualbox-4.3 \
         salt-ssh \
-        insync
+        insync \
+        ubuntu-tweak
 
     if ! command_exists vagrant; then
         # Vagrant
