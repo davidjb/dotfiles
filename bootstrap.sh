@@ -24,6 +24,13 @@ cp_if_missing () {
         cp $1 $2
     fi
 }
+ln_if_missing () {
+    original=$1
+    target=$2
+    if [ ! -e $target ]; then
+        ln -s $1 $2
+    fi
+}
 command_exists () {
     command -v $1 &> /dev/null
 }
@@ -58,7 +65,13 @@ dependencies () {
         nodejs-legacy \
         npm \
         libxml2-utils \
-        tidy
+        tidy \
+        virtualenv \
+        python-dev \
+        python3-dev \
+        python-setuptools \
+        python-pip
+    sudo apt-get install -f
 
     install_update_git https://github.com/kennethreitz/autoenv.git ~/.autoenv
 
@@ -67,13 +80,14 @@ dependencies () {
     virtualenv $DIR/tools/python
     pushd $DIR/tools/python
     . bin/activate
-    pip install --upgrade \
+    easy_install -U \
         py3kwarn \
         pylama \
         rstcheck \
         pygments \
         dotfiles \
         nodeenv
+    deactivate
     popd
 
     # Local Node.js based tools
@@ -164,7 +178,7 @@ applications () {
     fi
 
     # Global Python-based tools
-    sudo pip install --upgrade ipython grin zest.releaser
+    sudo easy_install -U ipython grin zest.releaser
 
     # Tmux plugins
     install_update_git https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -174,7 +188,7 @@ google_drive () {
     # Symlink all home sub-directories
     for dir in ~/google-drive/Working-Environment/*
     do
-        ln -s $dir .
+        ln_if_missing $dir .
     done
 }
 
@@ -193,7 +207,7 @@ vundle () {
 compile_ycm () {
     pushd ~/.vim/bundle/YouCompleteMe
     git submodule update --init --recursive
-    ./install.sh --clang-completer --omnisharp-completer
+    ./install.sh --clang-completer
     popd
 }
 
@@ -214,13 +228,13 @@ vim_configuration () {
     mkdir ~/.config/powerline
     cp -R ~/.vim/bundle/powerline/powerline/config_files/* ~/.config/powerline/
     rm -rf ~/.config/powerline/config.json
-    ln -s $DIR/powerline/config.json ~/.config/powerline/
+    ln_if_missing $DIR/powerline/config.json ~/.config/powerline/
     rm -rf ~/.config/powerline/colorschemes/vim/default.json
-    ln -s $DIR/powerline/colorschemes/vim/default.json ~/.config/powerline/colorschemes/vim/default.json
+    ln_if_missing $DIR/powerline/colorschemes/vim/default.json ~/.config/powerline/colorschemes/vim/default.json
 
     # Snippets and type detection
     mkdir -p ~/.vim/ftdetect/
-    ln -s ~/.vim/bundle/ultisnips/ftdetect/* ~/.vim/ftdetect/
+    ln_if_missing -s ~/.vim/bundle/ultisnips/ftdetect/* ~/.vim/ftdetect/
 
     # Term for Vim support
     pushd ~/.vim/bundle/tern_for_vim
@@ -236,7 +250,7 @@ sync_dotfiles() {
 }
 
 install () {
-    ln -s $DIR/dotfilesrc ~/.dotfilesrc
+    ln_if_missing $DIR/dotfilesrc ~/.dotfilesrc
     dotfiles --check
     install_step "Are you sure you wish to replace these files?" sync_dotfiles
 
