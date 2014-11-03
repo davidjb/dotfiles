@@ -277,6 +277,21 @@ install () {
     vim_configuration
 }
 
+configure_firefox () {
+    tmp=`mktemp -d`
+    pushd $tmp
+    # Adblock Plus
+    wget https://addons.mozilla.org/firefox/downloads/latest/1865/addon-1865-latest.xpi
+    # Session Manager
+    wget https://addons.mozilla.org/firefox/downloads/latest/2324/addon-2324-latest.xpi
+    # VimFx
+    wget https://addons.mozilla.org/firefox/downloads/file/274214/vimfx-0.5.14-fx.xpi
+    # Install
+    firefox *.xpi
+    rm -rf $tmp
+    popd
+}
+
 #########################
 #  Execute instalation  #
 #########################
@@ -299,4 +314,5 @@ install_step "Re-run Vim's plugin installation?" vundle
 install_step "Re-run YouCompleteMe compilation?" compile_ycm
 install_step "Do you want to install applications?" applications
 install_step "Do you want to configure Google Drive aliases?" google_drive
+install_step "Do you want to configure Firefox?" configure_firefox
 
