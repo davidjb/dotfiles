@@ -66,6 +66,7 @@ dependencies () {
         npm \
         libxml2-utils \
         tidy \
+        libgnome2-bin \
         virtualenv \
         python-dev \
         python3-dev \
@@ -145,10 +146,13 @@ applications () {
     # Install all the packages!
     sudo apt-get install -y \
         molly-guard \
+        apt-file \
+        compizconfig-settings-manager \
         gnome-raw-thumbnailer \
         pwgen \
         screen \
         tmux \
+        vlc \
         gimp \
         gimp-gmic \
         gmic \
@@ -172,10 +176,13 @@ applications () {
         inkscape \
         dosbox \
         wine1.7 \
-        #virtualbox-4.3 \
         salt-ssh \
         insync \
         ubuntu-tweak
+        #virtualbox-4.3
+
+    # Update files in packages
+    sudo apt-file update
 
     if ! command_exists vagrant; then
         # Vagrant
@@ -292,6 +299,8 @@ configure_firefox () {
     wget https://addons.mozilla.org/firefox/downloads/latest/2324/addon-2324-latest.xpi
     # VimFx
     wget https://addons.mozilla.org/firefox/downloads/file/274214/vimfx-0.5.14-fx.xpi
+    # Firebug
+    wget https://addons.mozilla.org/firefox/downloads/latest/1843/addon-1843-latest.xpi
     # Install
     firefox *.xpi
     rm -rf $tmp
