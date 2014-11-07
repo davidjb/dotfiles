@@ -24,6 +24,13 @@ cp_if_missing () {
         cp $1 $2
     fi
 }
+ln_if_missing () {
+    original=$1
+    target=$2
+    if [ ! -e $target ]; then
+        ln -s $1 $2
+    fi
+}
 command_exists () {
     command -v $1 &> /dev/null
 }
@@ -58,7 +65,14 @@ dependencies () {
         nodejs-legacy \
         npm \
         libxml2-utils \
-        tidy
+        tidy \
+        libgnome2-bin \
+        virtualenv \
+        python-dev \
+        python3-dev \
+        python-setuptools \
+        python-pip
+    sudo apt-get install -f
 
     install_update_git https://github.com/kennethreitz/autoenv.git ~/.autoenv
 
@@ -67,13 +81,14 @@ dependencies () {
     virtualenv $DIR/tools/python
     pushd $DIR/tools/python
     . bin/activate
-    pip install --upgrade \
+    easy_install -U \
         py3kwarn \
         pylama \
         rstcheck \
         pygments \
         dotfiles \
         nodeenv
+    deactivate
     popd
 
     # Local Node.js based tools
@@ -94,6 +109,11 @@ dependencies () {
 }
 
 applications () {
+    # Ubuntu Tweak
+    if ! command_exists ubuntu-tweak; then
+        sudo add-apt-repository ppa:tualatrix/ppa
+    fi
+
     # Skype installation is fairly evil.
     if ! command_exists skype; then
         sudo dpkg --add-architecture i386
@@ -130,10 +150,16 @@ applications () {
     # Install all the packages!
     sudo apt-get install -y \
         molly-guard \
+        apt-file \
+        compizconfig-settings-manager \
         gnome-raw-thumbnailer \
         pwgen \
         screen \
         tmux \
+        vlc \
+        gimp \
+        gimp-gmic \
+        gmic \
         rsnapshot \
         ldap-utils \
         htop \
@@ -154,9 +180,13 @@ applications () {
         inkscape \
         dosbox \
         wine1.7 \
-        virtualbox-4.3 \
         salt-ssh \
-        insync
+        insync \
+        ubuntu-tweak
+        #virtualbox-4.3
+
+    # Update files in packages
+    sudo apt-file update
 
     if ! command_exists vagrant; then
         # Vagrant
@@ -165,7 +195,7 @@ applications () {
     fi
 
     # Global Python-based tools
-    sudo pip install --upgrade ipython grin zest.releaser
+    sudo easy_install -U ipython grin zest.releaser
 
     # Tmux plugins
     install_update_git https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -175,7 +205,7 @@ google_drive () {
     # Symlink all home sub-directories
     for dir in ~/google-drive/Working-Environment/*
     do
-        ln -s $dir .
+        ln_if_missing $dir .
     done
 }
 
@@ -194,7 +224,7 @@ vundle () {
 compile_ycm () {
     pushd ~/.vim/bundle/YouCompleteMe
     git submodule update --init --recursive
-    ./install.sh --clang-completer --omnisharp-completer
+    ./install.sh --clang-completer
     popd
 }
 
@@ -215,13 +245,21 @@ vim_configuration () {
     mkdir ~/.config/powerline
     cp -R ~/.vim/bundle/powerline/powerline/config_files/* ~/.config/powerline/
     rm -rf ~/.config/powerline/config.json
-    ln -s $DIR/powerline/config.json ~/.config/powerline/
+    ln_if_missing $DIR/powerline/config.json ~/.config/powerline/
     rm -rf ~/.config/powerline/colorschemes/vim/default.json
-    ln -s $DIR/powerline/colorschemes/vim/default.json ~/.config/powerline/colorschemes/vim/default.json
+    ln_if_missing $DIR/powerline/colorschemes/vim/default.json ~/.config/powerline/colorschemes/vim/default.json
+
+    # Powerline font install
+    mkdir -p ~/.fonts
+    wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf -O ~/.fonts/PowerlineSymbols.otf
+    fc-cache -vf ~/.fonts/
+    mkdir -p ~/.config/fontconfig/conf.d
+    wget https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf -O ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
+
 
     # Snippets and type detection
     mkdir -p ~/.vim/ftdetect/
-    ln -s ~/.vim/bundle/ultisnips/ftdetect/* ~/.vim/ftdetect/
+    ln_if_missing -s ~/.vim/bundle/ultisnips/ftdetect/* ~/.vim/ftdetect/
 
     # Term for Vim support
     pushd ~/.vim/bundle/tern_for_vim
@@ -237,7 +275,7 @@ sync_dotfiles() {
 }
 
 install () {
-    ln -s $DIR/dotfilesrc ~/.dotfilesrc
+    ln_if_missing $DIR/dotfilesrc ~/.dotfilesrc
     dotfiles --check
     install_step "Are you sure you wish to replace these files?" sync_dotfiles
 
@@ -254,6 +292,23 @@ install () {
 
     # Initialise vim and configuration
     vim_configuration
+}
+
+configure_firefox () {
+    tmp=`mktemp -d`
+    pushd $tmp
+    # Adblock Plus
+    wget https://addons.mozilla.org/firefox/downloads/latest/1865/addon-1865-latest.xpi
+    # Session Manager
+    wget https://addons.mozilla.org/firefox/downloads/latest/2324/addon-2324-latest.xpi
+    # VimFx
+    wget https://addons.mozilla.org/firefox/downloads/file/274214/vimfx-0.5.14-fx.xpi
+    # Firebug
+    wget https://addons.mozilla.org/firefox/downloads/latest/1843/addon-1843-latest.xpi
+    # Install
+    firefox *.xpi
+    rm -rf $tmp
+    popd
 }
 
 #########################
@@ -278,4 +333,5 @@ install_step "Re-run Vim's plugin installation?" vundle
 install_step "Re-run YouCompleteMe compilation?" compile_ycm
 install_step "Do you want to install applications?" applications
 install_step "Do you want to configure Google Drive aliases?" google_drive
+install_step "Do you want to configure Firefox?" configure_firefox
 
