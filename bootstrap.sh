@@ -85,7 +85,8 @@ dependencies () {
         jsonlint \
         jslint \
         js-yaml \
-        grunt-cli
+        grunt-cli \
+        bower
     popd
 }
 
