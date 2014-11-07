@@ -88,6 +88,9 @@ dependencies () {
         grunt-cli \
         bower
     popd
+
+    # Global gitignore
+    install_update_git https://github.com/github/gitignore.git $DIR/tools/gitignore
 }
 
 applications () {
