@@ -147,6 +147,7 @@ applications () {
     sudo apt-get install -y \
         molly-guard \
         apt-file \
+        whois \
         compizconfig-settings-manager \
         gnome-raw-thumbnailer \
         pwgen \
