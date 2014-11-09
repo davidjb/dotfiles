@@ -414,7 +414,6 @@ nnoremap  <s-right>  vl
 nnoremap  <s-left>   vh
 
 " m, M - Add new lines without insert mode
-nmap m o<Esc>
 nmap <s-m> O<Esc>
 
 " Control + U - Shortcut for unifying (wrapping) lines

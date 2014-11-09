@@ -52,8 +52,6 @@ Spot and report an error and win a gold star.
 To Do
 =====
 
-* txmux over screen
-* Vagrant and MongoDB
 * Read:
 
   + ``:help unimpaired``
@@ -63,17 +61,18 @@ To Do
   
   * Indentation of reST files - changes indent levels but changes
     from implicit to explicit numbering (or unordered to ordered)
-  * YouCompleteMe scratch/preview window open until end parethesis
   * Python support (refactoring etc)
   * PyMode and Rope for refactoring support
 
+* Convert to Salt provisioning
 * Handle private aliases for Bashrc
-* Handle private SSH configuration
+* Handle private SSH configuration/generation
 * Determine other standard dependencies for development
 * Automate installation of:
 
   * Virtualenv-wrapper
   * zest.releaser with aliases
+  * Vagrant and MongoDB
 
 Thanks
 ======
