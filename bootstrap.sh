@@ -153,6 +153,7 @@ applications () {
         apt-file \
         whois \
         compizconfig-settings-manager \
+        indicator-applet \
         gnome-raw-thumbnailer \
         pwgen \
         screen \
