@@ -151,9 +151,12 @@ applications () {
     sudo apt-get install -y \
         molly-guard \
         apt-file \
+        nmap \
+        gcolor2 \
+        openjdk-8-jre \
         whois \
         compizconfig-settings-manager \
-        indicator-applet \
+        indicator-multiload \
         gnome-raw-thumbnailer \
         pwgen \
         screen \
@@ -195,6 +198,13 @@ applications () {
         wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.5_x86_64.deb -O /tmp/vagrant.deb
         sudo dpkg -i /tmp/vagrant.deb
     fi
+
+    if ! command_exists ipscan; then
+        # Angry IP scanner
+        wget http://github.com/angryziber/ipscan/releases/download/3.3.2/ipscan_3.3.2_amd64.deb -O /tmp/angry.deb
+        sudo dpkg -i /tmp/angry.deb
+    fi
+
 
     # Global Python-based tools
     sudo easy_install -U ipython grin zest.releaser
