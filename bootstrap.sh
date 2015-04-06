@@ -135,6 +135,7 @@ applications () {
         gimp-gmic \
         gmic \
         rsnapshot \
+        smbnetfs \
         ldap-utils \
         htop \
         libav-tools \
