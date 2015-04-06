@@ -1,19 +1,17 @@
 davidjb's dotfiles
 ==================
 
-Run the included ``bootstrap.sh`` script and it will install the included settings files
-into the current user's home directory::
+Run the included ``bootstrap.sh`` script and it will install the included
+settings files into the current user's home directory::
 
-     git clone https://github.com/davidjb/dotfiles.git
-     ./dotfiles/bootstrap.sh
+    sudo apt-get install git
+    git clone https://github.com/davidjb/dotfiles.git
+    ./dotfiles/bootstrap.sh
 
-Pass the script a directory name or path to customise install location::
+Alternatively, pass the script a directory name or path to customise the
+install location::
 
     ./bootstrap.sh /path/to/install
-
-.. code:: bash
-
-   dotfiles --add ~/.vimrc
 
 
 Useful notes
@@ -46,6 +44,8 @@ Copyright
 =========
 
 Nope, nothing.  Just use what you'd like, how you'd like to use it.
+Consider this software public domain.
+
 Spot and report an error and win a gold star.
 
 
@@ -53,6 +53,7 @@ To Do
 =====
 
 * Vagrant and MongoDB
+
 * Read:
 
   + ``:help unimpaired``
@@ -62,17 +63,18 @@ To Do
   
   * Indentation of reST files - changes indent levels but changes
     from implicit to explicit numbering (or unordered to ordered)
-  * YouCompleteMe scratch/preview window open until end parethesis
   * Python support (refactoring etc)
   * PyMode and Rope for refactoring support
 
+* Convert to Salt provisioning
 * Handle private aliases for Bashrc
-* Handle private SSH configuration
+* Handle private SSH configuration/generation
 * Determine other standard dependencies for development
 * Automate installation of:
 
   * Virtualenv-wrapper
   * zest.releaser with aliases
+  * Vagrant and MongoDB
 
 Thanks
 ======

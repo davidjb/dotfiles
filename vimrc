@@ -116,6 +116,8 @@ Bundle 'scrooloose/nerdtree'
 " Auto indent detection
 "Bundle 'ciaranm/detectindent'
 "let g:detectindent_max_lines_to_analyse = 32
+"let g:detectindent_preferred_expandtab = 1
+"let g:detectindent_preferred_indent = 4
 
 " Indent guides
 Bundle 'nathanaelkane/vim-indent-guides'
@@ -220,6 +222,7 @@ Bundle 'avakhov/vim-yaml'
 " reST - Highlight DocStrings in Python files
 " Improvement for auto-numbered lists
 " See https://github.com/Rykka/riv.vim/pull/59
+Bundle 'Rykka/clickable.vim'
 Bundle 'Rykka/riv.vim'
 let g:riv_python_rst_hl = 1
 let g:riv_ignored_vmaps='>,<'
@@ -413,7 +416,6 @@ nnoremap  <s-right>  vl
 nnoremap  <s-left>   vh
 
 " m, M - Add new lines without insert mode
-nmap m o<Esc>
 nmap <s-m> O<Esc>
 
 " Control + U - Shortcut for unifying (wrapping) lines
