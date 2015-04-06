@@ -128,6 +128,7 @@ applications () {
         molly-guard \
         gnome-raw-thumbnailer \
         pwgen \
+        pass \
         screen \
         tmux \
         gimp \
