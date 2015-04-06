@@ -169,6 +169,7 @@ applications () {
 
     # Tmux plugins
     install_update_git https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    tmux run-shell ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 }
 
 google_drive () {

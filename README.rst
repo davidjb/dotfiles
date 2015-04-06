@@ -52,7 +52,6 @@ Spot and report an error and win a gold star.
 To Do
 =====
 
-* txmux over screen
 * Vagrant and MongoDB
 * Read:
 
