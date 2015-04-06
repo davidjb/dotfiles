@@ -82,3 +82,10 @@ Vim and Buildout
 
 #. See https://github.com/davidjb/buildout-vim for a how-to.
 
+Pass
+----
+
+::
+
+    pass init [GPG key IDs]
+    pass git init
