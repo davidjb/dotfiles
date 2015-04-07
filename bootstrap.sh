@@ -101,8 +101,12 @@ dependencies () {
         jslint \
         js-yaml \
         grunt-cli \
-        bower
+        keybase-installer
+
+    # Keybase setup
+    keybase-installer -p .
     popd
+
 
     # Global gitignore
     install_update_git https://github.com/github/gitignore.git $DIR/tools/gitignore

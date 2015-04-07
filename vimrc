@@ -240,6 +240,10 @@ Bundle 'syngan/vim-vimlint'
 
 " GPG support
 Bundle 'jamessan/vim-gnupg'
+"let g:GPGDebugLevel = 5
+let g:GPGDefaultRecipients=[
+ \"David Beitey (Work) <david" . nr2char(64) . "davidjb" . "." . "com>",
+ \]
 function! SetGPGOptions()
     set foldlevel=1
     set foldclose=all
