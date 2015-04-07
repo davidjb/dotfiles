@@ -101,6 +101,9 @@ dependencies () {
         jslint \
         js-yaml \
         grunt-cli \
+        bower \
+        yo \
+        gulp \
         keybase-installer
 
     # Keybase setup
