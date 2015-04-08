@@ -39,9 +39,6 @@ stty -ixon
 powerline-daemon -q
 . ~/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh
 
-# Pass
-. /usr/share/bash-completion/completions/pass
-
 # Enable programmable completion features for bash
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
