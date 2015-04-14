@@ -256,6 +256,10 @@ let g:pymode_rope_autoimport_import_after_complete = 1
 
 " XXX Conflicts with another plugin on completion (Rope?)
 "let g:pymode_rope = 0
+"
+
+" Tmux
+Bundle 'tmux-plugins/vim-tmux'
 
 
 
