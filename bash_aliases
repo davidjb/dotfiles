@@ -31,6 +31,8 @@ alias ll='ls -Flh'
 alias find='find -L'
 alias findfile='find -L . -iname'
 alias fix='tset'
+alias fuck='$(thefuck $(fc -ln -1))'
+alias duck='$(THEFUCK_REQUIRE_CONFIRMATION=true thefuck $(fc -ln -1))'
 alias history-search='history | grep '
 alias nautilus-fallback='dbus-launch nautilus --no-desktop'
 alias rcd='cd -P .' # Real cd

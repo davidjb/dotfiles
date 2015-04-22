@@ -87,7 +87,8 @@ dependencies () {
         rstcheck \
         pygments \
         dotfiles \
-        nodeenv
+        nodeenv \
+        thefuck
     deactivate
     popd
 
