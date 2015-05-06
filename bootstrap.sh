@@ -71,7 +71,8 @@ dependencies () {
         python-dev \
         python3-dev \
         python-setuptools \
-        python-pip
+        python-pip \
+        shellcheck
     sudo apt-get install -f
 
     install_update_git https://github.com/kennethreitz/autoenv.git ~/.autoenv
