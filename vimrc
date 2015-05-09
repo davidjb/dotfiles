@@ -107,7 +107,8 @@ Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'scrooloose/nerdcommenter'
 let g:NERDCustomDelimiters = {
    \ 'yaml': { 'left': '#' },
-   \ 'sls': { 'left': '#' }
+   \ 'sls': { 'left': '#' },
+   \ 'python': { 'left': '# ', 'leftAlt': '#' },
    \ }
 
 " File browser and explorer: Nerdtree
