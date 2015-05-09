@@ -88,7 +88,8 @@ dependencies () {
         pygments \
         dotfiles \
         nodeenv \
-        thefuck
+        thefuck \
+        grepedit
     deactivate
     popd
 
