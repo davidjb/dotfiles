@@ -89,8 +89,8 @@ dependencies () {
         pygments \
         dotfiles \
         nodeenv \
-        thefuck \
-        grepedit
+        thefuck
+    pip install http://projects.bigasterisk.com/grepedit-1.0.tar.gz
     deactivate
     popd
 
