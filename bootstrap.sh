@@ -199,7 +199,8 @@ applications () {
         wine1.7 \
         salt-ssh \
         insync \
-        ubuntu-tweak
+        ubuntu-tweak \
+        exfat-utils
         #virtualbox-4.3
 
     # Update files in packages
