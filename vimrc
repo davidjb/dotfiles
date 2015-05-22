@@ -186,6 +186,10 @@ Plugin 'christoomey/vim-tmux-navigator'
 """"""""""""""""""""""""""""""""
 " Sytax/filetype support bundles
 """"""""""""""""""""""""""""""""
+" Clickable links
+Plugin 'Rykka/os.vim'
+"Plugin 'Rykka/clickable.vim'
+
 " Git files
 Plugin 'tpope/vim-git'
 
@@ -223,7 +227,6 @@ Plugin 'avakhov/vim-yaml'
 " reST - Highlight DocStrings in Python files
 " Improvement for auto-numbered lists
 " See https://github.com/Rykka/riv.vim/pull/59
-Plugin 'Rykka/clickable.vim'
 Plugin 'Rykka/riv.vim'
 let g:riv_python_rst_hl = 1
 let g:riv_ignored_vmaps='>,<'
