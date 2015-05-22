@@ -11,7 +11,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin('~/.vim/bundle')
 
 "Auto installer of plugins
-Plugin 'gmarik/Vundle.vim', {'pinned': 1}
+Plugin 'gmarik/Vundle.vim'
 
 " Library of common functions
 Plugin 'vim-scripts/ingo-library'
