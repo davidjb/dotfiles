@@ -153,6 +153,7 @@ applications () {
         apt-file \
         nmap \
         gcolor2 \
+        apache2-utils \
         pavucontrol \
         openjdk-8-jre \
         whois \
