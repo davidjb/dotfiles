@@ -52,6 +52,8 @@ Spot and report an error and win a gold star.
 To Do
 =====
 
+* Vagrant and MongoDB
+
 * Read:
 
   + ``:help unimpaired``

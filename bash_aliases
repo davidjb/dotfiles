@@ -15,10 +15,11 @@ fi
 
 # Custom aliases
 alias ..="cd .."
-alias ..2="cd ../.."
-alias ..3="cd ../../.."
-alias ..4="cd ../../../.."
-alias ..5="cd ../../../../.."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+alias c='clear'
 alias o='gnome-open'
 alias monitor-off='xset dpms force off'
 alias ack='ACK_PAGER_COLOR="less -x4SRFX" /usr/bin/ack-grep -a -C 1 --follow'
@@ -30,6 +31,8 @@ alias ll='ls -Flh'
 alias find='find -L'
 alias findfile='find -L . -iname'
 alias fix='tset'
+alias fuck='$(thefuck $(fc -ln -1))'
+alias duck='$(THEFUCK_REQUIRE_CONFIRMATION=true thefuck $(fc -ln -1))'
 alias history-search='history | grep '
 alias nautilus-fallback='dbus-launch nautilus --no-desktop'
 alias rcd='cd -P .' # Real cd
@@ -59,7 +62,8 @@ function ssh-copy-public-key () {
     cat $1 | ssh $2 "cat >> .ssh/authorized_keys"
 }
 alias serve='python -m SimpleHTTPServer 8000'
-alias port='sudo netstat -tulpn | grep'
+alias ports='netstat -tulpn'
+alias port='netstat -tulpn | grep'
 alias ssl-text='openssl x509 -text -noout -in'
 alias hash-wpa2-passwd='python -c "import getpass; print(getpass.getpass())" | iconv -t utf16le | openssl md4'
 function csr-generate() {

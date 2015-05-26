@@ -82,3 +82,17 @@ Vim and Buildout
 
 #. See https://github.com/davidjb/buildout-vim for a how-to.
 
+Pass
+----
+
+::
+
+    pass init [GPG key IDs]
+    pass git init
+
+Mass editing files
+------------------
+
+Use ``grepedit`` to easily modify a whole bunch of files using your configured
+EDITOR.
+

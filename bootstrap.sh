@@ -9,30 +9,30 @@
 install_update_git () {
     repository=$1
     path=$2
-    if [ -d $path ]; then
-        cd $path 
+    if [ -d "$path" ]; then
+        cd "$path"
         git pull origin master
     else
-        mkdir -p $path
-        git clone $repository $path
+        mkdir -p "$path"
+        git clone "$repository" "$path"
     fi
 }
 cp_if_missing () {
     original=$1
     target=$2
-    if [ ! -e $target ]; then
-        cp $1 $2
+    if [ ! -e "$target" ]; then
+        cp "$original" "$target"
     fi
 }
 ln_if_missing () {
     original=$1
     target=$2
-    if [ ! -e $target ]; then
-        ln -s $1 $2
+    if [ ! -e "$target" ]; then
+        ln "$original" "$target"
     fi
 }
 command_exists () {
-    command -v $1 &> /dev/null
+    command -v "$1" &> /dev/null
 }
 
 install_step () {
@@ -71,15 +71,16 @@ dependencies () {
         python-dev \
         python3-dev \
         python-setuptools \
-        python-pip
+        python-pip \
+        shellcheck
     sudo apt-get install -f
 
     install_update_git https://github.com/kennethreitz/autoenv.git ~/.autoenv
 
     # Local Python-based tools
-    mkdir -p $DIR/tools
-    virtualenv $DIR/tools/python
-    pushd $DIR/tools/python
+    mkdir -p "$DIR/tools"
+    virtualenv "$DIR/tools/python"
+    pushd "$DIR/tools/python"
     . bin/activate
     easy_install -U \
         py3kwarn \
@@ -87,13 +88,15 @@ dependencies () {
         rstcheck \
         pygments \
         dotfiles \
-        nodeenv
+        nodeenv \
+        thefuck
+    pip install http://projects.bigasterisk.com/grepedit-1.0.tar.gz
     deactivate
     popd
 
     # Local Node.js based tools
-    mkdir -p $DIR/tools/nodejs
-    pushd $DIR/tools/nodejs
+    mkdir -p "$DIR/tools/nodejs"
+    pushd "$DIR/tools/nodejs"
     npm install \
         less \
         csslint \
@@ -101,11 +104,18 @@ dependencies () {
         jslint \
         js-yaml \
         grunt-cli \
-        bower
+        bower \
+        yo \
+        gulp \
+        keybase-installer
+
+    # Keybase setup
+    keybase-installer -p .
     popd
 
+
     # Global gitignore
-    install_update_git https://github.com/github/gitignore.git $DIR/tools/gitignore
+    install_update_git https://github.com/github/gitignore.git "$DIR/tools/gitignore"
 }
 
 applications () {
@@ -161,6 +171,7 @@ applications () {
         indicator-multiload \
         gnome-raw-thumbnailer \
         pwgen \
+        pass \
         screen \
         tmux \
         vlc \
@@ -168,6 +179,7 @@ applications () {
         gimp-gmic \
         gmic \
         rsnapshot \
+        smbnetfs \
         ldap-utils \
         htop \
         libav-tools \
@@ -189,7 +201,8 @@ applications () {
         wine1.7 \
         salt-ssh \
         insync \
-        ubuntu-tweak
+        ubuntu-tweak \
+        exfat-utils
         #virtualbox-4.3
 
     # Update files in packages
@@ -213,13 +226,14 @@ applications () {
 
     # Tmux plugins
     install_update_git https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    tmux run-shell ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 }
 
 google_drive () {
     # Symlink all home sub-directories
     for dir in ~/google-drive/Working-Environment/*
     do
-        ln_if_missing $dir .
+        ln_if_missing "$dir" .
     done
 }
 
@@ -259,9 +273,9 @@ vim_configuration () {
     mkdir ~/.config/powerline
     cp -R ~/.vim/bundle/powerline/powerline/config_files/* ~/.config/powerline/
     rm -rf ~/.config/powerline/config.json
-    ln_if_missing $DIR/powerline/config.json ~/.config/powerline/
+    ln_if_missing "$DIR/powerline/config.json" ~/.config/powerline/
     rm -rf ~/.config/powerline/colorschemes/vim/default.json
-    ln_if_missing $DIR/powerline/colorschemes/vim/default.json ~/.config/powerline/colorschemes/vim/default.json
+    ln_if_missing "$DIR/powerline/colorschemes/vim/default.json" ~/.config/powerline/colorschemes/vim/default.json
 
     # Powerline font install
     mkdir -p ~/.fonts
@@ -289,20 +303,20 @@ sync_dotfiles() {
 }
 
 install () {
-    ln_if_missing $DIR/dotfilesrc ~/.dotfilesrc
+    ln_if_missing "$DIR/dotfilesrc" ~/.dotfilesrc
     dotfiles --check
     install_step "Are you sure you wish to replace these files?" sync_dotfiles
 
     # Contain local data 
     mkdir -p ~/.bash_private
-    cp_if_missing $DIR/pypirc ~/.pypirc
+    cp_if_missing "$DIR/pypirc" ~/.pypirc
 
     mkdir -p ~/.buildout/{eggs,downloads,configs}
-    cp_if_missing $DIR/buildout/default.cfg ~/.buildout/default.cfg
-    sed -i "s/\${whoami}/`whoami`/g" ~/.buildout/default.cfg
+    cp_if_missing "$DIR/buildout/default.cfg" ~/.buildout/default.cfg
+    sed -i "s/\${whoami}/$(whoami)/g" ~/.buildout/default.cfg
 
     mkdir -p ~/.ssh
-    cp_if_missing $DIR/ssh/config ~/.ssh/config
+    cp_if_missing "$DIR/ssh/config" ~/.ssh/config
 
     # Initialise vim and configuration
     vim_configuration
@@ -313,8 +327,8 @@ configure_firefox () {
     sudo apt-get update
     sudo apt-get install firefox -y
 
-    tmp=`mktemp -d`
-    pushd $tmp
+    tmp=$(mktemp -d)
+    pushd "$tmp"
     # Adblock Plus
     wget https://addons.mozilla.org/firefox/downloads/latest/1865/addon-1865-latest.xpi
     # Session Manager
@@ -324,8 +338,8 @@ configure_firefox () {
     # Firebug
     wget https://addons.mozilla.org/firefox/downloads/latest/1843/addon-1843-latest.xpi
     # Install
-    firefox *.xpi
-    rm -rf $tmp
+    firefox ./*.xpi
+    rm -rf "$tmp"
     popd
 }
 
@@ -336,7 +350,7 @@ cd "$(dirname "$0")"
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 #Change ~ to be wherever we want, if set via first argument
-if [ $1 ]; then
+if [ "$1" ]; then
     HOME="$1"
 fi
 

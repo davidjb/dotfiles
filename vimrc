@@ -5,30 +5,30 @@
 "
 
 set nocompatible
-set t_Co=256
 filetype off
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+set t_Co=256
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin('~/.vim/bundle')
 
 "Auto installer of plugins
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " Library of common functions
-Bundle 'vim-scripts/ingo-library'
+Plugin 'vim-scripts/ingo-library'
 
 " Local vimrc support
-Bundle 'MarcWeber/vim-addon-local-vimrc'
+Plugin 'MarcWeber/vim-addon-local-vimrc'
 
 " Obsession.vim: window positions and current state
-Bundle 'tpope/vim-obsession'
+Plugin 'tpope/vim-obsession'
 
 " Open file:line formatted input
-Bundle 'bogado/file-line'
+Plugin 'bogado/file-line'
 
 " Completion support; requires Vim 7.3.584
 " Press <TAB> to complete, <C-Space> to semantically complete
 " Automatically integrates with Ultisnips
-Bundle 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 let g:ycm_complete_in_comments = 1
 let g:ycm_use_ultisnips_completer = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
@@ -44,13 +44,13 @@ let g:ycm_server_keep_logfiles = 1
 "let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
 
 " JavaScript parsing and integration with YouCompleteMe
-Bundle 'marijnh/tern_for_vim'
+Plugin 'marijnh/tern_for_vim'
 
 " Snippets
-Bundle 'vim-scripts/tlib'
-Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
-Bundle 'zedr/zope-snipmate-bundle'
+Plugin 'vim-scripts/tlib'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'zedr/zope-snipmate-bundle'
 "let g:UltiSnips = {}
 let g:UltiSnipsExpandTrigger="<c-x>"    " Compatibility with YouCompleteMe
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
@@ -58,10 +58,10 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "   let g:UltiSnipsSnippetDirectories=["UltiSnips", "mycoolsnippets"]
 
 " Uber status bar improvement
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " Syntax checking for Vim
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_error_symbol = '✗'
@@ -87,48 +87,49 @@ let g:syntastic_rst_rstcheck_quiet_messages = {"regex": [
 let g:syntastic_yaml_checkers = ['jsyaml']
 
 " <leader><leader> movement to anywhere - w (words), f (chars), j (lines)
-Bundle 'Lokaltog/vim-easymotion'
+Plugin 'Lokaltog/vim-easymotion'
 
 " Git management: Gstatus, Gcommit, Gblame, Gmove, Ggrep, Gbrowse
 " Use with -/p for status and patching.
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 
 " Insert-mode autocompletion for quotes, parentheses & brackets
-Bundle 'Raimondi/delimitMate'
+Plugin 'Raimondi/delimitMate'
 let g:delimitMate_expand_space = 1
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_jump_expansion = 1
 
 " Coloured matching parentheses
-Bundle 'kien/rainbow_parentheses.vim'
+Plugin 'kien/rainbow_parentheses.vim'
 
 
 " Intense commenting superpower
-Bundle 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdcommenter'
 let g:NERDCustomDelimiters = {
    \ 'yaml': { 'left': '#' },
-   \ 'sls': { 'left': '#' }
+   \ 'sls': { 'left': '#' },
+   \ 'python': { 'left': '# ', 'leftAlt': '#' },
    \ }
 
 " File browser and explorer: Nerdtree
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 
 " Auto indent detection
-"Bundle 'ciaranm/detectindent'
+"Plugin 'ciaranm/detectindent'
 "let g:detectindent_max_lines_to_analyse = 32
 "let g:detectindent_preferred_expandtab = 1
 "let g:detectindent_preferred_indent = 4
 
 " Indent guides
-Bundle 'nathanaelkane/vim-indent-guides'
+Plugin 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
 " Browser for tags within source code files
-Bundle 'jszakmeister/rst2ctags'
-Bundle 'majutsushi/tagbar'
+Plugin 'jszakmeister/rst2ctags'
+Plugin 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 let g:tagbar_sort = 0
@@ -148,98 +149,105 @@ let g:tagbar_type_rst = {
 \ }
 
 " Tag handling
-Bundle 'tpope/vim-ragtag'
+Plugin 'tpope/vim-ragtag'
 
 " Tag movement
-Bundle 'gcmt/breeze.vim'
+Plugin 'gcmt/breeze.vim'
 let g:breeze_active_filetypes = "*.pt,*.zpt,*.mako,*.php"
 
 " Colour tool
-Bundle 'Rykka/colorv.vim'
+Plugin 'Rykka/colorv.vim'
 
 " Repeat support for .
-Bundle 'tpope/vim-repeat'
+Plugin 'tpope/vim-repeat'
 
 " Repeat support for visual selection
-Bundle 'vim-scripts/visualrepeat'
+Plugin 'vim-scripts/visualrepeat'
 
 " Ability to easily change surrounding elements (eg cs[from][to])
-Bundle 'tpope/vim-surround'
+Plugin 'tpope/vim-surround'
 let g:surround_{char2nr('t')} = "``\r``"
 let g:surround_{char2nr('e')} = "**\r**"
 
 " Sets of useful mappings about [ and ]
-Bundle 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-unimpaired'
 
 " Alignment for C-style variables, definitions, comments, tables
-Bundle 'vim-scripts/Align'
+Plugin 'vim-scripts/Align'
 
 " Sudo editing support
-Bundle 'chrisbra/SudoEdit.vim'
+Plugin 'chrisbra/SudoEdit.vim'
 let g:sudo_no_gui=1
 
 " Tmux compatibility support
-Bundle 'christoomey/vim-tmux-navigator'
+Plugin 'christoomey/vim-tmux-navigator'
 
 
 """"""""""""""""""""""""""""""""
 " Sytax/filetype support bundles
 """"""""""""""""""""""""""""""""
+" Clickable links
+Plugin 'Rykka/os.vim'
+"Plugin 'Rykka/clickable.vim'
+
 " Git files
-Bundle 'tpope/vim-git'
+Plugin 'tpope/vim-git'
 
 " JSON
-Bundle 'leshill/vim-json'
+Plugin 'leshill/vim-json'
 
 " JavaScript
 " XXX Research options
-"Bundle 'davidjb/vim-web-indent'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'pangloss/vim-javascript'
+"Plugin 'davidjb/vim-web-indent'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
 " XXX see https://github.com/othree/javascript-libraries-syntax.vim
-Bundle 'othree/javascript-libraries-syntax.vim'
+Plugin 'othree/javascript-libraries-syntax.vim'
 let g:javascript_enable_domhtmlcss = 1
 
 " CSS
-"Bundle 'skammer/vim-css-color'
-"Bundle 'hail2u/vim-css3-syntax'
+"Plugin 'skammer/vim-css-color'
+"Plugin 'hail2u/vim-css3-syntax'
 
 " HTML
-Bundle 'rstacruz/sparkup'
+Plugin 'rstacruz/sparkup'
 let g:sparkupExecuteMapping = '<Leader>h'
 let g:sparkupNextMapping = '<Leader>n'
 let g:sparkupMapsNormal = 1
 
 " LESS
-Bundle 'groenewege/vim-less'
+Plugin 'groenewege/vim-less'
 
 " HAML, SASS, SCSS
-Bundle 'tpope/vim-haml'
+Plugin 'tpope/vim-haml'
 
 " YAML
-Bundle 'avakhov/vim-yaml'
+Plugin 'avakhov/vim-yaml'
 
 " reST - Highlight DocStrings in Python files
 " Improvement for auto-numbered lists
 " See https://github.com/Rykka/riv.vim/pull/59
-Bundle 'Rykka/clickable.vim'
-Bundle 'Rykka/riv.vim'
+Plugin 'Rykka/riv.vim'
 let g:riv_python_rst_hl = 1
 let g:riv_ignored_vmaps='>,<'
 
 " Salt SLS
-Bundle 'saltstack/salt-vim'
+Plugin 'saltstack/salt-vim'
 let g:sls_use_jinja_syntax = 1
 
 " Jinja2
-Bundle 'Glench/Vim-Jinja2-Syntax'
+Plugin 'Glench/Vim-Jinja2-Syntax'
 
 " VimL Checking
-Bundle 'ynkdir/vim-vimlparser'
-Bundle 'syngan/vim-vimlint'
+Plugin 'ynkdir/vim-vimlparser'
+Plugin 'syngan/vim-vimlint'
 
 " GPG support
-Bundle 'jamessan/vim-gnupg'
+Plugin 'jamessan/vim-gnupg'
+"let g:GPGDebugLevel = 5
+let g:GPGDefaultRecipients=[
+ \"David Beitey (Work) <david" . nr2char(64) . "davidjb" . "." . "com>",
+ \]
 function! SetGPGOptions()
     set foldlevel=1
     set foldclose=all
@@ -247,7 +255,7 @@ function! SetGPGOptions()
 endfunction
 
 " Python editng superpowers
-Bundle 'klen/python-mode'
+Plugin 'klen/python-mode'
 let g:pymode_lint_on_write = 0 | let g:pymode_lint_message = 0 | let g:pymode_syntax = 0 | let g:pymode_syntax_all = 0 | let g:pymode_trim_whitespaces = 0
 let g:pymode_rope_show_doc_bind = '<c-e>d'
 let g:pymode_rope = 0
@@ -256,14 +264,20 @@ let g:pymode_rope_autoimport_import_after_complete = 1
 
 " XXX Conflicts with another plugin on completion (Rope?)
 "let g:pymode_rope = 0
+"
 
+" Tmux
+Plugin 'tmux-plugins/vim-tmux'
+
+" All Plugin calls must be above here!
+call vundle#end()
 
 
 """"""""""""""""""""
 "Extra configuration
 """"""""""""""""""""
 syntax on                         " Syntax highlighting
-filetype plugin on                " Filetype detection
+filetype plugin on                " Filetype detection, required by Vundle
 filetype plugin indent on         " Indentation
 " VVV Experimental
 set ttimeout
