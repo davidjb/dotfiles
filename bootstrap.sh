@@ -153,6 +153,7 @@ applications () {
         apt-file \
         nmap \
         gcolor2 \
+        pavucontrol \
         openjdk-8-jre \
         whois \
         compizconfig-settings-manager \
