@@ -309,6 +309,10 @@ install () {
 }
 
 configure_firefox () {
+    sudo add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora
+    sudo apt-get update
+    sudo apt-get install firefox -y
+
     tmp=`mktemp -d`
     pushd $tmp
     # Adblock Plus
