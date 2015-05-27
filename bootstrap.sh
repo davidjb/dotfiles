@@ -276,6 +276,8 @@ vim_configuration () {
     ln_if_missing "$DIR/powerline/config.json" ~/.config/powerline/
     rm -rf ~/.config/powerline/colorschemes/vim/default.json
     ln_if_missing "$DIR/powerline/colorschemes/vim/default.json" ~/.config/powerline/colorschemes/vim/default.json
+    rm -rf ~/.config/powerline/themes/tmux/default.json
+    ln_if_missing "$DIR/powerline/themes/tmux/default.json" ~/.config/powerline/themes/tmux/default.json
 
     # Powerline font install
     mkdir -p ~/.fonts
