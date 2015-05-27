@@ -61,7 +61,7 @@ fi
 shopt -s nullglob
 for file in ~/.bash_private/*
 do
-    . $file
+    . "$file"
 done
 shopt -u nullglob
 
