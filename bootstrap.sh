@@ -245,7 +245,7 @@ remove () {
 }
 
 vundle () {
-    install_update_git https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    install_update_git https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     vim +BundleInstall +qall
 }
 
