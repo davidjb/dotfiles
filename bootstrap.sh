@@ -108,7 +108,8 @@ dependencies () {
         bower \
         yo \
         gulp \
-        keybase-installer
+        keybase-installer \
+        jpm # Jetpack package manager for Firefox
 
     # Keybase setup
     keybase-installer -p .
