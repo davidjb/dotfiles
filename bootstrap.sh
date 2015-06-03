@@ -102,6 +102,7 @@ dependencies () {
         csslint \
         jsonlint \
         jslint \
+        jshint \
         js-yaml \
         grunt-cli \
         bower \

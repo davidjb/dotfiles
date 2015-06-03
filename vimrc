@@ -76,7 +76,7 @@ let g:syntastic_html_tidy_ignore_errors=[
             \ 'discarding unexpected </tal:',
             \ 'discarding unexpected </metal:'
             \ ]
-let g:syntastic_javascript_checkers = ['jslint']
+let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_json_checkers = ['jsonlint']
 let g:syntastic_python_checkers = ['py3kwarn', 'pylama']
 let g:syntastic_rst_checkers = ['rstcheck']
