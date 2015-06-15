@@ -202,7 +202,9 @@ applications () {
         salt-ssh \
         insync \
         ubuntu-tweak \
-        exfat-utils
+        exfat-utils \
+        nethogs \ # Per-process network activity monitoring
+        wajig # Package management
         #virtualbox-4.3
 
     # Update files in packages
