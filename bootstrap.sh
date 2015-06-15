@@ -325,6 +325,7 @@ install () {
 }
 
 configure_firefox () {
+    #user_pref("browser.cache.disk.parent_directory", "/run/user/1000/firefox-cache");
     sudo add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora
     sudo apt-get update
     sudo apt-get install firefox -y
@@ -343,6 +344,7 @@ configure_firefox () {
     firefox ./*.xpi
     rm -rf "$tmp"
     popd
+
 }
 
 #########################
