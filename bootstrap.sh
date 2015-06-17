@@ -204,7 +204,9 @@ applications () {
         salt-ssh \
         insync \
         ubuntu-tweak \
-        exfat-utils
+        exfat-utils \
+        nethogs \ # Per-process network activity monitoring
+        wajig # Package management
         #virtualbox-4.3
 
     # Update files in packages
@@ -327,6 +329,7 @@ install () {
 }
 
 configure_firefox () {
+    #user_pref("browser.cache.disk.parent_directory", "/run/user/1000/firefox-cache");
     sudo add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora
     sudo apt-get update
     sudo apt-get install firefox -y
@@ -345,6 +348,7 @@ configure_firefox () {
     firefox ./*.xpi
     rm -rf "$tmp"
     popd
+
 }
 
 #########################
