@@ -165,6 +165,8 @@ applications () {
         apt-file \
         nmap \
         gcolor2 \
+        apache2-utils \
+        pavucontrol \
         openjdk-8-jre \
         whois \
         compizconfig-settings-manager \
@@ -245,7 +247,7 @@ remove () {
 }
 
 vundle () {
-    install_update_git https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    install_update_git https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     vim +BundleInstall +qall
 }
 
@@ -276,6 +278,8 @@ vim_configuration () {
     ln_if_missing "$DIR/powerline/config.json" ~/.config/powerline/
     rm -rf ~/.config/powerline/colorschemes/vim/default.json
     ln_if_missing "$DIR/powerline/colorschemes/vim/default.json" ~/.config/powerline/colorschemes/vim/default.json
+    rm -rf ~/.config/powerline/themes/tmux/default.json
+    ln_if_missing "$DIR/powerline/themes/tmux/default.json" ~/.config/powerline/themes/tmux/default.json
 
     # Powerline font install
     mkdir -p ~/.fonts
@@ -323,6 +327,10 @@ install () {
 }
 
 configure_firefox () {
+    sudo add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora
+    sudo apt-get update
+    sudo apt-get install firefox -y
+
     tmp=$(mktemp -d)
     pushd "$tmp"
     # Adblock Plus

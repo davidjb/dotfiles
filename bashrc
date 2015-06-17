@@ -37,6 +37,8 @@ stty -ixon
 
 # Powerline
 powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
 . ~/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh
 
 # Enable programmable completion features for bash
@@ -61,7 +63,7 @@ fi
 shopt -s nullglob
 for file in ~/.bash_private/*
 do
-    . $file
+    . "$file"
 done
 shopt -u nullglob
 
