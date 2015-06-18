@@ -46,7 +46,8 @@ Copyright
 Nope, nothing.  Just use what you'd like, how you'd like to use it.
 Consider this software public domain.
 
-Spot and report an error and win a gold star.
+Spot and report an error and win a gold star.  Drop me a line if what I've
+written here helps you out!
 
 
 To Do

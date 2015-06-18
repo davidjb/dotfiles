@@ -96,3 +96,8 @@ Mass editing files
 Use ``grepedit`` to easily modify a whole bunch of files using your configured
 EDITOR.
 
+Ubuntu on Macbook
+-----------------
+
+* https://help.ubuntu.com/community/AppleKeyboard#Corrections
+* https://help.ubuntu.com/community/MacBook4-1
