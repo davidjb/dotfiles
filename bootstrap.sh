@@ -344,6 +344,8 @@ configure_firefox () {
     wget https://addons.mozilla.org/firefox/downloads/file/274214/vimfx-0.5.14-fx.xpi
     # Firebug
     wget https://addons.mozilla.org/firefox/downloads/latest/1843/addon-1843-latest.xpi
+    # Media Keys
+    wget https://addons.mozilla.org/firefox/downloads/latest/553354/platform:2/addon-553354-latest.xpi
     # Install
     firefox ./*.xpi
     rm -rf "$tmp"
@@ -367,7 +369,7 @@ if [ ! -d ~ ]; then
 fi
 
 install_step "Do you want to install dependencies?" dependencies
-install_step "Do you want to remove existing files?" remove 
+install_step "Do you want to remove existing files?" remove
 install_step "Do you want to install the configuration?" install
 install_step "Re-run Vim's plugin installation?" vundle
 install_step "Re-run YouCompleteMe compilation?" compile_ycm
