@@ -60,7 +60,7 @@ To Do
 
 * Support for multiple operating systems (Mac and Linux)
 * Refinement of vimrc configuration
-  
+
   * Indentation of reST files - changes indent levels but changes
     from implicit to explicit numbering (or unordered to ordered)
   * Python support (refactoring etc)
