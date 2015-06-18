@@ -324,6 +324,9 @@ install () {
     mkdir -p ~/.ssh
     cp_if_missing "$DIR/ssh/config" ~/.ssh/config
 
+    # Enable hiberantion option in menu
+    sudo cp -f "$DIR/etc/com.ubuntu.enable-hibernate.pkla" /etc/polkit-1/localauthority/50-local.d/
+
     # Initialise vim and configuration
     vim_configuration
 }
