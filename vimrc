@@ -121,10 +121,10 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " Auto indent detection
-"Plugin 'ciaranm/detectindent'
-"let g:detectindent_max_lines_to_analyse = 32
-"let g:detectindent_preferred_expandtab = 1
-"let g:detectindent_preferred_indent = 4
+Plugin 'ciaranm/detectindent'
+"let g:detectindent_max_lines_to_analyse = 16
+let g:detectindent_preferred_expandtab = 1
+let g:detectindent_preferred_indent = 4
 
 " Indent guides
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -468,6 +468,9 @@ vnoremap <leader>rv "ey:%s/<C-R>e//gc<left><left><left>
 
 " ;rt - Convert all tabs in document
 nnoremap <leader>rt :retab<CR>
+
+" ;d - Detect indent
+nnoremap <leader>d :DetectIndent<CR>
 
 " ;v - Open vimrc
 nmap <leader>v :tabedit $MYVIMRC<CR>
