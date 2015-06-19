@@ -46,7 +46,8 @@ Copyright
 Nope, nothing.  Just use what you'd like, how you'd like to use it.
 Consider this software public domain.
 
-Spot and report an error and win a gold star.
+Spot and report an error and win a gold star.  Drop me a line if what I've
+written here helps you out!
 
 
 To Do
@@ -60,7 +61,7 @@ To Do
 
 * Support for multiple operating systems (Mac and Linux)
 * Refinement of vimrc configuration
-  
+
   * Indentation of reST files - changes indent levels but changes
     from implicit to explicit numbering (or unordered to ordered)
   * Python support (refactoring etc)
