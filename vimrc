@@ -114,6 +114,12 @@ let g:NERDCustomDelimiters = {
 " File browser and explorer: Nerdtree
 Plugin 'scrooloose/nerdtree'
 
+" Fuzzy file, buffer, mru, tag, etc finder
+Plugin 'kien/ctrlp.vim'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ }
+
 " Auto indent detection
 "Plugin 'ciaranm/detectindent'
 "let g:detectindent_max_lines_to_analyse = 32
