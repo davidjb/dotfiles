@@ -205,8 +205,9 @@ applications () {
         insync \
         ubuntu-tweak \
         exfat-utils \
-        nethogs \ # Per-process network activity monitoring
-        wajig # Package management
+        nethogs \       # Per-process network activity monitoring
+        wajig \         # Package management
+        darktable       # Photograph editing
         #virtualbox-4.3
 
     # Update files in packages
