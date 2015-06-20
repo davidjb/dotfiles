@@ -44,6 +44,7 @@ let g:ycm_server_keep_logfiles = 1
 "let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
 
 " JavaScript parsing and integration with YouCompleteMe
+" Requires ``npm install`` in this directory
 Plugin 'marijnh/tern_for_vim'
 
 " Snippets

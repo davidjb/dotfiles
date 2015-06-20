@@ -273,6 +273,11 @@ vim_configuration () {
     # Install all Vundle bundles
     vundle
 
+    # Tern for Vim
+    pushd ~/.vim/bundle/tern_for_vim
+    npm install
+    popd
+
     # Powerline configuration
     sudo pip install -e ~/.vim/bundle/powerline
     mkdir ~/.config/powerline
