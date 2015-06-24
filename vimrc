@@ -112,6 +112,10 @@ let g:NERDCustomDelimiters = {
    \ 'python': { 'left': '# ', 'leftAlt': '#' },
    \ }
 
+" Graphical undo tree viewer
+Plugin 'simnalamburt/vim-mundo'
+nnoremap <F5> :GundoToggle<CR>
+
 " File browser and explorer: Nerdtree
 Plugin 'scrooloose/nerdtree'
 
@@ -335,6 +339,8 @@ set confirm                                  " Save/exit confirmation
 set list listchars=tab:»·,trail:·,nbsp:·     " Show hidden characters in files
 set mouse=a                                  " Enable mouse support for terminal
 set spelllang=en_au                          " Configure spelling support for AU English
+set undofile                                 " Automatically save persistent undo history
+set undodir=~/.vim/undo                      " Configure undo history location
 let g:mapleader=";"                          " Change the leader key to something typable
 
 " Don't edit these type of files
