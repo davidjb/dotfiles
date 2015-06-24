@@ -122,6 +122,9 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ }
 
+" Most recently used file list
+Plugin 'yegappan/mru'
+
 " Auto indent detection
 Plugin 'ciaranm/detectindent'
 "let g:detectindent_max_lines_to_analyse = 16
