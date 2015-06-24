@@ -124,6 +124,7 @@ let g:ctrlp_custom_ignore = {
 
 " Most recently used file list
 Plugin 'yegappan/mru'
+nnoremap <leader>f :MRU<CR>
 
 " Auto indent detection
 Plugin 'ciaranm/detectindent'
