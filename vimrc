@@ -1,8 +1,4 @@
-"Todo:
-"Actual syntax checking and error highlighting for Python as per work
-" machine.
-" Snippets from Zope -- test if working on given file
-"
+let g:mapleader=";"                          " Change the leader key to something typable
 
 set nocompatible
 filetype off
@@ -114,7 +110,8 @@ let g:NERDCustomDelimiters = {
 
 " Graphical undo tree viewer
 Plugin 'simnalamburt/vim-mundo'
-nnoremap <F5> :GundoToggle<CR>
+let g:gundo_right = 1
+nnoremap <leader>u :GundoToggle<CR>
 
 " File browser and explorer: Nerdtree
 Plugin 'scrooloose/nerdtree'
@@ -344,7 +341,6 @@ set mouse=a                                  " Enable mouse support for terminal
 set spelllang=en_au                          " Configure spelling support for AU English
 set undofile                                 " Automatically save persistent undo history
 set undodir=~/.vim/undo                      " Configure undo history location
-let g:mapleader=";"                          " Change the leader key to something typable
 
 " Don't edit these type of files
 set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.pyo,*.swp
