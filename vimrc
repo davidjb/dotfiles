@@ -202,6 +202,9 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'Rykka/os.vim'
 "Plugin 'Rykka/clickable.vim'
 
+" Statement or structure end keywords
+Plugin 'tpope/vim-endwise'
+
 " Git files
 Plugin 'tpope/vim-git'
 
