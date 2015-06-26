@@ -207,6 +207,7 @@ applications () {
         exfat-utils \
         nethogs \       # Per-process network activity monitoring
         wajig \         # Package management
+        calibre \       # eBook reader
         darktable       # Photograph editing
         #virtualbox-4.3
 
