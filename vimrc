@@ -167,6 +167,9 @@ Plugin 'tpope/vim-ragtag'
 Plugin 'gcmt/breeze.vim'
 let g:breeze_active_filetypes = "*.pt,*.zpt,*.mako,*.php"
 
+" Title case support
+Plugin 'christoomey/vim-titlecase'
+
 " Colour tool
 Plugin 'Rykka/colorv.vim'
 
