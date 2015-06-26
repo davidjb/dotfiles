@@ -277,6 +277,7 @@ vim_configuration () {
     # Tern for Vim
     pushd ~/.vim/bundle/tern_for_vim
     npm install
+    ln_if_missing ~/.vim/bundle/tern-meteor/meteor.js node_modules/tern/plugin/
     popd
 
     # Powerline configuration
