@@ -69,3 +69,6 @@ shopt -u nullglob
 
 #. /usr/local/bin/virtualenvwrapper.sh
 #export WORKON_HOME=~/buildout
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
