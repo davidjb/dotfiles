@@ -1,13 +1,6 @@
 Useful information
 ==================
 
-Tmux
-----
-
-https://github.com/tmux-plugins/tmux-resurrect
-https://github.com/tmux-plugins/tmux-yank
-https://github.com/tmux-plugins/tmux-copycat
-
 Firefox
 -------
 
@@ -101,3 +94,8 @@ Ubuntu on Macbook
 
 * https://help.ubuntu.com/community/AppleKeyboard#Corrections
 * https://help.ubuntu.com/community/MacBook4-1
+
+Heroku
+------
+
+* https://toolbelt.heroku.com/install-ubuntu.sh
