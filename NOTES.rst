@@ -18,6 +18,10 @@ Chrome
 Bash
 ----
 
+* ``!^`` - first argument of last command
+* ``!$`` - last argument of last command
+* Access arguments from previous command ``!!:0``, ``!!:1`` and so on
+
 * ``apropos`` -- search man pages for commands
 * ``cd -`` returns to previous directory
 * ``\command`` - appending a backslash avoids aliasing
@@ -35,7 +39,8 @@ Bash
 
 * Put private bash files into ``.bash_private``. Anything inside this folder
   will be ``source``'d automatically.
-* ``!$`` - last argument of last command
+
+
 
 Default Emacs bindings
 ~~~~~~~~~~~~~~~~~~~~~~
