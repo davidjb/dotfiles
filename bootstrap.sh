@@ -205,6 +205,7 @@ applications () {
         insync \
         ubuntu-tweak \
         exfat-utils \
+        libimage-exiftool-perl \ # exiftool for EXIF tags
         nethogs \       # Per-process network activity monitoring
         wajig \         # Package management
         calibre \       # eBook reader
