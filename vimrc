@@ -265,6 +265,8 @@ Plugin 'syngan/vim-vimlint'
 " GPG support
 Plugin 'jamessan/vim-gnupg'
 "let g:GPGDebugLevel = 5
+let g:GPGPreferArmor = 1
+let g:GPGPreferSign = 1
 let g:GPGDefaultRecipients=[
  \"David Beitey (Work) <david" . nr2char(64) . "davidjb" . "." . "com>",
  \]
@@ -529,7 +531,7 @@ au!
     au FileType json map <leader>jp :%!json_xs -f json -t json-pretty<CR>
     au FileType json map <leader>jm :%!json_xs -f json -t json<CR>
 
-    au BufReadCmd,FileReadCmd *.\(gpg\|asc\|pgp\) call SetGPGOptions()
+    "au BufReadCmd,FileReadCmd *.\(gpg\|asc\|pgp\) call SetGPGOptions()
     au BufNewFile,BufRead *.htm,*.html setlocal filetype=html.css.javascript
     au FileType html.css.javascript setlocal foldmethod=manual
     au FileType html.css.javascript setlocal nocindent
