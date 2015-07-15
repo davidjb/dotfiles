@@ -205,6 +205,7 @@ applications () {
         insync \
         ubuntu-tweak \
         exfat-utils \
+        libimage-exiftool-perl \ # exiftool for EXIF tags
         smbclient \     # Client for SMB resources (printers, etc)
         nethogs \       # Per-process network activity monitoring
         wajig \         # Package management
@@ -382,7 +383,7 @@ if [ ! -d ~ ]; then
 fi
 
 install_step "Do you want to install dependencies?" dependencies
-install_step "Do you want to remove existing files?" remove
+install_step "Do you want to remove existing files?" remove 
 install_step "Do you want to install the configuration?" install
 install_step "Re-run Vim's plugin installation?" vundle
 install_step "Re-run YouCompleteMe compilation?" compile_ycm

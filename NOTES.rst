@@ -1,13 +1,6 @@
 Useful information
 ==================
 
-Tmux
-----
-
-https://github.com/tmux-plugins/tmux-resurrect
-https://github.com/tmux-plugins/tmux-yank
-https://github.com/tmux-plugins/tmux-copycat
-
 Firefox
 -------
 
@@ -24,6 +17,10 @@ Chrome
 
 Bash
 ----
+
+* ``!^`` - first argument of last command
+* ``!$`` - last argument of last command
+* Access arguments from previous command ``!!:0``, ``!!:1`` and so on
 
 * ``apropos`` -- search man pages for commands
 * ``cd -`` returns to previous directory
@@ -42,7 +39,8 @@ Bash
 
 * Put private bash files into ``.bash_private``. Anything inside this folder
   will be ``source``'d automatically.
-* ``!$`` - last argument of last command
+
+
 
 Default Emacs bindings
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -101,3 +99,8 @@ Ubuntu on Macbook
 
 * https://help.ubuntu.com/community/AppleKeyboard#Corrections
 * https://help.ubuntu.com/community/MacBook4-1
+
+Heroku
+------
+
+* https://toolbelt.heroku.com/install-ubuntu.sh
