@@ -72,7 +72,6 @@ dependencies () {
         python3-dev \
         python-setuptools \
         python-pip \
-        ruby-sass \
         shellcheck
     sudo apt-get install -f
 
@@ -111,6 +110,16 @@ dependencies () {
         gulp \
         keybase-installer \
         jpm # Jetpack package manager for Firefox
+
+    # Local Ruby-based tools
+    mkdir -p "$DIR/tools/ruby"
+    pushd "$DIR/tools/ruby"
+    export GEM_HOME=$(pwd)
+    gem install \
+        scss_lint \
+        sass
+    popd
+
 
     # Keybase setup
     keybase-installer -p .
