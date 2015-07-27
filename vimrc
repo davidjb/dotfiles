@@ -68,6 +68,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_css_checkers = ['csslint']
+let g:syntastic_sass_check_partials = 1
 let g:syntastic_html_checkers = ['tidy']
 let g:syntastic_html_tidy_ignore_errors=[
             \ '<tal:',
