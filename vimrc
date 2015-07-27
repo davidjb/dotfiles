@@ -230,7 +230,7 @@ let g:javascript_enable_domhtmlcss = 1
 
 " CSS
 "Plugin 'skammer/vim-css-color'
-"Plugin 'hail2u/vim-css3-syntax'
+Plugin 'hail2u/vim-css3-syntax'
 
 " HTML
 Plugin 'rstacruz/sparkup'
@@ -241,8 +241,12 @@ let g:sparkupMapsNormal = 1
 " LESS
 Plugin 'groenewege/vim-less'
 
-" HAML, SASS, SCSS
-Plugin 'tpope/vim-haml'
+" SASS, SCSS
+Plugin 'cakebaker/scss-syntax.vim'
+
+" HAML
+"Plugin 'tpope/vim-haml'
+
 
 " YAML
 Plugin 'avakhov/vim-yaml'
