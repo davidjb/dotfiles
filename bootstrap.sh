@@ -207,10 +207,12 @@ applications () {
         ubuntu-tweak \
         exfat-utils \
         libimage-exiftool-perl \ # exiftool for EXIF tags
+        smbclient \     # Client for SMB resources (printers, etc)
         nethogs \       # Per-process network activity monitoring
         wajig \         # Package management
         calibre \       # eBook reader
-        darktable       # Photograph editing
+        darktable \     # Photograph editing
+        sshfs           # SSH filesystem support
         #virtualbox-4.3
 
     # Update files in packages

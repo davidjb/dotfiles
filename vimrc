@@ -42,7 +42,10 @@ let g:ycm_server_keep_logfiles = 1
 " JavaScript parsing and integration with YouCompleteMe
 " Requires ``npm install`` in this directory
 Plugin 'marijnh/tern_for_vim'
+let g:tern_show_argument_hints = 'on_move'
 Plugin 'Slava/tern-meteor'
+"Plugin 'slava/vim-spacebars'
+"let g:mustache_abbreviations = 1
 
 " Snippets
 Plugin 'vim-scripts/tlib'
