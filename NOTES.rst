@@ -53,6 +53,8 @@ Default Emacs bindings
 Vim
 ---
 
+* ``=`` or ``==``: re-indent your current line or motion according to your
+  indent expression (aka magically fix your indenting!).
 * ``.vimrc`` files can be locally added to any directory. Files within the
   directory or its children will automatically use that configuration as well
   as the user-level configuration.
