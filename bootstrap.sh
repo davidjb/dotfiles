@@ -113,13 +113,13 @@ dependencies () {
         jpm # Jetpack package manager for Firefox
 
     # Local Ruby-based tools
-    # TODO Needs correct configuration
     mkdir -p "$DIR/tools/ruby"
     pushd "$DIR/tools/ruby"
     export GEM_HOME=$(pwd)
     gem install \
         scss_lint
     popd
+    unset GEM_HOME
 
 
     # Keybase setup
