@@ -72,6 +72,7 @@ dependencies () {
         python3-dev \
         python-setuptools \
         python-pip \
+        ruby-sass \
         shellcheck
     sudo apt-get install -f
 
