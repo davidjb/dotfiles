@@ -9,11 +9,18 @@ call vundle#begin('~/.vim/bundle')
 "Auto installer of plugins
 Plugin 'gmarik/Vundle.vim'
 
+" Local vimrc support
+Plugin 'MarcWeber/vim-addon-local-vimrc'
+
 " Library of common functions
 Plugin 'vim-scripts/ingo-library'
 
-" Local vimrc support
-Plugin 'MarcWeber/vim-addon-local-vimrc'
+" Allow shell commands to run an interactive environment
+Plugin 'christoomey/vim-run-interactive'
+nnoremap <leader>ri :RunInInteractiveShell<space>
+
+" Sugar for shell commands around files
+Plugin 'tpope/vim-eunuch'
 
 " Obsession.vim: window positions and current state
 Plugin 'tpope/vim-obsession'
@@ -103,7 +110,6 @@ let g:delimitMate_jump_expansion = 1
 
 " Coloured matching parentheses
 Plugin 'kien/rainbow_parentheses.vim'
-
 
 " Intense commenting superpower
 Plugin 'scrooloose/nerdcommenter'
