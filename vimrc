@@ -579,6 +579,12 @@ au!
     " rst documents - ensure . isn't part of character ranges
     au FileType rst set iskeyword-=. | set textwidth=78 | set formatoptions-=c
 
+    " Configure automatic spell checking
+    au FileType rst,markdown,gitcommit setlocal spell
+
+    " Automatic wrapping
+    au FileType markdown set textwidth=80
+
     " Python-specific filetype customisations 
     " Fix smart indenting of Python comments
     au FileType python inoremap # X<c-h>#
