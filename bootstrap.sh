@@ -72,6 +72,7 @@ dependencies () {
         python3-dev \
         python-setuptools \
         python-pip \
+        ruby-dev \
         ruby-sass \
         shellcheck
     sudo apt-get install -f
@@ -116,8 +117,10 @@ dependencies () {
     mkdir -p "$DIR/tools/ruby"
     pushd "$DIR/tools/ruby"
     export GEM_HOME=$(pwd)
+    echo "export GEM_HOME=$GEM_HOME" > .env
     gem install \
-        scss_lint
+        scss_lint \
+        compass
     popd
     unset GEM_HOME
 
