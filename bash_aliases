@@ -22,6 +22,7 @@ alias ......="cd ../../../../.."
 alias c='clear'
 alias o='gnome-open'
 alias monitor-off='xset dpms force off'
+alias path='echo $PATH | tr -s ":" "\n"' # Pretty print the PATH
 alias ack='ACK_PAGER_COLOR="less -x4SRFX" /usr/bin/ack-grep -a -C 1 --follow'
 alias apt-whatprovides='apt-cache policy'
 alias calc='gnome-calculator &'
