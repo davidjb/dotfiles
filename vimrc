@@ -234,6 +234,9 @@ let g:javascript_enable_domhtmlcss = 1
 Plugin 'hail2u/vim-css3-syntax'
 
 " HTML
+Plugin 'othree/html5.vim'
+let g:html_indent_tags = 'li\|p'
+
 Plugin 'rstacruz/sparkup'
 let g:sparkupExecuteMapping = '<Leader>h'
 let g:sparkupNextMapping = '<Leader>n'
@@ -540,15 +543,9 @@ au!
     au FileType json map <leader>jm :%!json_xs -f json -t json<CR>
 
     "au BufReadCmd,FileReadCmd *.\(gpg\|asc\|pgp\) call SetGPGOptions()
-    au BufNewFile,BufRead *.htm,*.html setlocal filetype=html.css.javascript
-    au FileType html.css.javascript setlocal foldmethod=manual
-    au FileType html.css.javascript setlocal nocindent
-    au FileType html.css.javascript SyntasticToggleMode
 
-    au BufNewFile,BufRead *.css setlocal filetype=css
-    au BufNewFile,BufRead *.sass setlocal filetype=sass
-
-    au FileType less let g:ycm_seed_identifiers_with_syntax = 1
+    " Allow stylesheets to autocomplete hyphenated words
+    au FileType css,scss,sass setlocal iskeyword+=-
 
     au BufNewFile,BufRead *.rb,*.rbw,*.gem,*.gemspec,[rR]akefile,*.rake,*.thor,Vagrantfile setlocal filetype=ruby
     au BufNewFile,BufRead *.erb setlocal filetype=eruby
