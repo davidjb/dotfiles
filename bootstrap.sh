@@ -120,7 +120,8 @@ dependencies () {
     echo "export GEM_HOME=$GEM_HOME" > .env
     gem install \
         scss_lint \
-        compass
+        compass \
+        mdl
     popd
     unset GEM_HOME
 
@@ -220,6 +221,7 @@ applications () {
         ubuntu-tweak \
         exfat-utils \
         libimage-exiftool-perl \ # exiftool for EXIF tags
+        discount \      # Markdown tools -- get it?
         smbclient \     # Client for SMB resources (printers, etc)
         nethogs \       # Per-process network activity monitoring
         wajig \         # Package management
