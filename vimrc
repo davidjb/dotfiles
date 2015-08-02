@@ -348,7 +348,6 @@ set hlsearch                                        " Highlight search results
 set incsearch                                       " Incrementally search for results
 set history=1000                                    " Increased history size
 set showfulltag                                     " Show tag and tidied search pattern as match 
-set showmode                                        " Show type of mode being used
 set noerrorbells                                    " Don't bell or blink
 set splitbelow                                      " New splits open below
 set splitright                                      " New splits open to the right
