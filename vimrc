@@ -1,10 +1,10 @@
 let g:mapleader=";"                          " Change the leader key to something typable
 
 set nocompatible
-filetype off
 set t_Co=256
-set rtp+=~/.vim/bundle/Vundle.vim
 call plug#begin('~/.vim/bundle')
+
+let g:plug_shallow = 0
 
 " Local vimrc support
 Plug 'MarcWeber/vim-addon-local-vimrc'
@@ -312,9 +312,6 @@ call plug#end()
 """"""""""""""""""""
 "Extra configuration
 """"""""""""""""""""
-syntax on                         " Syntax highlighting
-filetype plugin on                " Filetype detection, required by Vundle
-filetype plugin indent on         " Indentation
 " VVV Experimental
 set display+=lastline
 set tabpagemax=50
