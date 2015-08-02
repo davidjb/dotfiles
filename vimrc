@@ -1,30 +1,34 @@
 let g:mapleader=";"                          " Change the leader key to something typable
 
 set nocompatible
-filetype off
 set t_Co=256
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin('~/.vim/bundle')
+call plug#begin('~/.vim/bundle')
 
-"Auto installer of plugins
-Plugin 'gmarik/Vundle.vim'
-
-" Library of common functions
-Plugin 'vim-scripts/ingo-library'
+let g:plug_shallow = 0
 
 " Local vimrc support
-Plugin 'MarcWeber/vim-addon-local-vimrc'
+Plug 'MarcWeber/vim-addon-local-vimrc'
+
+" Library of common functions
+Plug 'vim-scripts/ingo-library'
+
+" Allow shell commands to run an interactive environment
+Plug 'christoomey/vim-run-interactive'
+nnoremap <leader>ri :RunInInteractiveShell<space>
+
+" Sugar for shell commands around files
+Plug 'tpope/vim-eunuch'
 
 " Obsession.vim: window positions and current state
-Plugin 'tpope/vim-obsession'
+Plug 'tpope/vim-obsession'
 
 " Open file:line formatted input
-Plugin 'bogado/file-line'
+Plug 'bogado/file-line'
 
 " Completion support; requires Vim 7.3.584
 " Press <TAB> to complete, <C-Space> to semantically complete
 " Automatically integrates with Ultisnips
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 let g:ycm_complete_in_comments = 1
 let g:ycm_use_ultisnips_completer = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
@@ -41,17 +45,17 @@ let g:ycm_server_keep_logfiles = 1
 
 " JavaScript parsing and integration with YouCompleteMe
 " Requires ``npm install`` in this directory
-Plugin 'marijnh/tern_for_vim'
+Plug 'marijnh/tern_for_vim', { 'for': 'javascript' }
 let g:tern_show_argument_hints = 'on_move'
-Plugin 'Slava/tern-meteor'
-"Plugin 'slava/vim-spacebars'
+Plug 'Slava/tern-meteor', { 'for': 'javascript' }
+"Plug 'slava/vim-spacebars'
 "let g:mustache_abbreviations = 1
 
 " Snippets
-Plugin 'vim-scripts/tlib'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'zedr/zope-snipmate-bundle'
+Plug 'vim-scripts/tlib'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'zedr/zope-snipmate-bundle'
 "let g:UltiSnips = {}
 let g:UltiSnipsExpandTrigger="<c-x>"    " Compatibility with YouCompleteMe
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
@@ -59,10 +63,10 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "   let g:UltiSnipsSnippetDirectories=["UltiSnips", "mycoolsnippets"]
 
 " Uber status bar improvement
-Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " Syntax checking for Vim
-Plugin 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_error_symbol = '✗'
@@ -89,24 +93,23 @@ let g:syntastic_rst_rstcheck_quiet_messages = {"regex": [
 let g:syntastic_yaml_checkers = ['jsyaml']
 
 " <leader><leader> movement to anywhere - w (words), f (chars), j (lines)
-Plugin 'Lokaltog/vim-easymotion'
+Plug 'Lokaltog/vim-easymotion'
 
 " Git management: Gstatus, Gcommit, Gblame, Gmove, Ggrep, Gbrowse
 " Use with -/p for status and patching.
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " Insert-mode autocompletion for quotes, parentheses & brackets
-Plugin 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 let g:delimitMate_expand_space = 1
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_jump_expansion = 1
 
 " Coloured matching parentheses
-Plugin 'kien/rainbow_parentheses.vim'
-
+Plug 'kien/rainbow_parentheses.vim'
 
 " Intense commenting superpower
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 let g:NERDCustomDelimiters = {
    \ 'yaml': { 'left': '#' },
    \ 'sls': { 'left': '#' },
@@ -114,39 +117,39 @@ let g:NERDCustomDelimiters = {
    \ }
 
 " Graphical undo tree viewer
-Plugin 'simnalamburt/vim-mundo'
+Plug 'simnalamburt/vim-mundo'
 let g:gundo_right = 1
 nnoremap <leader>u :GundoToggle<CR>
 
 " File browser and explorer: Nerdtree
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " Fuzzy file, buffer, mru, tag, etc finder
-Plugin 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ }
 
 " Most recently used file list
-Plugin 'yegappan/mru'
+Plug 'yegappan/mru'
 nnoremap <leader>f :MRU<CR>
 
 " Auto indent detection
-Plugin 'ciaranm/detectindent'
+Plug 'ciaranm/detectindent'
 "let g:detectindent_max_lines_to_analyse = 16
 let g:detectindent_preferred_expandtab = 1
 let g:detectindent_preferred_indent = 4
 
 " Indent guides
-Plugin 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
 " Browser for tags (classes, functions etc) within source code files
-Plugin 'jszakmeister/rst2ctags'
-Plugin 'majutsushi/tagbar'
+Plug 'jszakmeister/rst2ctags'
+Plug 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 let g:tagbar_sort = 0
@@ -166,112 +169,115 @@ let g:tagbar_type_rst = {
 \ }
 
 " Tag handling
-Plugin 'tpope/vim-ragtag'
+Plug 'tpope/vim-ragtag'
 
 " Tag movement
-Plugin 'gcmt/breeze.vim'
+Plug 'gcmt/breeze.vim'
 let g:breeze_active_filetypes = "*.pt,*.zpt,*.mako,*.php"
 
 " Title case support
-Plugin 'christoomey/vim-titlecase'
+Plug 'christoomey/vim-titlecase'
 
 " Colour tool
-Plugin 'Rykka/colorv.vim'
+Plug 'Rykka/colorv.vim', { 'for': ['css', 'sass', 'scss', 'javascript', 'html'] }
 
 " Repeat support for .
-Plugin 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
 
 " Repeat support for visual selection
-Plugin 'vim-scripts/visualrepeat'
+Plug 'vim-scripts/visualrepeat'
 
 " Ability to easily change surrounding elements (eg cs[from][to])
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 let g:surround_{char2nr('t')} = "``\r``"
 let g:surround_{char2nr('e')} = "**\r**"
 
 " Sets of useful mappings about [ and ] & toggles for options
 " such as cos (spelling) and coh (highlighting)
-Plugin 'tpope/vim-unimpaired'
+Plug 'tpope/vim-unimpaired'
 
 " Alignment for C-style variables, definitions, comments, tables
-Plugin 'vim-scripts/Align'
+Plug 'vim-scripts/Align'
 
 " Sudo editing support
-Plugin 'chrisbra/SudoEdit.vim'
+Plug 'chrisbra/SudoEdit.vim'
 let g:sudo_no_gui=1
 
 " Tmux compatibility support
-Plugin 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 
 
 """"""""""""""""""""""""""""""""
 " Sytax/filetype support bundles
 """"""""""""""""""""""""""""""""
 " Clickable links
-Plugin 'Rykka/os.vim'
-"Plugin 'Rykka/clickable.vim'
+Plug 'Rykka/os.vim'
+"Plug 'Rykka/clickable.vim'
 
 " Statement or structure end keywords
-Plugin 'tpope/vim-endwise'
+Plug 'tpope/vim-endwise'
 
 " Git files
-Plugin 'tpope/vim-git'
+Plug 'tpope/vim-git'
 
 " JSON
-Plugin 'leshill/vim-json'
+Plug 'leshill/vim-json'
 
 " JavaScript
 " XXX Research options
-"Plugin 'davidjb/vim-web-indent'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'pangloss/vim-javascript'
+"Plug 'davidjb/vim-web-indent'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'pangloss/vim-javascript'
 " XXX see https://github.com/othree/javascript-libraries-syntax.vim
-Plugin 'othree/javascript-libraries-syntax.vim'
+Plug 'othree/javascript-libraries-syntax.vim'
 let g:javascript_enable_domhtmlcss = 1
 
 " CSS
-"Plugin 'skammer/vim-css-color'
-Plugin 'hail2u/vim-css3-syntax'
+"Plug 'skammer/vim-css-color'
+Plug 'hail2u/vim-css3-syntax'
 
 " HTML
-Plugin 'rstacruz/sparkup'
+Plug 'othree/html5.vim'
+let g:html_indent_tags = 'li\|p'
+
+Plug 'rstacruz/sparkup'
 let g:sparkupExecuteMapping = '<Leader>h'
 let g:sparkupNextMapping = '<Leader>n'
 let g:sparkupMapsNormal = 1
 
 " LESS
-Plugin 'groenewege/vim-less'
+Plug 'groenewege/vim-less'
 
 " SASS, SCSS
-Plugin 'cakebaker/scss-syntax.vim'
+Plug 'cakebaker/scss-syntax.vim'
 
 " HAML
-"Plugin 'tpope/vim-haml'
+"Plug 'tpope/vim-haml'
 
 
 " YAML
-Plugin 'avakhov/vim-yaml'
+Plug 'avakhov/vim-yaml'
 
 " reST - Highlight DocStrings in Python files
 " Improvement for auto-numbered lists
 " See https://github.com/Rykka/riv.vim/pull/59
-Plugin 'Rykka/riv.vim'
+Plug 'Rykka/riv.vim'
 let g:riv_python_rst_hl = 1
 let g:riv_ignored_vmaps='>,<'
 
 " Salt SLS
-Plugin 'saltstack/salt-vim'
+Plug 'saltstack/salt-vim'
 let g:sls_use_jinja_syntax = 1
 
 " Jinja2
-Plugin 'Glench/Vim-Jinja2-Syntax'
+Plug 'Glench/Vim-Jinja2-Syntax'
 
 " VimL Checking
-Plugin 'ynkdir/vim-vimlparser'
-Plugin 'syngan/vim-vimlint'
+Plug 'ynkdir/vim-vimlparser'
+Plug 'syngan/vim-vimlint'
 
 " GPG support
-Plugin 'jamessan/vim-gnupg'
+Plug 'jamessan/vim-gnupg'
 "let g:GPGDebugLevel = 5
 let g:GPGPreferArmor = 1
 let g:GPGPreferSign = 1
@@ -285,7 +291,7 @@ function! SetGPGOptions()
 endfunction
 
 " Python editng superpowers
-Plugin 'klen/python-mode'
+Plug 'klen/python-mode'
 let g:pymode_lint_on_write = 0 | let g:pymode_lint_message = 0 | let g:pymode_syntax = 0 | let g:pymode_syntax_all = 0 | let g:pymode_trim_whitespaces = 0
 let g:pymode_rope_show_doc_bind = '<c-e>d'
 let g:pymode_rope = 0
@@ -297,68 +303,66 @@ let g:pymode_rope_autoimport_import_after_complete = 1
 "
 
 " Tmux
-Plugin 'tmux-plugins/vim-tmux'
+Plug 'tmux-plugins/vim-tmux'
 
-" All Plugin calls must be above here!
-call vundle#end()
+" All Plug calls must be above here!
+call plug#end()
 
 
 """"""""""""""""""""
 "Extra configuration
 """"""""""""""""""""
-syntax on                         " Syntax highlighting
-filetype plugin on                " Filetype detection, required by Vundle
-filetype plugin indent on         " Indentation
 " VVV Experimental
-set ttimeout
-set ttimeoutlen=100
 set display+=lastline
 set tabpagemax=50
 " ^^^ Exterimental
-set wildmode=longest,list                    " Bash-like filename completion
-set wildmenu                                 " Enable command line completion
-set autoread                                 " Automatically re-read unchanged files
-set fileformats+=mac                         " Enable EOL detection for Mac files
-set autoindent                               " Copy indent to new line
-set backspace=indent,eol,start               " Backspace over everything
-set background=light                         " Explicitly set background color
-set encoding=utf-8                           " Set preferred char encoding
-set formatoptions-=t                         " Stop auto wrapping of text
-set nrformats-=octal                         " Avoid numbers with leading zeros
-set scrolloff=5                              " Keep x lines above an below the cursor
-set smartindent                              " Intelligent identing
-set smarttab                                 " Tab char at start of line
-set expandtab                                " Expand tabs to spaces
-set tabstop=4                                " Tabs are this wide
-set shiftwidth=4                             " Shifting is this wide
-set softtabstop=4                            " Tabs are this wide
-set shiftround                               " Round indent to multiples of shiftwidth
-set matchpairs+=<:>                          " Highlight char pairs
-set foldmethod=syntax                        " By default, use syntax to determine folds
-set foldlevelstart=99                        " All folds open by default
-set ignorecase                               " Case insensitive searches
-set smartcase                                " ...unless Vim thinks otherwise.
-set hlsearch                                 " Highlight search results
-set incsearch                                " Incrementally search for results
-set history=1000                             " Increased history size
-set showfulltag                              " Show tag and tidied search pattern as match 
-set showmode                                 " Show type of mode being used
-set noerrorbells                             " Don't bell or blink
-set splitbelow                               " New splits open below
-set splitright                               " New splits open to the right
-set showcmd                                  " Show paritial command at bottom of screen
-set shortmess+=a                             " Use short statuses for [+] [RO] [w]
-set number                                   " Turn line numbering on
-set ruler                                    " Turn line number and column cursor on
-set report=0                                 " Always report if any lines changed
-set laststatus=2                             " Always show status line
-set noshowmode                               " Hide the default mode text below statusline
-set confirm                                  " Save/exit confirmation
-set list listchars=tab:»·,trail:·,nbsp:·     " Show hidden characters in files
-set mouse=a                                  " Enable mouse support for terminal
-set spelllang=en_au                          " Configure spelling support for AU English
-set undofile                                 " Automatically save persistent undo history
-set undodir=~/.vim/undo                      " Configure undo history location
+set ttimeout                                        " Time out when entering keycodes
+set ttimeoutlen=100                                 " Set timeout for keycodes
+set wildmode=list:longest,list:full                 " Configure command/filename completion
+set wildmenu                                        " Enable command line completion
+set autoread                                        " Automatically re-read unchanged files
+set fileformats+=mac                                " Enable EOL detection for Mac files
+set autoindent                                      " Copy indent to new line
+set backspace=indent,eol,start                      " Backspace over everything
+set background=light                                " Explicitly set background color
+set encoding=utf-8                                  " Set preferred char encoding
+set formatoptions-=t                                " Stop auto wrapping of text
+set nrformats-=octal                                " Avoid numbers with leading zeros
+set scrolloff=5                                     " Keep x lines above an below the cursor
+set smartindent                                     " Intelligent identing
+set smarttab                                        " Tab char at start of line
+set expandtab                                       " Expand tabs to spaces
+set tabstop=4                                       " Tabs are this wide
+set shiftwidth=4                                    " Shifting is this wide
+set softtabstop=4                                   " Tabs are this wide
+set shiftround                                      " Round indent to multiples of shiftwidth
+set matchpairs+=<:>                                 " Highlight char pairs
+set foldmethod=syntax                               " By default, use syntax to determine folds
+set foldlevelstart=99                               " All folds open by default
+set ignorecase                                      " Case insensitive searches
+set smartcase                                       " ...unless Vim thinks otherwise.
+set hlsearch                                        " Highlight search results
+set incsearch                                       " Incrementally search for results
+set history=1000                                    " Increased history size
+set showfulltag                                     " Show tag and tidied search pattern as match 
+set noerrorbells                                    " Don't bell or blink
+set splitbelow                                      " New splits open below
+set splitright                                      " New splits open to the right
+set showcmd                                         " Show paritial command at bottom of screen
+set shortmess+=a                                    " Use short statuses for [+] [RO] [w]
+set number                                          " Turn line numbering on
+set ruler                                           " Turn line number and column cursor on
+set report=0                                        " Always report if any lines changed
+set laststatus=2                                    " Always show status line
+set noshowmode                                      " Hide the default mode text below statusline
+set confirm                                         " Save/exit confirmation
+set list listchars=tab:»·,trail:·,nbsp:·            " Show hidden characters in files
+set mouse=a                                         " Enable mouse support for terminal
+set spelllang=en_au                                 " Configure spelling support for AU English
+set spellfile=~/dotfiles/vim-spelling.utf-8.add     " Configure permanent spellfile location
+set complete+=kspell                                " Autocomplete via dictionary during spellcheck
+set undofile                                        " Automatically save persistent undo history
+set undodir=~/.vim/undo                             " Configure undo history location
 
 " Don't edit these type of files
 set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.pyo,*.swp
@@ -540,15 +544,9 @@ au!
     au FileType json map <leader>jm :%!json_xs -f json -t json<CR>
 
     "au BufReadCmd,FileReadCmd *.\(gpg\|asc\|pgp\) call SetGPGOptions()
-    au BufNewFile,BufRead *.htm,*.html setlocal filetype=html.css.javascript
-    au FileType html.css.javascript setlocal foldmethod=manual
-    au FileType html.css.javascript setlocal nocindent
-    au FileType html.css.javascript SyntasticToggleMode
 
-    au BufNewFile,BufRead *.css setlocal filetype=css
-    au BufNewFile,BufRead *.sass setlocal filetype=sass
-
-    au FileType less let g:ycm_seed_identifiers_with_syntax = 1
+    " Allow stylesheets to autocomplete hyphenated words
+    au FileType css,scss,sass setlocal iskeyword+=-
 
     au BufNewFile,BufRead *.rb,*.rbw,*.gem,*.gemspec,[rR]akefile,*.rake,*.thor,Vagrantfile setlocal filetype=ruby
     au BufNewFile,BufRead *.erb setlocal filetype=eruby
@@ -581,6 +579,12 @@ au!
     au FileType rst inoremap <NL> <esc>:RivListNew<CR>A
     " rst documents - ensure . isn't part of character ranges
     au FileType rst set iskeyword-=. | set textwidth=78 | set formatoptions-=c
+
+    " Configure automatic spell checking
+    au FileType rst,markdown,gitcommit setlocal spell
+
+    " Automatic wrapping
+    au FileType markdown set textwidth=80
 
     " Python-specific filetype customisations 
     " Fix smart indenting of Python comments

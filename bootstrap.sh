@@ -329,6 +329,9 @@ vim_configuration () {
 
     # Compile YCM support
     compile_ycm
+
+    # Spelling
+    vim +"mkspell $DIR/vim-spelling.utf-8.add" +qall
 }
 
 sync_dotfiles() {
