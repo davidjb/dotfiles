@@ -316,11 +316,11 @@ syntax on                         " Syntax highlighting
 filetype plugin on                " Filetype detection, required by Vundle
 filetype plugin indent on         " Indentation
 " VVV Experimental
-set ttimeout
-set ttimeoutlen=100
 set display+=lastline
 set tabpagemax=50
 " ^^^ Exterimental
+set ttimeout                                        " Time out when entering keycodes
+set ttimeoutlen=100                                 " Set timeout for keycodes
 set wildmode=list:longest,list:full                 " Configure command/filename completion
 set wildmenu                                        " Enable command line completion
 set autoread                                        " Automatically re-read unchanged files
