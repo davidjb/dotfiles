@@ -91,7 +91,8 @@ dependencies () {
         pygments \
         dotfiles \
         nodeenv \
-        thefuck
+        thefuck \
+        caniusepython3
     pip install http://projects.bigasterisk.com/grepedit-1.0.tar.gz
     deactivate
     popd
