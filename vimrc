@@ -9,6 +9,10 @@ let g:plug_shallow = 0
 " Local vimrc support
 Plug 'MarcWeber/vim-addon-local-vimrc'
 
+" EditorConfig file support
+Plug 'editorconfig/editorconfig-vim'
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
 " Library of common functions
 Plug 'vim-scripts/ingo-library'
 
