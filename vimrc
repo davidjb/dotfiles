@@ -543,6 +543,9 @@ au!
     au Syntax * RainbowParenthesesLoadSquare
     au Syntax * RainbowParenthesesLoadBraces
 
+    " Salt roster files
+    au BufNewFile,BufRead roster,master set filetype=yaml
+
     " Different types of file support 
     au FileType json map <leader>jp :%!json_xs -f json -t json-pretty<CR>
     au FileType json map <leader>jm :%!json_xs -f json -t json<CR>
