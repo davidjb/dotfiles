@@ -228,6 +228,7 @@ applications () {
         wajig \         # Package management
         calibre \       # eBook reader
         darktable \     # Photograph editing
+        ncdu \          # Terminal-based disk usage analyser
         sshfs           # SSH filesystem support
         #virtualbox-4.3
 
