@@ -258,9 +258,11 @@ Plug 'cakebaker/scss-syntax.vim'
 " HAML
 "Plug 'tpope/vim-haml'
 
-
 " YAML
 Plug 'avakhov/vim-yaml'
+
+" Markdown
+Plug 'gabrielelana/vim-markdown'
 
 " reST - Highlight DocStrings in Python files
 " Improvement for auto-numbered lists
