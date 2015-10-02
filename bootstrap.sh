@@ -228,6 +228,7 @@ applications () {
         wajig \         # Package management
         calibre \       # eBook reader
         darktable \     # Photograph editing
+        audacity \      # Audio editing
         sshfs           # SSH filesystem support
         #virtualbox-4.3
 
