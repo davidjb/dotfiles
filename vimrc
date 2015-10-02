@@ -258,9 +258,11 @@ Plug 'cakebaker/scss-syntax.vim'
 " HAML
 "Plug 'tpope/vim-haml'
 
-
 " YAML
 Plug 'avakhov/vim-yaml'
+
+" Markdown
+Plug 'gabrielelana/vim-markdown'
 
 " reST - Highlight DocStrings in Python files
 " Improvement for auto-numbered lists
@@ -542,6 +544,9 @@ au!
     au Syntax * RainbowParenthesesLoadRound
     au Syntax * RainbowParenthesesLoadSquare
     au Syntax * RainbowParenthesesLoadBraces
+
+    " Salt roster files
+    au BufNewFile,BufRead roster,master set filetype=yaml
 
     " Different types of file support 
     au FileType json map <leader>jp :%!json_xs -f json -t json-pretty<CR>

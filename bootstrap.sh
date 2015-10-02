@@ -229,8 +229,12 @@ applications () {
         calibre \       # eBook reader
         darktable \     # Photograph editing
         audacity \      # Audio editing
+        ncdu \          # Terminal-based disk usage analyser
         sshfs           # SSH filesystem support
         #virtualbox-4.3
+
+    # Install Asian language support for EPS and Inkscape
+    sudo apt-get install texlive-lang-cjk --no-install-recommends
 
     # Update files in packages
     sudo apt-file update
