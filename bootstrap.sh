@@ -230,6 +230,7 @@ applications () {
         darktable \     # Photograph editing
         audacity \      # Audio editing
         ncdu \          # Terminal-based disk usage analyser
+        bleachbit \     # File cleaner for Linux
         sshfs           # SSH filesystem support
         #virtualbox-4.3
 
