@@ -78,6 +78,9 @@ do
 done
 shopt -u nullglob
 
+# Tab completion for Grunt
+eval "$(grunt --completion=bash)"
+
 #. /usr/local/bin/virtualenvwrapper.sh
 #export WORKON_HOME=~/buildout
 

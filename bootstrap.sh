@@ -276,9 +276,10 @@ remove () {
         ~/.vim
 }
 
-vundle () {
-    install_update_git https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-    vim +BundleInstall +qall
+vim_plug () {
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    vim +PlugInstall +qall
 }
 
 compile_ycm () {
@@ -297,8 +298,8 @@ vim_configuration () {
         echo 16384 | sudo tee /proc/sys/fs/inotify/max_user_watches
     fi
 
-    # Install all Vundle bundles
-    vundle
+    # Install all plugins and plugin manager
+    vim_plug
 
     # Tern for Vim
     pushd ~/.vim/bundle/tern_for_vim
@@ -409,9 +410,9 @@ if [ ! -d ~ ]; then
 fi
 
 install_step "Do you want to install dependencies?" dependencies
-install_step "Do you want to remove existing files?" remove 
+install_step "Do you want to remove existing files?" remove
 install_step "Do you want to install the configuration?" install
-install_step "Re-run Vim's plugin installation?" vundle
+install_step "Re-run Vim's plugin installation?" vim_plug
 install_step "Re-run YouCompleteMe compilation?" compile_ycm
 install_step "Do you want to install applications?" applications
 install_step "Do you want to configure Google Drive aliases?" google_drive

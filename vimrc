@@ -56,10 +56,8 @@ Plug 'Slava/tern-meteor', { 'for': 'javascript' }
 "let g:mustache_abbreviations = 1
 
 " Snippets
-Plug 'vim-scripts/tlib'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'zedr/zope-snipmate-bundle'
+"Plug 'vim-scripts/tlib'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' | Plug 'zedr/zope-snipmate-bundle'
 "let g:UltiSnips = {}
 let g:UltiSnipsExpandTrigger="<c-x>"    " Compatibility with YouCompleteMe
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
