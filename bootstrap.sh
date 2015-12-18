@@ -97,10 +97,8 @@ dependencies () {
     deactivate
     popd
 
-    # Local Node.js based tools
-    mkdir -p "$DIR/tools/nodejs"
-    pushd "$DIR/tools/nodejs"
-    npm install \
+    # Local Node.js based tools, directory configured in ~/.npmrc
+    npm install -g \
         less \
         csslint \
         jsonlint \
