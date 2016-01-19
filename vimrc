@@ -484,6 +484,9 @@ vmap <c-c> "+y
 nmap <c-v> :set paste<CR>"+gp:set nopaste<CR>
 "imap <c-v> <esc><c-v>i
 
+" Control + R - visual selection replacement
+vnoremap <C-r> "hy:%s/\(<C-r>h\)//gc<left><left><left>
+
 " ;e - Shortcut for syntax checking
 map <leader>e :SyntasticCheck<CR>:Errors<CR>
 
