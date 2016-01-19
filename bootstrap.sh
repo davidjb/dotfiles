@@ -179,6 +179,7 @@ applications () {
     sudo apt-get install -y \
         molly-guard \
         apt-file \
+        dconf-editor \
         nmap \
         gcolor2 \
         apache2-utils \
