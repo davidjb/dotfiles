@@ -232,7 +232,8 @@ applications () {
         audacity \      # Audio editing
         ncdu \          # Terminal-based disk usage analyser
         bleachbit \     # File cleaner for Linux
-        sshfs           # SSH filesystem support
+        sshfs \         # SSH filesystem support
+        gtk-recordmydesktop # Screen recording
         #virtualbox-4.3
 
     # Install Asian language support for EPS and Inkscape
