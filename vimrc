@@ -232,6 +232,7 @@ Plug 'pangloss/vim-javascript'
 " XXX see https://github.com/othree/javascript-libraries-syntax.vim
 Plug 'othree/javascript-libraries-syntax.vim'
 let g:javascript_enable_domhtmlcss = 1
+Plug 'moll/vim-node'
 
 " CSS
 "Plug 'skammer/vim-css-color'
