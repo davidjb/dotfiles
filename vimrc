@@ -48,8 +48,7 @@ let g:ycm_server_keep_logfiles = 1
 "let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
 
 " JavaScript parsing and integration with YouCompleteMe
-" Requires ``npm install`` in this directory
-Plug 'marijnh/tern_for_vim', { 'for': 'javascript' }
+Plug 'marijnh/tern_for_vim', { 'for': 'javascript', 'do': 'npm install' }
 let g:tern_show_argument_hints = 'on_move'
 Plug 'Slava/tern-meteor', { 'for': 'javascript' }
 "Plug 'slava/vim-spacebars'
