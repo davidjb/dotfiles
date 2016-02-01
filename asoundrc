@@ -1,5 +1,2 @@
-pcm.!default {
-    type linear
-    slave.pcm pulse
-}
-
+pcm.!default { type pulse  }
+ctl.!default { type pulse  }
