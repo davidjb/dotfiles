@@ -330,6 +330,7 @@ set backspace=indent,eol,start                      " Backspace over everything
 set background=light                                " Explicitly set background color
 set encoding=utf-8                                  " Set preferred char encoding
 set formatoptions-=t                                " Stop auto wrapping of text
+set formatoptions+=j                                " Remove comment leaders when joining lines
 set nrformats-=octal                                " Avoid numbers with leading zeros
 set scrolloff=5                                     " Keep x lines above an below the cursor
 set smartindent                                     " Intelligent identing
@@ -596,7 +597,7 @@ au!
     au FileType rst,gitcommit setlocal spell
 
     " Automatic wrapping
-    au FileType markdown set textwidth=80
+    au FileType markdown setlocal textwidth=78 formatoptions-=c
 
     " Python-specific filetype customisations
     " Fix smart indenting of Python comments
