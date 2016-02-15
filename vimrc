@@ -173,8 +173,7 @@ let g:tagbar_type_rst = {
 Plug 'tpope/vim-ragtag'
 
 " Tag movement
-Plug 'gcmt/breeze.vim'
-let g:breeze_active_filetypes = "*.pt,*.zpt,*.mako,*.php"
+Plug 'gcmt/breeze.vim', { 'for': ['*.pt', '*.zpt', 'mako', 'php'] }
 
 " Title case support
 Plug 'christoomey/vim-titlecase'
@@ -182,7 +181,7 @@ Plug 'christoomey/vim-titlecase'
 " Colour tool
 Plug 'Rykka/colorv.vim', { 'for': ['css', 'sass', 'scss', 'javascript', 'html'] }
 
-" Repeat support for .
+" Repeat support for ``.`` (dot, period)
 Plug 'tpope/vim-repeat'
 
 " Repeat support for visual selection
@@ -248,7 +247,7 @@ let g:sparkupNextMapping = '<Leader>n'
 let g:sparkupMapsNormal = 1
 
 " LESS
-Plug 'groenewege/vim-less'
+" Plug 'groenewege/vim-less'
 
 " SASS, SCSS
 Plug 'cakebaker/scss-syntax.vim'
@@ -257,15 +256,15 @@ Plug 'cakebaker/scss-syntax.vim'
 "Plug 'tpope/vim-haml'
 
 " YAML
-Plug 'avakhov/vim-yaml'
+Plug 'avakhov/vim-yaml', { 'for': 'yaml' }
 
 " Markdown
-Plug 'gabrielelana/vim-markdown'
+Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
 
 " reST - Highlight DocStrings in Python files
 " Improvement for auto-numbered lists
 " See https://github.com/Rykka/riv.vim/pull/59
-Plug 'Rykka/riv.vim'
+Plug 'Rykka/riv.vim', { 'for': 'rst' }
 let g:riv_python_rst_hl = 1
 let g:riv_ignored_vmaps='>,<'
 
