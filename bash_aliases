@@ -23,6 +23,7 @@ alias c='clear'
 alias o='gnome-open'
 alias monitor-off='xset dpms force off'
 alias path='echo $PATH | tr -s ":" "\n"' # Pretty print the PATH
+
 alias ack='ACK_PAGER_COLOR="less -x4SRFX" /usr/bin/ack-grep -a -C 1 --follow'
 alias apt-whatprovides='apt-cache policy'
 alias calc='gnome-calculator &'
@@ -42,6 +43,7 @@ alias history-time='HISTTIMEFORMAT="%F %T " history'
 alias nautilus-fallback='dbus-launch nautilus --no-desktop'
 alias rcd='cd -P .' # Real cd
 alias scp-compressed='scp -C -o CompressionLevel=9'
+alias tmux-prefix='tmux set -g prefix C-a'
 #alias wget='wget --no-check-certificate'
 alias vimgit='vim . +Gstatus +"resize +5"'
 function flac-conversion() {
