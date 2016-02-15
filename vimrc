@@ -288,9 +288,9 @@ let g:GPGDefaultRecipients=[
  \"David Beitey (Work) <david" . nr2char(64) . "davidjb" . "." . "com>",
  \]
 function! SetGPGOptions()
-    set foldlevel=1
-    set foldclose=all
-    set foldopen=insert
+    setlocal foldlevel=1
+    setlocal foldclose=all
+    setlocal foldopen=insert
 endfunction
 
 " Python editng superpowers
@@ -546,7 +546,7 @@ au!
     au Syntax * RainbowParenthesesLoadBraces
 
     " Salt roster files
-    au BufNewFile,BufRead roster,master set filetype=yaml
+    au BufNewFile,BufRead roster,master setlocal filetype=yaml
 
     " Different types of file support 
     au FileType json map <leader>jp :%!json_xs -f json -t json-pretty<CR>
@@ -562,7 +562,7 @@ au!
 
     au BufNewFile,BufRead *.rb,*.rbw,*.gem,*.gemspec,[rR]akefile,*.rake,*.thor,Vagrantfile setlocal filetype=ruby
     au BufNewFile,BufRead *.erb setlocal filetype=eruby
-    au FileType eruby setlocal nocindent 
+    au FileType eruby setlocal nocindent
 
     au BufNewFile,BufRead *.js setlocal filetype=javascript
     au FileType javascript setlocal nocindent
@@ -589,16 +589,16 @@ au!
     "au BufRead,BufNewFile *.rst setfiletype rst
     " Handle Control-Enter in rST documents
     au FileType rst inoremap <NL> <esc>:RivListNew<CR>A
-    " rst documents - ensure . isn't part of character ranges
-    au FileType rst set iskeyword-=. | set textwidth=78 | set formatoptions-=c
+    " rst documents - ensure . isn't part of character ranges, remove list leader on join
+    au FileType rst setlocal iskeyword-=. textwidth=78 formatoptions-=c
 
     " Configure automatic spell checking
-    au FileType rst,markdown,gitcommit setlocal spell
+    au FileType rst,gitcommit setlocal spell
 
     " Automatic wrapping
     au FileType markdown set textwidth=80
 
-    " Python-specific filetype customisations 
+    " Python-specific filetype customisations
     " Fix smart indenting of Python comments
     au FileType python inoremap # X<c-h>#
     " Allow """ comments to work in Python files
