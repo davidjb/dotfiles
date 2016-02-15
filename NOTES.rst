@@ -4,16 +4,20 @@ Useful information
 Firefox
 -------
 
-* Adblock Plus
+* uBlock Origin
 * Session Manger
-* Firebug
 * VimFx
 
 Chrome
 ------
 
-* Adblock Plus
+* uBlock Origin
 * Freshstart Session Manager
+
+Tmux
+----
+
+* Reference: https://tmuxp.readthedocs.org/en/latest/about_tmux.html#reference
 
 Bash
 ----
