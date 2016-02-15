@@ -9,11 +9,13 @@ ignore = [
     'buildout',
     'bootstrap.sh',
     'config',
+    'etc',
     'powerline',
     'pypirc',
     'ssh',
     'tools',
     'test',
+    'vim-*',
     '*.swp',
     '.*'
     ]
