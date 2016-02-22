@@ -368,6 +368,7 @@ set spellfile=~/dotfiles/vim-spelling.utf-8.add     " Configure permanent spellf
 set complete+=kspell                                " Autocomplete via dictionary during spellcheck
 set undofile                                        " Automatically save persistent undo history
 set undodir=~/.vim/undo                             " Configure undo history location
+set diffopt+=vertical                               " Show diffs vertically
 
 " Don't edit these type of files
 set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.pyo,*.swp
