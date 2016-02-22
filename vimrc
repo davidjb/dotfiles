@@ -221,7 +221,8 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-git'
 
 " JSON
-Plug 'leshill/vim-json'
+Plug 'elzr/vim-json'
+Plug 'tpope/vim-jdaddy'
 
 " JavaScript
 " XXX Research options
