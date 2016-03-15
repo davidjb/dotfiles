@@ -57,6 +57,10 @@ Default Emacs bindings
 Vim
 ---
 
+* Debugging plugins and config:
+
+  * Use ``set verbosefile=vim.log`` and then ``:20verbose edit filename``.
+
 * ``=`` or ``==``: re-indent your current line or motion according to your
   indent expression (aka magically fix your indenting!).
 * ``.vimrc`` files can be locally added to any directory. Files within the
