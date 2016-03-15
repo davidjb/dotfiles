@@ -15,13 +15,11 @@
     co = checkout
     df = diff
     dc = diff --cached
+    ign = ls-files -o -i --exclude-standard
     lg = log -p
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
     ls = ls-files
-
-    # Show files ignored by git:
-    #     ign = ls-files -o -i --exclude-standard
 [color]
     ui = auto
 [color "branch"]
