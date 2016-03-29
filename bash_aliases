@@ -22,7 +22,7 @@ alias ......="cd ../../../../.."
 alias c='clear'
 alias o='gnome-open'
 alias monitor-off='xset dpms force off'
-alias path='echo $PATH | tr -s ":" "\n"' # Pretty print the PATH
+alias path='echo "$PATH" | tr -s ":" "\n"' # Pretty print the PATH
 
 alias ack='ACK_PAGER_COLOR="less -x4SRFX" /usr/bin/ack-grep -a -C 1 --follow'
 alias apt-whatprovides='apt-cache policy'
@@ -49,7 +49,7 @@ alias vimgit='vim . +Gstatus +"resize +5"'
 function flac-conversion() {
     for file in *.flac
     do
-        converted_name=$(echo $file | sed 's/flac/mp3/')
+        converted_name=$(echo "$file" | sed 's/flac/mp3/')
         avconv -i $file -b 320k $converted_name
     done
 }
@@ -63,10 +63,10 @@ function catclip () {
 
 # System administration
 function ssh-copy-public-key () {
-    if [ -z $1 ] || [[ $1 == '--help' ]] || [[ $1 == '-h' ]]; then
+    if [ -z "$1" ] || [[ "$1" == '--help' ]] || [[ "$1" == '-h' ]]; then
         echo 'Usage: ssh-copy-public-key key.pub hostname.example.org'
     fi
-    cat $1 | ssh $2 "cat >> .ssh/authorized_keys"
+    ssh "$2" "cat >> .ssh/authorized_keys" < "$1"
 }
 alias serve='python -m SimpleHTTPServer 8000'
 alias ports='netstat -tulpn'
@@ -74,20 +74,20 @@ alias port='netstat -tulpn | grep'
 alias ssl-text='openssl x509 -text -noout -in'
 alias hash-wpa2-passwd='python -c "import getpass; print(getpass.getpass())" | iconv -t utf16le | openssl md4'
 function csr-generate() {
-    if [ -z $1 ] || [[ $1 == '--help' ]] || [[ $1 == '-h' ]]; then
+    if [ -z "$1" ] || [[ "$1" == '--help' ]] || [[ "$1" == '-h' ]]; then
         echo 'Usage: csr-generate hostname.example.org [openssl-options]'
         echo 'Any arbitrary options passed to csr-generate will be passed'
         echo 'to the `openssl req` command.'
         return
     fi
-    openssl req -out $1.csr -new -newkey rsa:4096 -nodes -keyout $1.key "${@:2}"
+    openssl req -out "$1.csr" -new -newkey rsa:4096 -nodes -keyout "$1.key" "${@:2}"
 }
 
 # Development
 alias eggdoc='python setup.py --long-description | rst2html > foo.html; x-www-browser foo.html'
 function eggcd() {
-    cd `echo -n $1 | sed -e 's/\./\//g'`
+    cd $(echo -n "$1" | sed -e 's/\./\//g')
 }
-function svn-authors() { 
+function svn-authors() {
     svn log "$1" | grep -E '^r[0-9]+' | cut -d '|' -f2 | sort | uniq | xargs -I {} echo '{}= <>'
 }
