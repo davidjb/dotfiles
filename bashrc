@@ -37,8 +37,8 @@ stty -ixon
 
 # Powerline
 powerline-daemon -q
-POWERLINE_BASH_CONTINUATION=1
-POWERLINE_BASH_SELECT=1
+export POWERLINE_BASH_CONTINUATION=1
+export POWERLINE_BASH_SELECT=1
 . ~/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh
 
 # Enable programmable completion features for bash
