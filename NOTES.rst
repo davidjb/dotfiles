@@ -114,3 +114,8 @@ Heroku
 ------
 
 * https://toolbelt.heroku.com/install-ubuntu.sh
+
+Tools
+-----
+
+* https://httpbin.org/
