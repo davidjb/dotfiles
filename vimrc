@@ -34,6 +34,7 @@ Plug 'bogado/file-line'
 " Automatically integrates with Ultisnips
 Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python3 ./install.py --clang-completer --tern-completer' }
 let g:ycm_server_python_interpreter = '/usr/bin/python3'
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_complete_in_comments = 1
 let g:ycm_use_ultisnips_completer = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
@@ -307,6 +308,9 @@ let g:pymode_rope_autoimport_import_after_complete = 1
 "let g:pymode_rope = 0
 "
 
+" Arduino
+Plug 'vim-scripts/Arduino-syntax-file'
+
 " Tmux
 Plug 'tmux-plugins/vim-tmux'
 
@@ -552,7 +556,7 @@ au!
     " Salt roster files
     au BufNewFile,BufRead roster,master setlocal filetype=yaml
 
-    " Different types of file support 
+    " Different types of file support
     au FileType json map <leader>jp :%!json_xs -f json -t json-pretty<CR>
     au FileType json map <leader>jm :%!json_xs -f json -t json<CR>
 
@@ -611,6 +615,9 @@ au!
     au FileType python let b:delimitMate_matchpairs = "(:),[:],{:}"
     " Shortcut for fixing PEP8 issues
     au FileType python nmap <leader>f :PymodeLintAuto<CR>:SyntasticCheck<CR>
+
+    " Arduino filetypes
+    au BufNewFile,BufRead *.pde setlocal ft=arduino
 
     " XXX May want to prefer expandtab for all files
     " Detect indentation of all files
