@@ -109,6 +109,7 @@ Ubuntu on Macbook
 
 * https://help.ubuntu.com/community/AppleKeyboard#Corrections
 * https://help.ubuntu.com/community/MacBook4-1
+* https://01.org/blogs/rzhang/2015/best-practice-debug-linux-suspend/hibernate-issues
 
 Heroku
 ------
