@@ -44,8 +44,6 @@ Bash
 * Put private bash files into ``.bash_private``. Anything inside this folder
   will be ``source``'d automatically.
 
-
-
 Default Emacs bindings
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -120,3 +118,15 @@ Tools
 -----
 
 * https://httpbin.org/
+
+Applications
+------------
+
+OpenShot
+   Video editing software
+DVDStyler
+   DVD production software
+youtube-dl
+   Online video and audio downloader for different media sites
+Angry IP Scanner (ipscan)
+   Easy GUI scanning of network for devices and ports
