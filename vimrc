@@ -478,6 +478,9 @@ nnoremap  <s-left>   vh
 " m, M - Add new lines without insert mode
 nmap <s-m> O<Esc>
 
+" Control + b - Build using Make
+nmap <C-b> :make<CR>
+
 " Control + U - Shortcut for unifying (wrapping) lines
 nmap <c-u> gqip
 vmap <c-u> gq
