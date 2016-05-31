@@ -55,6 +55,7 @@ dependencies () {
         vim \
         vim-gtk \
         exuberant-ctags \
+        aspell \
         cmake \
         mono-xbuild \
         mono-dmcs \
@@ -64,6 +65,7 @@ dependencies () {
         nodejs \
         nodejs-legacy \
         npm \
+        phantomjs \
         libxml2-utils \
         tidy \
         libgnome2-bin \
@@ -74,7 +76,10 @@ dependencies () {
         python-pip \
         ruby-dev \
         ruby-sass \
-        shellcheck
+        shellcheck \
+        ttf-mscorefonts-installer \
+        unrar \
+        p7zip
     sudo apt-get install -f
 
     install_update_git https://github.com/kennethreitz/autoenv.git ~/.autoenv
@@ -135,11 +140,6 @@ dependencies () {
 }
 
 applications () {
-    # Ubuntu Tweak
-    if ! command_exists ubuntu-tweak; then
-        sudo add-apt-repository ppa:tualatrix/ppa
-    fi
-
     # Skype installation is fairly evil.
     if ! command_exists skype; then
         sudo dpkg --add-architecture i386
@@ -165,10 +165,9 @@ applications () {
 
     # Nagstamon
     if ! command_exists nagstamon; then
-        wget -O /tmp/nagstamon.deb https://nagstamon.ifw-dresden.de/files-nagstamon/stable/nagstamon_1.0.1_all.deb
+        wget -O /tmp/nagstamon.deb https://nagstamon.ifw-dresden.de/files-nagstamon/unstable/nagstamon_2.0-beta-20160530_all.deb
         sudo dpkg -i /tmp/nagstamon.deb
     fi
-
 
     # Update all package information!
     sudo apt-get update
@@ -187,6 +186,7 @@ applications () {
         compizconfig-settings-manager \
         indicator-multiload \
         gnome-raw-thumbnailer \
+        iotop \
         pwgen \
         pass \
         screen \
@@ -218,20 +218,23 @@ applications () {
         wine1.7 \
         salt-ssh \
         insync \
-        ubuntu-tweak \
         exfat-utils \
-        libimage-exiftool-perl \ # exiftool for EXIF tags
-        discount \      # Markdown tools -- get it?
-        smbclient \     # Client for SMB resources (printers, etc)
-        nethogs \       # Per-process network activity monitoring
-        wajig \         # Package management
-        calibre \       # eBook reader
-        darktable \     # Photograph editing
-        audacity \      # Audio editing
-        ncdu \          # Terminal-based disk usage analyser
-        bleachbit \     # File cleaner for Linux
-        sshfs \         # SSH filesystem support
-        gtk-recordmydesktop # Screen recording
+        libimage-exiftool-perl\ # exiftool for EXIF tags
+        discount \              # Markdown tools -- get it?
+        smbclient \             # Client for SMB resources (printers, etc)
+        nethogs \               # Per-process network activity monitoring
+        wajig \                 # Package management
+        calibre \               # eBook reader
+        darktable \             # Photograph editing
+        audacity \              # Audio editing
+        ncdu \                  # Terminal-based disk usage analyser
+        bleachbit \             # File cleaner for Linux
+        sshfs \                 # SSH filesystem support
+        chromium-browser \      # Browser
+        gtk-recordmydesktop \   # Screen recording
+        imagemagick \           # Image conversion and processing
+        brasero \               # Disc burning software
+        gnome-tweak-tool        # GNOME option configuration
         #virtualbox-4.3
 
     # Install Asian language support for EPS and Inkscape
