@@ -16,6 +16,9 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 " Library of common functions
 Plug 'vim-scripts/ingo-library'
 
+" Command aliasing
+Plug 'vim-scripts/cmdalias.vim'
+
 " Allow shell commands to run an interactive environment
 Plug 'christoomey/vim-run-interactive'
 nnoremap <leader>ri :RunInInteractiveShell<space>
@@ -101,6 +104,9 @@ Plug 'Lokaltog/vim-easymotion'
 " Git management: Gstatus, Gcommit, Gblame, Gmove, Ggrep, Gbrowse
 " Use with -/p for status and patching.
 Plug 'tpope/vim-fugitive'
+
+" Search support: Ag
+Plug 'rking/ag.vim'
 
 " Insert-mode autocompletion for quotes, parentheses & brackets
 Plug 'Raimondi/delimitMate'
@@ -397,8 +403,6 @@ endif
     "endw
 "endfor
 
-"Optional useful settings
-
 
 """""""""""""""""""""""""""""""
 "  Colourisation and styling  "
@@ -526,13 +530,27 @@ set pastetoggle=<F2>
 """"""""""""""
 " Autocommands
 """"""""""""""
-
 if has("autocmd")
+function! InitPlugins()
+    " Command aliases
+    " Search with `ag` instead
+    call CmdAlias('ag', 'Ag')
+
+    " Remove the autocommand once done
+    au! InitPlugins VimEnter
+endfunction
+
+augroup InitPlugins
+au!
+    au VimEnter * :call InitPlugins()
+augroup END
+
 augroup vimrcEx
 au!
     """"""""""""""""""""""""
     "  All types of files  "
     """"""""""""""""""""""""
+
     "Whenever vimrc is saved, re-source it.
     au bufwritepost .vimrc,vimrc source $MYVIMRC
 
@@ -633,7 +651,6 @@ au!
     "au FileType xml set omnifunc=xmlcomplete#CompleteTags
     "au FileType php set omnifunc=phpcomplete#CompletePHP
     "au FileType c set omnifunc=ccomplete#Complete
-
 
 augroup END
 endif
