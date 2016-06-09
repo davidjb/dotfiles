@@ -25,6 +25,7 @@ alias monitor-off='xset dpms force off'
 alias path='echo "$PATH" | tr -s ":" "\n"' # Pretty print the PATH
 
 alias ack='ACK_PAGER_COLOR="less -x4SRFX" /usr/bin/ack-grep -a -C 1 --follow'
+alias agh='ag --depth 0' #ag here, search only current folder
 alias apt-whatprovides='apt-cache policy'
 alias calc='gnome-calculator &'
 alias l='ls -FC'

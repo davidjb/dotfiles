@@ -234,7 +234,8 @@ applications () {
         gtk-recordmydesktop \   # Screen recording
         imagemagick \           # Image conversion and processing
         brasero \               # Disc burning software
-        gnome-tweak-tool        # GNOME option configuration
+        gnome-tweak-tool \      # GNOME option configuration
+        silversearcher-ag \     # Super-fast searching
         #virtualbox-4.3
 
     # Install Asian language support for EPS and Inkscape
@@ -257,7 +258,7 @@ applications () {
 
 
     # Global Python-based tools
-    sudo easy_install -U ipython grin zest.releaser
+    sudo easy_install -U ipython zest.releaser
 
     # Tmux plugins
     install_update_git https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
