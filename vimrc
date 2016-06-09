@@ -114,8 +114,6 @@ Plug 'kien/rainbow_parentheses.vim'
 " Intense commenting superpower
 Plug 'scrooloose/nerdcommenter'
 let g:NERDCustomDelimiters = {
-   \ 'yaml': { 'left': '#' },
-   \ 'sls': { 'left': '#' },
    \ 'python': { 'left': '# ', 'leftAlt': '#' },
    \ }
 
