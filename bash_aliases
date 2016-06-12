@@ -51,6 +51,16 @@ alias tmux-prefix='tmux set -g prefix C-a'
 #alias wget='wget --no-check-certificate'
 alias vimgit='vim . +Gstatus +"resize +5"'
 
+# Handle crush-and-replace for PNG images
+crushthis() {
+    cp "$1" "/tmp/$1"
+    destination=$1
+    if [ "$2" ]; then
+        destination=$2
+    fi
+    pngcrush --brute "/tmp/$1" "$destination"
+    rm "/tmp/$1"
+}
 flac-conversion() {
     for file in *.flac
     do
