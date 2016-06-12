@@ -1,7 +1,9 @@
+#!/bin/bash
 # vim:tw=78:ft=sh
+
 # Enable color support of commands 
 if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
-    eval "`dircolors -b`"
+    eval "$(dircolors -b)"
     alias ls='ls -F --color=auto'
     alias dir='ls --color=auto --format=vertical'
     alias vdir='ls --color=auto --format=long'
@@ -48,23 +50,24 @@ alias scp-compressed='scp -C -o CompressionLevel=9'
 alias tmux-prefix='tmux set -g prefix C-a'
 #alias wget='wget --no-check-certificate'
 alias vimgit='vim . +Gstatus +"resize +5"'
-function flac-conversion() {
+
+flac-conversion() {
     for file in *.flac
     do
         converted_name=$(echo "$file" | sed 's/flac/mp3/')
-        avconv -i $file -b 320k $converted_name
+        avconv -i "$file" -b 320k "$converted_name"
     done
 }
 
 # Use with pipes as input or output
 alias toclip='xclip -selection clipboard'
 alias fromclip='xclip -o'
-function catclip () {
-    cat $1 | toclip
+catclip () {
+   toclip < "$1"
 }
 
 # System administration
-function ssh-copy-public-key () {
+ssh-copy-public-key () {
     if [ -z "$1" ] || [[ "$1" == '--help' ]] || [[ "$1" == '-h' ]]; then
         echo 'Usage: ssh-copy-public-key key.pub hostname.example.org'
     fi
@@ -75,11 +78,11 @@ alias ports='netstat -tulpn'
 alias port='netstat -tulpn | grep'
 alias ssl-text='openssl x509 -text -noout -in'
 alias hash-wpa2-passwd='python -c "import getpass; print(getpass.getpass())" | iconv -t utf16le | openssl md4'
-function csr-generate() {
+csr-generate() {
     if [ -z "$1" ] || [[ "$1" == '--help' ]] || [[ "$1" == '-h' ]]; then
         echo 'Usage: csr-generate hostname.example.org [openssl-options]'
         echo 'Any arbitrary options passed to csr-generate will be passed'
-        echo 'to the `openssl req` command.'
+        echo 'to the [openssl req] command.'
         return
     fi
     openssl req -out "$1.csr" -new -newkey rsa:4096 -nodes -keyout "$1.key" "${@:2}"
@@ -87,9 +90,9 @@ function csr-generate() {
 
 # Development
 alias eggdoc='python setup.py --long-description | rst2html > foo.html; x-www-browser foo.html'
-function eggcd() {
-    cd $(echo -n "$1" | sed -e 's/\./\//g')
+eggcd() {
+    cd "$(echo -n "$1" | sed -e 's/\./\//g')"
 }
-function svn-authors() {
+svn-authors() {
     svn log "$1" | grep -E '^r[0-9]+' | cut -d '|' -f2 | sort | uniq | xargs -I {} echo '{}= <>'
 }
