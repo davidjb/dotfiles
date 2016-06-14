@@ -87,6 +87,11 @@ alias serve='python -m SimpleHTTPServer 8000'
 alias ports='netstat -tulpn'
 alias port='netstat -tulpn | grep'
 alias ssl-text='openssl x509 -text -noout -in'
+ssl-self-signed() {
+    openssl req -x509 -nodes -days 365 -sha256 -newkey rsa:4096 \
+        -subj "/C=AU/ST=Queensland/L=Townsville/CN=$1" \
+        -keyout "$1.key" -out "$1.crt"
+}
 alias hash-wpa2-passwd='python -c "import getpass; print(getpass.getpass())" | iconv -t utf16le | openssl md4'
 csr-generate() {
     if [ -z "$1" ] || [[ "$1" == '--help' ]] || [[ "$1" == '-h' ]]; then
