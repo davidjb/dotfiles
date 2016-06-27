@@ -98,6 +98,16 @@ let g:syntastic_rst_rstcheck_quiet_messages = {"regex": [
             \ ]}
 let g:syntastic_yaml_checkers = ['jsyaml']
 
+" Automatic formatting of code
+" You can manually autoindent, retab or remove trailing whitespace with the
+" following respective commands:
+"
+"    gg=G
+"    :retab
+"    :RemoveTrailingSpaces
+Plug 'Chiel92/vim-autoformat'
+noremap <leader>p :Autoformat<CR>
+
 " <leader><leader> movement to anywhere - w (words), f (chars), j (lines)
 Plug 'Lokaltog/vim-easymotion'
 
@@ -576,7 +586,7 @@ au!
     au BufNewFile,BufRead roster,master setlocal filetype=yaml
 
     " Different types of file support
-    au FileType json map <leader>jp :%!json_xs -f json -t json-pretty<CR>
+    au FileType json map <leader>p :%!json_xs -f json -t json-pretty<CR>
     au FileType json map <leader>jm :%!json_xs -f json -t json<CR>
 
     "au BufReadCmd,FileReadCmd *.\(gpg\|asc\|pgp\) call SetGPGOptions()
