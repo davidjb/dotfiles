@@ -110,6 +110,8 @@ dependencies () {
         jslint \
         jshint \
         js-yaml \
+        js-beautify \
+        remark \
         grunt-cli \
         bower \
         yo \
