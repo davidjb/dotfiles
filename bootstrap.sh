@@ -216,6 +216,7 @@ applications () {
         nethogs \                       # Per-process network activity monitoring
         nmap \                          # Network probing and monitoring
         openjdk-8-jre \                 # Java
+        openshot \                      # Video editing application
         optipng \                       # PNG optimiser
         pass \                          # Password management
         pavucontrol \                   # GUI for PulseAudio
