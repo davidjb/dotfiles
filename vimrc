@@ -164,6 +164,10 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
+" Emmet expanders <C-Y>, expansions of HTML, CSS and lots more
+Plug 'mattn/emmet-vim'
+let g:user_emmet_default_attrs_order = ['class', 'id']
+
 " Browser for tags (classes, functions etc) within source code files
 Plug 'jszakmeister/rst2ctags'
 Plug 'majutsushi/tagbar'
