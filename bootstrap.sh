@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash -i
 #   git clone git@github.com:davidjb/dotfiles.git; cd dotfiles; ./bootstrap.sh
 # Inspired by https://github.com/inlineblock/DotFiles
 
@@ -32,22 +32,52 @@ install_step () {
 #  Configuration steps  #
 #########################
 dependencies () {
-    #libxml2-utils provides xmllint
-    sudo apt-get install -y \
-	vim \
-	cmake \
-	mono-xbuild \
-	mono-dmcs \
-	git \
-	mercurial \
-	node \
-	npm \
-	libxml2-utils \
-	tidy
+    if [[ $OSTYPE == "linux-gnu" ]]; then
 
-    sudo apt-get install -y \
-		xclip \
-		pngcrush
+        if command -v apt-get > /dev/null 2>&1; then
+            #libxml2-utils provides xmllint
+            sudo apt-get install -y \
+                vim \
+                cmake \
+                git \
+                mercurial \
+                node \
+                npm \
+                libxml2-utils \
+                tidy
+
+            sudo apt-get install -y \
+                        xclip \
+                        pngcrush
+
+        elif command -v yum > /dev/null 2>&1; then
+             echo 'No support yet.'
+        fi
+    
+    elif [[ $OSTYPE == "darwin"* ]]; then
+
+        #Install homebrew
+        ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+
+        # node includes npm
+        brew install \
+            vim \
+            cmake \
+            git \
+            mercurial \
+            node \
+            libxml2 \
+            xclip \
+            pngcrush \
+            python \
+            python3 \
+            pyenv-virtualenv 
+
+        install_update_git https://github.com/Lokaltog/powerline-fonts.git  ~/.fonts/powerline-fonts
+
+        exit
+        
+    fi
 
     install_update_git https://github.com/kennethreitz/autoenv.git ~/.autoenv
     
@@ -112,7 +142,7 @@ vim_configuration () {
 
     # Compile YCM support
     pushd ~/.vim/bundle/YouCompleteMe
-    ./install.sh --clang-completer --omnisharp-completer
+    ./install.sh --clang-completer 
     popd
 }
 
