@@ -1,54 +1,87 @@
 davidjb's dotfiles
 ==================
 
-Run the included ``bootstrap.sh`` script and it will install the included settings files
-into the current user's home directory::  
+Run the included ``bootstrap.sh`` script and it will install the included
+settings files into the current user's home directory::
 
-     git clone https://github.com/davidjb/dotfiles.git
-     ./dotfiles/bootstrap.sh
+    sudo apt-get install git
+    git clone https://github.com/davidjb/dotfiles.git
+    ./dotfiles/bootstrap.sh
 
-Pass the script a directory name or path to customise install location::
+Alternatively, pass the script a directory name or path to customise the
+install location::
 
     ./bootstrap.sh /path/to/install
+
+
+Useful notes
+------------
+
+For useful notes, snippets, and general information, take a look
+at `NOTES <https://github.com/davidjb/dotfiles/blob/master/NOTES.rst>`_.
+
+
+Management
+----------
+
+I use `dotfiles <https://github.com/jbernard/dotfiles>`_ to handle the syncing
+(symlinking) of dotfiles into and out of this repository. For new files that
+you'd like to track, run this:
+
+.. code:: bash
+
+   dotfiles --add ~/.vimrc
+
+For files within the repository that should be symlinked onto the system, use:
+
+.. code:: bash
+
+   dotfiles --check
+   dotfiles --sync
 
 
 Copyright
 =========
 
 Nope, nothing.  Just use what you'd like, how you'd like to use it.
-Spot and report an error and win a gold star.
+Consider this software public domain.
 
+Spot and report an error and win a gold star.  Drop me a line if what I've
+written here helps you out!
 
-Notes
-=====
-
-* Vim:
-  
-  * ``box`` and ``bbox`` snippets for a comment box
-  * Check syntax reporting with ``:SyntasticInfo``
-  * Fix PEP8 issues in Python with ``:PymodeLintAuto``
-
-* Bash:
-  
-  * Put private bash files into ``.bash_private``. Anything inside this folder
-    will be ``source``'d automatically.
 
 To Do
 =====
 
+* Vagrant and MongoDB
+
+* Read:
+
+  + ``:help unimpaired``
+
+* Support for multiple operating systems (Mac and Linux)
 * Refinement of vimrc configuration
-  
+
   * Indentation of reST files - changes indent levels but changes
     from implicit to explicit numbering (or unordered to ordered)
-  * reST files: backspacing before a nested list double-backspaces
-  * YouCompleteMe scratch/preview window open until end parethesis
   * Python support (refactoring etc)
-  * Rykka/riv support for Sphinx documentation (syntax checking, C-E key?)
   * PyMode and Rope for refactoring support
 
+* Convert to Salt provisioning
 * Handle private aliases for Bashrc
-* Handle private SSH configuration
+* Handle private SSH configuration/generation
 * Determine other standard dependencies for development
 * Automate installation of:
 
   * Virtualenv-wrapper
+  * zest.releaser with aliases
+  * Vagrant and MongoDB
+
+Thanks
+======
+
+Thanks for all the various plugin mainainers for their awesome work.  My life
+wouldn't be the same. Thanks also to the various resources below for allowing
+me to tweak my configuration to be "just right":
+
+* http://stevelosh.com/blog/2010/09/coming-home-to-vim

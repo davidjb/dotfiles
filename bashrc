@@ -6,9 +6,20 @@
 # See bash(1) for more options
 export HISTCONTROL=ignorespace:ignoredups
 
+# Configure terminal for 256 colours
+export TERM=xterm-256color
+
 # Check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+
+# autocd - Automatic cd to directories
+# cdspell - Simple spell check for cd
+# checkjobs - Output job information on attempting to exit
+# checkwinsize - Check window size after commands and update LINES/COLUMNS
+# cmdhist - Save multi-line commands as same history entry
+# For remainder of options, see "list of shopt options" in the bash man page.
+shopt -s autocd cdspell checkjobs checkwinsize cmdhist expand_aliases extglob extquote force_fignore interactive_comments progcomp promptvars sourcepath
 
 #color_prompt=yes
 #if [ "$color_prompt" = yes ]; then
@@ -19,16 +30,32 @@ shopt -s checkwinsize
 #unset color_prompt 
 
 # Use vi editing mode for commands
-# This is in beta testing
 set -o vi
 
+# Disable terminal flow via ^S and ^Q
+stty -ixon
+
 # Powerline
+powerline-daemon -q
+export POWERLINE_BASH_CONTINUATION=1
+export POWERLINE_BASH_SELECT=1
 . ~/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh
 
 # Enable programmable completion features for bash
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
+
+# pip bash completion start
+_pip_completion()
+{
+    COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
+                   COMP_CWORD=$COMP_CWORD \
+                   PIP_AUTO_COMPLETE=1 $1 ) )
+}
+complete -o default -F _pip_completion pip
+# pip bash completion end
+
 
 # Alias definitions
 if [ -f ~/.bash_aliases ]; then
@@ -47,9 +74,15 @@ fi
 shopt -s nullglob
 for file in ~/.bash_private/*
 do
-    . $file
+    . "$file"
 done
 shopt -u nullglob
 
+# Tab completion for Grunt
+eval "$(grunt --completion=bash)"
+
 #. /usr/local/bin/virtualenvwrapper.sh
 #export WORKON_HOME=~/buildout
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
