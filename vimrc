@@ -4,6 +4,7 @@ set nocompatible
 set t_Co=256
 call plug#begin('~/.vim/bundle')
 
+" Enable recursive cloning for YouCompleteMe etc
 let g:plug_shallow = 0
 
 " Local vimrc support
