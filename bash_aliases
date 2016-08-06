@@ -1,16 +1,26 @@
 #!/bin/bash
 # vim:tw=78:ft=sh
+[[ $OSTYPE == "linux-gnu" ]] && _IS_LINUX=yes
+[[ $OSTYPE == "darwin"*  ]] && _IS_MAC=yes
 
-# Enable color support of commands 
-if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
-    eval "$(dircolors -b)"
-    alias ls='ls -F --color=auto'
-    alias dir='ls --color=auto --format=vertical'
-    alias vdir='ls --color=auto --format=long'
+# Enable color support of commands
+if [ "$TERM" != "dumb" ]; then
+    if [ -x /usr/bin/dircolors ]; then
+        eval "$(dircolors -b)"
+    fi
+    if [ $_IS_LINUX ]; then
+        alias ls='ls -F --color=auto'
+        alias dir='ls --color=auto --format=vertical'
+        alias vdir='ls --color=auto --format=long'
 
-    alias grep='grep --color=auto --exclude-dir=\.svn'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+        alias grep='grep --color=auto'
+        alias fgrep='fgrep --color=auto'
+        alias egrep='egrep --color=auto'
+    elif [ $_IS_MAC ]; then
+        alias ls='ls -F -G'
+        alias dir='ls --format=vertical'
+        alias vdir='ls --format=long'
+    fi
 
     alias less='less -r'
 fi
@@ -22,7 +32,8 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 alias c='clear'
-alias o='gnome-open'
+[ $_IS_LINUX ] && alias o='gnome-open'
+[ $_IS_MAC ] && alias o='open'
 alias monitor-off='xset dpms force off'
 alias path='echo "$PATH" | tr -s ":" "\n"' # Pretty print the PATH
 
@@ -71,8 +82,13 @@ flac-conversion() {
 }
 
 # Use with pipes as input or output
-alias toclip='xclip -selection clipboard'
-alias fromclip='xclip -o'
+if [ $_IS_LINUX ]; then
+    alias toclip='xclip -selection clipboard'
+    alias fromclip='xclip -o'
+elif [ $_IS_MAC ]; then
+    alias toclip='pbcopy'
+    alias fromclip='pbpaste'
+fi
 catclip () {
    toclip < "$1"
 }

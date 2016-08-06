@@ -141,6 +141,7 @@ dependencies () {
     popd
 
     # Local Node.js based tools, directory configured in ~/.npmrc
+    ln_if_missing "$DIR/npmrc" ~/.npmrc
     npm install -g \
         less \
         csslint \
@@ -151,9 +152,8 @@ dependencies () {
         js-beautify \
         remark \
         grunt-cli \
-        bower \
-        yo \
         gulp \
+        typescript \
         keybase-installer \
         jpm # Jetpack package manager for Firefox
 
@@ -171,134 +171,150 @@ dependencies () {
 
     # Keybase setup
     keybase-installer -p .
-    popd
 
     # Global gitignore
     install_update_git https://github.com/github/gitignore.git "$DIR/tools/gitignore"
 }
 
 applications () {
-    # Skype installation is fairly evil.
-    if ! command_exists skype; then
-        sudo dpkg --add-architecture i386
-        sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
+    # Platform-specific tools and installation methods
+    if [ $_IS_LINUX ]; then
+        # Skype installation is fairly evil.
+        if ! command_exists skype; then
+            sudo dpkg --add-architecture i386
+            sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
+        fi
+
+        # Wine
+        if ! command_exists wine; then
+            sudo apt-add-repository ppa:ubuntu-wine/ppa
+        fi
+
+        # Virtualbox
+        if ! command_exists VirtualBox; then
+            sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib"
+            wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
+        fi
+
+        # Insync
+        if ! command_exists insync; then
+            sudo add-apt-repository "deb http://apt.insynchq.com/ubuntu $(lsb_release -sc) non-free contrib"
+            wget -qO - https://d2t3ff60b2tol4.cloudfront.net/services@insynchq.com.gpg.key | sudo apt-key add -
+        fi
+
+        # Nagstamon
+        if ! command_exists nagstamon; then
+            wget -O /tmp/nagstamon.deb https://nagstamon.ifw-dresden.de/files-nagstamon/unstable/nagstamon_2.0-beta-20160530_all.deb
+            sudo dpkg -i /tmp/nagstamon.deb
+        fi
+
+        # Update all package information!
+        sudo apt-get update
+
+        # Install all the packages!
+        sudo apt-get install -y \
+            apache2-utils \                 # ab (Apache bench)
+            apt-file \                      # deb file searching
+            audacity \                      # Audio editing
+            bleachbit \                     # File cleaner for Linux
+            brasero \                       # Disc burning software
+            calibre \                       # eBook reader
+            chromium-browser \              # Browser
+            compizconfig-settings-manager \ # Compiz settings UI
+            darktable \                     # Photograph editing
+            dconf-editor \                  # Configuration editor
+            discount \                      # Markdown tools -- get it?
+            docker \                        # Containers
+            docker-compose \                # Container environment management
+            dosbox \                        # DOS environments
+            exfat-utils \                   # exFAT support
+            gcolor2 \                       # GUI colour selector
+            gimp \                          # Raster graphics editor
+            gimp-gmic \                     # GIMP integration with gmic
+            gmic \                          # Image computing tools
+            gnome-raw-thumbnailer \         # RAW support for Nautilus
+            gnome-tweak-tool \              # GNOME option configuration
+            gtk-recordmydesktop \           # Screen recording
+            guvcview \                      # Web cam recording and config app
+            htop \                          # Top, powered up
+            imagemagick \                   # Image conversion and processing
+            indicator-multiload \           # System resource indicator
+            inkscape \                      # Vector graphics editing
+            insync \                        # Google Drive for Linux
+            iotop \                         # I/O monitoring
+            ldap-utils \                    # LDAP tools
+            libav-tools \                   # AV converters
+            libimage-exiftool-perl\         # exiftool for EXIF tags
+            libjpeg-turbo-progs \           # JPEG tools
+            librsvg2-bin \                  # SVG processing
+            lynx \                          # Terminal browsing
+            molly-guard \                   # Prevent shutdown over SSH
+            ncdu \                          # Terminal-based disk usage analyser
+            nethogs \                       # Per-process network activity monitoring
+            nmap \                          # Network probing and monitoring
+            openjdk-8-jre \                 # Java
+            openshot \                      # Video editing application
+            optipng \                       # PNG optimiser
+            pass \                          # Password management
+            pavucontrol \                   # GUI for PulseAudio
+            pidgin \                        # Instant messaging
+            pidgin-skype \                  # Skype for Pidgin
+            pngcrush \                      # PNG optimiser
+            pwgen \                         # Password generator
+            rsnapshot \                     # Backup manager via rsync
+            salt-ssh \                      # Salt configuration management
+            screen \                        # Terminal sessions (like tmux, but ancient)
+            silversearcher-ag \             # Super-fast searching
+            skype \                         # Calls and messaging
+            smbclient \                     # Client for SMB resources (printers, etc)
+            smbnetfs \                      # SMB network support
+            sshfs \                         # SSH filesystem support
+            tmux \                          # Terminal multiplexer
+            uvcdynctrl \                    # UVC controller for webcams
+            v4l-utils \                     # Video4Linux utilities
+            vlc \                           # Video player
+            wajig \                         # Package management
+            wakeonlan \                     # WOL tools to send magic packets
+            whois \                         # WHOIS client
+            wine1.7                         # Wine is not an emulator
+            #virtualbox-4.3
+
+        # Install Asian language support for EPS and Inkscape
+        sudo apt-get install texlive-lang-cjk --no-install-recommends
+
+        # Update files in packages
+        sudo apt-file update
+
+        if ! command_exists vagrant; then
+            # Vagrant
+            wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.5_x86_64.deb -O /tmp/vagrant.deb
+            sudo dpkg -i /tmp/vagrant.deb
+        fi
+
+        if ! command_exists ipscan; then
+            # Angry IP scanner
+            wget http://github.com/angryziber/ipscan/releases/download/3.3.2/ipscan_3.3.2_amd64.deb -O /tmp/angry.deb
+            sudo dpkg -i /tmp/angry.deb
+        fi
+
+        # Global Python-based tools
+        sudo easy_install -U ipython zest.releaser
+    elif [ $_IS_MAC ]; then
+        brew install \
+            ag \
+            docker \
+            docker-compose \
+            htop \
+            imagemagick \
+            nmap \
+            pass \
+            pngcrush \
+            pwgen \
+            tmux
+
+        # Global Python-based tools
+        easy_install -U ipython zest.releaser
     fi
-
-    # Wine
-    if ! command_exists wine; then
-        sudo apt-add-repository ppa:ubuntu-wine/ppa
-    fi
-
-    # Virtualbox
-    if ! command_exists VirtualBox; then
-        sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib"
-        wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
-    fi
-
-    # Insync
-    if ! command_exists insync; then
-        sudo add-apt-repository "deb http://apt.insynchq.com/ubuntu $(lsb_release -sc) non-free contrib"
-        wget -qO - https://d2t3ff60b2tol4.cloudfront.net/services@insynchq.com.gpg.key | sudo apt-key add -
-    fi
-
-    # Nagstamon
-    if ! command_exists nagstamon; then
-        wget -O /tmp/nagstamon.deb https://nagstamon.ifw-dresden.de/files-nagstamon/unstable/nagstamon_2.0-beta-20160530_all.deb
-        sudo dpkg -i /tmp/nagstamon.deb
-    fi
-
-    # Update all package information!
-    sudo apt-get update
-
-    # Install all the packages!
-    sudo apt-get install -y \
-        apache2-utils \                 # ab (Apache bench)
-        apt-file \                      # deb file searching
-        audacity \                      # Audio editing
-        bleachbit \                     # File cleaner for Linux
-        brasero \                       # Disc burning software
-        calibre \                       # eBook reader
-        chromium-browser \              # Browser
-        compizconfig-settings-manager \ # Compiz settings UI
-        darktable \                     # Photograph editing
-        dconf-editor \                  # Configuration editor
-        discount \                      # Markdown tools -- get it?
-        docker \                        # Containers
-        docker-compose \                # Container environment management
-        dosbox \                        # DOS environments
-        exfat-utils \                   # exFAT support
-        gcolor2 \                       # GUI colour selector
-        gimp \                          # Raster graphics editor
-        gimp-gmic \                     # GIMP integration with gmic
-        gmic \                          # Image computing tools
-        gnome-raw-thumbnailer \         # RAW support for Nautilus
-        gnome-tweak-tool \              # GNOME option configuration
-        gtk-recordmydesktop \           # Screen recording
-        guvcview \                      # Web cam recording and config app
-        htop \                          # Top, powered up
-        imagemagick \                   # Image conversion and processing
-        indicator-multiload \           # System resource indicator
-        inkscape \                      # Vector graphics editing
-        insync \                        # Google Drive for Linux
-        iotop \                         # I/O monitoring
-        ldap-utils \                    # LDAP tools
-        libav-tools \                   # AV converters
-        libimage-exiftool-perl\         # exiftool for EXIF tags
-        libjpeg-turbo-progs \           # JPEG tools
-        librsvg2-bin \                  # SVG processing
-        lynx \                          # Terminal browsing
-        molly-guard \                   # Prevent shutdown over SSH
-        ncdu \                          # Terminal-based disk usage analyser
-        nethogs \                       # Per-process network activity monitoring
-        nmap \                          # Network probing and monitoring
-        openjdk-8-jre \                 # Java
-        openshot \                      # Video editing application
-        optipng \                       # PNG optimiser
-        pass \                          # Password management
-        pavucontrol \                   # GUI for PulseAudio
-        pidgin \                        # Instant messaging
-        pidgin-skype \                  # Skype for Pidgin
-        pngcrush \                      # PNG optimiser
-        pwgen \                         # Password generator
-        rsnapshot \                     # Backup manager via rsync
-        salt-ssh \                      # Salt configuration management
-        screen \                        # Terminal sessions (like tmux, but ancient)
-        silversearcher-ag \             # Super-fast searching
-        skype \                         # Calls and messaging
-        smbclient \                     # Client for SMB resources (printers, etc)
-        smbnetfs \                      # SMB network support
-        sshfs \                         # SSH filesystem support
-        tmux \                          # Terminal multiplexer
-        uvcdynctrl \                    # UVC controller for webcams
-        v4l-utils \                     # Video4Linux utilities
-        vlc \                           # Video plaer
-        wajig \                         # Package management
-        wakeonlan \                     # WOL tools to send magic packets
-        whois \                         # WHOIS client
-        wine1.7                         # Wine is not an emulator
-        #virtualbox-4.3
-
-    # Install Asian language support for EPS and Inkscape
-    sudo apt-get install texlive-lang-cjk --no-install-recommends
-
-    # Update files in packages
-    sudo apt-file update
-
-    if ! command_exists vagrant; then
-        # Vagrant
-        wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.5_x86_64.deb -O /tmp/vagrant.deb
-        sudo dpkg -i /tmp/vagrant.deb
-    fi
-
-    if ! command_exists ipscan; then
-        # Angry IP scanner
-        wget http://github.com/angryziber/ipscan/releases/download/3.3.2/ipscan_3.3.2_amd64.deb -O /tmp/angry.deb
-        sudo dpkg -i /tmp/angry.deb
-    fi
-
-
-    # Global Python-based tools
-    sudo easy_install -U ipython zest.releaser
 
     # Tmux plugins
     install_update_git https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -334,25 +350,42 @@ compile_ycm () {
 }
 
 vim_configuration () {
-    #Dependencies for Powerline
-    pip install --user mercurial psutil
-    if ! grep -q ^fs.inotify.max_user_watches /etc/sysctl.conf
-    then
-        echo 'fs.inotify.max_user_watches=16384' | sudo tee --append /etc/sysctl.conf
-        echo 16384 | sudo tee /proc/sys/fs/inotify/max_user_watches
-    fi
-
     # Install all plugins and plugin manager
     vim_plug
 
-    # Tern for Vim
-    pushd ~/.vim/bundle/tern_for_vim
-    npm install
-    ln_if_missing ~/.vim/bundle/tern-meteor/meteor.js node_modules/tern/plugin/
-    popd
+    # Spelling
+    vim +"mkspell $DIR/vim-spelling.utf-8.add" +qall
+
+    # Powerline dependencies
+    if [ $_IS_LINUX ]; then
+        sudo pip install -e ~/.vim/bundle/powerline
+        pip install --user mercurial psutil
+
+        if ! grep -q ^fs.inotify.max_user_watches /etc/sysctl.conf
+        then
+            echo 'fs.inotify.max_user_watches=16384' | sudo tee --append /etc/sysctl.conf
+            echo 16384 | sudo tee /proc/sys/fs/inotify/max_user_watches
+        fi
+
+        # Font configuration
+        mkdir -p ~/.fonts
+        wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf -O ~/.fonts/PowerlineSymbols.otf
+        fc-cache -vf ~/.fonts/
+        mkdir -p ~/.config/fontconfig/conf.d
+        wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf -O ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
+    elif [ $_IS_MAC ]; then
+        pip install mercurial psutil
+        pip install ~/.vim/bundle/powerline
+
+        # Font configuration
+        install_update_git https://github.com/powerline/fonts.git "$DIR/tools/powerline-fonts"
+        pushd "$DIR/tools-powerline-fonts"
+        ./install.sh
+        popd
+        echo "Powerline: now select a suitable font in Terminal."
+    fi
 
     # Powerline configuration
-    sudo pip install -e ~/.vim/bundle/powerline
     mkdir ~/.config/powerline
     cp -R ~/.vim/bundle/powerline/powerline/config_files/* ~/.config/powerline/
     rm -rf ~/.config/powerline/config.json
@@ -362,27 +395,18 @@ vim_configuration () {
     rm -rf ~/.config/powerline/themes/tmux/default.json
     ln_if_missing "$DIR/powerline/themes/tmux/default.json" ~/.config/powerline/themes/tmux/default.json
 
-    # Powerline font install
-    mkdir -p ~/.fonts
-    wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf -O ~/.fonts/PowerlineSymbols.otf
-    fc-cache -vf ~/.fonts/
-    mkdir -p ~/.config/fontconfig/conf.d
-    wget https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf -O ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
-
     # Snippets and type detection
     mkdir -p ~/.vim/ftdetect/
     ln_if_missing -s ~/.vim/bundle/ultisnips/ftdetect/* ~/.vim/ftdetect/
 
-    # Term for Vim support
+    # Tern for Vim
     pushd ~/.vim/bundle/tern_for_vim
     npm install
+    ln_if_missing ~/.vim/bundle/tern-meteor/meteor.js node_modules/tern/plugin/
     popd
 
     # Compile YCM support
     compile_ycm
-
-    # Spelling
-    vim +"mkspell $DIR/vim-spelling.utf-8.add" +qall
 }
 
 sync_dotfiles() {
@@ -390,6 +414,10 @@ sync_dotfiles() {
 }
 
 install () {
+    # Load the environment and PATH local tools
+    ln_if_missing "$DIR/environment" ~/.environment
+    source ~/.environment
+
     ln_if_missing "$DIR/dotfilesrc" ~/.dotfilesrc
     dotfiles --check
     install_step "Are you sure you wish to replace these files?" sync_dotfiles
@@ -440,10 +468,10 @@ fi
 install_step "Do you want to install dependencies?" dependencies
 #install_step "Do you want to remove existing files?" remove
 install_step "Do you want to install the configuration?" install
+install_step "Do you want to install applications?" applications
 install_step "Re-run Vim's plugin installation?" vim_plug
 install_step "Re-run YouCompleteMe compilation?" compile_ycm
 if [ $_IS_LINUX ]; then
-    install_step "Do you want to install applications?" applications
     install_step "Do you want to configure Google Drive aliases?" google_drive
     install_step "Do you want to configure Firefox?" configure_firefox
 fi
