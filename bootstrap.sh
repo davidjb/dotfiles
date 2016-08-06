@@ -353,6 +353,9 @@ vim_configuration () {
     # Install all plugins and plugin manager
     vim_plug
 
+    # Undo directory
+    mkdir -p ~/.vim/undo
+
     # Spelling
     vim +"mkspell $DIR/vim-spelling.utf-8.add" +qall
 
