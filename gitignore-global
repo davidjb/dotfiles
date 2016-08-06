@@ -1,0 +1,12 @@
+.DS_Store
+.ropeproject
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+.svn/
+*.sw[nop]
+.env
+.vagrant/

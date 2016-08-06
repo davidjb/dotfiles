@@ -1,6 +1,17 @@
-#!/bin/bash -i
+#!/bin/bash
 #   git clone git@github.com:davidjb/dotfiles.git; cd dotfiles; ./bootstrap.sh
 # Inspired by https://github.com/inlineblock/DotFiles
+# vim:tw=78:ft=sh
+
+##########################
+#  Global variables      #
+##########################
+[[ $OSTYPE == "linux-gnu" ]] && _IS_LINUX=yes
+if [ $_IS_LINUX ]; then
+    _IS_DEB=$(command -v apt-get)
+    _IS_RPM=$(command -v yum)
+fi
+[[ $OSTYPE == "darwin"*  ]] && _IS_MAC=yes
 
 ##########################
 #  Installation helpers  #
@@ -8,13 +19,30 @@
 install_update_git () {
     repository=$1
     path=$2
-    if [ -d $path ]; then
-        cd $path 
+    if [ -d "$path" ]; then
+        cd "$path"
         git pull origin master
     else
-        mkdir -p $path
-        git clone $repository $path
+        mkdir -p "$path"
+        git clone "$repository" "$path"
     fi
+}
+cp_if_missing () {
+    original=$1
+    target=$2
+    if [ ! -e "$target" ]; then
+        cp "$original" "$target"
+    fi
+}
+ln_if_missing () {
+    original=$1
+    target=$2
+    if [ ! -e "$target" ]; then
+        ln "$original" "$target"
+    fi
+}
+command_exists () {
+    command -v "$1" &> /dev/null
 }
 
 install_step () {
@@ -32,144 +60,366 @@ install_step () {
 #  Configuration steps  #
 #########################
 dependencies () {
-    if [[ $OSTYPE == "linux-gnu" ]]; then
-
+    if [ $_IS_LINUX ]; then
         if command -v apt-get > /dev/null 2>&1; then
             #libxml2-utils provides xmllint
             sudo apt-get install -y \
                 vim \
+                vim-gtk \
+                exuberant-ctags \
+                aspell \
                 cmake \
+                mono-xbuild \
+                mono-dmcs \
                 git \
                 mercurial \
-                node \
+                xclip \
+                nodejs \
+                nodejs-legacy \
                 npm \
+                phantomjs \
                 libxml2-utils \
-                tidy
-
-            sudo apt-get install -y \
-                        xclip \
-                        pngcrush
-
+                tidy \
+                libgnome2-bin \
+                virtualenv \
+                python-dev \
+                python3-dev \
+                python-setuptools \
+                python-pip \
+                ruby-dev \
+                ruby-sass \
+                shellcheck \
+                ttf-mscorefonts-installer \
+                unrar \
+                p7zip
         elif command -v yum > /dev/null 2>&1; then
              echo 'No support yet.'
         fi
-    
-    elif [[ $OSTYPE == "darwin"* ]]; then
-
+    elif [ $_IS_MAC ]; then
         #Install homebrew
         ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+        brew analytics off
 
-        # node includes npm
         brew install \
             vim \
+            ctags \
+            aspell \
             cmake \
             git \
             mercurial \
             node \
+            phantomjs \
+            tidy-html5 \
             libxml2 \
-            xclip \
-            pngcrush \
             python \
             python3 \
-            pyenv-virtualenv 
-
-        install_update_git https://github.com/Lokaltog/powerline-fonts.git  ~/.fonts/powerline-fonts
-
-        exit
-        
+            pyenv-virtualenv \
+            sassc \
+            shellcheck \
+            unrar \
+            p7zip
     fi
 
     install_update_git https://github.com/kennethreitz/autoenv.git ~/.autoenv
-    
-    # Global Python-based tools
-    sudo pip install --upgrade ipython grin
 
     # Local Python-based tools
-    mkdir -p $DIR/tools
-    virtualenv $DIR/tools/python
-    pushd $DIR/tools/python
+    mkdir -p "$DIR/tools"
+    virtualenv "$DIR/tools/python"
+    pushd "$DIR/tools/python"
     . bin/activate
-    pip install --upgrade \
+    easy_install -U \
         py3kwarn \
         pylama \
         rstcheck \
         pygments \
-        nodeenv
+        dotfiles \
+        nodeenv \
+        thefuck \
+        caniusepython3
+    pip install http://projects.bigasterisk.com/grepedit-1.0.tar.gz
+    deactivate
     popd
 
-    # Local Node.js based tools
-    mkdir -p $DIR/tools/nodejs
-    pushd $DIR/tools/nodejs
-    npm install \
-	csslint \
-	jsonlint \
-	jslint \
-	js-yaml
+    # Local Node.js based tools, directory configured in ~/.npmrc
+    npm install -g \
+        less \
+        csslint \
+        jsonlint \
+        jslint \
+        jshint \
+        js-yaml \
+        js-beautify \
+        remark \
+        grunt-cli \
+        bower \
+        yo \
+        gulp \
+        keybase-installer \
+        jpm # Jetpack package manager for Firefox
+
+    # Local Ruby-based tools
+    mkdir -p "$DIR/tools/ruby"
+    pushd "$DIR/tools/ruby"
+    export GEM_HOME=$(pwd)
+    echo "export GEM_HOME=$GEM_HOME" > .env
+    gem install \
+        scss_lint \
+        compass \
+        mdl
     popd
+    unset GEM_HOME
+
+    # Keybase setup
+    keybase-installer -p .
+    popd
+
+    # Global gitignore
+    install_update_git https://github.com/github/gitignore.git "$DIR/tools/gitignore"
+}
+
+applications () {
+    # Skype installation is fairly evil.
+    if ! command_exists skype; then
+        sudo dpkg --add-architecture i386
+        sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
+    fi
+
+    # Wine
+    if ! command_exists wine; then
+        sudo apt-add-repository ppa:ubuntu-wine/ppa
+    fi
+
+    # Virtualbox
+    if ! command_exists VirtualBox; then
+        sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib"
+        wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
+    fi
+
+    # Insync
+    if ! command_exists insync; then
+        sudo add-apt-repository "deb http://apt.insynchq.com/ubuntu $(lsb_release -sc) non-free contrib"
+        wget -qO - https://d2t3ff60b2tol4.cloudfront.net/services@insynchq.com.gpg.key | sudo apt-key add -
+    fi
+
+    # Nagstamon
+    if ! command_exists nagstamon; then
+        wget -O /tmp/nagstamon.deb https://nagstamon.ifw-dresden.de/files-nagstamon/unstable/nagstamon_2.0-beta-20160530_all.deb
+        sudo dpkg -i /tmp/nagstamon.deb
+    fi
+
+    # Update all package information!
+    sudo apt-get update
+
+    # Install all the packages!
+    sudo apt-get install -y \
+        apache2-utils \                 # ab (Apache bench)
+        apt-file \                      # deb file searching
+        audacity \                      # Audio editing
+        bleachbit \                     # File cleaner for Linux
+        brasero \                       # Disc burning software
+        calibre \                       # eBook reader
+        chromium-browser \              # Browser
+        compizconfig-settings-manager \ # Compiz settings UI
+        darktable \                     # Photograph editing
+        dconf-editor \                  # Configuration editor
+        discount \                      # Markdown tools -- get it?
+        docker \                        # Containers
+        docker-compose \                # Container environment management
+        dosbox \                        # DOS environments
+        exfat-utils \                   # exFAT support
+        gcolor2 \                       # GUI colour selector
+        gimp \                          # Raster graphics editor
+        gimp-gmic \                     # GIMP integration with gmic
+        gmic \                          # Image computing tools
+        gnome-raw-thumbnailer \         # RAW support for Nautilus
+        gnome-tweak-tool \              # GNOME option configuration
+        gtk-recordmydesktop \           # Screen recording
+        guvcview \                      # Web cam recording and config app
+        htop \                          # Top, powered up
+        imagemagick \                   # Image conversion and processing
+        indicator-multiload \           # System resource indicator
+        inkscape \                      # Vector graphics editing
+        insync \                        # Google Drive for Linux
+        iotop \                         # I/O monitoring
+        ldap-utils \                    # LDAP tools
+        libav-tools \                   # AV converters
+        libimage-exiftool-perl\         # exiftool for EXIF tags
+        libjpeg-turbo-progs \           # JPEG tools
+        librsvg2-bin \                  # SVG processing
+        lynx \                          # Terminal browsing
+        molly-guard \                   # Prevent shutdown over SSH
+        ncdu \                          # Terminal-based disk usage analyser
+        nethogs \                       # Per-process network activity monitoring
+        nmap \                          # Network probing and monitoring
+        openjdk-8-jre \                 # Java
+        openshot \                      # Video editing application
+        optipng \                       # PNG optimiser
+        pass \                          # Password management
+        pavucontrol \                   # GUI for PulseAudio
+        pidgin \                        # Instant messaging
+        pidgin-skype \                  # Skype for Pidgin
+        pngcrush \                      # PNG optimiser
+        pwgen \                         # Password generator
+        rsnapshot \                     # Backup manager via rsync
+        salt-ssh \                      # Salt configuration management
+        screen \                        # Terminal sessions (like tmux, but ancient)
+        silversearcher-ag \             # Super-fast searching
+        skype \                         # Calls and messaging
+        smbclient \                     # Client for SMB resources (printers, etc)
+        smbnetfs \                      # SMB network support
+        sshfs \                         # SSH filesystem support
+        tmux \                          # Terminal multiplexer
+        uvcdynctrl \                    # UVC controller for webcams
+        v4l-utils \                     # Video4Linux utilities
+        vlc \                           # Video plaer
+        wajig \                         # Package management
+        wakeonlan \                     # WOL tools to send magic packets
+        whois \                         # WHOIS client
+        wine1.7                         # Wine is not an emulator
+        #virtualbox-4.3
+
+    # Install Asian language support for EPS and Inkscape
+    sudo apt-get install texlive-lang-cjk --no-install-recommends
+
+    # Update files in packages
+    sudo apt-file update
+
+    if ! command_exists vagrant; then
+        # Vagrant
+        wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.5_x86_64.deb -O /tmp/vagrant.deb
+        sudo dpkg -i /tmp/vagrant.deb
+    fi
+
+    if ! command_exists ipscan; then
+        # Angry IP scanner
+        wget http://github.com/angryziber/ipscan/releases/download/3.3.2/ipscan_3.3.2_amd64.deb -O /tmp/angry.deb
+        sudo dpkg -i /tmp/angry.deb
+    fi
+
+
+    # Global Python-based tools
+    sudo easy_install -U ipython zest.releaser
+
+    # Tmux plugins
+    install_update_git https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    tmux run-shell ~/.tmux/plugins/tpm/scripts/install_plugins.sh
+}
+
+google_drive () {
+    # Symlink all home sub-directories
+    for dir in ~/google-drive/Working-Environment/*
+    do
+        ln_if_missing "$dir" .
+    done
 }
 
 remove () {
-    rm -rf ~/.bashrc ~/.bash_aliases ~/.bash_logout ~/.environment \
-       ~/.gitconfig ~/.profile ~/.pypirc ~/.zopeskel ~/.vimrc ~/.vim \
-       ~/.config/powerline ~/.gvimrc
+    rm -rf \
+        ~/.config/powerline \
+        ~/.pypirc \
+        ~/.vim
 }
 
-vundle () {
-    install_update_git https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle 
-    vim +BundleInstall +qall
+vim_plug () {
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    vim +PlugInstall +qall
+}
+
+compile_ycm () {
+    pushd ~/.vim/bundle/YouCompleteMe
+    git submodule update --init --recursive
+    ./install.sh --clang-completer
+    popd
 }
 
 vim_configuration () {
     #Dependencies for Powerline
     pip install --user mercurial psutil
-    echo 'fs.inotify.max_user_watches=16384' | sudo tee --append /etc/sysctl.conf
-    echo 16384 | sudo tee /proc/sys/fs/inotify/max_user_watches
+    if ! grep -q ^fs.inotify.max_user_watches /etc/sysctl.conf
+    then
+        echo 'fs.inotify.max_user_watches=16384' | sudo tee --append /etc/sysctl.conf
+        echo 16384 | sudo tee /proc/sys/fs/inotify/max_user_watches
+    fi
 
-    # Install all Vundle bundles
-    vundle
+    # Install all plugins and plugin manager
+    vim_plug
+
+    # Tern for Vim
+    pushd ~/.vim/bundle/tern_for_vim
+    npm install
+    ln_if_missing ~/.vim/bundle/tern-meteor/meteor.js node_modules/tern/plugin/
+    popd
 
     # Powerline configuration
+    sudo pip install -e ~/.vim/bundle/powerline
     mkdir ~/.config/powerline
     cp -R ~/.vim/bundle/powerline/powerline/config_files/* ~/.config/powerline/
     rm -rf ~/.config/powerline/config.json
-    ln -s $DIR/powerline/config.json ~/.config/powerline/
+    ln_if_missing "$DIR/powerline/config.json" ~/.config/powerline/
     rm -rf ~/.config/powerline/colorschemes/vim/default.json
-    ln -s $DIR/powerline/colorschemes/vim/default.json ~/.config/powerline/colorschemes/vim/default.json
+    ln_if_missing "$DIR/powerline/colorschemes/vim/default.json" ~/.config/powerline/colorschemes/vim/default.json
+    rm -rf ~/.config/powerline/themes/tmux/default.json
+    ln_if_missing "$DIR/powerline/themes/tmux/default.json" ~/.config/powerline/themes/tmux/default.json
+
+    # Powerline font install
+    mkdir -p ~/.fonts
+    wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf -O ~/.fonts/PowerlineSymbols.otf
+    fc-cache -vf ~/.fonts/
+    mkdir -p ~/.config/fontconfig/conf.d
+    wget https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf -O ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
 
     # Snippets and type detection
     mkdir -p ~/.vim/ftdetect/
-    ln -s ~/.vim/bundle/ultisnips/ftdetect/* ~/.vim/ftdetect/
+    ln_if_missing -s ~/.vim/bundle/ultisnips/ftdetect/* ~/.vim/ftdetect/
+
+    # Term for Vim support
+    pushd ~/.vim/bundle/tern_for_vim
+    npm install
+    popd
 
     # Compile YCM support
-    pushd ~/.vim/bundle/YouCompleteMe
-    ./install.sh --clang-completer 
-    popd
+    compile_ycm
+
+    # Spelling
+    vim +"mkspell $DIR/vim-spelling.utf-8.add" +qall
+}
+
+sync_dotfiles() {
+    dotfiles --sync --force
 }
 
 install () {
-    ln -s $DIR/bashrc ~/.bashrc
-    ln -s $DIR/bash_aliases ~/.bash_aliases
-    ln -s $DIR/bash_logout ~/.bash_logout
-    ln -s $DIR/environment ~/.environment
-    ln -s $DIR/gitconfig ~/.gitconfig
-    ln -s $DIR/vimrc ~/.gvimrc
-    ln -s $DIR/profile ~/.profile
-    ln -s $DIR/vimrc ~/.vimrc
-    ln -s $DIR/zopeskel ~/.zopeskel
+    ln_if_missing "$DIR/dotfilesrc" ~/.dotfilesrc
+    dotfiles --check
+    install_step "Are you sure you wish to replace these files?" sync_dotfiles
 
-    # Contain local data 
+    # Storage for local shell data
     mkdir -p ~/.bash_private
-    cp -s $DIR/pypirc ~/.pypirc
+    cp_if_missing "$DIR/pypirc" ~/.pypirc
 
     mkdir -p ~/.buildout/{eggs,downloads,configs}
-    cp $DIR/buildout/* ~/.buildout/
-    sed -i "s/\${whoami}/`whoami`/g" ~/.buildout/default.cfg
-   
+    cp_if_missing "$DIR/buildout/default.cfg" ~/.buildout/default.cfg
+    sed -i "s/\${whoami}/$(whoami)/g" ~/.buildout/default.cfg
+
     mkdir -p ~/.ssh
-    cp $DIR/ssh/* ~/.ssh/
+    cp_if_missing "$DIR/ssh/config" ~/.ssh/config
 
     # Initialise vim and configuration
     vim_configuration
+
+    if [ $_IS_LINUX ]; then
+        # Enable hiberantion option in menu
+        sudo cp -f "$DIR/etc/com.ubuntu.enable-hibernate.pkla" /etc/polkit-1/localauthority/50-local.d/
+    fi
+}
+
+configure_firefox () {
+    # Install add-ons: Ublock Origin, Session Manager, VimFx, Media Keys
+    #user_pref("browser.cache.disk.parent_directory", "/run/user/1000/firefox-cache");
+    sudo add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora
+    sudo apt-get update
+    sudo apt-get install firefox -y
 }
 
 #########################
@@ -179,15 +429,22 @@ cd "$(dirname "$0")"
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 #Change ~ to be wherever we want, if set via first argument
-if [ $1 ]; then
-	HOME="$1"
+if [ "$1" ]; then
+    HOME="$1"
 fi
 
 if [ ! -d ~ ]; then
-	mkdir -p ~
+    mkdir -p ~
 fi
 
 install_step "Do you want to install dependencies?" dependencies
-install_step "Do you want to remove existing files?" remove 
+#install_step "Do you want to remove existing files?" remove
 install_step "Do you want to install the configuration?" install
-install_step "Re-run Vim's plugin installation?" vundle
+install_step "Re-run Vim's plugin installation?" vim_plug
+install_step "Re-run YouCompleteMe compilation?" compile_ycm
+if [ $_IS_LINUX ]; then
+    install_step "Do you want to install applications?" applications
+    install_step "Do you want to configure Google Drive aliases?" google_drive
+    install_step "Do you want to configure Firefox?" configure_firefox
+fi
+
