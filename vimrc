@@ -35,8 +35,8 @@ Plug 'bogado/file-line'
 " Completion support; requires Vim 7.3.584
 " Press <TAB> to complete, <C-Space> to semantically complete
 " Automatically integrates with Ultisnips
-Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python3 ./install.py --clang-completer --tern-completer' }
-let g:ycm_server_python_interpreter = '/usr/bin/python3'
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --clang-completer --tern-completer' }
+let g:ycm_server_python_interpreter = 'python3'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_complete_in_comments = 1
 let g:ycm_use_ultisnips_completer = 1
