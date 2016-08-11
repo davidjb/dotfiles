@@ -246,10 +246,10 @@ Plug 'elzr/vim-json'
 Plug 'tpope/vim-jdaddy'
 
 " JavaScript
-" XXX Research options
 "Plug 'davidjb/vim-web-indent'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 " XXX see https://github.com/othree/javascript-libraries-syntax.vim
 Plug 'othree/javascript-libraries-syntax.vim'
 let g:javascript_enable_domhtmlcss = 1

@@ -143,6 +143,8 @@ dependencies () {
     # Local Node.js based tools, directory configured in ~/.npmrc
     ln_if_missing "$DIR/npmrc" ~/.npmrc
     npm install -g \
+        linklocal \
+        wml \
         less \
         csslint \
         jsonlint \
@@ -156,6 +158,15 @@ dependencies () {
         typescript \
         keybase-installer \
         jpm # Jetpack package manager for Firefox
+
+    # React
+    npm install -g \
+        standard
+        eslint \
+        babel-eslint \
+        eslint-plugin-react \
+        react-native \
+        react-native-ignite
 
     # Local Ruby-based tools
     mkdir -p "$DIR/tools/ruby"
