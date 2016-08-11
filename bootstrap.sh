@@ -436,14 +436,19 @@ install () {
     dotfiles --check
     install_step "Are you sure you wish to replace these files?" sync_dotfiles
 
+    # User-local 'tmp' directory; more persistent than /tmp
+    mkdir -p ~/tmp
+
     # Storage for local shell data
     mkdir -p ~/.bash_private
     cp_if_missing "$DIR/pypirc" ~/.pypirc
 
+    # Default Buildout configuration
     mkdir -p ~/.buildout/{eggs,downloads,configs}
     cp_if_missing "$DIR/buildout/default.cfg" ~/.buildout/default.cfg
     sed -i "s/\${whoami}/$(whoami)/g" ~/.buildout/default.cfg
 
+    # Default SSH configuration
     mkdir -p ~/.ssh
     cp_if_missing "$DIR/ssh/config" ~/.ssh/config
 
