@@ -127,7 +127,7 @@ dependencies () {
     virtualenv "$DIR/tools/python"
     pushd "$DIR/tools/python"
     . bin/activate
-    easy_install -U \
+    pip install -U \
         py3kwarn \
         pylama \
         rstcheck \
@@ -135,7 +135,8 @@ dependencies () {
         dotfiles \
         nodeenv \
         thefuck \
-        caniusepython3
+        caniusepython3 \
+        em-keyboard
     pip install http://projects.bigasterisk.com/grepedit-1.0.tar.gz
     deactivate
     popd
