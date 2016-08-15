@@ -240,6 +240,7 @@ applications () {
             docker-compose \                # Container environment management
             dosbox \                        # DOS environments
             exfat-utils \                   # exFAT support
+            figlet \                        # ASCII art text
             gcolor2 \                       # GUI colour selector
             gimp \                          # Raster graphics editor
             gimp-gmic \                     # GIMP integration with gmic
@@ -316,6 +317,7 @@ applications () {
             ag \
             docker \
             docker-compose \
+            figlet \
             htop \
             imagemagick \
             nmap \
