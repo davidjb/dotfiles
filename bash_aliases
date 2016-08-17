@@ -56,6 +56,7 @@ alias history-search='history | grep '
 alias history-time='HISTTIMEFORMAT="%F %T " history'
 alias nautilus-fallback='dbus-launch nautilus --no-desktop'
 alias nautilus-mounts='cd "$XDG_RUNTIME_DIR/gvfs"'
+[ $_IS_MAC ] && alias restart-camera='sudo killall VDCAssistant'
 alias rcd='cd -P .' # Real cd
 alias scp-compressed='scp -C -o CompressionLevel=9'
 alias tmux-prefix='tmux set -g prefix C-a'
