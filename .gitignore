@@ -1,3 +1,8 @@
-tools
+tools/nodejs
+tools/nodejs
+tools/python
+tools/powerline-fonts
+tools/gitignore
+tools/ruby
 *.swp
 *.spl
