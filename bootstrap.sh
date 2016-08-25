@@ -113,12 +113,12 @@ dependencies () {
             pyenv-virtualenv \
             python \
             python3 \
-            pyenv-virtualenv \
             sassc \
             shellcheck \
             tidy-html5 \
             unrar \
             vim
+        brew cask install reactotron
     fi
 
     install_update_git https://github.com/kennethreitz/autoenv.git ~/.autoenv
@@ -161,14 +161,15 @@ dependencies () {
         keybase-installer \
         jpm # Jetpack package manager for Firefox
 
-    # React
+    # React Native
     npm install -g \
         standard
         eslint \
         babel-eslint \
         eslint-plugin-react \
         react-native \
-        react-native-ignite
+        react-native-ignite \
+        reactotron-cli
 
     # Local Ruby-based tools
     mkdir -p "$DIR/tools/ruby"
