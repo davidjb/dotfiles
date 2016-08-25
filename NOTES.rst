@@ -130,3 +130,9 @@ youtube-dl
    Online video and audio downloader for different media sites
 Angry IP Scanner (ipscan)
    Easy GUI scanning of network for devices and ports
+   
+Windows
+-------
+
+Rufus
+   https://rufus.akeo.ie/, bootable USB creator for USB via disk image
