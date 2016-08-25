@@ -64,34 +64,34 @@ dependencies () {
         if command -v apt-get > /dev/null 2>&1; then
             #libxml2-utils provides xmllint
             sudo apt-get install -y \
-                vim \
-                vim-gtk \
-                exuberant-ctags \
                 aspell \
                 cmake \
-                mono-xbuild \
-                mono-dmcs \
+                exuberant-ctags \
                 git \
+                libgnome2-bin \
+                libxml2-utils \
                 mercurial \
-                xclip \
+                mono-dmcs \
+                mono-xbuild \
                 nodejs \
                 nodejs-legacy \
                 npm \
+                p7zip \
                 phantomjs \
-                libxml2-utils \
-                tidy \
-                libgnome2-bin \
-                virtualenv \
                 python-dev \
-                python3-dev \
-                python-setuptools \
                 python-pip \
+                python-setuptools \
+                python3-dev \
                 ruby-dev \
                 ruby-sass \
                 shellcheck \
+                tidy \
                 ttf-mscorefonts-installer \
                 unrar \
-                p7zip
+                vim \
+                vim-gtk \
+                virtualenv \
+                xclip
         elif command -v yum > /dev/null 2>&1; then
              echo 'No support yet.'
         fi
@@ -101,23 +101,24 @@ dependencies () {
         brew analytics off
 
         brew install \
-            vim \
-            ctags \
             aspell \
             cmake \
+            ctags \
             git \
+            libxml2 \
             mercurial \
             node \
+            p7zip \
             phantomjs \
-            tidy-html5 \
-            libxml2 \
+            pyenv-virtualenv \
             python \
             python3 \
             pyenv-virtualenv \
             sassc \
             shellcheck \
+            tidy-html5 \
             unrar \
-            p7zip
+            vim
     fi
 
     install_update_git https://github.com/kennethreitz/autoenv.git ~/.autoenv
