@@ -322,11 +322,13 @@ applications () {
             figlet \
             htop \
             imagemagick \
+            ncdu \
             nmap \
             pass \
             pngcrush \
             pwgen \
-            tmux
+            tmux \
+            youtube-dl
 
         # Global Python-based tools
         easy_install -U ipython zest.releaser
