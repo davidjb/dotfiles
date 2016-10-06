@@ -4,6 +4,7 @@ set nocompatible
 set t_Co=256
 call plug#begin('~/.vim/bundle')
 
+" Enable recursive cloning for YouCompleteMe etc
 let g:plug_shallow = 0
 
 " Local vimrc support
@@ -35,8 +36,8 @@ Plug 'bogado/file-line'
 " Completion support; requires Vim 7.3.584
 " Press <TAB> to complete, <C-Space> to semantically complete
 " Automatically integrates with Ultisnips
-Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python3 ./install.py --clang-completer --tern-completer' }
-let g:ycm_server_python_interpreter = '/usr/bin/python3'
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --clang-completer --tern-completer' }
+let g:ycm_server_python_interpreter = 'python3'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_complete_in_comments = 1
 let g:ycm_use_ultisnips_completer = 1
@@ -246,10 +247,10 @@ Plug 'elzr/vim-json'
 Plug 'tpope/vim-jdaddy'
 
 " JavaScript
-" XXX Research options
 "Plug 'davidjb/vim-web-indent'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 " XXX see https://github.com/othree/javascript-libraries-syntax.vim
 Plug 'othree/javascript-libraries-syntax.vim'
 let g:javascript_enable_domhtmlcss = 1

@@ -56,7 +56,6 @@ _pip_completion()
 complete -o default -F _pip_completion pip
 # pip bash completion end
 
-
 # Alias definitions
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
