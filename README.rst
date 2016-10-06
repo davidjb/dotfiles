@@ -6,12 +6,16 @@ settings files into the current user's home directory::
 
     sudo apt-get install git
     git clone https://github.com/davidjb/dotfiles.git
-    ./dotfiles/bootstrap.sh
+    cd dotfiles
+    ./bootstrap.sh
 
 Alternatively, pass the script a directory name or path to customise the
 install location::
 
     ./bootstrap.sh /path/to/install
+
+Most aspects will work on both Ubuntu and Mac platforms.  Certain aliases and
+configuration may be specific to one platform or the other.
 
 
 Useful notes
@@ -44,10 +48,11 @@ Copyright
 =========
 
 Nope, nothing.  Just use what you'd like, how you'd like to use it.
-Consider this software public domain.
+Consider this software public domain so you can remix any part of it into your
+own configuration without needing to attribute it.
 
-Spot and report an error and win a gold star.  Drop me a line if what I've
-written here helps you out!
+That said, spot and report an error and win a gold star.  You can always drop
+me a line if what I've written here helps you out!
 
 
 To Do
@@ -59,7 +64,6 @@ To Do
 
   + ``:help unimpaired``
 
-* Support for multiple operating systems (Mac and Linux)
 * Refinement of vimrc configuration
 
   * Indentation of reST files - changes indent levels but changes
@@ -74,7 +78,6 @@ To Do
 * Automate installation of:
 
   * Virtualenv-wrapper
-  * zest.releaser with aliases
   * Vagrant and MongoDB
 
 Thanks
