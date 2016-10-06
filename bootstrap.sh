@@ -167,7 +167,7 @@ applications () {
 
     # Nagstamon
     if ! command_exists nagstamon; then
-        wget -O /tmp/nagstamon.deb https://nagstamon.ifw-dresden.de/files-nagstamon/unstable/nagstamon_2.0-beta-20160530_all.deb
+        wget -O /tmp/nagstamon.deb https://nagstamon.ifw-dresden.de/files/stable/nagstamon_2.0_all.deb
         sudo dpkg -i /tmp/nagstamon.deb
     fi
 
@@ -250,13 +250,13 @@ applications () {
 
     if ! command_exists vagrant; then
         # Vagrant
-        wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.5_x86_64.deb -O /tmp/vagrant.deb
+        wget https://releases.hashicorp.com/vagrant/1.8.6/vagrant_1.8.6_x86_64.deb -O /tmp/vagrant.deb
         sudo dpkg -i /tmp/vagrant.deb
     fi
 
     if ! command_exists ipscan; then
         # Angry IP scanner
-        wget http://github.com/angryziber/ipscan/releases/download/3.3.2/ipscan_3.3.2_amd64.deb -O /tmp/angry.deb
+        wget https://github.com/angryziber/ipscan/releases/download/3.4.2/ipscan_3.4.2_amd64.deb -O /tmp/angry.deb
         sudo dpkg -i /tmp/angry.deb
     fi
 
