@@ -333,6 +333,9 @@ Plug 'vim-scripts/Arduino-syntax-file'
 " Tmux
 Plug 'tmux-plugins/vim-tmux'
 
+" PHP
+Plug 'StanAngeloff/php.vim'
+
 " All Plug calls must be above here!
 call plug#end()
 
