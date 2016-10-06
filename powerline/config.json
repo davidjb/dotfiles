@@ -23,6 +23,10 @@
 				"in2": "in2"
 			}
 		},
+		"pdb": {
+			"colorscheme": "default",
+			"theme": "default"
+		},
 		"shell": {
 			"colorscheme": "default",
 			"theme": "default",
@@ -44,6 +48,7 @@
 				"cmdwin": "cmdwin",
 				"help": "help",
 				"quickfix": "quickfix",
+
 				"powerline.matchers.vim.plugin.nerdtree.nerdtree": "plugin_nerdtree",
 				"powerline.matchers.vim.plugin.commandt.commandt": "plugin_commandt",
 				"powerline.matchers.vim.plugin.gundo.gundo": "plugin_gundo",
