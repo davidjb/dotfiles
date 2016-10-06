@@ -44,3 +44,5 @@
     history-view-vpane-position = 372
     file-view-vpane-position = 660
     main-window-view = FileView
+[diff]
+	compactionHeuristic = true
