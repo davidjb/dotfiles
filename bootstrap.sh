@@ -175,72 +175,74 @@ applications () {
     sudo apt-get update
 
     # Install all the packages!
-    sudo apt-get install -y \
-        apache2-utils \                 # ab (Apache bench)
-        apt-file \                      # deb file searching
-        audacity \                      # Audio editing
-        bleachbit \                     # File cleaner for Linux
-        brasero \                       # Disc burning software
-        calibre \                       # eBook reader
-        chromium-browser \              # Browser
-        compizconfig-settings-manager \ # Compiz settings UI
-        darktable \                     # Photograph editing
-        dconf-editor \                  # Configuration editor
-        discount \                      # Markdown tools -- get it?
-        docker \                        # Containers
-        docker-compose \                # Container environment management
-        dosbox \                        # DOS environments
-        exfat-utils \                   # exFAT support
-        gcolor2 \                       # GUI colour selector
-        gimp \                          # Raster graphics editor
-        gimp-gmic \                     # GIMP integration with gmic
-        gmic \                          # Image computing tools
-        gnome-raw-thumbnailer \         # RAW support for Nautilus
-        gnome-tweak-tool \              # GNOME option configuration
-        gtk-recordmydesktop \           # Screen recording
-        guvcview \                      # Web cam recording and config app
-        htop \                          # Top, powered up
-        imagemagick \                   # Image conversion and processing
-        indicator-multiload \           # System resource indicator
-        inkscape \                      # Vector graphics editing
-        insync \                        # Google Drive for Linux
-        iotop \                         # I/O monitoring
-        ldap-utils \                    # LDAP tools
-        libav-tools \                   # AV converters
-        libimage-exiftool-perl\         # exiftool for EXIF tags
-        libjpeg-turbo-progs \           # JPEG tools
-        librsvg2-bin \                  # SVG processing
-        lynx \                          # Terminal browsing
-        molly-guard \                   # Prevent shutdown over SSH
-        ncdu \                          # Terminal-based disk usage analyser
-        nethogs \                       # Per-process network activity monitoring
-        nmap \                          # Network probing and monitoring
-        openjdk-8-jre \                 # Java
-        openshot \                      # Video editing application
-        optipng \                       # PNG optimiser
-        pass \                          # Password management
-        pavucontrol \                   # GUI for PulseAudio
-        pidgin \                        # Instant messaging
-        pidgin-skype \                  # Skype for Pidgin
-        pngcrush \                      # PNG optimiser
-        pwgen \                         # Password generator
-        rsnapshot \                     # Backup manager via rsync
-        salt-ssh \                      # Salt configuration management
-        screen \                        # Terminal sessions (like tmux, but ancient)
-        silversearcher-ag \             # Super-fast searching
-        skype \                         # Calls and messaging
-        smbclient \                     # Client for SMB resources (printers, etc)
-        smbnetfs \                      # SMB network support
-        sshfs \                         # SSH filesystem support
-        tmux \                          # Terminal multiplexer
-        uvcdynctrl \                    # UVC controller for webcams
-        v4l-utils \                     # Video4Linux utilities
-        vlc \                           # Video plaer
-        wajig \                         # Package management
-        wakeonlan \                     # WOL tools to send magic packets
-        whois \                         # WHOIS client
+    packages=(
+        apache2-utils                   # ab (Apache bench)
+        apt-file                        # deb file searching
+        audacity                        # Audio editing
+        bleachbit                       # File cleaner for Linux
+        brasero                         # Disc burning software
+        calibre                         # eBook reader
+        chromium-browser                # Browser
+        compizconfig-settings-manager   # Compiz settings UI
+        darktable                       # Photograph editing
+        dconf-editor                    # Configuration editor
+        discount                        # Markdown tools -- get it?
+        docker                          # Containers
+        docker-compose                  # Container environment management
+        dosbox                          # DOS environments
+        exfat-utils                     # exFAT support
+        gcolor2                         # GUI colour selector
+        gimp                            # Raster graphics editor
+        gimp-gmic                       # GIMP integration with gmic
+        gmic                            # Image computing tools
+        gnome-raw-thumbnailer           # RAW support for Nautilus
+        gnome-tweak-tool                # GNOME option configuration
+        gtk-recordmydesktop             # Screen recording
+        guvcview                        # Web cam recording and config app
+        htop                            # Top, powered up
+        imagemagick                     # Image conversion and processing
+        indicator-multiload             # System resource indicator
+        inkscape                        # Vector graphics editing
+        insync                          # Google Drive for Linux
+        iotop                           # I/O monitoring
+        ldap-utils                      # LDAP tools
+        libav-tools                     # AV converters
+        libimage-exiftool-perl          # exiftool for EXIF tags
+        libjpeg-turbo-progs             # JPEG tools
+        librsvg2-bin                    # SVG processing
+        lynx                            # Terminal browsing
+        molly-guard                     # Prevent shutdown over SSH
+        ncdu                            # Terminal-based disk usage analyser
+        nethogs                         # Per-process network activity monitoring
+        nmap                            # Network probing and monitoring
+        openjdk-8-jre                   # Java
+        openshot                        # Video editing application
+        optipng                         # PNG optimiser
+        pass                            # Password management
+        pavucontrol                     # GUI for PulseAudio
+        pidgin                          # Instant messaging
+        pidgin-skype                    # Skype for Pidgin
+        pngcrush                        # PNG optimiser
+        pwgen                           # Password generator
+        rsnapshot                       # Backup manager via rsync
+        salt-ssh                        # Salt configuration management
+        screen                          # Terminal sessions (like tmux, but ancient)
+        silversearcher-ag               # Super-fast searching
+        skype                           # Calls and messaging
+        smbclient                       # Client for SMB resources (printers, etc)
+        smbnetfs                        # SMB network support
+        sshfs                           # SSH filesystem support
+        tmux                            # Terminal multiplexer
+        uvcdynctrl                      # UVC controller for webcams
+        v4l-utils                       # Video4Linux utilities
+        vlc                             # Video plaer
+        wajig                           # Package management
+        wakeonlan                       # WOL tools to send magic packets
+        whois                           # WHOIS client
         wine1.7                         # Wine is not an emulator
         #virtualbox-4.3
+    )
+    sudo apt-get install -y "${packages[@]}"
 
     # Install Asian language support for EPS and Inkscape
     sudo apt-get install texlive-lang-cjk --no-install-recommends
