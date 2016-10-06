@@ -211,6 +211,7 @@ Plug 'vim-scripts/visualrepeat'
 Plug 'tpope/vim-surround'
 let g:surround_{char2nr('t')} = "``\r``"
 let g:surround_{char2nr('e')} = "**\r**"
+let g:surround_{char2nr('%')} = "%\r%"
 
 " Sets of useful mappings about [ and ] & toggles for options
 " such as cos (spelling) and coh (highlighting)
