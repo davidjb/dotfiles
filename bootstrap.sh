@@ -365,7 +365,7 @@ vim_plug () {
 compile_ycm () {
     pushd ~/.vim/bundle/YouCompleteMe
     git submodule update --init --recursive
-    ./install.sh --clang-completer
+    python3 ./install.py --clang-complete  --tern-completer
     popd
 }
 
