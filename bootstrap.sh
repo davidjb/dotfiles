@@ -292,7 +292,7 @@ applications () {
             wakeonlan                       # WOL tools to send magic packets
             whois                           # WHOIS client
             wine1.7                         # Wine is not an emulator
-            #virtualbox-4.3
+            virtualbox-5.1                  # Virtual machines
         )
         sudo apt-get install -y "${packages[@]}"
 
