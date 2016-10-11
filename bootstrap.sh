@@ -229,6 +229,7 @@ applications () {
         packages=(
             apache2-utils                   # ab (Apache bench)
             apt-file                        # deb file searching
+            alien                           # RPM to DEB conversion
             audacity                        # Audio editing
             bleachbit                       # File cleaner for Linux
             brasero                         # Disc burning software
