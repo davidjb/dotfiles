@@ -479,6 +479,18 @@ configure_firefox () {
     sudo apt-get install firefox -y
 }
 
+setup_printing () {
+    # Configure build dependencies
+    sudo apt-get install -y build-essential libcups2-dev
+
+    # Install FujiXerox drivers
+    cp "$DIR./etc/fxlinuxprint-src-1.0.1.tar.gz" /tmp
+    cd /tmp
+    tar xf fxlinuxprint-src-1.0.1.tar.gz
+    cd fxlinuxprint-src-1.0.1
+    ./configure && make && sudo make install
+}
+
 #########################
 #  Execute instalation  #
 #########################
@@ -503,5 +515,6 @@ install_step "Re-run YouCompleteMe compilation?" compile_ycm
 if [ $_IS_LINUX ]; then
     install_step "Do you want to configure Google Drive aliases?" google_drive
     install_step "Do you want to configure Firefox?" configure_firefox
+    install_step "Do you want to set up printing?" setup_printing
 fi
 
