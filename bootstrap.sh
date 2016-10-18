@@ -331,6 +331,7 @@ applications () {
             pngcrush \
             pwgen \
             tmux \
+            wakeonlan \
             youtube-dl
 
         # Global Python-based tools
