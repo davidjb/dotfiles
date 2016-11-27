@@ -46,6 +46,11 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
+# Pass integration
+if [ -f /usr/local/etc/bash_completion.d/password-store ]; then
+    . /usr/local/etc/bash_completion.d/password-store
+fi
+
 # pip bash completion start
 _pip_completion()
 {
