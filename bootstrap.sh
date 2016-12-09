@@ -330,6 +330,7 @@ applications () {
             pass \
             pngcrush \
             pwgen \
+            reattach-to-user-namespace \
             tmux \
             wakeonlan \
             youtube-dl
