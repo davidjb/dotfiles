@@ -133,7 +133,7 @@ dependencies () {
         pylama \
         rstcheck \
         pygments \
-        dotfiles \
+        git+https://github.com/jbernard/dotfiles.git \
         nodeenv \
         thefuck \
         caniusepython3 \
@@ -445,7 +445,7 @@ vim_configuration () {
 }
 
 sync_dotfiles() {
-    dotfiles --sync --force
+    dotfiles link
 }
 
 install () {
@@ -454,7 +454,7 @@ install () {
     source ~/.environment
 
     ln_if_missing "$DIR/dotfilesrc" ~/.dotfilesrc
-    dotfiles --check
+    dotfiles link --debug
     install_step "Are you sure you wish to replace these files?" sync_dotfiles
 
     # User-local 'tmp' directory; more persistent than /tmp
