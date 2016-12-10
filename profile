@@ -11,8 +11,16 @@
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
+    . "$HOME/.bashrc"
     fi
+fi
+
+# GPG agent invocation
+[ -f ~/.gpg-agent-info  ] && source ~/.gpg-agent-info
+if [ -S "${GPG_AGENT_INFO%%:*}"  ]; then
+  export GPG_AGENT_INFO
+else
+  eval $( gpg-agent --daemon --write-env-file ~/.gpg-agent-info )
 fi
 
 # set PATH so it includes user's private bin if it exists
