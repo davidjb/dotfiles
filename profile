@@ -7,24 +7,11 @@
 # the default umask is set in /etc/profile
 #umask 022
 
-[[ $OSTYPE == "darwin"*  ]] && _IS_MAC=yes
-
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
     . "$HOME/.bashrc"
-    fi
-fi
-
-# GPG agent invocation
-# https://blog.chendry.org/2015/03/13/starting-gpg-agent-in-osx.html
-if [ $_IS_MAC ]; then
-    [ -f ~/.gpg-agent-info  ] && source ~/.gpg-agent-info
-    if [ -S "${GPG_AGENT_INFO%%:*}"  ]; then
-      export GPG_AGENT_INFO
-    else
-      eval $( gpg-agent --daemon --write-env-file ~/.gpg-agent-info )
     fi
 fi
 
