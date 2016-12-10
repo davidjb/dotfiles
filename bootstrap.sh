@@ -333,6 +333,7 @@ applications () {
             imagemagick                     # Image conversion and processing
             ncdu                            # Terminal-based disk usage analyser
             nmap                            # Network probing and monitoring
+            optipng                         # PNG optimiser
             pass                            # Password management
             pinentry-mac                    # PIN entry interface for GPG/pass
             pngcrush                        # PNG optimiser
