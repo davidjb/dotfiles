@@ -319,22 +319,28 @@ applications () {
         # Global Python-based tools
         sudo easy_install -U ipython zest.releaser
     elif [ $_IS_MAC ]; then
-        brew install \
-            ag \
-            docker \
-            docker-compose \
-            figlet \
-            htop \
-            imagemagick \
-            ncdu \
-            nmap \
-            pass \
-            pngcrush \
-            pwgen \
-            reattach-to-user-namespace \
-            tmux \
-            wakeonlan \
-            youtube-dl
+        # Update Homebrew and its package information
+        brew update
+
+        # Install all the packages!
+        packages=(
+            ag                              # Super-fast searching
+            docker                          # Containers
+            docker-compose                  # Container environment management
+            figlet                          # ASCII art text
+            htop                            # Top, powered up
+            imagemagick                     # Image conversion and processing
+            ncdu                            # Terminal-based disk usage analyser
+            nmap                            # Network probing and monitoring
+            pass                            # Password management
+            pngcrush                        # PNG optimiser
+            pwgen                           # Password generator
+            reattach-to-user-namespace      # Support for pbcopy in tmux
+            tmux                            # Terminal multiplexer
+            wakeonlan                       # WOL tools to send magic packets
+            youtube-dl                      # Media downloader
+        )
+        brew install "${packages[@]}"
 
         # Global Python-based tools
         easy_install -U ipython zest.releaser
