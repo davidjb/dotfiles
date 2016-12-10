@@ -294,6 +294,7 @@ applications () {
             whois                           # WHOIS client
             wine1.7                         # Wine is not an emulator
             virtualbox-5.1                  # Virtual machines
+            youtube-dl                      # Media downloader
         )
         sudo apt-get install -y "${packages[@]}"
 
