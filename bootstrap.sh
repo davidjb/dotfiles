@@ -328,11 +328,13 @@ applications () {
             docker                          # Containers
             docker-compose                  # Container environment management
             figlet                          # ASCII art text
+            gpg-agent                       # GPG support
             htop                            # Top, powered up
             imagemagick                     # Image conversion and processing
             ncdu                            # Terminal-based disk usage analyser
             nmap                            # Network probing and monitoring
             pass                            # Password management
+            pinentry-mac                    # PIN entry interface for GPG/pass
             pngcrush                        # PNG optimiser
             pwgen                           # Password generator
             reattach-to-user-namespace      # Support for pbcopy in tmux
