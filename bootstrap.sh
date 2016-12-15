@@ -325,6 +325,7 @@ applications () {
         # Install all the packages!
         packages=(
             ag                              # Super-fast searching
+            coreutils                       # GNU coreutils like grm
             docker                          # Containers
             docker-compose                  # Container environment management
             figlet                          # ASCII art text
