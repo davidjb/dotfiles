@@ -8,8 +8,8 @@ if [ "$TERM" != "dumb" ]; then
     if [ -x /usr/bin/dircolors ]; then
         eval "$(dircolors -b)"
     fi
+    alias ls='ls -F --color=auto'
     if [ $_IS_LINUX ]; then
-        alias ls='ls -F --color=auto'
         alias dir='ls --color=auto --format=vertical'
         alias vdir='ls --color=auto --format=long'
 
@@ -17,7 +17,6 @@ if [ "$TERM" != "dumb" ]; then
         alias fgrep='fgrep --color=auto'
         alias egrep='egrep --color=auto'
     elif [ $_IS_MAC ]; then
-        alias ls='ls -F -G'
         alias dir='ls --format=vertical'
         alias vdir='ls --format=long'
     fi
