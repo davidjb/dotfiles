@@ -98,6 +98,13 @@ if [ $_IS_MAC ]; then
     else
         eval $( gpg-agent --daemon --write-env-file ~/.gpg-agent-info )
     fi
+
+    [ -f ~/.ssh-agent ] && source ~/.ssh-agent
+    if [ -S "${SSH_AGENT_PID%%:*}"  ]; then
+        export SSH_AGENT_PID
+    else
+        eval $( ssh-agent > ~/.ssh-agent )
+    fi
 fi
 
 

@@ -1,2 +1,6 @@
+Host *
 ForwardAgent yes
 SendEnv GIT_*
+HashKnownHosts yes
+UseKeychain no
+AddKeysToAgent yes
