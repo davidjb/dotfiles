@@ -504,6 +504,20 @@ setup_printing () {
     ./configure && make && sudo make install
 }
 
+configure_mac () {
+    # Disable the captive portal for free wifi
+    sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control Active -bool false
+
+    # Show all file extensions
+    defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+    # Disable Bonjour multicast advertisments
+    sudo defaults write /Library/Preferences/com.apple.mDNSResponder.plist NoMulticastAdvertisements -bool YES
+
+    # macOS config checker
+    install_update_git https://github.com/kristovatlas/osx-config-check "$DIR/tools/mac/osx-config-check"
+}
+
 #########################
 #  Execute instalation  #
 #########################
@@ -529,5 +543,7 @@ if [ $_IS_LINUX ]; then
     install_step "Do you want to configure Google Drive aliases?" google_drive
     install_step "Do you want to configure Firefox?" configure_firefox
     install_step "Do you want to set up printing?" setup_printing
+elif [ $_IS_MAC ]; then
+    install_step "Do you want to configure this Mac?" configure_mac
 fi
 
