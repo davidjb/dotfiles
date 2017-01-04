@@ -105,6 +105,7 @@ dependencies () {
             cmake \
             ctags \
             git \
+            gnupg2 \
             libxml2 \
             mercurial \
             node \
@@ -119,6 +120,7 @@ dependencies () {
             unrar \
             vim
         brew cask install reactotron
+
     fi
 
     install_update_git https://github.com/kennethreitz/autoenv.git ~/.autoenv
@@ -329,6 +331,7 @@ applications () {
             docker                          # Containers
             docker-compose                  # Container environment management
             figlet                          # ASCII art text
+            ffmpeg                          # Multimedia converter
             gpg-agent                       # GPG support
             htop                            # Top, powered up
             imagemagick                     # Image conversion and processing
