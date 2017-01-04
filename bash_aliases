@@ -81,6 +81,9 @@ flac-conversion() {
         avconv -i "$file" -b 320k "$converted_name"
     done
 }
+aax-dedrm() {
+    ffmpeg -activation_bytes "$AUDIBLE_ACTIVATION_BYTES" -i "$1" -vn -c:a copy -v debug "$2"
+}
 
 # Use with pipes as input or output
 if [ $_IS_LINUX ]; then
