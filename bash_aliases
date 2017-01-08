@@ -39,6 +39,7 @@ alias path='echo "$PATH" | tr -s ":" "\n"' # Pretty print the PATH
 alias ack='ACK_PAGER_COLOR="less -x4SRFX" /usr/bin/ack-grep -a -C 1 --follow'
 alias agh='ag --depth 0' #ag here, search only current folder
 alias apt-whatprovides='apt-cache policy'
+[ $_IS_MAC ] && alias bootstrap-macports='export PATH=/opt/local/bin:/opt/local/sbin:$PATH'
 alias calc='gnome-calculator &'
 alias l='ls -FC'
 alias la='ls -FAh'
@@ -106,7 +107,7 @@ ssh-copy-public-key () {
 }
 alias serve='python -m SimpleHTTPServer 8000'
 alias ports='netstat -tulpn'
-alias port='netstat -tulpn | grep'
+#alias port='netstat -tulpn | grep'
 alias ssl-text='openssl x509 -text -noout -in'
 ssl-self-signed() {
     openssl req -x509 -nodes -days 365 -sha256 -newkey rsa:4096 \
