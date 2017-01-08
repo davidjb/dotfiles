@@ -120,6 +120,7 @@ dependencies () {
             unrar \
             vim
         brew cask install reactotron
+        brew tap caskroom/cask
 
     fi
 
@@ -348,6 +349,37 @@ applications () {
             youtube-dl                      # Media downloader
         )
         brew install "${packages[@]}"
+
+        # Install all the applications!
+        applications=(
+            adobe-acrobat                   # For stupid PDFs with dynamic content
+            angry-ip-scanner                # Port and host scanner
+            calibre                         # eBook reader
+            chromium                        # Alternative browsing
+            cyberduck                       # Remote server connections
+            darktable                       # Photograph editing
+            disk-inventory-x                # What's using my SSD?
+            dosbox                          # DOS environments
+            easy-move-plus-resize           # Move windows with Alt
+            etcher                          # Create USB disks
+            flux                            # Change screen colour with time
+            firefox                         # Freedom on the web
+            handbrake                       # Media transcoding
+            inkscape                        # Vector graphics editing
+            insomniax                       # Prevent Mac from sleeping
+            gimp                            # Raster graphics editor
+            libreoffice                     # Editing office documents
+            openshot-video-editor           # Video editing application
+            simple-comic                    # Comic reader
+            spectacle                       # Positioning for windows
+            skype                           # Calls and messaging
+            the-unarchiver                  # Archive extraction
+            virtualbox                      # Virtual machines
+            wireshark                       # Network traffic monitor
+            vlc                             # Video plaer
+            wine-staging                    # Wine is not an emulator
+        )
+        brew cask install "${applications[@]}"
 
         # Global Python-based tools
         easy_install -U ipython zest.releaser
