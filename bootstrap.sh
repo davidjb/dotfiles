@@ -381,6 +381,11 @@ applications () {
         )
         brew cask install "${applications[@]}"
 
+        # MacFUSE support for given filesystems
+        brew tap homebrew/fuse
+        brew cask install osxfuse
+        brew install ext4fuse ntfs-3g sshfs
+
         # Global Python-based tools
         easy_install -U ipython zest.releaser
     fi
