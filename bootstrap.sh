@@ -354,6 +354,7 @@ applications () {
         applications=(
             adobe-acrobat                   # For stupid PDFs with dynamic content
             angry-ip-scanner                # Port and host scanner
+            avibrazil-rdm                   # High-resolution MacBook screen
             calibre                         # eBook reader
             chromium                        # Alternative browsing
             cyberduck                       # Remote server connections
