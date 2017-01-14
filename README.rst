@@ -17,13 +17,19 @@ install location::
 Most aspects will work on both Ubuntu and Mac platforms.  Certain aliases and
 configuration may be specific to one platform or the other.
 
+Manual Steps
+------------
+
+1. Set up the macOS terminal:
+
+   * Import ``mac-pro-terminal.terminal`` for a profile
+   * Set the default shell command to ``/usr/local/bin/bash``
 
 Useful notes
 ------------
 
 For useful notes, snippets, and general information, take a look
 at `NOTES <https://github.com/davidjb/dotfiles/blob/master/NOTES.rst>`_.
-
 
 Management
 ----------
