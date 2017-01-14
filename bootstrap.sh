@@ -381,6 +381,7 @@ applications () {
             insomniax                       # Prevent Mac from sleeping
             gimp                            # Raster graphics editor
             libreoffice                     # Editing office documents
+            little-snitch                   # Firewall
             openshot-video-editor           # Video editing application
             simple-comic                    # Comic reader
             spectacle                       # Positioning for windows
