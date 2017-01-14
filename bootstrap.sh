@@ -106,25 +106,30 @@ dependencies () {
         fi
         brew analytics off
 
-        brew install \
-            aspell \
-            cmake \
-            ctags \
-            git \
-            gnupg2 \
-            libxml2 \
-            mercurial \
-            node \
-            p7zip \
-            phantomjs \
-            pyenv-virtualenv \
-            python \
-            python3 \
-            sassc \
-            shellcheck \
-            tidy-html5 \
-            unrar \
-            vim
+        packages=(
+            aspell                            # Spelling
+            bash                              # Updated shell
+            cmake                             # Compilation
+            ctags                             #
+            coreutils                         # GNU coreutils like grm
+            git                               # Version control
+            gnupg2                            # Encryption
+            libxml2                           # XML library
+            mercurial                         # Version control
+            node                              # Node.js language
+            p7zip                             # 7zip archives
+            phantomjs                         # JS webpage runner
+            python                            # Python 2 language
+            python3                           # Python 3 language
+            sassc                             # SASS compiler
+            shellcheck                        # Spelling
+            tidy-html5                        # HTML5 validation tool
+            unrar                             # .rar archives
+            vim                               # Updated Vim
+        )
+        brew install "${packages[@]}"
+
+        pip install virtualenv
         brew cask install reactotron
         brew tap caskroom/cask
 
@@ -334,7 +339,6 @@ applications () {
         # Install all the packages!
         packages=(
             ag                              # Super-fast searching
-            coreutils                       # GNU coreutils like grm
             docker                          # Containers
             docker-compose                  # Container environment management
             figlet                          # ASCII art text
@@ -357,8 +361,9 @@ applications () {
         brew install "${packages[@]}"
 
         # Install all the applications!
+        brew cask install xquartz           # For Inkscape - not automatic?
         applications=(
-            adobe-acrobat                   # For stupid PDFs with dynamic content
+            adobe-reader                    # For stupid PDFs with dynamic content
             angry-ip-scanner                # Port and host scanner
             avibrazil-rdm                   # High-resolution MacBook screen
             calibre                         # eBook reader
