@@ -61,7 +61,7 @@ install_step () {
 #########################
 dependencies () {
     if [ $_IS_LINUX ]; then
-        if command -v apt-get > /dev/null 2>&1; then
+        if command_exists apt-get; then
             #libxml2-utils provides xmllint
             sudo apt-get install -y \
                 aspell \
@@ -92,12 +92,18 @@ dependencies () {
                 vim-gtk \
                 virtualenv \
                 xclip
-        elif command -v yum > /dev/null 2>&1; then
-             echo 'No support yet.'
+        elif command_exists yum; then
+            echo 'No support yet.'
+        else
+            echo 'Probably no support, ever.'
         fi
     elif [ $_IS_MAC ]; then
         #Install homebrew
-        ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+        if command_exists brew; then
+            brew update
+        else
+            /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        fi
         brew analytics off
 
         brew install \
