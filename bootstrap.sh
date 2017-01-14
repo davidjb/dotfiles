@@ -138,7 +138,7 @@ dependencies () {
     install_update_git https://github.com/kennethreitz/autoenv.git ~/.autoenv
 
     # Local Python-based tools
-    mkdir -p "$DIR/tools"
+    mkdir -p "$DIR/tools/python"
     virtualenv "$DIR/tools/python"
     pushd "$DIR/tools/python"
     . bin/activate
@@ -177,7 +177,7 @@ dependencies () {
 
     # React Native
     npm install -g \
-        standard
+        standard \
         eslint \
         babel-eslint \
         eslint-plugin-react \
@@ -468,7 +468,7 @@ vim_configuration () {
 
         # Font configuration
         install_update_git https://github.com/powerline/fonts.git "$DIR/tools/powerline-fonts"
-        pushd "$DIR/tools-powerline-fonts"
+        pushd "$DIR/tools/powerline-fonts"
         ./install.sh
         popd
         echo "Powerline: now select a suitable font in Terminal."
