@@ -570,6 +570,14 @@ configure_mac () {
     # Disable gamed daemon
     launchctl unload -w /System/Library/LaunchAgents/com.apple.gamed.plist
 
+    # Protect the FileVault key on standby
+    sudo pmset -a destroyfvkeyonstandby 1
+    sudo pmset -a hibernatemode 25
+    sudo pmset -a powernap 0
+    sudo pmset -a standby 0
+    sudo pmset -a standbydelay 0
+    sudo pmset -a autopoweroff
+
     # macOS config checker
     install_update_git https://github.com/kristovatlas/osx-config-check "$DIR/tools/mac/osx-config-check"
 }
