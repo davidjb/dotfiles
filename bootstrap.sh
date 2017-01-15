@@ -567,6 +567,9 @@ configure_mac () {
     # Disable Bonjour multicast advertisments
     sudo defaults write /Library/Preferences/com.apple.mDNSResponder.plist NoMulticastAdvertisements -bool YES
 
+    # Disable gamed daemon
+    launchctl unload -w /System/Library/LaunchAgents/com.apple.gamed.plist
+
     # macOS config checker
     install_update_git https://github.com/kristovatlas/osx-config-check "$DIR/tools/mac/osx-config-check"
 }
