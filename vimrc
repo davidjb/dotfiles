@@ -347,6 +347,9 @@ call plug#end()
 " VVV Experimental
 set display+=lastline
 set tabpagemax=50
+set grepprg=ag\ --vimgrep\ $*
+set grepformat=%f:%l:%c:%m
+
 " ^^^ Exterimental
 set ttimeout                                        " Time out when entering keycodes
 set ttimeoutlen=100                                 " Set timeout for keycodes
