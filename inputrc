@@ -5,7 +5,7 @@ set show-all-if-ambiguous on
 set completion-ignore-case on
 
 # On menu-complete, first display the common prefix, then cycle with tab key
-#menu-complete-display-prefix on
+set menu-complete-display-prefix on
 
 # Use Vi, not Emacs, style editing
 set editing-mode vi

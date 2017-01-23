@@ -2,7 +2,6 @@
 repository = ~/dotfiles
 externals = {
     '.gvimrc': '~/dotfiles/vimrc',
-    '.config/inkscape/keys/default.xml': '~/dotfiles/config/inkscape/keys/default.xml'
     }
 ignore = [
     '*.rst',
