@@ -1,0 +1,7 @@
+import rlcompleter
+import readline
+import sys
+import pprint
+
+readline.parse_and_bind("tab: complete")
+sys.displayhook = pprint.pprint
