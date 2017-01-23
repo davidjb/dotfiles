@@ -147,6 +147,7 @@ dependencies () {
     npm install -g \
         linklocal \
         wml \
+        svgo \
         less \
         csslint \
         jsonlint \
