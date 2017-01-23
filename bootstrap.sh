@@ -61,7 +61,7 @@ install_step () {
 #########################
 dependencies () {
     if [ $_IS_LINUX ]; then
-        if command -v apt-get > /dev/null 2>&1; then
+        if command_exists apt-get; then
             #libxml2-utils provides xmllint
             sudo apt-get install -y \
                 aspell \
@@ -92,39 +92,53 @@ dependencies () {
                 vim-gtk \
                 virtualenv \
                 xclip
-        elif command -v yum > /dev/null 2>&1; then
-             echo 'No support yet.'
+        elif command_exists yum; then
+            echo 'No support yet.'
+        else
+            echo 'Probably no support, ever.'
         fi
     elif [ $_IS_MAC ]; then
         #Install homebrew
-        ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+        if command_exists brew; then
+            brew update
+        else
+            /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        fi
         brew analytics off
 
-        brew install \
-            aspell \
-            cmake \
-            ctags \
-            git \
-            libxml2 \
-            mercurial \
-            node \
-            p7zip \
-            phantomjs \
-            pyenv-virtualenv \
-            python \
-            python3 \
-            sassc \
-            shellcheck \
-            tidy-html5 \
-            unrar \
-            vim
+        packages=(
+            aspell                            # Spelling
+            bash                              # Updated shell
+            cmake                             # Compilation
+            ctags                             #
+            coreutils                         # GNU coreutils like grm
+            git                               # Version control
+            gnupg2                            # Encryption
+            libxml2                           # XML library
+            mercurial                         # Version control
+            node                              # Node.js language
+            p7zip                             # 7zip archives
+            phantomjs                         # JS webpage runner
+            python                            # Python 2 language
+            python3                           # Python 3 language
+            sassc                             # SASS compiler
+            shellcheck                        # Spelling
+            tidy-html5                        # HTML5 validation tool
+            unrar                             # .rar archives
+            vim                               # Updated Vim
+        )
+        brew install "${packages[@]}"
+
+        pip install virtualenv
         brew cask install reactotron
+        brew tap caskroom/cask
+
     fi
 
     install_update_git https://github.com/kennethreitz/autoenv.git ~/.autoenv
 
     # Local Python-based tools
-    mkdir -p "$DIR/tools"
+    mkdir -p "$DIR/tools/python"
     virtualenv "$DIR/tools/python"
     pushd "$DIR/tools/python"
     . bin/activate
@@ -133,7 +147,7 @@ dependencies () {
         pylama \
         rstcheck \
         pygments \
-        dotfiles \
+        git+https://github.com/jbernard/dotfiles.git \
         nodeenv \
         thefuck \
         caniusepython3 \
@@ -164,7 +178,7 @@ dependencies () {
 
     # React Native
     npm install -g \
-        standard
+        standard \
         eslint \
         babel-eslint \
         eslint-plugin-react \
@@ -296,6 +310,7 @@ applications () {
             whois                           # WHOIS client
             wine1.7                         # Wine is not an emulator
             virtualbox-5.1                  # Virtual machines
+            youtube-dl                      # Media downloader
         )
         sudo apt-get install -y "${packages[@]}"
 
@@ -320,21 +335,72 @@ applications () {
         # Global Python-based tools
         sudo easy_install -U ipython zest.releaser
     elif [ $_IS_MAC ]; then
-        brew install \
-            ag \
-            docker \
-            docker-compose \
-            figlet \
-            htop \
-            imagemagick \
-            ncdu \
-            nmap \
-            oath-toolkit \
-            pass \
-            pngcrush \
-            pwgen \
-            tmux \
-            youtube-dl
+        # Update Homebrew and its package information
+        brew update
+
+        # Install all the packages!
+        packages=(
+            ag                              # Super-fast searching
+            docker                          # Containers
+            docker-compose                  # Container environment management
+            figlet                          # ASCII art text
+            ffmpeg                          # Multimedia converter
+            gpg-agent                       # GPG support
+            htop                            # Top, powered up
+            imagemagick                     # Image conversion and processing
+            ncdu                            # Terminal-based disk usage analyser
+            nmap                            # Network probing and monitoring
+            oath-toolkit                    # OTP toolkit
+            optipng                         # PNG optimiser
+            pass                            # Password management
+            pinentry-mac                    # PIN entry interface for GPG/pass
+            pngcrush                        # PNG optimiser
+            pwgen                           # Password generator
+            reattach-to-user-namespace      # Support for pbcopy in tmux
+            tmux                            # Terminal multiplexer
+            wakeonlan                       # WOL tools to send magic packets
+            youtube-dl                      # Media downloader
+        )
+        brew install "${packages[@]}"
+
+        # Install all the applications!
+        brew cask install xquartz           # For Inkscape - not automatic?
+        applications=(
+            adobe-reader                    # For stupid PDFs with dynamic content
+            angry-ip-scanner                # Port and host scanner
+            avibrazil-rdm                   # High-resolution MacBook screen
+            calibre                         # eBook reader
+            chromium                        # Alternative browsing
+            cyberduck                       # Remote server connections
+            darktable                       # Photograph editing
+            disk-inventory-x                # What's using my SSD?
+            dosbox                          # DOS environments
+            easy-move-plus-resize           # Move windows with Alt
+            etcher                          # Create USB disks
+            flux                            # Change screen colour with time
+            firefox                         # Freedom on the web
+            handbrake                       # Media transcoding
+            inkscape                        # Vector graphics editing
+            insomniax                       # Prevent Mac from sleeping
+            gimp                            # Raster graphics editor
+            libreoffice                     # Editing office documents
+            little-snitch                   # Firewall
+            openshot-video-editor           # Video editing application
+            simple-comic                    # Comic reader
+            spectacle                       # Positioning for windows
+            skype                           # Calls and messaging
+            the-unarchiver                  # Archive extraction
+            virtualbox                      # Virtual machines
+            wireshark                       # Network traffic monitor
+            vlc                             # Video plaer
+            wine-staging                    # Wine is not an emulator
+        )
+        brew cask install "${applications[@]}"
+
+        # MacFUSE support for given filesystems
+        brew tap homebrew/fuse
+        brew cask install osxfuse
+        brew install ext4fuse ntfs-3g sshfs
 
         # Global Python-based tools
         easy_install -U ipython zest.releaser
@@ -406,7 +472,7 @@ vim_configuration () {
 
         # Font configuration
         install_update_git https://github.com/powerline/fonts.git "$DIR/tools/powerline-fonts"
-        pushd "$DIR/tools-powerline-fonts"
+        pushd "$DIR/tools/powerline-fonts"
         ./install.sh
         popd
         echo "Powerline: now select a suitable font in Terminal."
@@ -437,7 +503,7 @@ vim_configuration () {
 }
 
 sync_dotfiles() {
-    dotfiles --sync --force
+    dotfiles link
 }
 
 install () {
@@ -446,7 +512,7 @@ install () {
     source ~/.environment
 
     ln_if_missing "$DIR/dotfilesrc" ~/.dotfilesrc
-    dotfiles --check
+    dotfiles link --debug
     install_step "Are you sure you wish to replace these files?" sync_dotfiles
 
     # User-local 'tmp' directory; more persistent than /tmp
@@ -494,6 +560,31 @@ setup_printing () {
     ./configure && make && sudo make install
 }
 
+configure_mac () {
+    # Disable the captive portal for free wifi
+    sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control Active -bool false
+
+    # Show all file extensions
+    defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+    # Disable Bonjour multicast advertisments
+    sudo defaults write /Library/Preferences/com.apple.mDNSResponder.plist NoMulticastAdvertisements -bool YES
+
+    # Disable gamed daemon
+    launchctl unload -w /System/Library/LaunchAgents/com.apple.gamed.plist
+
+    # Protect the FileVault key on standby
+    sudo pmset -a destroyfvkeyonstandby 1
+    sudo pmset -a hibernatemode 25
+    sudo pmset -a powernap 0
+    sudo pmset -a standby 0
+    sudo pmset -a standbydelay 0
+    sudo pmset -a autopoweroff
+
+    # macOS config checker
+    install_update_git https://github.com/kristovatlas/osx-config-check "$DIR/tools/mac/osx-config-check"
+}
+
 #########################
 #  Execute instalation  #
 #########################
@@ -519,5 +610,7 @@ if [ $_IS_LINUX ]; then
     install_step "Do you want to configure Google Drive aliases?" google_drive
     install_step "Do you want to configure Firefox?" configure_firefox
     install_step "Do you want to set up printing?" setup_printing
+elif [ $_IS_MAC ]; then
+    install_step "Do you want to configure this Mac?" configure_mac
 fi
 

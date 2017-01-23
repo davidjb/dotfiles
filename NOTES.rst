@@ -96,6 +96,11 @@ Pass
     pass init [GPG key IDs]
     pass git init
 
+    readarray -t idents < ~/.password-store/.gpg-id
+    line=$(printf '"%s" ' "${idents[@]}")
+    pass init $line "New GPG Ident (Comment)"
+
+
 Mass editing files
 ------------------
 

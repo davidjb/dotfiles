@@ -8,8 +8,8 @@ if [ "$TERM" != "dumb" ]; then
     if [ -x /usr/bin/dircolors ]; then
         eval "$(dircolors -b)"
     fi
+    alias ls='ls -F --color=auto'
     if [ $_IS_LINUX ]; then
-        alias ls='ls -F --color=auto'
         alias dir='ls --color=auto --format=vertical'
         alias vdir='ls --color=auto --format=long'
 
@@ -17,7 +17,6 @@ if [ "$TERM" != "dumb" ]; then
         alias fgrep='fgrep --color=auto'
         alias egrep='egrep --color=auto'
     elif [ $_IS_MAC ]; then
-        alias ls='ls -F -G'
         alias dir='ls --format=vertical'
         alias vdir='ls --format=long'
     fi
@@ -40,6 +39,7 @@ alias path='echo "$PATH" | tr -s ":" "\n"' # Pretty print the PATH
 alias ack='ACK_PAGER_COLOR="less -x4SRFX" /usr/bin/ack-grep -a -C 1 --follow'
 alias agh='ag --depth 0' #ag here, search only current folder
 alias apt-whatprovides='apt-cache policy'
+[ $_IS_MAC ] && alias bootstrap-macports='export PATH=/opt/local/bin:/opt/local/sbin:$PATH'
 alias calc='gnome-calculator &'
 alias l='ls -FC'
 alias la='ls -FAh'
@@ -57,6 +57,7 @@ alias history-time='HISTTIMEFORMAT="%F %T " history'
 alias nautilus-fallback='dbus-launch nautilus --no-desktop'
 alias nautilus-mounts='cd "$XDG_RUNTIME_DIR/gvfs"'
 [ $_IS_MAC ] && alias restart-camera='sudo killall VDCAssistant'
+alias random-mac="sudo ifconfig en0 ether $(openssl rand -hex 6 | sed 's%\(..\)%\1:%g; s%.$%%')"
 alias rcd='cd -P .' # Real cd
 alias scp-compressed='scp -C -o CompressionLevel=9'
 alias tmux-prefix='tmux set -g prefix C-a'
@@ -81,6 +82,9 @@ flac-conversion() {
         avconv -i "$file" -b 320k "$converted_name"
     done
 }
+aax-dedrm() {
+    ffmpeg -activation_bytes "$AUDIBLE_ACTIVATION_BYTES" -i "$1" -vn -c:a copy -v debug "$2"
+}
 
 # Use with pipes as input or output
 if [ $_IS_LINUX ]; then
@@ -103,7 +107,7 @@ ssh-copy-public-key () {
 }
 alias serve='python -m SimpleHTTPServer 8000'
 alias ports='netstat -tulpn'
-alias port='netstat -tulpn | grep'
+#alias port='netstat -tulpn | grep'
 alias ssl-text='openssl x509 -text -noout -in'
 ssl-self-signed() {
     openssl req -x509 -nodes -days 365 -sha256 -newkey rsa:4096 \

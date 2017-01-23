@@ -1,6 +1,7 @@
 # vim:tw=78:ft=sh
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
+[[ $OSTYPE == "darwin"*  ]] && _IS_MAC=yes
 
 # Don't put duplicate lines in the history, ignore commands with leading space.
 # See bash(1) for more options
@@ -46,6 +47,11 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
+# Pass integration
+if [ -f /usr/local/etc/bash_completion.d/password-store ]; then
+    . /usr/local/etc/bash_completion.d/password-store
+fi
+
 # pip bash completion start
 _pip_completion()
 {
@@ -86,5 +92,25 @@ source ~/dotfiles/tools/pass-otp/pass-otp.sh
 #. /usr/local/bin/virtualenvwrapper.sh
 #export WORKON_HOME=~/buildout
 
+# GPG agent invocation
+# https://blog.chendry.org/2015/03/13/starting-gpg-agent-in-osx.html
+if [ $_IS_MAC ]; then
+    [ -f ~/.gpg-agent-info ] && source ~/.gpg-agent-info
+    if [ -S "${GPG_AGENT_INFO%%:*}"  ]; then
+        export GPG_AGENT_INFO
+    else
+        eval $( gpg-agent --daemon --write-env-file ~/.gpg-agent-info )
+    fi
+
+    [ -f ~/.ssh-agent ] && source ~/.ssh-agent
+    if [ -S "${SSH_AGENT_PID%%:*}"  ]; then
+        export SSH_AGENT_PID
+    else
+        eval $( ssh-agent > ~/.ssh-agent )
+    fi
+fi
+
+
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
