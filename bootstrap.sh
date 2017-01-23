@@ -268,6 +268,7 @@ applications () {
             ncdu                            # Terminal-based disk usage analyser
             nethogs                         # Per-process network activity monitoring
             nmap                            # Network probing and monitoring
+            oathtool                        # Toolkit for one-time password auth
             openjdk-8-jre                   # Java
             openshot                        # Video editing application
             optipng                         # PNG optimiser
@@ -327,6 +328,7 @@ applications () {
             imagemagick \
             ncdu \
             nmap \
+            oath-toolkit \
             pass \
             pngcrush \
             pwgen \

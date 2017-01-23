@@ -5,7 +5,7 @@ Run the included ``bootstrap.sh`` script and it will install the included
 settings files into the current user's home directory::
 
     sudo apt-get install git
-    git clone https://github.com/davidjb/dotfiles.git
+    git clone --recursive https://github.com/davidjb/dotfiles.git
     cd dotfiles
     ./bootstrap.sh
 

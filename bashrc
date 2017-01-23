@@ -80,6 +80,9 @@ shopt -u nullglob
 # Tab completion for Grunt
 eval "$(grunt --completion=bash)"
 
+# pass-otp
+source ~/dotfiles/tools/pass-otp/pass-otp.sh
+
 #. /usr/local/bin/virtualenvwrapper.sh
 #export WORKON_HOME=~/buildout
 
