@@ -109,11 +109,13 @@ dependencies () {
         packages=(
             aspell                            # Spelling
             bash                              # Updated shell
+            bash-completion                   # Shell completion
             cmake                             # Compilation
             ctags                             #
             coreutils                         # GNU coreutils like grm
             git                               # Version control
             gnupg2                            # Encryption
+            java                              # Java programming language
             libxml2                           # XML library
             mercurial                         # Version control
             node                              # Node.js language
@@ -128,10 +130,12 @@ dependencies () {
             vim                               # Updated Vim
         )
         brew install "${packages[@]}"
+        brew tap homebrew/completions
+        brew tap caskroom/cask
+        brew tap caskroom/versions
 
         pip install virtualenv
         brew cask install reactotron
-        brew tap caskroom/cask
 
     fi
 
@@ -368,6 +372,7 @@ applications () {
         applications=(
             adobe-reader                    # For stupid PDFs with dynamic content
             angry-ip-scanner                # Port and host scanner
+            apache-directory-studio         # LDAP GUI
             avibrazil-rdm                   # High-resolution MacBook screen
             calibre                         # eBook reader
             chromium                        # Alternative browsing
@@ -379,12 +384,15 @@ applications () {
             etcher                          # Create USB disks
             flux                            # Change screen colour with time
             firefox                         # Freedom on the web
+            firefoxdeveloperedition         # For developers
             handbrake                       # Media transcoding
             inkscape                        # Vector graphics editing
             insomniax                       # Prevent Mac from sleeping
+            insync                          # Google Drive and more
             gimp                            # Raster graphics editor
             libreoffice                     # Editing office documents
             little-snitch                   # Firewall
+            meld                            # Comparisons made easy
             openshot-video-editor           # Video editing application
             simple-comic                    # Comic reader
             spectacle                       # Positioning for windows
@@ -392,6 +400,8 @@ applications () {
             the-unarchiver                  # Archive extraction
             virtualbox                      # Virtual machines
             wireshark                       # Network traffic monitor
+            vagrant                         # Environment manager
+            vagrant-completions             # Vagrant shell completions
             vlc                             # Video plaer
             wine-staging                    # Wine is not an emulator
         )
