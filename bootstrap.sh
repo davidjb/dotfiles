@@ -595,6 +595,9 @@ configure_mac () {
     # Make TextEdit open a new file on launch
     defaults write -g NSShowAppCentricOpenPanelInsteadOfUntitledFile -bool false
 
+    # Locatedb
+    sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
+
     # macOS config checker
     install_update_git https://github.com/kristovatlas/osx-config-check "$DIR/tools/mac/osx-config-check"
 }
