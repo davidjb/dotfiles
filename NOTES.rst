@@ -141,3 +141,11 @@ Windows
 
 Rufus
    https://rufus.akeo.ie/, bootable USB creator for USB via disk image
+
+Mac
+---
+
+::
+
+    http://davidjb.com/blog/2016/12/creating-a-macos-recovery-partition-without-reinstalling-osx-or-re-running-your-installer/
+    sudo firmwarepasswd -setpasswd -setmode command
