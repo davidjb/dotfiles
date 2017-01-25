@@ -592,6 +592,9 @@ configure_mac () {
     sudo pmset -a standbydelay 0
     sudo pmset -a autopoweroff
 
+    # Make TextEdit open a new file on launch
+    defaults write -g NSShowAppCentricOpenPanelInsteadOfUntitledFile -bool false
+
     # macOS config checker
     install_update_git https://github.com/kristovatlas/osx-config-check "$DIR/tools/mac/osx-config-check"
 }
