@@ -581,6 +581,19 @@ setup_printing () {
 }
 
 configure_mac () {
+    # Disable animations (10.12 support?)
+    defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+    defaults write -g NSScrollAnimationEnabled -bool NO
+
+    # Disable bounce at end of scroll
+    defaults write -g NSScrollViewRubberbanding -int 0
+
+    # Paths in Finder title
+    defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
+
+    # Enable Time Machine on unsupported volumes
+    defaults write com.apple.systempreferences TMShowUnsupportedNetworkVolumes 1
+
     # Disable the captive portal for free wifi
     sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control Active -bool false
 
