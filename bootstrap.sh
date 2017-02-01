@@ -102,7 +102,16 @@ dependencies () {
         if command_exists brew; then
             brew update
         else
-            /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+            git clone https://github.com/Homebrew/install.git /tmp/homebrew-install
+            pushd /tmp/homebrew-install
+            git checkout b4079625e312723c2935c2c3cc4e37f15296158f
+            if ! [ "$(echo 'c074dd3a2d2ff4187aacb46a52f1ddec83bedae9  install' | shasum -c)" ]; then
+                echo "SHA sum validation failed for Homebrew. Aborting!"
+                exit 1
+            fi
+            /usr/bin/ruby /tmp/homebrew-install/install
+            rm -rf /tmp/homebrew-install
+            brew update
         fi
         brew analytics off
 
