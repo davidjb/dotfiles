@@ -403,6 +403,7 @@ applications () {
             libreoffice                     # Editing office documents
             little-snitch                   # Firewall
             meld                            # Comparisons made easy
+            nagstamon                       # Nagios monitoring GUI
             openshot-video-editor           # Video editing application
             simple-comic                    # Comic reader
             spectacle                       # Positioning for windows
