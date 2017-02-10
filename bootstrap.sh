@@ -128,15 +128,19 @@ dependencies () {
             libxml2                           # XML library
             mercurial                         # Version control
             node                              # Node.js language
+            oath-toolkit                      # OTP generator
             p7zip                             # 7zip archives
             phantomjs                         # JS webpage runner
             python                            # Python 2 language
             python3                           # Python 3 language
             sassc                             # SASS compiler
             shellcheck                        # Spelling
+            spidermonkey                      # Mozilla's JS engine
             tidy-html5                        # HTML5 validation tool
             unrar                             # .rar archives
+            v8                                # Google's JS engine
             vim                               # Updated Vim
+            wget                              # Internet file retriever
         )
         brew install "${packages[@]}"
         brew tap homebrew/completions
@@ -388,7 +392,9 @@ applications () {
             chromium                        # Alternative browsing
             cyberduck                       # Remote server connections
             darktable                       # Photograph editing
+            dbeaver-community               # Database GUI
             disk-inventory-x                # What's using my SSD?
+            docker                          # GUI to Docker
             dosbox                          # DOS environments
             easy-move-plus-resize           # Move windows with Alt
             etcher                          # Create USB disks
