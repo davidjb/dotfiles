@@ -599,13 +599,22 @@ configure_mac () {
     # Disable gamed daemon
     launchctl unload -w /System/Library/LaunchAgents/com.apple.gamed.plist
 
-    # Protect the FileVault key on standby
-    sudo pmset -a destroyfvkeyonstandby 1
-    sudo pmset -a hibernatemode 25
+    # 10 minute sleep then hibernate
+    sudo pmset -a standbydelay 600
+    sudo pmset -a standby 1
+    sudo pmset -a networkoversleep 0
+    sudo pmset -a sleep 0
+    sudo pmset -a autopoweroffdelay 600
+    sudo pmset -a autopoweroff 1
+    sudo pmset -a womp 0
+
+    sudo pmset -a hibernatemode 3
+    sudo pmset -a DestroyFVKeyOnStandby 1
     sudo pmset -a powernap 0
-    sudo pmset -a standby 0
-    sudo pmset -a standbydelay 0
-    sudo pmset -a autopoweroff
+
+    # Set up screenshots location
+    mkdir -p ~/Pictures/Screenshots
+    defaults write com.apple.screencapture location ~/Pictures/Screenshots
 
     # Make TextEdit open a new file on launch
     defaults write -g NSShowAppCentricOpenPanelInsteadOfUntitledFile -bool false
