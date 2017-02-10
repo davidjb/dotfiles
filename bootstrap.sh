@@ -411,6 +411,7 @@ applications () {
             meld                            # Comparisons made easy
             openshot-video-editor           # Video editing application
             simple-comic                    # Comic reader
+            scroll-reverser                 # For external mouse inversion
             spectacle                       # Positioning for windows
             skype                           # Calls and messaging
             the-unarchiver                  # Archive extraction
