@@ -408,6 +408,7 @@ applications () {
             gimp                            # Raster graphics editor
             libreoffice                     # Editing office documents
             little-snitch                   # Firewall
+            macvim                          # GUI Vim for Mac
             meld                            # Comparisons made easy
             nagstamon                       # Nagios monitoring GUI
             openshot-video-editor           # Video editing application
