@@ -115,6 +115,7 @@ dependencies () {
         fi
         brew analytics off
 
+        # Homebrew: install packages
         packages=(
             aspell                            # Spelling
             bash                              # Updated shell
@@ -381,7 +382,7 @@ applications () {
         )
         brew install "${packages[@]}"
 
-        # Install all the applications!
+        # Caskroom: install all the applications!
         brew cask install xquartz           # For Inkscape - not automatic?
         applications=(
             adobe-reader                    # For stupid PDFs with dynamic content
@@ -405,6 +406,7 @@ applications () {
             inkscape                        # Vector graphics editing
             insomniax                       # Prevent Mac from sleeping
             insync                          # Google Drive and more
+            iterm2                          # Better terminal
             gimp                            # Raster graphics editor
             libreoffice                     # Editing office documents
             little-snitch                   # Firewall
@@ -628,15 +630,54 @@ configure_mac () {
     sudo pmset -a DestroyFVKeyOnStandby 1
     sudo pmset -a powernap 0
 
-    # Set up screenshots location
+    # Set up screenshots and location
     mkdir -p ~/Pictures/Screenshots
     defaults write com.apple.screencapture location ~/Pictures/Screenshots
+    defaults write com.apple.screencapture disable-shadow -bool true
 
     # Make TextEdit open a new file on launch
     defaults write -g NSShowAppCentricOpenPanelInsteadOfUntitledFile -bool false
 
     # Locatedb
     sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
+
+    # Install Command Line Tools without Xcode
+    xcode-select --install
+
+    # Disable Sudden Motion Sensor (because we use SSDs)
+    sudo pmset -a sms 0
+
+    # Unhide User Library Folder
+    chflags nohidden ~/Library
+
+    # Enable Quit Finder menu item
+    defaults write com.apple.finder QuitMenuItem -bool true && killall Finder
+
+    # Expand Save Panel by Default
+    defaults write -g NSNavPanelExpandedStateForSaveMode -bool true && \
+        defaults write -g NSNavPanelExpandedStateForSaveMode2 -bool true
+
+    # Show Path Bar
+    defaults write com.apple.finder ShowPathbar -bool true
+
+    # Hide Status Bar
+    defaults write com.apple.finder ShowStatusBar -bool false
+
+    # Save to disk by default
+    defaults write -g NSDocumentSaveNewDocumentsToCloud -bool false
+
+    # Set Current Folder as Default Search Scope
+    defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+    # Set Sidebar Icon Size to small
+    defaults write -g NSTableViewDefaultSizeMode -int 1
+
+    # Disable metadata files on external volumes
+    defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+    defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+    # Disable infrared receiver
+    defaults write /Library/Preferences/com.apple.driver.AppleIRController DeviceEnabled -int 0
 
     # macOS config checker
     install_update_git https://github.com/kristovatlas/osx-config-check "$DIR/tools/mac/osx-config-check"
