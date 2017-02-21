@@ -126,7 +126,7 @@ let g:delimitMate_expand_cr = 1
 let g:delimitMate_jump_expansion = 1
 
 " Coloured matching parentheses
-Plug 'kien/rainbow_parentheses.vim'
+Plug 'junegunn/rainbow_parentheses.vim'
 
 " Intense commenting superpower
 Plug 'scrooloose/nerdcommenter'
@@ -589,10 +589,7 @@ au!
         \ endif
 
     " Always colourise parentheses
-    au VimEnter * RainbowParenthesesToggle
-    au Syntax * RainbowParenthesesLoadRound
-    au Syntax * RainbowParenthesesLoadSquare
-    au Syntax * RainbowParenthesesLoadBraces
+    au FileType * :RainbowParentheses
 
     " Salt roster files
     au BufNewFile,BufRead roster,master setlocal filetype=yaml

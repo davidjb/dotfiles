@@ -128,15 +128,19 @@ dependencies () {
             libxml2                           # XML library
             mercurial                         # Version control
             node                              # Node.js language
+            oath-toolkit                      # OTP generator
             p7zip                             # 7zip archives
             phantomjs                         # JS webpage runner
             python                            # Python 2 language
             python3                           # Python 3 language
             sassc                             # SASS compiler
             shellcheck                        # Spelling
+            spidermonkey                      # Mozilla's JS engine
             tidy-html5                        # HTML5 validation tool
             unrar                             # .rar archives
+            v8                                # Google's JS engine
             vim                               # Updated Vim
+            wget                              # Internet file retriever
         )
         brew install "${packages[@]}"
         brew tap homebrew/completions
@@ -388,7 +392,9 @@ applications () {
             chromium                        # Alternative browsing
             cyberduck                       # Remote server connections
             darktable                       # Photograph editing
+            dbeaver-community               # Database GUI
             disk-inventory-x                # What's using my SSD?
+            docker                          # GUI to Docker
             dosbox                          # DOS environments
             easy-move-plus-resize           # Move windows with Alt
             etcher                          # Create USB disks
@@ -402,10 +408,12 @@ applications () {
             gimp                            # Raster graphics editor
             libreoffice                     # Editing office documents
             little-snitch                   # Firewall
+            macvim                          # GUI Vim for Mac
             meld                            # Comparisons made easy
             nagstamon                       # Nagios monitoring GUI
             openshot-video-editor           # Video editing application
             simple-comic                    # Comic reader
+            scroll-reverser                 # For external mouse inversion
             spectacle                       # Positioning for windows
             skype                           # Calls and messaging
             the-unarchiver                  # Archive extraction
@@ -607,13 +615,22 @@ configure_mac () {
     # Disable gamed daemon
     launchctl unload -w /System/Library/LaunchAgents/com.apple.gamed.plist
 
-    # Protect the FileVault key on standby
-    sudo pmset -a destroyfvkeyonstandby 1
-    sudo pmset -a hibernatemode 25
+    # 10 minute sleep then hibernate
+    sudo pmset -a standbydelay 600
+    sudo pmset -a standby 1
+    sudo pmset -a networkoversleep 0
+    sudo pmset -a sleep 0
+    sudo pmset -a autopoweroffdelay 600
+    sudo pmset -a autopoweroff 1
+    sudo pmset -a womp 0
+
+    sudo pmset -a hibernatemode 3
+    sudo pmset -a DestroyFVKeyOnStandby 1
     sudo pmset -a powernap 0
-    sudo pmset -a standby 0
-    sudo pmset -a standbydelay 0
-    sudo pmset -a autopoweroff
+
+    # Set up screenshots location
+    mkdir -p ~/Pictures/Screenshots
+    defaults write com.apple.screencapture location ~/Pictures/Screenshots
 
     # Make TextEdit open a new file on launch
     defaults write -g NSShowAppCentricOpenPanelInsteadOfUntitledFile -bool false
