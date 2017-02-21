@@ -33,6 +33,7 @@ alias ......="cd ../../../../.."
 alias c='clear'
 [ $_IS_LINUX ] && alias o='gnome-open'
 [ $_IS_MAC ] && alias o='open'
+[ $_IS_MAC ] && alias quicklook='qlmanage -p'
 alias monitor-off='xset dpms force off'
 alias path='echo "$PATH" | tr -s ":" "\n"' # Pretty print the PATH
 
@@ -42,6 +43,7 @@ alias agh='ag --depth 0' #ag here, search only current folder
 alias apt-whatprovides='apt-cache policy'
 [ $_IS_MAC ] && alias bootstrap-macports='export PATH=/opt/local/bin:/opt/local/sbin:$PATH'
 alias calc='gnome-calculator &'
+[ $_IS_MAC ] && alias cdf="cd \"\$(osascript -e 'tell app \"Finder\" to POSIX path of (insertion location as alias)')\""
 alias l='ls -FC'
 alias la='ls -FAh'
 alias ll='ls -Flh'
@@ -94,6 +96,7 @@ if [ $_IS_LINUX ]; then
 elif [ $_IS_MAC ]; then
     alias toclip='pbcopy'
     alias fromclip='pbpaste'
+    alias plainclip='pbpaste | textutil -convert txt -stdin -stdout -encoding 30 | pbcopy'
 fi
 catclip () {
    toclip < "$1"
@@ -134,3 +137,18 @@ eggcd() {
 svn-authors() {
     svn log "$1" | grep -E '^r[0-9]+' | cut -d '|' -f2 | sort | uniq | xargs -I {} echo '{}= <>'
 }
+
+# Mac specific
+if [ $_IS_MAC ]; then
+    alias search="mdfind -name"
+    bluetooth-disable() {
+        sudo defaults write /Library/Preferences/com.apple.Bluetooth ControllerPowerState -int 0 && \
+            sudo killall -HUP blued
+    }
+    bluetooth-enable() {
+        sudo defaults write /Library/Preferences/com.apple.Bluetooth ControllerPowerState -int 1
+    }
+    bluetooth-status() {
+        defaults read /Library/Preferences/com.apple.Bluetooth ControllerPowerState
+    }
+fi
