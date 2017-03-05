@@ -136,8 +136,8 @@ let g:NERDCustomDelimiters = {
 
 " Graphical undo tree viewer
 Plug 'simnalamburt/vim-mundo'
-let g:gundo_right = 1
-nnoremap <leader>u :GundoToggle<CR>
+let g:mundo_right = 1
+nnoremap <leader>u :MundoToggle<CR>
 
 " File browser and explorer: Nerdtree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
