@@ -468,13 +468,6 @@ vim_plug () {
     vim +PlugInstall +qall
 }
 
-compile_ycm () {
-    pushd ~/.vim/bundle/YouCompleteMe
-    git submodule update --init --recursive
-    python3 ./install.py --clang-complete  --tern-completer
-    popd
-}
-
 vim_configuration () {
     # Install all plugins and plugin manager
     vim_plug
@@ -708,7 +701,6 @@ install_step "Do you want to install dependencies?" dependencies
 install_step "Do you want to install the configuration?" install
 install_step "Do you want to install applications?" applications
 install_step "Re-run Vim's plugin installation?" vim_plug
-install_step "Re-run YouCompleteMe compilation?" compile_ycm
 if [ $_IS_LINUX ]; then
     install_step "Do you want to configure Google Drive aliases?" google_drive
     install_step "Do you want to configure Firefox?" configure_firefox
