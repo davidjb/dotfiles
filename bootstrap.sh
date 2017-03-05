@@ -124,6 +124,7 @@ dependencies () {
             ctags                             #
             curl                              # Updated curl
             coreutils                         # GNU coreutils like grm
+            entr                              # Run commands on fs change
             git                               # Version control
             gnupg2                            # Encryption
             java                              # Java programming language
