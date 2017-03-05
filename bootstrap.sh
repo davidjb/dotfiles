@@ -146,6 +146,8 @@ dependencies () {
             wget                              # Internet file retriever
         )
         brew install "${packages[@]}"
+        brew link python3
+
         brew tap homebrew/completions
         brew tap caskroom/cask
         brew tap caskroom/versions
@@ -411,7 +413,7 @@ applications () {
             iterm2                          # Better terminal
             gimp                            # Raster graphics editor
             libreoffice                     # Editing office documents
-            little-snitch                   # Firewall
+            little-snitch                   # Outgoing firewall
             macvim                          # GUI Vim for Mac
             meld                            # Comparisons made easy
             nagstamon                       # Nagios monitoring GUI
@@ -436,7 +438,8 @@ applications () {
         brew install ext4fuse ntfs-3g sshfs
 
         # Global Python-based tools
-        easy_install -U ipython zest.releaser
+        pip install ipython zest.releaser
+        pip3 install ipython
     fi
 
     # Tmux plugins
