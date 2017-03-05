@@ -122,6 +122,7 @@ dependencies () {
             bash-completion                   # Shell completion
             cmake                             # Compilation
             ctags                             #
+            curl                              # Updated curl
             coreutils                         # GNU coreutils like grm
             git                               # Version control
             gnupg2                            # Encryption
@@ -136,6 +137,7 @@ dependencies () {
             python3                           # Python 3 language
             sassc                             # SASS compiler
             shellcheck                        # Spelling
+            shyaml                            # YAML parsing for shells
             spidermonkey                      # Mozilla's JS engine
             tidy-html5                        # HTML5 validation tool
             unrar                             # .rar archives
