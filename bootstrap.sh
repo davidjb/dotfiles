@@ -174,7 +174,7 @@ dependencies () {
         thefuck \
         caniusepython3 \
         em-keyboard
-    pip install http://projects.bigasterisk.com/grepedit-1.0.tar.gz
+    pip install https://projects.bigasterisk.com/grepedit-1.0.tar.gz
     deactivate
     popd
 
