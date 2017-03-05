@@ -500,14 +500,15 @@ nnoremap  <s-right>  vl
 nnoremap  <s-left>   vh
 
 " m, M - Add new lines without insert mode
+nmap m i<CR><Esc>
 nmap <s-m> O<Esc>
 
 " Control + b - Build using Make
 nmap <C-b> :make<CR>
 
-" Control + U - Shortcut for unifying (wrapping) lines
-nmap <c-u> gqip
-vmap <c-u> gq
+" ;j - Shortcut for *j*oining (wrapping) lines
+nmap <leader>j gqip
+vmap <leader>j gq
 
 " Control + N - file browser
 map <C-n> :NERDTreeToggle<CR>
@@ -603,8 +604,8 @@ au!
     " Allow stylesheets to autocomplete hyphenated words
     au FileType css,scss,sass setlocal iskeyword+=-
 
-    " Indent width for HTML/CSS/SASS
-    au FileType css,scss,sass,html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+    " Indent width for HTML/CSS/SASS/JS
+    au FileType css,scss,sass,html,js setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
     au BufNewFile,BufRead *.rb,*.rbw,*.gem,*.gemspec,[rR]akefile,*.rake,*.thor,Vagrantfile setlocal filetype=ruby
     au BufNewFile,BufRead *.erb setlocal filetype=eruby
