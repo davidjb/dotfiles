@@ -349,7 +349,6 @@ set display+=lastline
 set tabpagemax=50
 set grepprg=ag\ --vimgrep\ $*
 set grepformat=%f:%l:%c:%m
-
 " ^^^ Exterimental
 set ttimeout                                        " Time out when entering keycodes
 set ttimeoutlen=100                                 " Set timeout for keycodes
@@ -360,6 +359,7 @@ set fileformats+=mac                                " Enable EOL detection for M
 set autoindent                                      " Copy indent to new line
 set backspace=indent,eol,start                      " Backspace over everything
 set background=light                                " Explicitly set background color
+set guifont=Ubuntu\ Mono\ derivative\ Powerline:h12 " Font for gui apps
 set encoding=utf-8                                  " Set preferred char encoding
 set formatoptions-=t                                " Stop auto wrapping of text
 set formatoptions+=j                                " Remove comment leaders when joining lines
