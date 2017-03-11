@@ -123,7 +123,9 @@ dependencies () {
             cabextract                        # .cab file extraction with Wine
             cmake                             # Compilation
             ctags                             #
+            curl                              # Updated curl
             coreutils                         # GNU coreutils like grm
+            entr                              # Run commands on fs change
             git                               # Version control
             gnupg2                            # Encryption
             java                              # Java programming language
@@ -137,6 +139,7 @@ dependencies () {
             python3                           # Python 3 language
             sassc                             # SASS compiler
             shellcheck                        # Spelling
+            shyaml                            # YAML parsing for shells
             spidermonkey                      # Mozilla's JS engine
             tidy-html5                        # HTML5 validation tool
             unrar                             # .rar archives
@@ -173,7 +176,7 @@ dependencies () {
         thefuck \
         caniusepython3 \
         em-keyboard
-    pip install http://projects.bigasterisk.com/grepedit-1.0.tar.gz
+    pip install https://projects.bigasterisk.com/grepedit-1.0.tar.gz
     deactivate
     popd
 
@@ -467,13 +470,6 @@ vim_plug () {
     vim +PlugInstall +qall
 }
 
-compile_ycm () {
-    pushd ~/.vim/bundle/YouCompleteMe
-    git submodule update --init --recursive
-    python3 ./install.py --clang-complete  --tern-completer
-    popd
-}
-
 vim_configuration () {
     # Install all plugins and plugin manager
     vim_plug
@@ -707,7 +703,6 @@ install_step "Do you want to install dependencies?" dependencies
 install_step "Do you want to install the configuration?" install
 install_step "Do you want to install applications?" applications
 install_step "Re-run Vim's plugin installation?" vim_plug
-install_step "Re-run YouCompleteMe compilation?" compile_ycm
 if [ $_IS_LINUX ]; then
     install_step "Do you want to configure Google Drive aliases?" google_drive
     install_step "Do you want to configure Firefox?" configure_firefox

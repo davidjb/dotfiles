@@ -136,8 +136,8 @@ let g:NERDCustomDelimiters = {
 
 " Graphical undo tree viewer
 Plug 'simnalamburt/vim-mundo'
-let g:gundo_right = 1
-nnoremap <leader>u :GundoToggle<CR>
+let g:mundo_right = 1
+nnoremap <leader>u :MundoToggle<CR>
 
 " File browser and explorer: Nerdtree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -349,7 +349,6 @@ set display+=lastline
 set tabpagemax=50
 set grepprg=ag\ --vimgrep\ $*
 set grepformat=%f:%l:%c:%m
-
 " ^^^ Exterimental
 set ttimeout                                        " Time out when entering keycodes
 set ttimeoutlen=100                                 " Set timeout for keycodes
@@ -360,6 +359,7 @@ set fileformats+=mac                                " Enable EOL detection for M
 set autoindent                                      " Copy indent to new line
 set backspace=indent,eol,start                      " Backspace over everything
 set background=light                                " Explicitly set background color
+set guifont=Ubuntu\ Mono\ derivative\ Powerline:h12 " Font for gui apps
 set encoding=utf-8                                  " Set preferred char encoding
 set formatoptions-=t                                " Stop auto wrapping of text
 set formatoptions+=j                                " Remove comment leaders when joining lines
@@ -500,14 +500,15 @@ nnoremap  <s-right>  vl
 nnoremap  <s-left>   vh
 
 " m, M - Add new lines without insert mode
+nmap m i<CR><Esc>
 nmap <s-m> O<Esc>
 
 " Control + b - Build using Make
 nmap <C-b> :make<CR>
 
-" Control + U - Shortcut for unifying (wrapping) lines
-nmap <c-u> gqip
-vmap <c-u> gq
+" ;j - Shortcut for *j*oining (wrapping) lines
+nmap <leader>j gqip
+vmap <leader>j gq
 
 " Control + N - file browser
 map <C-n> :NERDTreeToggle<CR>
@@ -603,8 +604,8 @@ au!
     " Allow stylesheets to autocomplete hyphenated words
     au FileType css,scss,sass setlocal iskeyword+=-
 
-    " Indent width for HTML/CSS/SASS
-    au FileType css,scss,sass,html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+    " Indent width for HTML/CSS/SASS/JS
+    au FileType css,scss,sass,html,js setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
     au BufNewFile,BufRead *.rb,*.rbw,*.gem,*.gemspec,[rR]akefile,*.rake,*.thor,Vagrantfile setlocal filetype=ruby
     au BufNewFile,BufRead *.erb setlocal filetype=eruby
