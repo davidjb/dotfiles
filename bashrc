@@ -52,9 +52,6 @@ do
 done
 shopt -u nullglob
 
-# Hub wrapper for git
-eval "$(hub alias -s)"
-
 
 ##########################
 # Autocompletion features
