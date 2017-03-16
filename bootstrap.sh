@@ -127,6 +127,7 @@ dependencies () {
             entr                              # Run commands on fs change
             git                               # Version control
             gnupg2                            # Encryption
+            hub                               # GitHub tools
             java                              # Java programming language
             libxml2                           # XML library
             mercurial                         # Version control
