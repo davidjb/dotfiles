@@ -376,6 +376,7 @@ applications () {
             nmap                            # Network probing and monitoring
             oath-toolkit                    # OTP toolkit
             optipng                         # PNG optimiser
+            qrencode                        # QR code generator and library
             pass                            # Password management
             pinentry-mac                    # PIN entry interface for GPG/pass
             pngcrush                        # PNG optimiser
