@@ -46,3 +46,5 @@
     main-window-view = FileView
 [diff]
 	compactionHeuristic = true
+[hub]
+	protocol = https

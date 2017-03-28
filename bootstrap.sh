@@ -128,6 +128,7 @@ dependencies () {
             entr                              # Run commands on fs change
             git                               # Version control
             gnupg2                            # Encryption
+            hub                               # GitHub tools
             java                              # Java programming language
             libxml2                           # XML library
             mercurial                         # Version control
@@ -376,6 +377,7 @@ applications () {
             nmap                            # Network probing and monitoring
             oath-toolkit                    # OTP toolkit
             optipng                         # PNG optimiser
+            qrencode                        # QR code generator and library
             pass                            # Password management
             pinentry-mac                    # PIN entry interface for GPG/pass
             pngcrush                        # PNG optimiser
