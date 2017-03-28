@@ -215,7 +215,8 @@ let g:surround_{char2nr('e')} = "**\r**"
 let g:surround_{char2nr('%')} = "%\r%"
 
 " Sets of useful mappings about [ and ] & toggles for options
-" such as cos (spelling) and coh (highlighting)
+" such as cos (spelling) and coh (highlighting) for toggles
+" and `yo` for paste inserting
 Plug 'tpope/vim-unimpaired'
 
 " Alignment for C-style variables, definitions, comments, tables
