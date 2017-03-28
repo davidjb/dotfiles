@@ -420,6 +420,7 @@ applications () {
             meld                            # Comparisons made easy
             nagstamon                       # Nagios monitoring GUI
             openshot-video-editor           # Video editing application
+            safari-technology-preview       # Preview of Safari
             simple-comic                    # Comic reader
             scroll-reverser                 # For external mouse inversion
             spectacle                       # Positioning for windows
