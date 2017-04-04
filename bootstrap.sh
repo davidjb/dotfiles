@@ -120,6 +120,7 @@ dependencies () {
             aspell                            # Spelling
             bash                              # Updated shell
             bash-completion                   # Shell completion
+            cabextract                        # .cab file extraction with Wine
             cmake                             # Compilation
             ctags                             #
             curl                              # Updated curl
@@ -424,6 +425,7 @@ applications () {
             meld                            # Comparisons made easy
             nagstamon                       # Nagios monitoring GUI
             openshot-video-editor           # Video editing application
+            safari-technology-preview       # Preview of Safari
             simple-comic                    # Comic reader
             scroll-reverser                 # For external mouse inversion
             spectacle                       # Positioning for windows
