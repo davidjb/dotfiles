@@ -182,23 +182,26 @@ dependencies () {
 
     # Local Node.js based tools, directory configured in ~/.npmrc
     ln_if_missing "$DIR/npmrc" ~/.npmrc
-    npm install -g \
-        linklocal \
-        wml \
-        svgo \
-        less \
-        csslint \
-        jsonlint \
-        jslint \
-        jshint \
-        js-yaml \
-        js-beautify \
-        remark \
-        grunt-cli \
-        gulp \
-        typescript \
-        keybase-installer \
-        jpm # Jetpack package manager for Firefox
+    packages=(
+        browserify                            # 'Browser' packaging for npm
+        csslint
+        grunt-cli
+        gulp
+        jpm                                   # Jetpack package manager for Firefox
+        js-beautify
+        js-yaml
+        jshint
+        jslint
+        jsonlint
+        keybase-installer
+        less
+        linklocal
+        remark
+        svgo
+        typescript
+        wml
+    )
+    npm install -g "${packages[@]}"
 
     # React Native
     npm install -g \
