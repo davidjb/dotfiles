@@ -154,6 +154,7 @@ dependencies () {
         brew tap homebrew/completions
         brew tap caskroom/cask
         brew tap caskroom/versions
+        brew tap caskroom/fonts
 
         pip install virtualenv
         brew cask install reactotron
