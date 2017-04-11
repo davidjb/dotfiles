@@ -730,7 +730,6 @@ configure_mac () {
     defaults write com.google.Keystone.Agent checkInterval 0
     ~/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Resources/GoogleSoftwareUpdateAgent.app/Contents/Resources/ksinstall --nuke
     touch ~/Library/Google/GoogleSoftwareUpdate && sudo chown -R root:wheel ~/Library/Google
-
 }
 
 ##########################
