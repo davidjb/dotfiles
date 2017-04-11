@@ -603,6 +603,9 @@ configure_mac () {
     defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
     defaults write -g NSScrollAnimationEnabled -bool NO
 
+    # Finder: disable window animations and Get Info animations (?)
+    defaults write com.apple.finder DisableAllAnimations -bool true
+
     # Disable bounce at end of scroll
     defaults write -g NSScrollViewRubberbanding -int 0
 
@@ -661,8 +664,8 @@ configure_mac () {
     defaults write com.apple.finder QuitMenuItem -bool true && killall Finder
 
     # Expand Save Panel by Default
-    defaults write -g NSNavPanelExpandedStateForSaveMode -bool true && \
-        defaults write -g NSNavPanelExpandedStateForSaveMode2 -bool true
+    defaults write -g NSNavPanelExpandedStateForSaveMode -bool true
+    defaults write -g NSNavPanelExpandedStateForSaveMode2 -bool true
 
     # Show Path Bar
     defaults write com.apple.finder ShowPathbar -bool true
@@ -686,8 +689,39 @@ configure_mac () {
     # Disable infrared receiver
     defaults write /Library/Preferences/com.apple.driver.AppleIRController DeviceEnabled -int 0
 
+    # Dock settings
+    defaults write com.apple.dock tilesize -int 25
+    defaults write com.apple.dock magnification -int 0
+    defaults write com.apple.dock orientation -string "left"
+
+    # Terminal: shell opens with brew-installed bash
+    defaults write com.apple.Terminal Shell -string "/usr/local/bin/bash"
+
+    # Xcode: always use spaces for indenting
+    defaults write com.apple.dt.Xcode DVTTextIndentUsingTabs -bool false
+
     # macOS config checker
     install_update_git https://github.com/kristovatlas/osx-config-check "$DIR/tools/mac/osx-config-check"
+
+    # Flux (still better than Night Shift)
+    FLUX_DOMAIN="org.herf.Flux"
+
+    defaults write "${FLUX_DOMAIN}" location "-19.257622,146.817879"
+    defaults write "${FLUX_DOMAIN}" locationTextField "townsville"
+    defaults write "${FLUX_DOMAIN}" locationType "L"
+
+    # Evening temperature
+    defaults write "${FLUX_DOMAIN}" nightColorTemp -int 3400
+
+    # Late night temperature
+    defaults write "${FLUX_DOMAIN}" lateColorTemp -int 1900
+
+    # Wake up
+    defaults write "${FLUX_DOMAIN}" wakeTime -int 420
+
+    # Sleep late on weekends
+    defaults write "${FLUX_DOMAIN}" sleepLate -bool true
+
 }
 
 #########################
