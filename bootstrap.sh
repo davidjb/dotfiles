@@ -703,7 +703,9 @@ configure_mac () {
     # macOS config checker
     install_update_git https://github.com/kristovatlas/osx-config-check "$DIR/tools/mac/osx-config-check"
 
+    #############
     # Flux (still better than Night Shift)
+    #############
     FLUX_DOMAIN="org.herf.Flux"
 
     defaults write "${FLUX_DOMAIN}" location "-19.257622,146.817879"
@@ -722,11 +724,18 @@ configure_mac () {
     # Sleep late on weekends
     defaults write "${FLUX_DOMAIN}" sleepLate -bool true
 
+    #############
+    # Google Software Update prevention
+    #############
+    defaults write com.google.Keystone.Agent checkInterval 0
+    ~/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Resources/GoogleSoftwareUpdateAgent.app/Contents/Resources/ksinstall --nuke
+    touch ~/Library/Google/GoogleSoftwareUpdate && sudo chown -R root:wheel ~/Library/Google
+
 }
 
-#########################
-#  Execute instalation  #
-#########################
+##########################
+#  Execute installation  #
+##########################
 cd "$(dirname "$0")"
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
