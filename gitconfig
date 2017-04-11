@@ -1,5 +1,5 @@
 [user]
-    email = david@davidjb.com 
+    email = david@davidjb.com
     name = David Beitey
 [push]
     default = current
@@ -20,6 +20,9 @@
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
     ls = ls-files
+    prune = fetch --prune
+    stash-all = stash save --include-untracked
+    undo = reset --soft HEAD^
 [color]
     ui = auto
 [color "branch"]
@@ -45,6 +48,6 @@
     file-view-vpane-position = 660
     main-window-view = FileView
 [diff]
-	compactionHeuristic = true
+    compactionHeuristic = true
 [hub]
-	protocol = ssh
+    protocol = ssh
