@@ -154,6 +154,7 @@ dependencies () {
         brew tap homebrew/completions
         brew tap caskroom/cask
         brew tap caskroom/versions
+        brew tap caskroom/fonts
 
         pip install virtualenv
         brew cask install reactotron
@@ -183,23 +184,26 @@ dependencies () {
 
     # Local Node.js based tools, directory configured in ~/.npmrc
     ln_if_missing "$DIR/npmrc" ~/.npmrc
-    npm install -g \
-        linklocal \
-        wml \
-        svgo \
-        less \
-        csslint \
-        jsonlint \
-        jslint \
-        jshint \
-        js-yaml \
-        js-beautify \
-        remark \
-        grunt-cli \
-        gulp \
-        typescript \
-        keybase-installer \
-        jpm # Jetpack package manager for Firefox
+    packages=(
+        browserify                            # 'Browser' packaging for npm
+        csslint
+        grunt-cli
+        gulp
+        jpm                                   # Jetpack package manager for Firefox
+        js-beautify
+        js-yaml
+        jshint
+        jslint
+        jsonlint
+        keybase-installer
+        less
+        linklocal
+        remark
+        svgo
+        typescript
+        wml
+    )
+    npm install -g "${packages[@]}"
 
     # React Native
     npm install -g \
@@ -624,18 +628,19 @@ configure_mac () {
     # Disable gamed daemon
     launchctl unload -w /System/Library/LaunchAgents/com.apple.gamed.plist
 
-    # 10 minute sleep then hibernate
-    sudo pmset -a standbydelay 600
-    sudo pmset -a standby 1
-    sudo pmset -a networkoversleep 0
-    sudo pmset -a sleep 0
-    sudo pmset -a autopoweroffdelay 600
-    sudo pmset -a autopoweroff 1
-    sudo pmset -a womp 0
-
-    sudo pmset -a hibernatemode 3
-    sudo pmset -a DestroyFVKeyOnStandby 1
+    # Enforce hibernation and evict FileVault keys
+    # See https://github.com/drduh/macOS-Security-and-Privacy-Guide#full-disk-encryption
+    # and https://github.com/drduh/macOS-Security-and-Privacy-Guide/issues/124
+    sudo pmset -a destroyfvkeyonstandby 1
+    sudo pmset -a hibernatemode 25
     sudo pmset -a powernap 0
+    sudo pmset -a standby 0
+    sudo pmset -a standbydelay 0
+    sudo pmset -a autopoweroff 0
+    sudo pmset -a womp 0
+    sudo pmset -a ttyskeepawake 0
+    sudo pmset -a lidwake 0
+    sudo pmset -a acwake 0
 
     # Set up screenshots and location
     mkdir -p ~/Pictures/Screenshots
@@ -700,7 +705,13 @@ configure_mac () {
     # macOS config checker
     install_update_git https://github.com/kristovatlas/osx-config-check "$DIR/tools/mac/osx-config-check"
 
+<<<<<<< HEAD
     # Flux (still better than Night Shift)
+=======
+    #############
+    # Flux (still better than Night Shift)
+    #############
+>>>>>>> 46ad1149f351787925467d0fa07731eda5b32668
     FLUX_DOMAIN="org.herf.Flux"
 
     defaults write "${FLUX_DOMAIN}" location "-19.257622,146.817879"
@@ -719,11 +730,20 @@ configure_mac () {
     # Sleep late on weekends
     defaults write "${FLUX_DOMAIN}" sleepLate -bool true
 
+<<<<<<< HEAD
+=======
+    #############
+    # Google Software Update prevention
+    #############
+    defaults write com.google.Keystone.Agent checkInterval 0
+    ~/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Resources/GoogleSoftwareUpdateAgent.app/Contents/Resources/ksinstall --nuke
+    touch ~/Library/Google/GoogleSoftwareUpdate && sudo chown -R root:wheel ~/Library/Google
+>>>>>>> 46ad1149f351787925467d0fa07731eda5b32668
 }
 
-#########################
-#  Execute instalation  #
-#########################
+##########################
+#  Execute installation  #
+##########################
 cd "$(dirname "$0")"
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
