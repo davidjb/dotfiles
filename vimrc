@@ -1,3 +1,4 @@
+scriptencoding utf-8
 let g:mapleader=";"                          " Change the leader key to something typable
 
 set nocompatible
@@ -69,8 +70,13 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "   let g:UltiSnipsSnippetDirectories=["UltiSnips", "mycoolsnippets"]
 
-" Uber status bar improvement
+" Status bar overhaul
 Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+" Git gutter UI, hunk staging and movements
+Plug 'airblade/vim-gitgutter'
+let g:gitgutter_max_signs = 250
+nmap cog :GitGutterToggle<>
 
 " Syntax checking for Vim
 Plug 'scrooloose/syntastic'
@@ -351,6 +357,7 @@ set tabpagemax=50
 set grepprg=ag\ --vimgrep\ $*
 set grepformat=%f:%l:%c:%m
 " ^^^ Exterimental
+set updatetime=250                                  " Faster swap saves for quicker updates
 set ttimeout                                        " Time out when entering keycodes
 set ttimeoutlen=100                                 " Set timeout for keycodes
 set wildmode=list:longest,list:full                 " Configure command/filename completion
