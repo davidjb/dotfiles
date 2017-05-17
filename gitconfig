@@ -50,4 +50,4 @@
 [diff]
     compactionHeuristic = true
 [hub]
-    protocol = https
+    protocol = ssh
