@@ -421,6 +421,7 @@ applications () {
             macvim                          # GUI Vim for Mac
             meld                            # Comparisons made easy
             nagstamon                       # Nagios monitoring GUI
+            namechanger                     # Change filenames en masse
             openshot-video-editor           # Video editing application
             safari-technology-preview       # Preview of Safari
             simple-comic                    # Comic reader
