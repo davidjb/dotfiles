@@ -145,7 +145,8 @@ Rufus
 Mac
 ---
 
-* <https://github.com/herrbischoff/awesome-osx-command-line>
+* https://github.com/herrbischoff/awesome-osx-command-line
+* `afconvert input.mp3 ringtone.m4r -f m4af``
 
 ::
 
