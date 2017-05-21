@@ -127,7 +127,7 @@ dependencies () {
             coreutils                         # GNU coreutils like grm
             entr                              # Run commands on fs change
             git                               # Version control
-            gnupg2                            # Encryption
+            gpgtools                          # Encryption
             hub                               # GitHub tools
             java                              # Java programming language
             libxml2                           # XML library
