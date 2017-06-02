@@ -415,12 +415,12 @@ applications () {
             flux                            # Change screen colour with time
             firefox                         # Freedom on the web
             firefoxdeveloperedition         # For developers
+            gimp                            # Raster graphics editor
             handbrake                       # Media transcoding
             inkscape                        # Vector graphics editing
             insomniax                       # Prevent Mac from sleeping
             insync                          # Google Drive and more
             iterm2                          # Better terminal
-            gimp                            # Raster graphics editor
             libreoffice                     # Editing office documents
             little-snitch                   # Outgoing firewall
             macvim                          # GUI Vim for Mac
