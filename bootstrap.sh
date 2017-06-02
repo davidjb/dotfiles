@@ -421,6 +421,7 @@ applications () {
             insomniax                       # Prevent Mac from sleeping
             insync                          # Google Drive and more
             iterm2                          # Better terminal
+            keybase                         # Keys and validation
             libreoffice                     # Editing office documents
             little-snitch                   # Outgoing firewall
             macvim                          # GUI Vim for Mac
