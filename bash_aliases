@@ -101,6 +101,7 @@ fi
 catclip () {
    toclip < "$1"
 }
+alias pubkey="catclip ~/.ssh/id_rsa.pub"
 
 # System administration
 ssh-copy-public-key () {
