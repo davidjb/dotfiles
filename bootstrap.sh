@@ -127,7 +127,7 @@ dependencies () {
             coreutils                         # GNU coreutils like grm
             entr                              # Run commands on fs change
             git                               # Version control
-            gnupg2                            # Encryption
+            gpgtools                          # Encryption
             hub                               # GitHub tools
             java                              # Java programming language
             libxml2                           # XML library
@@ -426,6 +426,7 @@ applications () {
             macvim                          # GUI Vim for Mac
             meld                            # Comparisons made easy
             nagstamon                       # Nagios monitoring GUI
+            namechanger                     # Change filenames en masse
             openshot-video-editor           # Video editing application
             safari-technology-preview       # Preview of Safari
             simple-comic                    # Comic reader
