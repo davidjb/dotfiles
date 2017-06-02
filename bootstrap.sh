@@ -145,6 +145,7 @@ dependencies () {
             tidy-html5                        # HTML5 validation tool
             unrar                             # .rar archives
             v8                                # Google's JS engine
+            vagrant-completions               # Vagrant shell completions
             vim                               # Updated Vim
             wget                              # Internet file retriever
         )
@@ -435,7 +436,6 @@ applications () {
             virtualbox                      # Virtual machines
             wireshark                       # Network traffic monitor
             vagrant                         # Environment manager
-            vagrant-completions             # Vagrant shell completions
             vlc                             # Video plaer
             wine-staging                    # Wine is not an emulator
         )
