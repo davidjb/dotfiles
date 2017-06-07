@@ -399,6 +399,7 @@ applications () {
         brew cask install xquartz           # For Inkscape - not automatic?
         applications=(
             adobe-reader                    # For stupid PDFs with dynamic content
+            android-studio                  # For the Android emulator
             angry-ip-scanner                # Port and host scanner
             apache-directory-studio         # LDAP GUI
             avibrazil-rdm                   # High-resolution MacBook screen
