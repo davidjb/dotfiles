@@ -630,6 +630,9 @@ configure_mac () {
     # Disable gamed daemon
     launchctl unload -w /System/Library/LaunchAgents/com.apple.gamed.plist
 
+    # Disable geo services
+    sudo launchctl remove com.apple.geod.xpc
+
     # Enforce hibernation and evict FileVault keys
     # See https://github.com/drduh/macOS-Security-and-Privacy-Guide#full-disk-encryption
     # and https://github.com/drduh/macOS-Security-and-Privacy-Guide/issues/124
