@@ -628,6 +628,7 @@ au!
     au BufNewFile,BufRead *.coffee setlocal filetype=coffee
     au FileType coffee setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 
+    au BufNewFile,BufRead *.cfg setlocal filetype=cfg
     au BufNewFile,BufRead *.pt setlocal filetype=html.pt
     au BufNewFile,BufRead *.zcml setlocal filetype=xml.zcml
     au BufNewFile,BufRead *.zpt setlocal filetype=xml.zpt
