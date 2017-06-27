@@ -22,6 +22,7 @@ if [ "$TERM" != "dumb" ]; then
     fi
 
     alias less='less -r'
+    alias tree='tree -C'
 fi
 
 # Custom aliases
