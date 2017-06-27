@@ -1,3 +1,4 @@
+" Requires vim-plug plugin manager from https://github.com/junegunn/vim-plug/
 scriptencoding utf-8
 let g:mapleader=";"                          " Change the leader key to something typable
 
