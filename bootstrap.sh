@@ -128,6 +128,7 @@ dependencies () {
             entr                              # Run commands on fs change
             git                               # Version control
             gpgtools                          # Encryption
+            gnu-sed                           # Normalised sed usage
             hub                               # GitHub tools
             java                              # Java programming language
             libxml2                           # XML library
