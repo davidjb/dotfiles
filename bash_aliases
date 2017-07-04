@@ -65,9 +65,10 @@ alias random-mac="sudo ifconfig en0 ether $(openssl rand -hex 6 | sed 's%\(..\)%
 alias rcd='cd -P .' # Real cd
 alias scp-compressed='scp -C -o CompressionLevel=9'
 alias tmux-prefix='tmux set -g prefix C-a'
+alias vi='vim'
+alias vimgit='vim . +Gstatus +"resize +5"'
 #alias wget='wget --no-check-certificate'
 alias wget-mirror='wget --no-parent --no-check-certificate --html-extension --convert-links --restrict-file-names=windows --recursive --level=inf --page-requisites -e robots=off --wait=0 --quota=inf'
-alias vimgit='vim . +Gstatus +"resize +5"'
 
 # Handle crush-and-replace for PNG images
 crushthis() {
