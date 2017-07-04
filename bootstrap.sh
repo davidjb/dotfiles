@@ -155,6 +155,7 @@ dependencies () {
 
         brew tap homebrew/completions
         brew tap caskroom/cask
+        brew tap caskroom/drivers
         brew tap caskroom/versions
         brew tap caskroom/fonts
 
@@ -426,6 +427,7 @@ applications () {
             keybase                         # Keys and validation
             libreoffice                     # Editing office documents
             little-snitch                   # Outgoing firewall
+            logitech-control-center         # Software for keyboard
             macvim                          # GUI Vim for Mac
             meld                            # Comparisons made easy
             nagstamon                       # Nagios monitoring GUI
