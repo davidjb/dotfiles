@@ -153,7 +153,6 @@ dependencies () {
         brew install "${packages[@]}"
         brew link python3
 
-        brew tap homebrew/completions
         brew tap caskroom/cask
         brew tap caskroom/drivers
         brew tap caskroom/versions
