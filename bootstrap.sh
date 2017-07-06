@@ -643,8 +643,10 @@ configure_mac () {
     sudo pmset -a standby 0
     sudo pmset -a standbydelay 0
     sudo pmset -a autopoweroff 0
+    # Was womp 1 on old MacBook
     sudo pmset -a womp 0
     sudo pmset -a ttyskeepawake 0
+    # Was lidwake 1 on old MacBook
     sudo pmset -a lidwake 0
     sudo pmset -a acwake 0
 
