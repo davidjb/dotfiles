@@ -123,8 +123,11 @@ Plug 'Lokaltog/vim-easymotion'
 " Use with -/p for status and patching.
 Plug 'tpope/vim-fugitive'
 
-" Search support: Ag
-Plug 'rking/ag.vim'
+" Search support: Ag via ack.vim
+Plug 'mileszs/ack.vim'
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 " Insert-mode autocompletion for quotes, parentheses & brackets
 Plug 'Raimondi/delimitMate'
@@ -566,7 +569,8 @@ if has("autocmd")
 function! InitPlugins()
     " Command aliases
     " Search with `ag` instead
-    call CmdAlias('ag', 'Ag')
+    call CmdAlias('ag', 'Ack')
+    call CmdAlias('Ag', 'Ack')
 
     " Remove the autocommand once done
     au! InitPlugins VimEnter
