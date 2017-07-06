@@ -197,7 +197,6 @@ dependencies () {
         jshint
         jslint
         jsonlint
-        keybase-installer
         less
         linklocal
         remark
