@@ -127,7 +127,7 @@ dependencies () {
             coreutils                         # GNU coreutils like grm
             entr                              # Run commands on fs change
             git                               # Version control
-            gpgtools                          # Encryption
+            gpg2                              # Encryption
             gnu-sed                           # Normalised sed usage
             hub                               # GitHub tools
             java                              # Java programming language
@@ -425,6 +425,7 @@ applications () {
             firefox                         # Freedom on the web
             firefoxdeveloperedition         # For developers
             gimp                            # Raster graphics editor
+            gpgtools                        # Encryption
             handbrake                       # Media transcoding
             inkscape                        # Vector graphics editing
             insomniax                       # Prevent Mac from sleeping
