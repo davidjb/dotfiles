@@ -1,3 +1,0 @@
-[submodule "tools/pass-otp"]
-	path = tools/pass-otp
-	url = https://github.com/jcu-eresearch/pass-otp.git

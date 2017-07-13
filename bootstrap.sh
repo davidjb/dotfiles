@@ -392,8 +392,16 @@ applications () {
             tmux                            # Terminal multiplexer
             wakeonlan                       # WOL tools to send magic packets
             youtube-dl                      # Media downloader
+            zbar                            # Barcode processing
         )
         brew install "${packages[@]}"
+
+        # pass-otp support
+        git clone https://github.com/tadfisher/pass-otp /tmp/pass-otp
+        pushd /tmp/pass-otp
+        make install PREFIX=/usr/local
+        popd
+        rm -rf /tmp/pass-otp
 
         # Caskroom: install all the applications!
         brew cask install xquartz           # For Inkscape - not automatic?

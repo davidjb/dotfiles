@@ -69,9 +69,6 @@ if [ -f /usr/local/etc/bash_completion.d/password-store ]; then
     . /usr/local/etc/bash_completion.d/password-store
 fi
 
-# pass-otp
-source ~/dotfiles/tools/pass-otp/pass-otp.sh
-
 # pip for Python
 _pip_completion()
 {
