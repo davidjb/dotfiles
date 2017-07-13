@@ -65,6 +65,7 @@ alias random-mac="sudo ifconfig en0 ether $(openssl rand -hex 6 | sed 's%\(..\)%
 alias rcd='cd -P .' # Real cd
 alias scp-compressed='scp -C -o CompressionLevel=9'
 alias tmux-prefix='tmux set -g prefix C-a'
+alias tmux-fix='tmux unbind -n n \; unbind -n N'
 alias vi='vim'
 alias vimgit='vim . +Gstatus +"resize +5"'
 #alias wget='wget --no-check-certificate'
