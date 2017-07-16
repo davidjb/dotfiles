@@ -4,5 +4,6 @@ tools/python
 tools/powerline-fonts
 tools/gitignore
 tools/ruby
+tools/mac/osx-config-check
 *.swp
 *.spl
