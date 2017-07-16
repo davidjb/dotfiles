@@ -443,6 +443,7 @@ applications () {
             safari-technology-preview       # Preview of Safari
             simple-comic                    # Comic reader
             scroll-reverser                 # For external mouse inversion
+            slack                           # Chat and more for teams
             spectacle                       # Positioning for windows
             skype                           # Calls and messaging
             the-unarchiver                  # Archive extraction
