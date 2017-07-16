@@ -614,7 +614,7 @@ setup_printing () {
 
 configure_mac () {
     # Disable animations (10.12 support?)
-    defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+    defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
     defaults write -g NSScrollAnimationEnabled -bool NO
 
     # Finder: disable window animations and Get Info animations (?)
@@ -633,7 +633,7 @@ configure_mac () {
     sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control Active -bool false
 
     # Show all file extensions
-    defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+    defaults write -g AppleShowAllExtensions -bool true
 
     # Disable Bonjour multicast advertisments
     sudo defaults write /Library/Preferences/com.apple.mDNSResponder.plist NoMulticastAdvertisements -bool YES
@@ -749,7 +749,9 @@ configure_mac () {
     #############
     defaults write com.google.Keystone.Agent checkInterval 0
     ~/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Resources/GoogleSoftwareUpdateAgent.app/Contents/Resources/ksinstall --nuke
-    touch ~/Library/Google/GoogleSoftwareUpdate && sudo chown -R root:wheel ~/Library/Google
+    if ! [ -f ~/Library/Google/GoogleSoftwareUpdate ]; then
+        touch ~/Library/Google/GoogleSoftwareUpdate && sudo chown -R root:wheel ~/Library/Google
+    fi
 
     #############
     # Cyberduck
