@@ -127,7 +127,7 @@ dependencies () {
             coreutils                         # GNU coreutils like grm
             entr                              # Run commands on fs change
             git                               # Version control
-            gpgtools                          # Encryption
+            gpg2                              # Encryption
             gnu-sed                           # Normalised sed usage
             hub                               # GitHub tools
             java                              # Java programming language
@@ -425,6 +425,7 @@ applications () {
             firefox                         # Freedom on the web
             firefoxdeveloperedition         # For developers
             gimp                            # Raster graphics editor
+            gpgtools                        # Encryption
             handbrake                       # Media transcoding
             inkscape                        # Vector graphics editing
             insomniax                       # Prevent Mac from sleeping
@@ -442,6 +443,7 @@ applications () {
             safari-technology-preview       # Preview of Safari
             simple-comic                    # Comic reader
             scroll-reverser                 # For external mouse inversion
+            slack                           # Chat and more for teams
             spectacle                       # Positioning for windows
             skype                           # Calls and messaging
             the-unarchiver                  # Archive extraction
@@ -612,7 +614,7 @@ setup_printing () {
 
 configure_mac () {
     # Disable animations (10.12 support?)
-    defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+    defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
     defaults write -g NSScrollAnimationEnabled -bool NO
 
     # Finder: disable window animations and Get Info animations (?)
@@ -631,7 +633,7 @@ configure_mac () {
     sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control Active -bool false
 
     # Show all file extensions
-    defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+    defaults write -g AppleShowAllExtensions -bool true
 
     # Disable Bonjour multicast advertisments
     sudo defaults write /Library/Preferences/com.apple.mDNSResponder.plist NoMulticastAdvertisements -bool YES
@@ -747,7 +749,9 @@ configure_mac () {
     #############
     defaults write com.google.Keystone.Agent checkInterval 0
     ~/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Resources/GoogleSoftwareUpdateAgent.app/Contents/Resources/ksinstall --nuke
-    touch ~/Library/Google/GoogleSoftwareUpdate && sudo chown -R root:wheel ~/Library/Google
+    if ! [ -f ~/Library/Google/GoogleSoftwareUpdate ]; then
+        touch ~/Library/Google/GoogleSoftwareUpdate && sudo chown -R root:wheel ~/Library/Google
+    fi
 
     #############
     # Cyberduck
