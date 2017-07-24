@@ -179,7 +179,8 @@ dependencies () {
         nodeenv \
         thefuck \
         caniusepython3 \
-        em-keyboard
+        em-keyboard \
+        hg-git
     pip install https://projects.bigasterisk.com/grepedit-1.0.tar.gz
     deactivate
     popd
