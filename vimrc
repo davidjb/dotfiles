@@ -358,9 +358,7 @@ call plug#end()
 " VVV Experimental
 set display+=lastline
 set tabpagemax=50
-set grepprg=ag\ --vimgrep\ $*
-set grepformat=%f:%l:%c:%m
-" ^^^ Exterimental
+" ^^^ Experimental
 set updatetime=250                                  " Faster swap saves for quicker updates
 set ttimeout                                        " Time out when entering keycodes
 set ttimeoutlen=100                                 " Set timeout for keycodes
@@ -412,6 +410,8 @@ set complete+=kspell                                " Autocomplete via dictionar
 set undofile                                        " Automatically save persistent undo history
 set undodir=~/.vim/undo                             " Configure undo history location
 set diffopt+=vertical                               " Show diffs vertically
+set grepprg=ag\ --vimgrep\ $*                       " Work with Silver Searcher
+set grepformat=%f:%l:%c:%m                          " Configure grep format for ag
 
 " Don't edit these type of files
 set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.pyo,*.swp
