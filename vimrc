@@ -153,7 +153,7 @@ nnoremap <leader>u :MundoToggle<CR>
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " Fuzzy file, buffer, mru, tag, etc finder
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ }
