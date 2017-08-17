@@ -45,6 +45,7 @@ alias apt-whatprovides='apt-cache policy'
 [ $_IS_MAC ] && alias bootstrap-macports='export PATH=/opt/local/bin:/opt/local/sbin:$PATH'
 alias calc='gnome-calculator &'
 [ $_IS_MAC ] && alias cdf="cd \"\$(osascript -e 'tell app \"Finder\" to POSIX path of (insertion location as alias)')\""
+[ $_IS_MAC ] && alias eject='diskutil unmount'
 alias l='ls -FC'
 alias la='ls -FAh'
 alias ll='ls -Flh'
