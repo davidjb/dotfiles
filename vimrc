@@ -153,7 +153,7 @@ nnoremap <leader>u :MundoToggle<CR>
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " Fuzzy file, buffer, mru, tag, etc finder
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ }
@@ -358,9 +358,7 @@ call plug#end()
 " VVV Experimental
 set display+=lastline
 set tabpagemax=50
-set grepprg=ag\ --vimgrep\ $*
-set grepformat=%f:%l:%c:%m
-" ^^^ Exterimental
+" ^^^ Experimental
 set updatetime=250                                  " Faster swap saves for quicker updates
 set ttimeout                                        " Time out when entering keycodes
 set ttimeoutlen=100                                 " Set timeout for keycodes
@@ -412,6 +410,10 @@ set complete+=kspell                                " Autocomplete via dictionar
 set undofile                                        " Automatically save persistent undo history
 set undodir=~/.vim/undo                             " Configure undo history location
 set diffopt+=vertical                               " Show diffs vertically
+set grepprg=ag\ --vimgrep\ $*                       " Work with Silver Searcher
+set grepformat=%f:%l:%c:%m                          " Configure grep format for ag
+set conceallevel=1                                  " Conceal text by replacing with listchars
+set concealcursor=n                                 " Conceal in normal mode but show in visual/insert
 
 " Don't edit these type of files
 set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.pyo,*.swp
@@ -613,6 +615,11 @@ au!
     au FileType json map <leader>jm :%!json_xs -f json -t json<CR>
 
     "au BufReadCmd,FileReadCmd *.\(gpg\|asc\|pgp\) call SetGPGOptions()
+
+    " Pass store
+    au BufReadCmd,FileReadCmd */pass.*/*.txt setlocal filetype=pass
+    au FileType pass syntax region password start="\%1l" end="\%2l" conceal cchar=*
+    "au FileType pass syntax match privateData /\%(^(IDKEY):\s*\)\@<=\S\+/ conceal cchar=*
 
     " Allow stylesheets to autocomplete hyphenated words
     au FileType css,scss,sass setlocal iskeyword+=-
