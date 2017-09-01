@@ -96,7 +96,7 @@ let g:syntastic_html_tidy_ignore_errors=[
             \ 'discarding unexpected </tal:',
             \ 'discarding unexpected </metal:'
             \ ]
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_json_checkers = ['jsonlint']
 let g:syntastic_python_checkers = ['py3kwarn', 'pylama']
 let g:syntastic_rst_checkers = ['rstcheck']
@@ -259,9 +259,9 @@ Plug 'tpope/vim-jdaddy'
 
 " JavaScript
 "Plug 'davidjb/vim-web-indent'
-Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+
 " XXX see https://github.com/othree/javascript-libraries-syntax.vim
 Plug 'othree/javascript-libraries-syntax.vim'
 let g:javascript_enable_domhtmlcss = 1
@@ -624,14 +624,13 @@ au!
     " Allow stylesheets to autocomplete hyphenated words
     au FileType css,scss,sass setlocal iskeyword+=-
 
-    " Indent width for HTML/CSS/SASS/JS
-    au FileType css,scss,sass,html,js setlocal shiftwidth=2 tabstop=2 softtabstop=2
+    " Indent widths
+    au FileType css,scss,sass,html,javascript,javascript.jsx,json setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
     au BufNewFile,BufRead *.rb,*.rbw,*.gem,*.gemspec,[rR]akefile,*.rake,*.thor,Vagrantfile setlocal filetype=ruby
     au BufNewFile,BufRead *.erb setlocal filetype=eruby
     au FileType eruby setlocal nocindent
 
-    au BufNewFile,BufRead *.js setlocal filetype=javascript
     au FileType javascript setlocal nocindent
     au FileType javascript nmap <leader>jd :TernDef<CR>
     au FileType javascript nmap <leader>jt :TernType<CR>
