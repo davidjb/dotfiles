@@ -372,6 +372,7 @@ applications () {
         # Install all the packages!
         packages=(
             ag                              # Super-fast searching
+            coffeescript                    # Programming language
             docker                          # Containers
             docker-compose                  # Container environment management
             figlet                          # ASCII art text
