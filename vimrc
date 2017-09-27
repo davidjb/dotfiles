@@ -280,20 +280,16 @@ let g:sparkupExecuteMapping = '<Leader>h'
 let g:sparkupNextMapping = '<Leader>n'
 let g:sparkupMapsNormal = 1
 
-" LESS
-" Plug 'groenewege/vim-less'
-
 " SASS, SCSS
 Plug 'cakebaker/scss-syntax.vim'
-
-" HAML
-"Plug 'tpope/vim-haml'
 
 " YAML
 Plug 'avakhov/vim-yaml', { 'for': 'yaml' }
 
 " Markdown
-Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_new_list_item_indent = 2
 
 " reST - Highlight DocStrings in Python files
 " Improvement for auto-numbered lists
@@ -448,6 +444,9 @@ highlight SpellBad term=reverse ctermbg=224 ctermfg=0 gui=undercurl guisp=Red
 highlight IndentGuidesEven ctermbg=244
 highlight IndentGuidesOdd ctermbg=236
 highlight MatchParen term=reverse ctermbg=239 guibg=Cyan
+
+" Set a maximum number of lines to scan for syntax highlighting
+syntax sync minlines=256
 
 
 """"""""""""""
@@ -605,7 +604,7 @@ au!
         \ endif
 
     " Always colourise parentheses
-    au FileType * :RainbowParentheses
+    au FileType json,python,javascript :RainbowParentheses
 
     " Salt roster files
     au BufNewFile,BufRead roster,master setlocal filetype=yaml
