@@ -172,16 +172,18 @@ dependencies () {
     pushd "$DIR/tools/python"
     . bin/activate
     pip install -U \
-        py3kwarn \
-        pylama \
-        rstcheck \
-        pygments \
         git+https://github.com/jbernard/dotfiles.git \
-        nodeenv \
-        thefuck \
         caniusepython3 \
         em-keyboard \
-        hg-git
+        hg-git \
+        nodeenv \
+        py3kwarn \
+        pygments \
+        pylama \
+        rstcheck \
+        thefuck \
+        vim-vint
+
     pip install https://projects.bigasterisk.com/grepedit-1.0.tar.gz
     deactivate
     popd
@@ -202,6 +204,10 @@ dependencies () {
         less
         linklocal
         remark
+        stylelint
+        stylelint-processor-styled-components
+        stylelint-config-styled-components
+        stylelint-config-standard
         svgo
         typescript
         wml
@@ -443,6 +449,7 @@ applications () {
             nagstamon                       # Nagios monitoring GUI
             namechanger                     # Change filenames en masse
             openshot-video-editor           # Video editing application
+            postman                         # HTTP request helper
             safari-technology-preview       # Preview of Safari
             simple-comic                    # Comic reader
             scroll-reverser                 # For external mouse inversion
