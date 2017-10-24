@@ -80,31 +80,51 @@ let g:gitgutter_max_signs = 250
 nmap cog :GitGutterToggle<>
 
 " Syntax checking for Vim
-Plug 'scrooloose/syntastic'
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '⚠'
-let g:syntastic_css_checkers = ['csslint']
-let g:syntastic_sass_check_partials = 1
-let g:syntastic_html_checkers = ['tidy']
-let g:syntastic_html_tidy_ignore_errors=[
-            \ '<tal:',
-            \ '<metal:',
-            \ 'proprietary attribute "metal:',
-            \ 'proprietary attribute "tal:"',
-            \ 'discarding unexpected </tal:',
-            \ 'discarding unexpected </metal:'
-            \ ]
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_json_checkers = ['jsonlint']
-let g:syntastic_python_checkers = ['py3kwarn', 'pylama']
-let g:syntastic_rst_checkers = ['rstcheck']
-let g:syntastic_rst_rstcheck_quiet_messages = {"regex": [
-            \ '\v"(ref|abbr|term|menuselection|ifconfig|glossary)"',
-            \ 'Undefined substitution referenced: "project-',
-            \ ]}
-let g:syntastic_yaml_checkers = ['jsyaml']
+Plug 'w0rp/ale'
+let g:ale_completion_enabled = 1
+let g:ale_lint_delay = 1000
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠'
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+"\   'jsx': ['stylelint', 'eslint'],
+let g:ale_linters = {
+\   'javascript': ['eslint', 'standard'],
+\}
+"\ 'jsx': 'css',
+let g:ale_linter_aliases = {
+\}
+let g:ale_fixers = {
+\   'javascript': ['eslint', 'standard'],
+\}
+" Consider these options
+" let g:ale_lint_on_insert_leave = 1
+"nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+"nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+"Plug 'scrooloose/syntastic'
+"let g:syntastic_aggregate_errors = 1
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_sass_check_partials = 1
+"let g:syntastic_html_checkers = ['tidy']
+"let g:syntastic_html_tidy_ignore_errors=[
+            "\ '<tal:',
+            "\ '<metal:',
+            "\ 'proprietary attribute "metal:',
+            "\ 'proprietary attribute "tal:"',
+            "\ 'discarding unexpected </tal:',
+            "\ 'discarding unexpected </metal:'
+            "\ ]
+"let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_json_checkers = ['jsonlint']
+"let g:syntastic_python_checkers = ['py3kwarn', 'pylama']
+"let g:syntastic_rst_checkers = ['rstcheck']
+"let g:syntastic_rst_rstcheck_quiet_messages = {"regex": [
+            "\ '\v"(ref|abbr|term|menuselection|ifconfig|glossary)"',
+            "\ 'Undefined substitution referenced: "project-',
+            "\ ]}
+"let g:syntastic_yaml_checkers = ['jsyaml']
 
 " Automatic formatting of code
 " You can manually autoindent, retab or remove trailing whitespace with the
@@ -488,6 +508,12 @@ map k gk
 map H ^
 map L $
 
+" Movement - move to loclist locations
+nmap <leader>ln :lnext<CR>
+nmap <leader>lp :lprev<CR>
+nmap <leader>le :lopen<CR>
+nmap <leader>ll :llist<CR>
+
 " Visual indenting should stay selected
 vmap < <gv
 vmap > >gv
@@ -535,8 +561,8 @@ nmap <c-v> :set paste<CR>"+gp:set nopaste<CR>
 " Control + R - visual selection replacement
 vnoremap <C-r> "hy:%s/\(<C-r>h\)//gc<left><left><left>
 
-" ;e - Shortcut for syntax checking
-map <leader>e :SyntasticCheck<CR>:Errors<CR>
+" ;e - Shortcut for syntax fixing
+map <leader>e :ALEFix<CR>
 
 " ;g - Move to the element/variable declaration
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -671,8 +697,6 @@ au!
     au FileType python let b:delimitMate_nesting_quotes = ['"']
     " Disable <> characters in delimitMate
     au FileType python let b:delimitMate_matchpairs = "(:),[:],{:}"
-    " Shortcut for fixing PEP8 issues
-    au FileType python nmap <leader>f :PymodeLintAuto<CR>:SyntasticCheck<CR>
 
     " Arduino filetypes
     au BufNewFile,BufRead *.pde setlocal ft=arduino
