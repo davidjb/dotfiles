@@ -149,6 +149,7 @@ dependencies () {
             vagrant-completions               # Vagrant shell completions
             vim                               # Updated Vim
             wget                              # Internet file retriever
+            yarn                              # Node.js package manager
         )
         brew install "${packages[@]}"
         brew link python3
