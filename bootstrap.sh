@@ -390,6 +390,7 @@ applications () {
             figlet                          # ASCII art text
             ffmpeg                          # Multimedia converter
             gpg-agent                       # GPG support
+            httpstat                        # Cleaner, beautiful curl
             htop                            # Top, powered up
             imagemagick                     # Image conversion and processing
             ncdu                            # Terminal-based disk usage analyser
