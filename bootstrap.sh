@@ -152,6 +152,11 @@ dependencies () {
             yarn                              # Node.js package manager
         )
         brew install "${packages[@]}"
+        if [ -d "/usr/local/lib/node_modules/npm/" ]; then
+          pushd /usr/local/lib/node_modules/npm/
+          npm uninstall update-notifier
+          popd
+        fi
         brew link python3
 
         brew tap caskroom/cask
