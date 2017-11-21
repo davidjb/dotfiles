@@ -661,6 +661,8 @@ au!
     " Indent widths
     au FileType css,scss,sass,html,javascript,javascript.jsx,json setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
+    au BufNewFile,BufRead *.svg setlocal filetype=xml.svg
+
     au BufNewFile,BufRead *.rb,*.rbw,*.gem,*.gemspec,[rR]akefile,*.rake,*.thor,Vagrantfile setlocal filetype=ruby
     au BufNewFile,BufRead *.erb setlocal filetype=eruby
     au FileType eruby setlocal nocindent
