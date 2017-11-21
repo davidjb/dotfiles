@@ -46,7 +46,7 @@ fi
 
 # Enable private Bash includes
 shopt -s nullglob
-for file in ~/.bash_private/*
+for file in ~/.bash_private/*.sh
 do
     . "$file"
 done
