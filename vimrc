@@ -52,6 +52,14 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_server_use_vim_stdout = 0
 let g:ycm_server_log_level = 'warn'
 let g:ycm_server_keep_logfiles = 1
+let g:ycm_filetype_blacklist = {
+\   'gitcommit': 1,
+\   'gpg': 1,
+\   'markdown': 1,
+\   'rst': 1,
+\   'tagbar' : 1,
+\   'text': 1
+\}
 "let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
 "let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
 
