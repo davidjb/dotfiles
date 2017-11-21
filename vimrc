@@ -569,8 +569,9 @@ nmap <c-v> :set paste<CR>"+gp:set nopaste<CR>
 " Control + R - visual selection replacement
 vnoremap <C-r> "hy:%s/\(<C-r>h\)//gc<left><left><left>
 
-" ;e - Shortcut for syntax fixing
-map <leader>e :ALEFix<CR>
+" ;e - Shortcuts for syntax checking/fixing
+map <leader>ee :ALEToggle<CR>
+map <leader>ef :ALEFix<CR>
 
 " ;g - Move to the element/variable declaration
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
