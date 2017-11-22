@@ -195,9 +195,13 @@ dependencies () {
 
     # Local Node.js based tools, directory configured in ~/.npmrc
     ln_if_missing "$DIR/npmrc" ~/.npmrc
+    yarn config set prefix ~/dotfiles/tools/nodejs/
     packages=(
         browserify                            # 'Browser' packaging for npm
+        babel-eslint                          # Babel plugin for eslint
         csslint
+        eslint                                # Customisable JS linting tool
+        eslint-plugin-react
         grunt-cli
         gulp
         jpm                                   # Jetpack package manager for Firefox
@@ -209,6 +213,7 @@ dependencies () {
         less
         linklocal
         remark
+        standard                              # Style checker for JS
         stylelint
         stylelint-processor-styled-components
         stylelint-config-styled-components
@@ -217,17 +222,7 @@ dependencies () {
         typescript
         wml
     )
-    npm install -g "${packages[@]}"
-
-    # React Native
-    npm install -g \
-        standard \
-        eslint \
-        babel-eslint \
-        eslint-plugin-react \
-        react-native \
-        react-native-ignite \
-        reactotron-cli
+    yarn global add "${packages[@]}"
 
     # Local Ruby-based tools
     mkdir -p "$DIR/tools/ruby"
