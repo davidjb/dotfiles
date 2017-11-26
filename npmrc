@@ -1,1 +1,3 @@
-prefix = ~/dotfiles/tools/nodejs
+prefix=/Users/david/dotfiles/tools/nodejs
+metrics-registry=
+send-metrics=false
