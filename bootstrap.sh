@@ -149,8 +149,14 @@ dependencies () {
             vagrant-completions               # Vagrant shell completions
             vim                               # Updated Vim
             wget                              # Internet file retriever
+            yarn                              # Node.js package manager
         )
         brew install "${packages[@]}"
+        if [ -d "/usr/local/lib/node_modules/npm/" ]; then
+          pushd /usr/local/lib/node_modules/npm/
+          npm uninstall update-notifier
+          popd
+        fi
         brew link python3
 
         brew tap caskroom/cask
@@ -171,25 +177,31 @@ dependencies () {
     pushd "$DIR/tools/python"
     . bin/activate
     pip install -U \
-        py3kwarn \
-        pylama \
-        rstcheck \
-        pygments \
         git+https://github.com/jbernard/dotfiles.git \
-        nodeenv \
-        thefuck \
         caniusepython3 \
         em-keyboard \
-        hg-git
+        hg-git \
+        nodeenv \
+        py3kwarn \
+        pygments \
+        pylama \
+        rstcheck \
+        thefuck \
+        vim-vint
+
     pip install https://projects.bigasterisk.com/grepedit-1.0.tar.gz
     deactivate
     popd
 
     # Local Node.js based tools, directory configured in ~/.npmrc
     ln_if_missing "$DIR/npmrc" ~/.npmrc
+    yarn config set prefix ~/dotfiles/tools/nodejs/
     packages=(
         browserify                            # 'Browser' packaging for npm
+        babel-eslint                          # Babel plugin for eslint
         csslint
+        eslint                                # Customisable JS linting tool
+        eslint-plugin-react
         grunt-cli
         gulp
         jpm                                   # Jetpack package manager for Firefox
@@ -201,21 +213,16 @@ dependencies () {
         less
         linklocal
         remark
+        standard                              # Style checker for JS
+        stylelint
+        stylelint-processor-styled-components
+        stylelint-config-styled-components
+        stylelint-config-standard
         svgo
         typescript
         wml
     )
-    npm install -g "${packages[@]}"
-
-    # React Native
-    npm install -g \
-        standard \
-        eslint \
-        babel-eslint \
-        eslint-plugin-react \
-        react-native \
-        react-native-ignite \
-        reactotron-cli
+    yarn global add "${packages[@]}"
 
     # Local Ruby-based tools
     mkdir -p "$DIR/tools/ruby"
@@ -372,11 +379,13 @@ applications () {
         # Install all the packages!
         packages=(
             ag                              # Super-fast searching
+            coffeescript                    # Programming language
             docker                          # Containers
             docker-compose                  # Container environment management
             figlet                          # ASCII art text
             ffmpeg                          # Multimedia converter
             gpg-agent                       # GPG support
+            httpstat                        # Cleaner, beautiful curl
             htop                            # Top, powered up
             imagemagick                     # Image conversion and processing
             ncdu                            # Terminal-based disk usage analyser
@@ -441,6 +450,7 @@ applications () {
             nagstamon                       # Nagios monitoring GUI
             namechanger                     # Change filenames en masse
             openshot-video-editor           # Video editing application
+            postman                         # HTTP request helper
             safari-technology-preview       # Preview of Safari
             simple-comic                    # Comic reader
             scroll-reverser                 # For external mouse inversion
