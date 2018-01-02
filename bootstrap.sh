@@ -129,6 +129,7 @@ dependencies () {
             git                               # Version control
             gpg2                              # Encryption
             gnu-sed                           # Normalised sed usage
+            grep                              # GNU grep
             hub                               # GitHub tools
             java                              # Java programming language
             libxml2                           # XML library
