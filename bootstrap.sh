@@ -173,16 +173,18 @@ dependencies () {
 
     # Local Python-based tools
     mkdir -p "$DIR/tools/python"
-    virtualenv "$DIR/tools/python"
+    virtualenv "$DIR/tools/python" -p python3.6
     pushd "$DIR/tools/python"
     . bin/activate
     pip install -U \
         git+https://github.com/jbernard/dotfiles.git \
+        autopep8 \
         caniusepython3 \
         em-keyboard \
         hg-git \
         nodeenv \
         py3kwarn \
+        pycodestyle \
         pygments \
         pylama \
         rstcheck \
