@@ -460,6 +460,7 @@ applications () {
             spectacle                       # Positioning for windows
             skype                           # Calls and messaging
             the-unarchiver                  # Archive extraction
+            tunnelblick                     # VPN client
             virtualbox                      # Virtual machines
             wireshark                       # Network traffic monitor
             vagrant                         # Environment manager
