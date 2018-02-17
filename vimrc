@@ -152,6 +152,7 @@ Plug 'Lokaltog/vim-easymotion'
 " Git management: Gstatus, Gcommit, Gblame, Gmove, Ggrep, Gbrowse
 " Use with -/p for status and patching.
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 
 " Search support: Ag via ack.vim
 Plug 'mileszs/ack.vim'
