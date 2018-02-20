@@ -140,6 +140,7 @@ dependencies () {
             phantomjs                         # JS webpage runner
             python                            # Python 2 language
             python3                           # Python 3 language
+            rsync                             # GNU rsync
             sassc                             # SASS compiler
             shellcheck                        # Spelling
             shyaml                            # YAML parsing for shells
