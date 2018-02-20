@@ -175,16 +175,18 @@ dependencies () {
 
     # Local Python-based tools
     mkdir -p "$DIR/tools/python"
-    virtualenv "$DIR/tools/python"
+    virtualenv "$DIR/tools/python" -p python3.6
     pushd "$DIR/tools/python"
     . bin/activate
     pip install -U \
         git+https://github.com/jbernard/dotfiles.git \
+        autopep8 \
         caniusepython3 \
         em-keyboard \
         hg-git \
         nodeenv \
         py3kwarn \
+        pycodestyle \
         pygments \
         pylama \
         rstcheck \
@@ -460,6 +462,7 @@ applications () {
             spectacle                       # Positioning for windows
             skype                           # Calls and messaging
             the-unarchiver                  # Archive extraction
+            tunnelblick                     # VPN client
             virtualbox                      # Virtual machines
             wireshark                       # Network traffic monitor
             vagrant                         # Environment manager
