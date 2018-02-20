@@ -99,12 +99,14 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 "\   'jsx': ['stylelint', 'eslint'],
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'python': ['pycodestyle'],
 \}
 "\ 'jsx': 'css',
 let g:ale_linter_aliases = {
 \}
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
+\   'python': ['autopep8'],
 \}
 " Consider these options
 " let g:ale_lint_on_insert_leave = 1
@@ -320,9 +322,7 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_new_list_item_indent = 2
 
-" reST - Highlight DocStrings in Python files
-" Improvement for auto-numbered lists
-" See https://github.com/Rykka/riv.vim/pull/59
+" reStructuredText
 Plug 'Rykka/riv.vim'
 let g:riv_python_rst_hl = 1
 let g:riv_ignored_vmaps='>,<'
