@@ -506,7 +506,7 @@ nmap <leader>tw :BreezeWhatsWrong<CR>
 nmap <leader>jd :YcmCompleter GoTo<CR>
 nmap <leader>jf :YcmCompleter GoToDefinition<CR>
 
-" Easy out from input mode
+" Easy out from insert mode
 inoremap jk <Esc>
 
 " Movement - work more logically with wrapped lines
