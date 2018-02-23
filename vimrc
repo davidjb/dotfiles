@@ -591,6 +591,10 @@ nnoremap <leader>rt :retab<CR>
 " ;d - Detect indent
 nnoremap <leader>d :DetectIndent<CR>
 
+" ;tv & ;th - Reorganise windows
+nmap <leader>th <C-w>t<C-w>K
+nmap <leader>tv <C-w>t<C-w>H
+
 " ;v - Open vimrc
 nmap <leader>v :tabedit $MYVIMRC<CR>
 
