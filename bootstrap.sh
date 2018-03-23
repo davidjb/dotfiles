@@ -629,6 +629,10 @@ setup_printing () {
 }
 
 configure_mac () {
+    # Faster key repeats
+    # See https://github.com/mathiasbynens/dotfiles/issues/687
+    defaults write -g KeyRepeat -int 1
+
     # Disable animations (10.12 support?)
     defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
     defaults write -g NSScrollAnimationEnabled -bool NO
