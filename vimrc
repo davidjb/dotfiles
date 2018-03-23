@@ -38,37 +38,39 @@ Plug 'bogado/file-line'
 " Completion support; requires Vim 7.3.584
 " Press <TAB> to complete, <C-Space> to semantically complete
 " Automatically integrates with Ultisnips
-Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --clang-completer --tern-completer' }
-let g:ycm_server_python_interpreter = 'python3'
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_complete_in_comments = 1
-let g:ycm_use_ultisnips_completer = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_always_populate_location_list = 1
-let g:ycm_min_num_of_chars_for_completion = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_autoclose_preview_window_after_completion = 0
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_server_use_vim_stdout = 0
-let g:ycm_server_log_level = 'warn'
-let g:ycm_server_keep_logfiles = 1
-let g:ycm_filetype_blacklist = {
-\   'gitcommit': 1,
-\   'gpg': 1,
-\   'markdown': 1,
-\   'rst': 1,
-\   'tagbar' : 1,
-\   'text': 1
-\}
-"let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
-"let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
+if v:progname ==? 'vim'
+    Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --clang-completer --tern-completer' }
+    let g:ycm_server_python_interpreter = 'python3'
+    let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+    let g:ycm_complete_in_comments = 1
+    let g:ycm_use_ultisnips_completer = 1
+    let g:ycm_collect_identifiers_from_comments_and_strings = 1
+    let g:ycm_always_populate_location_list = 1
+    let g:ycm_min_num_of_chars_for_completion = 1
+    let g:ycm_seed_identifiers_with_syntax = 1
+    let g:ycm_autoclose_preview_window_after_completion = 0
+    let g:ycm_autoclose_preview_window_after_insertion = 1
+    let g:ycm_server_use_vim_stdout = 0
+    let g:ycm_server_log_level = 'warn'
+    let g:ycm_server_keep_logfiles = 1
+    let g:ycm_filetype_blacklist = {
+    \   'gitcommit': 1,
+    \   'gpg': 1,
+    \   'markdown': 1,
+    \   'rst': 1,
+    \   'tagbar' : 1,
+    \   'text': 1
+    \}
+    "let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
+    "let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
 
-" JavaScript parsing and integration with YouCompleteMe
-"Plug 'marijnh/tern_for_vim', { 'for': 'javascript', 'do': 'npm install' }
-" let g:tern_show_argument_hints = 'on_move'
-" Plug 'Slava/tern-meteor', { 'for': 'javascript' }
-"Plug 'slava/vim-spacebars'
-"let g:mustache_abbreviations = 1
+    " JavaScript parsing and integration with YouCompleteMe
+    "Plug 'marijnh/tern_for_vim', { 'for': 'javascript', 'do': 'npm install' }
+    " let g:tern_show_argument_hints = 'on_move'
+    " Plug 'Slava/tern-meteor', { 'for': 'javascript' }
+    "Plug 'slava/vim-spacebars'
+    "let g:mustache_abbreviations = 1
+endif
 
 " Snippets
 "Plug 'vim-scripts/tlib'
@@ -88,30 +90,32 @@ let g:gitgutter_max_signs = 250
 nmap cog :GitGutterToggle<>
 
 " Syntax checking for Vim
-Plug 'w0rp/ale'
-let g:ale_completion_enabled = 1
-let g:ale_lint_delay = 1000
-let g:ale_sign_error = '✗'
-let g:ale_sign_warning = '⚠'
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-"\   'jsx': ['stylelint', 'eslint'],
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'python': ['pycodestyle'],
-\}
-"\ 'jsx': 'css',
-let g:ale_linter_aliases = {
-\}
-let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\   'python': ['autopep8'],
-\}
-" Consider these options
-" let g:ale_lint_on_insert_leave = 1
-"nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-"nmap <silent> <C-j> <Plug>(ale_next_wrap)
+if v:progname ==? 'vim'
+    Plug 'w0rp/ale'
+    let g:ale_completion_enabled = 1
+    let g:ale_lint_delay = 1000
+    let g:ale_sign_error = '✗'
+    let g:ale_sign_warning = '⚠'
+    let g:ale_echo_msg_error_str = 'E'
+    let g:ale_echo_msg_warning_str = 'W'
+    let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+    "\   'jsx': ['stylelint', 'eslint'],
+    let g:ale_linters = {
+    \   'javascript': ['eslint'],
+    \   'python': ['pycodestyle'],
+    \}
+    "\ 'jsx': 'css',
+    let g:ale_linter_aliases = {
+    \}
+    let g:ale_fixers = {
+    \   'javascript': ['eslint'],
+    \   'python': ['autopep8'],
+    \}
+    " Consider these options
+    " let g:ale_lint_on_insert_leave = 1
+    "nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+    "nmap <silent> <C-j> <Plug>(ale_next_wrap)
+endif
 
 "Plug 'scrooloose/syntastic'
 "let g:syntastic_aggregate_errors = 1
@@ -194,10 +198,12 @@ Plug 'yegappan/mru'
 nnoremap <leader>f :MRU<CR>
 
 " Auto indent detection
-Plug 'ciaranm/detectindent'
-"let g:detectindent_max_lines_to_analyse = 16
-let g:detectindent_preferred_expandtab = 1
-let g:detectindent_preferred_indent = 4
+if v:progname ==? 'vim'
+    Plug 'ciaranm/detectindent'
+    "let g:detectindent_max_lines_to_analyse = 16
+    let g:detectindent_preferred_expandtab = 1
+    let g:detectindent_preferred_indent = 4
+endif
 
 " Indent guides
 Plug 'nathanaelkane/vim-indent-guides'
