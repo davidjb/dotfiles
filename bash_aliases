@@ -87,7 +87,7 @@ flac-conversion() {
     for file in *.flac
     do
         converted_name=$(echo "$file" | sed 's/flac/mp3/')
-        avconv -i "$file" -b 320k "$converted_name"
+        ffmpeg -i "$file" -b:a 320k "$converted_name"
     done
 }
 aax-dedrm() {
