@@ -140,6 +140,7 @@ dependencies () {
             phantomjs                         # JS webpage runner
             python                            # Python 2 language
             python3                           # Python 3 language
+            rsync                             # GNU rsync
             sassc                             # SASS compiler
             shellcheck                        # Spelling
             shyaml                            # YAML parsing for shells
@@ -627,6 +628,10 @@ setup_printing () {
 }
 
 configure_mac () {
+    # Faster key repeats
+    # See https://github.com/mathiasbynens/dotfiles/issues/687
+    defaults write -g KeyRepeat -int 1
+
     # Disable animations (10.12 support?)
     defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
     defaults write -g NSScrollAnimationEnabled -bool NO
