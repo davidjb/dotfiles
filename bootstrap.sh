@@ -450,7 +450,6 @@ applications () {
             logitech-control-center         # Software for keyboard
             macvim                          # GUI Vim for Mac
             meld                            # Comparisons made easy
-            nagstamon                       # Nagios monitoring GUI
             namechanger                     # Change filenames en masse
             openshot-video-editor           # Video editing application
             postman                         # HTTP request helper
