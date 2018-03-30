@@ -115,7 +115,7 @@ ssh-copy-public-key () {
     fi
     ssh "$2" "cat >> .ssh/authorized_keys" < "$1"
 }
-alias serve='python -m SimpleHTTPServer 8000'
+alias serve='python3 -m http.server 8000'
 alias ports='netstat -tulpn'
 #alias port='netstat -tulpn | grep'
 alias ssl-text='openssl x509 -text -noout -in'
