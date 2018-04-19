@@ -426,6 +426,7 @@ applications () {
             apache-directory-studio         # LDAP GUI
             avibrazil-rdm                   # High-resolution MacBook screen
             calibre                         # eBook reader
+            cheatsheet                      # Hold ⌘ for shortcuts
             chromium                        # Alternative browsing
             cyberduck                       # Remote server connections
             darktable                       # Photograph editing
