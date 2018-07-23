@@ -721,6 +721,9 @@ au!
     " Arduino filetypes
     au BufNewFile,BufRead *.pde setlocal ft=arduino
 
+    " Lua
+    au BufNewFile,BufRead *.lp setlocal ft=lua
+
     " XXX May want to prefer expandtab for all files
     " Detect indentation of all files
     "au BufReadPost * :DetectIndent

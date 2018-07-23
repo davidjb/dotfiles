@@ -427,7 +427,7 @@ applications () {
             avibrazil-rdm                   # High-resolution MacBook screen
             bettertouchtool                 # Input customisation (mouse, pad, etc)
             calibre                         # eBook reader
-            cheatsheet                      # Hold command key to view shortcuts
+            cheatsheet                      # Hold ⌘ for shortcuts
             chromium                        # Alternative browsing
             cyberduck                       # Remote server connections
             darktable                       # Photograph editing
@@ -454,7 +454,6 @@ applications () {
             logitech-control-center         # Software for keyboard
             macvim                          # GUI Vim for Mac
             meld                            # Comparisons made easy
-            nagstamon                       # Nagios monitoring GUI
             namechanger                     # Change filenames en masse
             openshot-video-editor           # Video editing application
             postman                         # HTTP request helper
