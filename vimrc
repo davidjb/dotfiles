@@ -703,7 +703,9 @@ au!
     au FileType rst setlocal iskeyword-=. textwidth=78 formatoptions-=c
 
     " Configure automatic spell checking
-    au FileType rst,gitcommit setlocal spell
+    if v:progname ==? 'vim'
+       au FileType rst,gitcommit setlocal spell
+     endif
 
     " Automatic wrapping
     au FileType markdown setlocal textwidth=78 formatoptions-=c
