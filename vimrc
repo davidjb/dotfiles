@@ -99,16 +99,14 @@ if v:progname ==? 'vim'
     let g:ale_echo_msg_error_str = 'E'
     let g:ale_echo_msg_warning_str = 'W'
     let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-    "\   'jsx': ['stylelint', 'eslint'],
     let g:ale_linters = {
-    \   'javascript': ['eslint'],
+    \   'javascript': ['prettier'],
     \   'python': ['pycodestyle'],
     \}
-    "\ 'jsx': 'css',
     let g:ale_linter_aliases = {
     \}
     let g:ale_fixers = {
-    \   'javascript': ['eslint'],
+    \   'javascript': ['eslint', 'prettier'],
     \   'python': ['autopep8'],
     \}
     " Consider these options
@@ -703,7 +701,9 @@ au!
     au FileType rst setlocal iskeyword-=. textwidth=78 formatoptions-=c
 
     " Configure automatic spell checking
-    au FileType rst,gitcommit setlocal spell
+    if v:progname ==? 'vim'
+       au FileType rst,gitcommit setlocal spell
+     endif
 
     " Automatic wrapping
     au FileType markdown setlocal textwidth=78 formatoptions-=c

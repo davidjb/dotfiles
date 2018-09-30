@@ -66,6 +66,8 @@ alias nautilus-mounts='cd "$XDG_RUNTIME_DIR/gvfs"'
 alias random-mac="sudo ifconfig en0 ether $(openssl rand -hex 6 | sed 's%\(..\)%\1:%g; s%.$%%')"
 alias rcd='cd -P .' # Real cd
 alias scp-compressed='scp -C -o CompressionLevel=9'
+alias shred='shred -u'
+alias ssh-keygen='ssh-keygen -o'
 alias tmux-prefix='tmux set -g prefix C-a'
 alias tmux-fix='tmux unbind -n n \; unbind -n N'
 alias vi='vim'
