@@ -425,6 +425,7 @@ applications () {
             angry-ip-scanner                # Port and host scanner
             apache-directory-studio         # LDAP GUI
             avibrazil-rdm                   # High-resolution MacBook screen
+            bettertouchtool                 # For external mouse inversion
             calibre                         # eBook reader
             cheatsheet                      # Hold ⌘ for shortcuts
             chromium                        # Alternative browsing
@@ -457,7 +458,6 @@ applications () {
             postman                         # HTTP request helper
             safari-technology-preview       # Preview of Safari
             simple-comic                    # Comic reader
-            scroll-reverser                 # For external mouse inversion
             slack                           # Chat and more for teams
             spectacle                       # Positioning for windows
             skype                           # Calls and messaging
