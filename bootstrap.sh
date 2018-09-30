@@ -425,7 +425,7 @@ applications () {
             angry-ip-scanner                # Port and host scanner
             apache-directory-studio         # LDAP GUI
             avibrazil-rdm                   # High-resolution MacBook screen
-            bettertouchtool                 # For external mouse inversion
+            bettertouchtool                 # Input customisation (mouse, pad, etc)
             calibre                         # eBook reader
             cheatsheet                      # Hold ⌘ for shortcuts
             chromium                        # Alternative browsing
@@ -447,6 +447,7 @@ applications () {
             insomniax                       # Prevent Mac from sleeping
             insync                          # Google Drive and more
             iterm2                          # Better terminal
+            kap                             # Easy video capture
             keybase                         # Keys and validation
             libreoffice                     # Editing office documents
             little-snitch                   # Outgoing firewall
