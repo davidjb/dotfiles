@@ -1,0 +1,25 @@
+#vim:tw=78:ft=sh
+export EDITOR="vim"
+export HISTTIMEFORMAT="%F %T "
+export DOTFILES_REPO="$HOME/dotfiles"
+export M2_HOME="/usr/share/maven2/"
+export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64"
+export JDK_HOME="$JAVA_HOME"
+export GIT_AUTHOR_NAME="D""a""v""i""d"" ""B""e""i""t""e""y"
+export GIT_COMMITTER_NAME="D""a""v""i""d"" ""B""e""i""t""e""y"
+export GIT_COMMITTER_EMAIL="d""a""v""i""d""@""d""a""v""i""d""j""b"".""c""o""m"
+export GIT_AUTHOR_EMAIL="d""a""v""i""d""@""d""a""v""i""d""j""b"".""c""o""m"
+export PIP_DOWNLOAD_CACHE="$HOME/.pip/download-cache"
+export GEM_PATH="$GEM_PATH:$HOME/dotfiles/tools/ruby"
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin:$HOME/dotfiles/tools/python/bin:$HOME/dotfiles/tools/nodejs/bin:$HOME/dotfiles/tools/nodejs/node_modules/.bin:$HOME/dotfiles/tools/ruby/bin"
+export PYTHONSTARTUP="$HOME/.pythonstartup"
+# Node.js - disable update-notifier system-wide
+export NO_UPDATE_NOTIFIER=1
+
+# Mac specific
+export CLICOLOR=1
+export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_INSECURE_REDIRECT=1
+export HOMEBREW_CASK_OPTS=--require-sha
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
