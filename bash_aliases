@@ -66,6 +66,7 @@ alias nautilus-mounts='cd "$XDG_RUNTIME_DIR/gvfs"'
 [ $_IS_MAC ] && alias restart-camera='sudo killall VDCAssistant'
 alias random-mac="sudo ifconfig en0 ether $(openssl rand -hex 6 | sed 's%\(..\)%\1:%g; s%.$%%')"
 alias rcd='cd -P .' # Real cd
+alias qrreader='zbarimg -q --raw'
 alias scp-compressed='scp -C -o CompressionLevel=9'
 alias shred='shred -u'
 alias ssh-keygen='ssh-keygen -o'
