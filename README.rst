@@ -46,12 +46,12 @@ For files within the repository that should be symlinked onto the system, use:
 
 .. code:: bash
 
-   dotfiles --check
+   dotfiles status
    dotfiles --sync
 
 
-Copyright
-=========
+Copyright/Licence
+=================
 
 Nope, nothing.  Just use what you'd like, how you'd like to use it.
 Consider this software public domain so you can remix any part of it into your
