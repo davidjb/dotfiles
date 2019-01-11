@@ -669,6 +669,9 @@ configure_mac () {
     # Disable geo services
     sudo launchctl remove com.apple.geod.xpc
 
+    # Disable Airport base station agent
+    launchctl remove com.apple.AirPortBaseStationAgent
+
     # Enforce hibernation and evict FileVault keys
     # See https://github.com/drduh/macOS-Security-and-Privacy-Guide#full-disk-encryption
     # and https://github.com/drduh/macOS-Security-and-Privacy-Guide/issues/124
