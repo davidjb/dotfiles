@@ -637,6 +637,7 @@ configure_mac () {
     # Faster key repeats
     # See https://github.com/mathiasbynens/dotfiles/issues/687
     defaults write -g KeyRepeat -int 1
+    defaults write -g InitialKeyRepeat -int 10
 
     # Disable animations (10.12 support?)
     defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
