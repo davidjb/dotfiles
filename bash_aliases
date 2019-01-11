@@ -62,6 +62,7 @@ alias history-search='history | grep '
 alias history-time='HISTTIMEFORMAT="%F %T " history'
 alias nautilus-fallback='dbus-launch nautilus --no-desktop'
 alias nautilus-mounts='cd "$XDG_RUNTIME_DIR/gvfs"'
+[ $_IS_MAC ] && alias restart-audio='sudo killall coreaudiod'
 [ $_IS_MAC ] && alias restart-camera='sudo killall VDCAssistant'
 alias random-mac="sudo ifconfig en0 ether $(openssl rand -hex 6 | sed 's%\(..\)%\1:%g; s%.$%%')"
 alias rcd='cd -P .' # Real cd
@@ -74,6 +75,17 @@ alias vi='vim'
 alias vimgit='vim . +Gstatus +"resize +5"'
 #alias wget='wget --no-check-certificate'
 alias wget-mirror='wget --no-parent --no-check-certificate --html-extension --convert-links --restrict-file-names=windows --recursive --level=inf --page-requisites -e robots=off --wait=0 --quota=inf'
+
+# Kill Adobe cruft
+killadobe() {
+    sudo killall 'AdobeIPCBroker' 'Adobe Desktop Service' 'CCXProcess' 'Core Sync' 'Core Sync Helper' 'ACCFinderSync'
+    #sudo mv \
+        #'/Applications/Utilities/Adobe\ Creative\ Cloud\ Experience' \
+        #'/Applications/Utilities/Adobe\ Sync' \
+        #'/Applications/Utilities/Adobe\ Application\ Manager/IPC' \
+        #'/Library/Application\ Support/Adobe/Adobe\ Desktop\ Common/ADS' \
+        #~/.Trash/
+}
 
 # Handle crush-and-replace for PNG images
 crushthis() {
