@@ -176,7 +176,7 @@ dependencies () {
 
     # Local Python-based tools
     mkdir -p "$DIR/tools/python"
-    virtualenv "$DIR/tools/python" -p python3.6
+    virtualenv "$DIR/tools/python" -p python3
     pushd "$DIR/tools/python"
     . bin/activate
     pip install -U \
