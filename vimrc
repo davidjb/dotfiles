@@ -479,7 +479,7 @@ highlight IndentGuidesOdd ctermbg=236
 highlight MatchParen term=reverse ctermbg=239 guibg=Cyan
 
 " Set a maximum number of lines to scan for syntax highlighting
-syntax sync minlines=256
+syntax sync minlines=32
 
 
 """"""""""""""
