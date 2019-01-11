@@ -133,6 +133,7 @@ dependencies () {
             hub                               # GitHub tools
             java                              # Java programming language
             libxml2                           # XML library
+            mas                               # Mac App Store CLI
             mercurial                         # Version control
             node                              # Node.js language
             oath-toolkit                      # OTP generator
