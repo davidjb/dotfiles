@@ -6,7 +6,7 @@ set nocompatible
 set t_Co=256
 call plug#begin('~/.vim/bundle')
 
-" Enable recursive cloning for YouCompleteMe etc
+" Enable recursive cloning for YouCompleteMe, python-mode etc
 let g:plug_shallow = 0
 
 " Local vimrc support
@@ -244,9 +244,6 @@ Plug 'gcmt/breeze.vim', { 'for': ['*.pt', '*.zpt', 'mako', 'php'] }
 " Title case support
 Plug 'christoomey/vim-titlecase'
 
-" Colour tool
-Plug 'Rykka/colorv.vim', { 'for': ['css', 'sass', 'scss', 'javascript', 'html'] }
-
 " Repeat support for ``.`` (dot, period)
 Plug 'tpope/vim-repeat'
 
@@ -304,7 +301,7 @@ Plug 'moll/vim-node'
 
 " CSS
 "Plug 'skammer/vim-css-color'
-Plug 'hail2u/vim-css3-syntax'
+Plug 'hail2u/vim-css3-syntax', { 'for': ['css', 'scss', 'sass'] }
 
 " HTML
 Plug 'othree/html5.vim'
@@ -316,7 +313,7 @@ let g:sparkupNextMapping = '<Leader>n'
 let g:sparkupMapsNormal = 1
 
 " SASS, SCSS
-Plug 'cakebaker/scss-syntax.vim'
+Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss', 'sass'] }
 
 " YAML
 Plug 'avakhov/vim-yaml', { 'for': 'yaml' }
@@ -327,7 +324,7 @@ let g:vim_markdown_conceal = 0
 let g:vim_markdown_new_list_item_indent = 2
 
 " reStructuredText
-Plug 'Rykka/riv.vim'
+Plug 'Rykka/riv.vim', { 'for': 'rst' }
 let g:riv_python_rst_hl = 1
 let g:riv_ignored_vmaps='>,<'
 
@@ -356,8 +353,9 @@ function! SetGPGOptions()
     setlocal foldopen=insert
 endfunction
 
-" Python editng superpowers
-Plug 'klen/python-mode'
+" Python editing superpowers
+Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
+let g:pymode_python = 'python3'
 let g:pymode_lint_on_write = 0 | let g:pymode_lint_message = 0 | let g:pymode_syntax = 0 | let g:pymode_syntax_all = 0 | let g:pymode_trim_whitespaces = 0
 let g:pymode_rope_show_doc_bind = '<c-e>d'
 let g:pymode_rope = 0

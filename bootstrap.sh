@@ -38,7 +38,7 @@ ln_if_missing () {
     original=$1
     target=$2
     if [ ! -e "$target" ]; then
-        ln "$original" "$target"
+        ln -s "$original" "$target"
     fi
 }
 command_exists () {
@@ -557,6 +557,8 @@ vim_configuration () {
     ln_if_missing "$DIR/powerline/colorschemes/vim/default.json" ~/.config/powerline/colorschemes/vim/default.json
     rm -rf ~/.config/powerline/themes/tmux/default.json
     ln_if_missing "$DIR/powerline/themes/tmux/default.json" ~/.config/powerline/themes/tmux/default.json
+    rm -rf ~/.config/powerline/themes/vim/default.json
+    ln_if_missing "$DIR/powerline/themes/vim/default.json" ~/.config/powerline/themes/vim/default.json
 
     # Snippets and type detection
     mkdir -p ~/.vim/ftdetect/
