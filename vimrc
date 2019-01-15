@@ -61,6 +61,9 @@ if v:progname ==? 'vim'
     \   'tagbar' : 1,
     \   'text': 1
     \}
+    let g:ycm_semantic_triggers = {
+    \   'python': [ 're!(import\s+|from\s+(\w+\s+(import\s+(\w+,\s+)*)?)?)' ]
+    \}
     "let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
     "let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
 
