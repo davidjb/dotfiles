@@ -329,7 +329,7 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_new_list_item_indent = 2
 
 " reStructuredText
-Plug 'Rykka/riv.vim', { 'for': 'rst' }
+Plug 'gu-fan/riv.vim', { 'for': 'rst' }
 let g:riv_python_rst_hl = 1
 let g:riv_ignored_vmaps='>,<'
 
