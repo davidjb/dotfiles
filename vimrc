@@ -361,15 +361,15 @@ endfunction
 " Python editing superpowers
 Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 let g:pymode_python = 'python3'
-let g:pymode_lint_on_write = 0 | let g:pymode_lint_message = 0 | let g:pymode_syntax = 0 | let g:pymode_syntax_all = 0 | let g:pymode_trim_whitespaces = 0
+let g:pymode_lint_on_write = 0
+let g:pymode_lint_message = 0
+let g:pymode_syntax = 0
+let g:pymode_syntax_all = 0
+let g:pymode_trim_whitespaces = 0
 let g:pymode_rope_show_doc_bind = '<c-e>d'
 let g:pymode_rope = 0
 let g:pymode_rope_lookup_project = 0
 let g:pymode_rope_autoimport_import_after_complete = 1
-
-" XXX Conflicts with another plugin on completion (Rope?)
-"let g:pymode_rope = 0
-"
 
 " Arduino
 Plug 'vim-scripts/Arduino-syntax-file'
