@@ -11,7 +11,6 @@ def switch_to_navigation_mode(event):
     vi_state.input_mode = InputMode.NAVIGATION
 
 
-print(getattr(ip, 'pt_app', None))
 if getattr(ip, 'pt_app', None):
     registry = ip.pt_app.key_bindings
     registry.add_binding('j', 'k',
