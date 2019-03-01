@@ -139,6 +139,7 @@ dependencies () {
             oath-toolkit                      # OTP generator
             p7zip                             # 7zip archives
             phantomjs                         # JS webpage runner
+            pipenv                            # Environments for Python
             python                            # Python 2 language
             python3                           # Python 3 language
             rsync                             # GNU rsync
