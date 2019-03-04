@@ -230,20 +230,10 @@ dependencies () {
     )
     yarn global add "${packages[@]}"
 
-    # Local Ruby-based tools
-    mkdir -p "$DIR/tools/ruby"
-    pushd "$DIR/tools/ruby"
-    export GEM_HOME=$(pwd)
-    echo "export GEM_HOME=$GEM_HOME" > .env
+    # Ruby-based tools
     gem install \
         scss_lint \
-        compass \
         mdl
-    popd
-    unset GEM_HOME
-
-    # Keybase setup
-    keybase-installer -p .
 
     # Global gitignore
     install_update_git https://github.com/github/gitignore.git "$DIR/tools/gitignore"
@@ -451,7 +441,6 @@ applications () {
             insync                          # Google Drive and more
             iterm2                          # Better terminal
             kap                             # Easy video capture
-            keybase                         # Keys and validation
             libreoffice                     # Editing office documents
             little-snitch                   # Outgoing firewall
             logitech-control-center         # Software for keyboard
