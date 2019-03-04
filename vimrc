@@ -371,6 +371,9 @@ let g:pymode_rope_autoimport_import_after_complete = 1
 "let g:pymode_rope = 0
 "
 
+" Swift
+Plug 'keith/swift.vim'
+
 " Arduino
 Plug 'vim-scripts/Arduino-syntax-file'
 
