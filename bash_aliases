@@ -46,6 +46,7 @@ alias apt-whatprovides='apt-cache policy'
 alias calc='gnome-calculator &'
 [ $_IS_MAC ] && alias cdf="cd \"\$(osascript -e 'tell app \"Finder\" to POSIX path of (insertion location as alias)')\""
 [ $_IS_MAC ] && alias eject='diskutil unmount'
+[ $_IS_MAC ] && alias eject-time-machine='sudo diskutil unmount force /Volumes/com.apple.TimeMachine.Time\ Machine-*'
 alias l='ls -FC'
 alias la='ls -FAh'
 alias ll='ls -Flh'
