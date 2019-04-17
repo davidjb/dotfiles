@@ -7,6 +7,10 @@ set completion-ignore-case on
 # On menu-complete, first display the common prefix, then cycle with tab key
 set menu-complete-display-prefix on
 
+# Coloured tab completion (in Bash, at least)
+set colored-stats on
+set colored-completion-prefix on
+
 # Use Vi, not Emacs, style editing
 set editing-mode vi
 
