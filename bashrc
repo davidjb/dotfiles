@@ -64,6 +64,9 @@ elif [ -f /usr/local/etc/bash_completion  ]; then
     . /usr/local/etc/bash_completion
 fi
 
+# Fzf fuzzy finder
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # pass
 if [ -f /usr/local/etc/bash_completion.d/password-store ]; then
     . /usr/local/etc/bash_completion.d/password-store
