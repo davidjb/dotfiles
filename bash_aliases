@@ -158,6 +158,10 @@ eggcd() {
 svn-authors() {
     svn log "$1" | grep -E '^r[0-9]+' | cut -d '|' -f2 | sort | uniq | xargs -I {} echo '{}= <>'
 }
+pcd() {
+   dir="$(EDITOR=echo pipenv open "$1" | grep -v 'in your EDITOR')"
+   pushd "$dir" || return
+}
 
 # Mac specific
 if [ $_IS_MAC ]; then
