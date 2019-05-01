@@ -127,6 +127,8 @@ dependencies () {
             curl                              # Updated curl
             coreutils                         # GNU coreutils like grm
             entr                              # Run commands on fs change
+            fd                                # Faster find
+            fzf                               # Command-line fuzzy finder
             git                               # Version control
             gpg2                              # Encryption
             gnu-sed                           # Normalised sed usage
