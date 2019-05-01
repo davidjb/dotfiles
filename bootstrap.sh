@@ -120,6 +120,7 @@ dependencies () {
             aspell                            # Spelling
             bash                              # Updated shell
             bash-completion                   # Shell completion
+            black                             # Python formatter
             cabextract                        # .cab file extraction with Wine
             cmake                             # Compilation
             ctags                             #
