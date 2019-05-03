@@ -174,6 +174,8 @@ dependencies () {
         pip install virtualenv
         brew cask install reactotron
 
+        $(brew --prefix)/opt/fzf/install
+
     fi
 
     install_update_git https://github.com/kennethreitz/autoenv.git ~/.autoenv
