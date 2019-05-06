@@ -107,3 +107,5 @@ export POWERLINE_BASH_SELECT=1
 
 # Enable autoenv on `cd`
 . ~/.autoenv/activate.sh
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
