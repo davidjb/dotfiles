@@ -4,4 +4,3 @@ username = David Beitey <david@davidjb.com>
 [extensions]
 strip =
 hgext.bookmarks =
-hggit =

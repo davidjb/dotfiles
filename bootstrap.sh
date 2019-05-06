@@ -120,12 +120,15 @@ dependencies () {
             aspell                            # Spelling
             bash                              # Updated shell
             bash-completion                   # Shell completion
+            black                             # Python formatter
             cabextract                        # .cab file extraction with Wine
             cmake                             # Compilation
             ctags                             #
             curl                              # Updated curl
             coreutils                         # GNU coreutils like grm
             entr                              # Run commands on fs change
+            fd                                # Faster find
+            fzf                               # Command-line fuzzy finder
             git                               # Version control
             gpg2                              # Encryption
             gnu-sed                           # Normalised sed usage
@@ -170,6 +173,8 @@ dependencies () {
 
         pip install virtualenv
         brew cask install reactotron
+
+        $(brew --prefix)/opt/fzf/install
 
     fi
 
