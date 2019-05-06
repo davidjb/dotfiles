@@ -110,8 +110,10 @@ if v:progname ==? 'vim'
     \}
     let g:ale_fixers = {
     \   'javascript': ['eslint', 'prettier'],
-    \   'python': ['autopep8'],
+    \   'python': ['black'],
     \}
+    "let g:ale_python_auto_pipenv = 1
+
     " Consider these options
     " let g:ale_lint_on_insert_leave = 1
     "nmap <silent> <C-k> <Plug>(ale_previous_wrap)
@@ -349,9 +351,7 @@ Plug 'jamessan/vim-gnupg'
 "let g:GPGDebugLevel = 5
 let g:GPGPreferArmor = 1
 let g:GPGPreferSign = 1
-let g:GPGDefaultRecipients=[
- \"David Beitey (Work) <david" . nr2char(64) . "davidjb" . "." . "com>",
- \]
+let g:GPGDefaultRecipients=[]
 function! SetGPGOptions()
     setlocal foldlevel=1
     setlocal foldclose=all
@@ -359,6 +359,7 @@ function! SetGPGOptions()
 endfunction
 
 " Python editing superpowers
+Plug 'ambv/black'
 Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 let g:pymode_python = 'python3'
 let g:pymode_lint_on_write = 0
