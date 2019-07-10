@@ -671,7 +671,7 @@ au!
     au FileType css,scss,sass setlocal iskeyword+=-
 
     " Indent widths
-    au FileType css,scss,sass,html,javascript,javascript.jsx,json setlocal shiftwidth=2 tabstop=2 softtabstop=2
+    au FileType css,scss,sass,html,jinja.html,javascript,javascript.jsx,json setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
     au BufNewFile,BufRead *.svg setlocal filetype=xml.svg
 
