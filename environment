@@ -12,8 +12,12 @@ export GIT_AUTHOR_EMAIL="d""a""v""i""d""@""d""a""v""i""d""j""b"".""c""o""m"
 export PIP_DOWNLOAD_CACHE="$HOME/.pip/download-cache"
 export PATH="/usr/local/bin:/usr/local/sbin:$HOME/dotfiles/tools/python/bin:$HOME/dotfiles/tools/nodejs/bin:$HOME/dotfiles/tools/nodejs/node_modules/.bin:$HOME/dotfiles/tools/ruby/bin:$PATH"
 export PYTHONSTARTUP="$HOME/.pythonstartup"
+
 # Node.js - disable update-notifier system-wide
 export NO_UPDATE_NOTIFIER=1
+
+# fzf
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git --exclude .wine --exclude node_modules'
 
 # Mac specific
 export CLICOLOR=1
