@@ -111,6 +111,7 @@ if v:progname ==? 'vim'
     let g:ale_fixers = {
     \   'javascript': ['eslint', 'prettier'],
     \   'python': ['black'],
+    \   'scss': ['stylelint'],
     \}
     "let g:ale_python_auto_pipenv = 1
 
