@@ -152,7 +152,6 @@ endif
 "    :retab
 "    :RemoveTrailingSpaces
 Plug 'Chiel92/vim-autoformat'
-noremap <leader>p :Autoformat<CR>
 
 " <leader><leader> movement to anywhere - w (words), f (chars), j (lines)
 Plug 'Lokaltog/vim-easymotion'
@@ -589,6 +588,9 @@ map <leader>ef :ALEFix<CR>
 " ;g - Move to the element/variable declaration
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
+" ;= - Autoformat the whole document, like == for one line
+noremap <leader>= :Autoformat<CR>
+
 " ;rc, ;rv - Replace all characters in selection
 function! ReplaceOnLine() range
     let replacement = nr2char(getchar())
@@ -599,6 +601,9 @@ vnoremap <leader>rv "ey:%s/<C-R>e//gc<left><left><left>
 
 " ;rt - Convert all tabs in document
 nnoremap <leader>rt :retab<CR>
+
+" ;rs - Remove spaces that are trailing
+noremap <leader>rs :RemoveTrailingSpaces<CR>
 
 " ;d - Detect indent
 nnoremap <leader>d :DetectIndent<CR>
