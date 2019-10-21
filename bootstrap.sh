@@ -118,6 +118,7 @@ dependencies () {
         # Homebrew: install packages
         packages=(
             aspell                            # Spelling
+            autossh                           # Auto-restart SSH
             bash                              # Updated shell
             bash-completion                   # Shell completion
             black                             # Python formatter
