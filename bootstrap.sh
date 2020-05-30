@@ -748,6 +748,11 @@ configure_mac () {
     # macOS config checker
     install_update_git https://github.com/kristovatlas/osx-config-check "$DIR/tools/mac/osx-config-check"
 
+    # Disable local SMB caching on a macOS client
+    # https://support.apple.com/en-us/HT207520
+    sudo tee "[default]" -a /etc/nsmb.conf
+    sudo tee "dir_cache_max_cnt=0" -a /etc/nsmb.conf
+
     #############
     # Flux (still better than Night Shift)
     #############
