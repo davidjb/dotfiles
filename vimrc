@@ -278,7 +278,7 @@ Plug 'christoomey/vim-tmux-navigator'
 
 
 """"""""""""""""""""""""""""""""
-" Sytax/filetype support bundles
+" Syntax/filetype support bundles
 """"""""""""""""""""""""""""""""
 " Clickable links
 Plug 'Rykka/os.vim'
@@ -411,7 +411,7 @@ set formatoptions-=t                                " Stop auto wrapping of text
 set formatoptions+=j                                " Remove comment leaders when joining lines
 set nrformats-=octal                                " Avoid numbers with leading zeros
 set scrolloff=5                                     " Keep x lines above an below the cursor
-set smartindent                                     " Intelligent identing
+set smartindent                                     " Intelligent indenting
 set smarttab                                        " Tab char at start of line
 set expandtab                                       " Expand tabs to spaces
 set tabstop=4                                       " Tabs are this wide
@@ -430,7 +430,7 @@ set showfulltag                                     " Show tag and tidied search
 set noerrorbells                                    " Don't bell or blink
 set splitbelow                                      " New splits open below
 set splitright                                      " New splits open to the right
-set showcmd                                         " Show paritial command at bottom of screen
+set showcmd                                         " Show partial command at bottom of screen
 set shortmess+=a                                    " Use short statuses for [+] [RO] [w]
 set number                                          " Turn line numbering on
 set ruler                                           " Turn line number and column cursor on
