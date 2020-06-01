@@ -94,8 +94,9 @@ nmap cog :GitGutterToggle<>
 
 " Syntax checking for Vim
 if v:progname ==? 'vim'
-    Plug 'w0rp/ale'
+    Plug 'dense-analysis/ale'
     let g:ale_completion_enabled = 1
+    let g:ale_set_quickfix = 1
     let g:ale_lint_delay = 1000
     let g:ale_sign_error = '✗'
     let g:ale_sign_warning = '⚠'
@@ -103,7 +104,7 @@ if v:progname ==? 'vim'
     let g:ale_echo_msg_warning_str = 'W'
     let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
     let g:ale_linters = {
-    \   'javascript': ['prettier'],
+    \   'javascript': ['eslint'],
     \   'python': ['pycodestyle'],
     \}
     let g:ale_linter_aliases = {
@@ -111,7 +112,8 @@ if v:progname ==? 'vim'
     let g:ale_fixers = {
     \   'javascript': ['eslint', 'prettier'],
     \   'python': ['black'],
-    \   'scss': ['stylelint'],
+    \   'scss': ['prettier', 'stylelint'],
+    \   'css': ['prettier'],
     \}
     "let g:ale_python_auto_pipenv = 1
 
@@ -203,7 +205,7 @@ nnoremap <leader>f :MRU<CR>
 " Auto indent detection
 if v:progname ==? 'vim'
     Plug 'ciaranm/detectindent'
-    "let g:detectindent_max_lines_to_analyse = 16
+    let g:detectindent_max_lines_to_analyse = 16
     let g:detectindent_preferred_expandtab = 1
     let g:detectindent_preferred_indent = 4
 endif
@@ -240,8 +242,11 @@ let g:tagbar_type_rst = {
     \ 'sort': 0,
 \ }
 
-" Tag handling
+" Tag handling (HTML, JSX, etc)
 Plug 'tpope/vim-ragtag'
+
+" Statement or structure end keywords
+Plug 'tpope/vim-endwise'
 
 " Tag movement
 Plug 'gcmt/breeze.vim', { 'for': ['*.pt', '*.zpt', 'mako', 'php'] }
@@ -278,27 +283,26 @@ Plug 'christoomey/vim-tmux-navigator'
 
 
 """"""""""""""""""""""""""""""""
-" Sytax/filetype support bundles
+" Filetype support bundles
 """"""""""""""""""""""""""""""""
-" Clickable links
-Plug 'Rykka/os.vim'
-"Plug 'Rykka/clickable.vim'
 
-" Statement or structure end keywords
-Plug 'tpope/vim-endwise'
+" A collection of language packs for Vim
+Plug 'sheerun/vim-polyglot'
+let g:polyglot_disabled = ['python']
 
-" Git files
-Plug 'tpope/vim-git'
+" HTML
+" Config for othree/html5.vi/m
+let g:html_indent_tags = 'li\|p'
 
-" JSON
-Plug 'elzr/vim-json'
+Plug 'rstacruz/sparkup'
+let g:sparkupExecuteMapping = '<Leader>h'
+let g:sparkupNextMapping = '<Leader>n'
+let g:sparkupMapsNormal = 1
+
+" JSON - manipulation and pretty printing
 Plug 'tpope/vim-jdaddy'
 
 " JavaScript
-"Plug 'davidjb/vim-web-indent'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-
 " XXX see https://github.com/othree/javascript-libraries-syntax.vim
 Plug 'othree/javascript-libraries-syntax.vim'
 let g:javascript_enable_domhtmlcss = 1
@@ -308,23 +312,8 @@ Plug 'moll/vim-node'
 "Plug 'skammer/vim-css-color'
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css', 'scss', 'sass'] }
 
-" HTML
-Plug 'othree/html5.vim'
-let g:html_indent_tags = 'li\|p'
-
-Plug 'rstacruz/sparkup'
-let g:sparkupExecuteMapping = '<Leader>h'
-let g:sparkupNextMapping = '<Leader>n'
-let g:sparkupMapsNormal = 1
-
-" SASS, SCSS
-Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss', 'sass'] }
-
-" YAML
-Plug 'avakhov/vim-yaml', { 'for': 'yaml' }
-
 " Markdown
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+" For 'plasticboy/vim-markdown'
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_markdown_folding_disabled = 1
@@ -371,18 +360,6 @@ let g:pymode_rope_show_doc_bind = '<c-e>d'
 let g:pymode_rope = 0
 let g:pymode_rope_lookup_project = 0
 let g:pymode_rope_autoimport_import_after_complete = 1
-
-" Swift
-Plug 'keith/swift.vim'
-
-" Arduino
-Plug 'vim-scripts/Arduino-syntax-file'
-
-" Tmux
-Plug 'tmux-plugins/vim-tmux'
-
-" PHP
-Plug 'StanAngeloff/php.vim'
 
 " All Plug calls must be above here!
 call plug#end()
@@ -677,7 +654,7 @@ au!
     au FileType css,scss,sass setlocal iskeyword+=-
 
     " Indent widths
-    au FileType css,scss,sass,html,jinja.html,javascript,javascript.jsx,json setlocal shiftwidth=2 tabstop=2 softtabstop=2
+    au FileType css,scss,sass,html,jinja.html,javascript,json setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
     au BufNewFile,BufRead *.svg setlocal filetype=xml.svg
 
@@ -689,6 +666,9 @@ au!
     au FileType javascript nmap <leader>jd :TernDef<CR>
     au FileType javascript nmap <leader>jt :TernType<CR>
     au FileType javascript nmap <leader>jr :TernRename<CR>
+
+    " Fix bug with double-typed > character in JSX
+    au FileType javascript.jsx let b:delimitMate_matchpairs = "(:),[:],{:}"
 
     au BufNewFile,BufRead *.coffee setlocal filetype=coffee
     au FileType coffee setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
