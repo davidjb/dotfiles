@@ -348,7 +348,7 @@ function! SetGPGOptions()
 endfunction
 
 " Python editing superpowers
-Plug 'ambv/black'
+Plug 'psf/black'
 Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 let g:pymode_python = 'python3'
 let g:pymode_lint_on_write = 0
