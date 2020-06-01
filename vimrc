@@ -40,7 +40,7 @@ Plug 'bogado/file-line'
 " Automatically integrates with Ultisnips
 if v:progname ==? 'vim'
     Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --clang-completer --tern-completer --ts-completer' }
-    let g:ycm_server_python_interpreter = 'python3'
+    let g:ycm_server_python_interpreter = 'python3.8'
     let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
     let g:ycm_complete_in_comments = 1
     let g:ycm_use_ultisnips_completer = 1
