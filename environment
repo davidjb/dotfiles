@@ -15,6 +15,7 @@ export PYTHONSTARTUP="$HOME/.pythonstartup"
 
 # Node.js - disable update-notifier system-wide
 export NO_UPDATE_NOTIFIER=1
+export SCARF_ANALYTICS=false
 
 # fzf
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git --exclude .wine --exclude node_modules'
