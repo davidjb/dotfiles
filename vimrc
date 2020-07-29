@@ -348,7 +348,14 @@ function! SetGPGOptions()
 endfunction
 
 " Python editing superpowers
-Plug 'psf/black'
+function! UpdateBlack(info)
+  if a:info.status != 'unchanged' || a:info.force
+    silent !rm -rf ~/.vim/black
+    redraw!
+    BlackUpgrade
+  endif
+endfunction
+Plug 'psf/black', { 'do': function('UpdateBlack') }
 Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 let g:pymode_python = 'python3'
 let g:pymode_lint_on_write = 0
