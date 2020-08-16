@@ -382,6 +382,7 @@ applications () {
         packages=(
             ag                              # Super-fast searching
             coffeescript                    # Programming language
+            diff-pdf                        # PDF visual diffing
             docker                          # Containers
             docker-compose                  # Container environment management
             figlet                          # ASCII art text
@@ -422,7 +423,6 @@ applications () {
             alacritty                       # Faster terminal emulator
             android-studio                  # For the Android emulator
             angry-ip-scanner                # Port and host scanner
-            apache-directory-studio         # LDAP GUI
             avibrazil-rdm                   # High-resolution MacBook screen
             bettertouchtool                 # Input customisation (mouse, pad, etc)
             calibre                         # eBook reader
@@ -534,8 +534,8 @@ vim_configuration () {
         mkdir -p ~/.config/fontconfig/conf.d
         wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf -O ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
     elif [ $_IS_MAC ]; then
-        pip3.7 install psutil
-        pip3.7 install ~/.vim/bundle/powerline
+        pip3 install psutil
+        pip3 install ~/.vim/bundle/powerline
 
         # Font configuration
         install_update_git https://github.com/powerline/fonts.git "$DIR/tools/powerline-fonts"

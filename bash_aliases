@@ -79,6 +79,12 @@ alias vimgit='vim . +Gstatus +"resize +5"'
 #alias wget='wget --no-check-certificate'
 alias wget-mirror='wget --no-parent --no-check-certificate --html-extension --convert-links --restrict-file-names=windows --recursive --level=inf --page-requisites -e robots=off --wait=0 --quota=inf'
 
+jdk() {
+    version=$1
+    export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+    java -version
+ }
+
 # Kill Adobe cruft
 killadobe() {
     sudo killall 'AdobeIPCBroker' 'Adobe Desktop Service' 'CCXProcess' 'Core Sync' 'Core Sync Helper' 'ACCFinderSync'
