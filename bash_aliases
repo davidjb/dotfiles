@@ -53,6 +53,7 @@ alias ll='ls -Flh'
 alias find='find -L'
 alias findfile='find -L . -iname'
 alias fix='tset'
+[ $_IS_MAC ] && alias flush-dns="sudo killall -HUP mDNSResponder"
 alias fuck='$(thefuck $(fc -ln -1))'
 alias duck='$(THEFUCK_REQUIRE_CONFIRMATION=true thefuck $(fc -ln -1))'
 alias gpg-forget='echo RELOADAGENT | gpg-connect-agent'
