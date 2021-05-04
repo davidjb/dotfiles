@@ -417,11 +417,8 @@ applications () {
         rm -rf /tmp/pass-otp
 
         # Caskroom: install all the applications!
-        brew cask install xquartz           # For Inkscape - not automatic?
         applications=(
-            adobe-reader                    # For stupid PDFs with dynamic content
             alacritty                       # Faster terminal emulator
-            android-studio                  # For the Android emulator
             angry-ip-scanner                # Port and host scanner
             avibrazil-rdm                   # High-resolution MacBook screen
             bettertouchtool                 # Input customisation (mouse, pad, etc)
@@ -441,7 +438,6 @@ applications () {
             firefoxdeveloperedition         # For developers
             gimp                            # Raster graphics editor
             gpgtools                        # Encryption
-            handbrake                       # Media transcoding
             inkscape                        # Vector graphics editing
             insomniax                       # Prevent Mac from sleeping
             insync                          # Google Drive and more
@@ -455,20 +451,18 @@ applications () {
             namechanger                     # Change filenames en masse
             openshot-video-editor           # Video editing application
             postman                         # HTTP request helper
+            rectangle                       # Positioning for windows
             safari-technology-preview       # Preview of Safari
             simple-comic                    # Comic reader
             slack                           # Chat and more for teams
-            spectacle                       # Positioning for windows
-            skype                           # Calls and messaging
             the-unarchiver                  # Archive extraction
-            tunnelblick                     # VPN client
             virtualbox                      # Virtual machines
             wireshark                       # Network traffic monitor
             vagrant                         # Environment manager
             vlc                             # Video plaer
             wine-staging                    # Wine is not an emulator
         )
-        brew cask install "${applications[@]}"
+        brew install "${applications[@]}"
 
         # MacFUSE support for given filesystems
         brew tap homebrew/fuse
