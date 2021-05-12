@@ -110,7 +110,7 @@ if v:progname ==? 'vim'
     \}
     let g:ale_fixers = {
     \   'javascript': ['eslint', 'prettier'],
-    \   'python': ['black'],
+    \   'python': ['black', 'isort'],
     \   'scss': ['prettier', 'stylelint'],
     \   'css': ['prettier'],
     \}

@@ -20,6 +20,7 @@
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
     ls = ls-files
+    only = !git clone --depth 1 --filter=blob:none --sparse $2
     prune = fetch --prune
     stash-all = stash save --include-untracked
     undo = reset --soft HEAD^
