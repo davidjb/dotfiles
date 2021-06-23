@@ -40,7 +40,9 @@ Plug 'bogado/file-line'
 " Automatically integrates with Ultisnips
 if v:progname ==? 'vim'
     Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 ./install.py --clang-completer --tern-completer --ts-completer' }
-    let g:ycm_server_python_interpreter = 'python3.8'
+    let g:ycm_auto_hover = ''
+    " Disable signature help due to errors like https://github.com/ycm-core/YouCompleteMe/issues/3870
+    let g:ycm_disable_signature_help = 1
     let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
     let g:ycm_complete_in_comments = 1
     let g:ycm_use_ultisnips_completer = 1
@@ -104,7 +106,7 @@ if v:progname ==? 'vim'
     let g:ale_echo_msg_warning_str = 'W'
     let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
     let g:ale_linters = {
-    \   'javascript': ['eslint'],
+    \   'javascript': ['prettier_eslint'],
     \   'python': ['pycodestyle'],
     \}
     let g:ale_linter_aliases = {
@@ -565,6 +567,9 @@ nmap <c-v> :set paste<CR>"+gp:set nopaste<CR>
 " Control + R - visual selection replacement
 vnoremap <C-r> "hy:%s/\(<C-r>h\)//gc<left><left><left>
 
+" ;d - Documentation popup from YCM
+nmap <leader>d <plug>(YCMHover)
+
 " ;e - Shortcuts for syntax checking/fixing
 map <leader>ee :ALEToggle<CR>
 map <leader>ef :ALEFix<CR>
@@ -589,8 +594,8 @@ nnoremap <leader>rt :retab<CR>
 " ;rs - Remove spaces that are trailing
 noremap <leader>rs :RemoveTrailingSpaces<CR>
 
-" ;d - Detect indent
-nnoremap <leader>d :DetectIndent<CR>
+" ;i - Indent detection
+nnoremap <leader>i :DetectIndent<CR>
 
 " ;v - Open vimrc
 nmap <leader>v :tabedit $MYVIMRC<CR>
