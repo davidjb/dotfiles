@@ -23,8 +23,9 @@
     only = !git clone --depth 1 --filter=blob:none --sparse $2
     prune = fetch --prune
     stash-all = stash save --include-untracked
-    undo = reset --soft HEAD^
+    undo = resef --soft HEAD^
     utccommit = !git commit --date=\"$(date --utc +%Y-%m-%dT%H:%M:%S%z)\"
+    pushall = !git remote | xargs -L1 git push --all
 [color]
     ui = auto
 [color "branch"]
