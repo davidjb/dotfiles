@@ -183,7 +183,7 @@ dependencies () {
 
     # Local Python-based tools
     mkdir -p "$DIR/tools/python"
-    virtualenv "$DIR/tools/python" -p python3
+    python3 -m venv "$DIR/tools/python"
     pushd "$DIR/tools/python"
     . bin/activate
     pip install -U \
@@ -191,6 +191,8 @@ dependencies () {
         autopep8 \
         caniusepython3 \
         em-keyboard \
+        flake8 \
+        grepedit \
         hg-git \
         nodeenv \
         py3kwarn \
@@ -201,7 +203,6 @@ dependencies () {
         thefuck \
         vim-vint
 
-    pip install https://projects.bigasterisk.com/grepedit-1.0.tar.gz
     deactivate
     popd
 
