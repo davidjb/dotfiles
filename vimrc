@@ -107,7 +107,7 @@ if v:progname ==? 'vim'
     let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
     let g:ale_linters = {
     \   'javascript': ['prettier_eslint'],
-    \   'python': ['pycodestyle'],
+    \   'python': ['flake8'],
     \}
     let g:ale_linter_aliases = {
     \}
