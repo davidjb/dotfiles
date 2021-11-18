@@ -2,7 +2,7 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 [[ $OSTYPE == "darwin"*  ]] && _IS_MAC=yes
-
+CPU=$(uname -p)
 
 ##########################
 # Core configuration
@@ -99,7 +99,13 @@ export POWERLINE_BASH_SELECT=1
 # Platform-specific setup
 ##########################
 
-#noop
+# Homebrew
+if [ $_IS_MAC ]; then
+    if [[ "$CPU" == "arm" ]]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+    fi
+fi
+
 
 ##########################
 # External inclusions
