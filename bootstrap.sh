@@ -179,8 +179,6 @@ dependencies () {
 
     fi
 
-    install_update_git https://github.com/kennethreitz/autoenv.git ~/.autoenv
-
     # Local Python-based tools
     mkdir -p "$DIR/tools/python"
     python3 -m venv "$DIR/tools/python"
@@ -384,6 +382,7 @@ applications () {
             ag                              # Super-fast searching
             coffeescript                    # Programming language
             diff-pdf                        # PDF visual diffing
+            direnv                          # Load/unload env variables depending on cd
             docker                          # Containers
             docker-compose                  # Container environment management
             figlet                          # ASCII art text
