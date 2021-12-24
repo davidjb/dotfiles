@@ -54,23 +54,41 @@ shopt -u nullglob
 
 
 ##########################
+# Platform-specific setup
+##########################
+
+# Homebrew
+if [ $_IS_MAC ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    #if [[ "$CPU" == "arm" ]]; then
+    #fi
+fi
+
+
+##########################
 # Autocompletion features
 ##########################
 
 # Enable system-wide completion features
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
-elif [ -f /usr/local/etc/bash_completion  ]; then
-    . /usr/local/etc/bash_completion
+fi
+if type brew &>/dev/null
+then
+  HOMEBREW_PREFIX="$(brew --prefix)"
+  if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]
+  then
+    source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+  else
+    for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*
+    do
+      [[ -r "${COMPLETION}" ]] && source "${COMPLETION}"
+    done
+  fi
 fi
 
 # Fzf fuzzy finder
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# pass
-if [ -f /usr/local/etc/bash_completion.d/password-store ]; then
-    . /usr/local/etc/bash_completion.d/password-store
-fi
 
 # pip for Python
 _pip_completion()
@@ -96,22 +114,9 @@ export POWERLINE_BASH_SELECT=1
 
 
 ##########################
-# Platform-specific setup
-##########################
-
-# Homebrew
-if [ $_IS_MAC ]; then
-    if [[ "$CPU" == "arm" ]]; then
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-    fi
-fi
-
-
-##########################
 # External inclusions
 ##########################
 
-# Enable autoenv on `cd`
-. ~/.autoenv/activate.sh
+# Enable direnv on `cd`
+eval "$(direnv hook bash)"
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
