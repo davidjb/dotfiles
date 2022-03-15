@@ -419,8 +419,10 @@ applications () {
         # Caskroom: install all the applications!
         applications=(
             alacritty                       # Faster terminal emulator
+            android-file-transfer           # For accessing files on Android devices
             angry-ip-scanner                # Port and host scanner
             avibrazil-rdm                   # High-resolution MacBook screen
+            balenaetcher                    # Create USB disks
             bettertouchtool                 # Input customisation (mouse, pad, etc)
             calibre                         # eBook reader
             cheatsheet                      # Hold ⌘ for shortcuts
@@ -432,27 +434,23 @@ applications () {
             docker                          # GUI to Docker
             dosbox                          # DOS environments
             easy-move-plus-resize           # Move windows with Alt
-            etcher                          # Create USB disks
-            flux                            # Change screen colour with time
             firefox                         # Freedom on the web
             firefoxdeveloperedition         # For developers
+            flux                            # Change screen colour with time
             gimp                            # Raster graphics editor
             gpgtools                        # Encryption
+            ha-menu                         # Home Assistant menu
             inkscape                        # Vector graphics editing
             insomniax                       # Prevent Mac from sleeping
             insync                          # Google Drive and more
-            iterm2                          # Better terminal
             kap                             # Easy video capture
             libreoffice                     # Editing office documents
             little-snitch                   # Outgoing firewall
-            logitech-control-center         # Software for keyboard
             macvim                          # GUI Vim for Mac
             meld                            # Comparisons made easy
             namechanger                     # Change filenames en masse
-            openshot-video-editor           # Video editing application
             postman                         # HTTP request helper
             rectangle                       # Positioning for windows
-            safari-technology-preview       # Preview of Safari
             simple-comic                    # Comic reader
             slack                           # Chat and more for teams
             the-unarchiver                  # Archive extraction
