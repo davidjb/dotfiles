@@ -529,7 +529,7 @@ vim_configuration () {
         wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf -O ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
     elif [ $_IS_MAC ]; then
         pip3 install psutil
-        pip3 install ~/.vim/bundle/powerline
+        pip3 install --editable ~/.vim/bundle/powerline
 
         # Font configuration
         install_update_git https://github.com/powerline/fonts.git "$DIR/tools/powerline-fonts"
