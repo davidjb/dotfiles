@@ -622,6 +622,10 @@ setup_printing () {
 }
 
 configure_mac () {
+    # Remap keyboard keys - keyboard brightness up/down
+    cp etc/com.local.KeyRemapping.plist /Library/LaunchAgents/com.local.KeyRemapping.plist
+    echo 'Keyboard remapping installed. Ensure you reboot for this to take effect.'
+
     # Faster key repeats
     # See https://github.com/mathiasbynens/dotfiles/issues/687
     defaults write -g KeyRepeat -int 1
