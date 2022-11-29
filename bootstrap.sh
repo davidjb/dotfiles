@@ -170,7 +170,7 @@ dependencies () {
         brew tap caskroom/versions
         brew tap caskroom/fonts
 
-        pip install virtualenv
+        pip3 install virtualenv
         brew cask install reactotron
 
         $(brew --prefix)/opt/fzf/install
@@ -182,7 +182,7 @@ dependencies () {
     python3 -m venv "$DIR/tools/python"
     pushd "$DIR/tools/python"
     . bin/activate
-    pip install -U \
+    pip3 install -U \
         git+https://github.com/jbernard/dotfiles.git \
         autopep8 \
         caniusepython3 \
