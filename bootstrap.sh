@@ -613,6 +613,10 @@ setup_printing () {
 }
 
 configure_mac () {
+    # Set default shell
+    echo "$(which bash)" | sudo tee -a /etc/shells
+    chsh -s "$(which bash)"
+
     # Remap keyboard keys - keyboard brightness up/down
     cp etc/com.local.KeyRemapping.plist /Library/LaunchAgents/com.local.KeyRemapping.plist
     echo 'Keyboard remapping installed. Ensure you reboot for this to take effect.'
@@ -725,6 +729,7 @@ configure_mac () {
     defaults write com.apple.dock tilesize -int 25
     defaults write com.apple.dock magnification -int 0
     defaults write com.apple.dock orientation -string "left"
+    killall Dock
 
     # Terminal: shell opens with brew-installed bash
     defaults write com.apple.Terminal Shell -string "/usr/local/bin/bash"
@@ -737,8 +742,8 @@ configure_mac () {
 
     # Disable local SMB caching on a macOS client
     # https://support.apple.com/en-us/HT207520
-    sudo tee "[default]" -a /etc/nsmb.conf
-    sudo tee "dir_cache_max_cnt=0" -a /etc/nsmb.conf
+    echo "[default]" | sudo tee -a /etc/nsmb.conf
+    echo "dir_cache_max_cnt=0" | sudo tee -a /etc/nsmb.conf
 
     #############
     # Flux (still better than Night Shift)
