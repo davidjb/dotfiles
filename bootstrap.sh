@@ -152,9 +152,7 @@ dependencies () {
             shyaml                            # YAML parsing for shells
             spidermonkey                      # Mozilla's JS engine
             tidy-html5                        # HTML5 validation tool
-            unrar                             # .rar archives
             v8                                # Google's JS engine
-            vagrant-completions               # Vagrant shell completions
             vim                               # Updated Vim
             wget                              # Internet file retriever
             yarn                              # Node.js package manager
