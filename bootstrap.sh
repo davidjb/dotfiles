@@ -556,7 +556,7 @@ vim_configuration () {
 }
 
 sync_dotfiles() {
-    dotfiles link
+    dotfiles --repos ~/dotfiles enable
 }
 
 install () {
