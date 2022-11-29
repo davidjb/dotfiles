@@ -1,5 +1,16 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
+# Import additional configuration files
+#
+# Imports are loaded in order, skipping all missing files, with the importing
+# file being loaded last. If a field is already present in a previous import, it
+# will be replaced.
+#
+# All imports must either be absolute paths starting with `/`, or paths relative
+# to the user's home directory starting with `~/`.
+#import:
+#  - /path/to/alacritty.yml
+
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
@@ -8,18 +19,28 @@
   #
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
-  # check the local terminfo database and use 'alacritty' if it is
-  # available, otherwise 'xterm-256color' is used.
-  #TERM: xterm-256color
+  # check the local terminfo database and use `alacritty` if it is
+  # available, otherwise `xterm-256color` is used.
+  #TERM: alacritty
 
 window:
   # Window dimensions (changes require restart)
   #
-  # Specified in number of columns/lines, not pixels.
-  # If both are `0`, this setting is ignored.
-  dimensions:
-    columns: 80
-    lines: 48
+  # Number of lines/columns (not pixels) in the terminal. Both lines and columns
+  # must be non-zero for this to take effect. The number of columns must be at
+  # least `2`, while using a value of `0` for columns and lines will fall back
+  # to the window manager's recommended size
+  #dimensions:
+  #  columns: 80
+  #  lines: 48
+
+  # Window position (changes require restart)
+  #
+  # Specified in number of pixels.
+  # If the position is not set, the window manager will handle the placement.
+  #position:
+  #  x: 0
+  #  y: 0
 
   # Window padding (changes require restart)
   #
@@ -34,20 +55,13 @@ window:
 
   # Window decorations
   #
-  # Available values:
-  # - `full`: Window with title bar and title bar buttons
-  # - `none`: Window without title bar, rounded corners, or drop shadow
-  # - `transparent`: Window with title bar with transparent background and title
-  #   bar buttons
-  # - `buttonless`: Window with title bar with transparent background and no
-  #   title bar buttons
-  # Window decorations
-  #
   # Values for `decorations`:
   #     - full: Borders and title bar
   #     - none: Neither borders nor title bar
-  #     - buttonless: Title bar, transparent background and title bar buttons
-  #     - transparent: Title bar, transparent background, but no title bar buttons
+  #
+  # Values for `decorations` (macOS only):
+  #     - transparent: Title bar, transparent background and title bar buttons
+  #     - buttonless: Title bar, transparent background and no title bar buttons
   decorations: none
 
   # When true, alacritty starts maximized.
@@ -57,7 +71,7 @@ window:
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 1.0
+  #opacity: 1.0
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -273,8 +287,13 @@ live_config_reload: true
 
 # Shell
 #
-# You can set `shell.program` to the path of your favorite shell, e.g. `/bin/fish`.
-# Entries in `shell.args` are passed unmodified as arguments to the shell.
+# You can set `shell.program` to the path of your favorite shell, e.g.
+# `/bin/fish`. Entries in `shell.args` are passed unmodified as arguments to the
+# shell.
+#
+# Default:
+#   - (Linux/BSD/macOS) `$SHELL` or the user's login shell, if `$SHELL` is unset
+#   - (Windows) powershell
 shell:
   program: /opt/homebrew/bin/bash
 #  args:
