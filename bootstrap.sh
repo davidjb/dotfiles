@@ -375,11 +375,11 @@ applications () {
             coffeescript                    # Programming language
             diff-pdf                        # PDF visual diffing
             direnv                          # Load/unload env variables depending on cd
-            docker                          # Containers
+            homebrew/cask/docker            # Containers
             docker-compose                  # Container environment management
             figlet                          # ASCII art text
             ffmpeg                          # Multimedia converter
-            gpg-agent                       # GPG support
+            gnupg                           # GPG support
             httpstat                        # Cleaner, beautiful curl
             htop                            # Top, powered up
             imagemagick                     # Image conversion and processing
@@ -414,35 +414,32 @@ applications () {
             android-file-transfer           # For accessing files on Android devices
             angry-ip-scanner                # Port and host scanner
             avibrazil-rdm                   # High-resolution MacBook screen
-            balenaetcher                    # Create USB disks
             bettertouchtool                 # Input customisation (mouse, pad, etc)
             calibre                         # eBook reader
             cheatsheet                      # Hold ⌘ for shortcuts
-            chromium                        # Alternative browsing
-            cyberduck                       # Remote server connections
             darktable                       # Photograph editing
             dbeaver-community               # Database GUI
             disk-inventory-x                # What's using my SSD?
             docker                          # GUI to Docker
-            dosbox                          # DOS environments
+            homebrew/cask/dosbox            # DOS environments
             easy-move-plus-resize           # Move windows with Alt
+            ext4fuse                        # EXT4 filesystem layer
             firefox                         # Freedom on the web
-            firefoxdeveloperedition         # For developers
+            homebrew/cask-versions/firefox-developer-edition         # For developers
             flux                            # Change screen colour with time
             gimp                            # Raster graphics editor
-            gpgtools                        # Encryption
             ha-menu                         # Home Assistant menu
             inkscape                        # Vector graphics editing
-            insomniax                       # Prevent Mac from sleeping
-            insync                          # Google Drive and more
             kap                             # Easy video capture
             libreoffice                     # Editing office documents
             little-snitch                   # Outgoing firewall
             macvim                          # GUI Vim for Mac
+            macfuse                         # Userland filesystem support
             meld                            # Comparisons made easy
             namechanger                     # Change filenames en masse
             postman                         # HTTP request helper
             rectangle                       # Positioning for windows
+            sshfs                           # SSH-based filesystem
             simple-comic                    # Comic reader
             slack                           # Chat and more for teams
             the-unarchiver                  # Archive extraction
@@ -454,10 +451,12 @@ applications () {
         )
         brew install "${applications[@]}"
 
-        # MacFUSE support for given filesystems
-        brew tap homebrew/fuse
-        brew cask install osxfuse
-        brew install ext4fuse ntfs-3g sshfs
+        # Mac App Store applications
+        apps=(
+            1451685025                      # WireGuard
+            497799835                       # Xcode
+        )
+        mas install "${apps[@]}"
 
         # Global Python-based tools
         pip install ipython zest.releaser
