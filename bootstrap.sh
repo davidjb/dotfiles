@@ -131,6 +131,7 @@ dependencies () {
             fd                                # Faster find
             fzf                               # Command-line fuzzy finder
             git                               # Version control
+            go                                # Go programming language
             gpg2                              # Encryption
             gnu-sed                           # Normalised sed usage
             grep                              # GNU grep
