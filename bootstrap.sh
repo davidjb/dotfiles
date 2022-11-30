@@ -445,7 +445,7 @@ applications () {
             simple-comic                    # Comic reader
             slack                           # Chat and more for teams
             the-unarchiver                  # Archive extraction
-            virtualbox                      # Virtual machines
+            virtualbox-beta                 # Virtual machines (beta for ARM)
             wireshark                       # Network traffic monitor
             vagrant                         # Environment manager
             vlc                             # Video plaer
