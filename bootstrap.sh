@@ -602,17 +602,6 @@ configure_firefox () {
     sudo apt-get install firefox -y
 }
 
-setup_printing () {
-    # Configure build dependencies
-    sudo apt-get install -y build-essential libcups2-dev
-
-    # Install FujiXerox drivers
-    cp "$DIR./etc/fxlinuxprint-src-1.0.1.tar.gz" /tmp
-    cd /tmp
-    tar xf fxlinuxprint-src-1.0.1.tar.gz
-    cd fxlinuxprint-src-1.0.1
-    ./configure && make && sudo make install
-}
 
 configure_mac () {
     # Set default shell
@@ -808,8 +797,6 @@ install_step "Re-run Vim's plugin installation?" vim_plug
 if [ $_IS_LINUX ]; then
     install_step "Do you want to configure Google Drive aliases?" google_drive
     install_step "Do you want to configure Firefox?" configure_firefox
-    install_step "Do you want to set up printing?" setup_printing
 elif [ $_IS_MAC ]; then
     install_step "Do you want to configure this Mac?" configure_mac
 fi
-
