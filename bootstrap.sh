@@ -602,6 +602,16 @@ configure_firefox () {
     sudo apt-get install firefox -y
 }
 
+configure_general () {
+    # Create developer directories
+    mkdir -p ~/dev/src
+
+    # Create private bash directory
+    mkdir -p ~/.bash_private
+
+    # Create SSH public key
+    ssh-keygen -b 4096
+}
 
 configure_mac () {
     # Set default shell
@@ -794,6 +804,7 @@ install_step "Do you want to install dependencies?" dependencies
 install_step "Do you want to install the configuration?" install
 install_step "Do you want to install applications?" applications
 install_step "Re-run Vim's plugin installation?" vim_plug
+install_step "Do you want to run general setup?" configure_general
 if [ $_IS_LINUX ]; then
     install_step "Do you want to configure Google Drive aliases?" google_drive
     install_step "Do you want to configure Firefox?" configure_firefox
