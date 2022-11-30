@@ -377,7 +377,7 @@ applications () {
             coffeescript                    # Programming language
             diff-pdf                        # PDF visual diffing
             direnv                          # Load/unload env variables depending on cd
-            homebrew/cask/docker            # Containers
+            docker                          # Containers
             docker-compose                  # Container environment management
             figlet                          # ASCII art text
             ffmpeg                          # Multimedia converter
@@ -422,7 +422,7 @@ applications () {
             darktable                       # Photograph editing
             dbeaver-community               # Database GUI
             disk-inventory-x                # What's using my SSD?
-            docker                          # GUI to Docker
+            homebrew/cask/docker            # GUI to Docker
             homebrew/cask/dosbox            # DOS environments
             easy-move-plus-resize           # Move windows with Alt
             ext4fuse                        # EXT4 filesystem layer
