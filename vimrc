@@ -39,7 +39,7 @@ Plug 'bogado/file-line'
 " Press <TAB> to complete, <C-Space> to semantically complete
 " Automatically integrates with Ultisnips
 if v:progname ==? 'vim'
-    Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 ./install.py --clang-completer --tern-completer --ts-completer' }
+    Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 ./install.py --clang-completer --tern-completer --ts-completer --go-completer' }
     let g:ycm_auto_hover = ''
     " Disable signature help due to errors like https://github.com/ycm-core/YouCompleteMe/issues/3870
     let g:ycm_disable_signature_help = 1
