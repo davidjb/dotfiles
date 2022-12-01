@@ -269,10 +269,13 @@ let g:surround_{char2nr('t')} = "``\r``"
 let g:surround_{char2nr('e')} = "**\r**"
 let g:surround_{char2nr('%')} = "%\r%"
 
-" Sets of useful mappings about [ and ] & toggles for options
-" such as cos (spelling) and coh (highlighting) for toggles
-" and `yo` for paste inserting
+" Sets of useful mappings about [ and ] & toggles for options such as cos
+" (spelling) and coh (highlighting) for toggles, encoding/decoding mappings
+" (XML, HTML, URLs) and misc other mappings (`]f` to jump files, `]n` for
+" version control conflicts)
+" See https://github.com/tpope/vim-unimpaired
 Plug 'tpope/vim-unimpaired'
+map co yo
 
 " Alignment for C-style variables, definitions, comments, tables
 Plug 'vim-scripts/Align'
