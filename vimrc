@@ -116,6 +116,7 @@ if v:progname ==? 'vim'
     \   'python': ['black', 'isort'],
     \   'scss': ['prettier', 'stylelint'],
     \   'css': ['prettier'],
+    \   'ruby': ['rubocop'],
     \}
     "let g:ale_python_auto_pipenv = 1
 
