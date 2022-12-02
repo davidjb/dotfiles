@@ -31,6 +31,7 @@ export JDK_HOME="$JAVA_HOME"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git --exclude .wine --exclude node_modules'
 export RCLONE_VERBOSE=1
 export RCLONE_PROGRESS=true
+export SAM_CLI_TELEMETRY=0
 
 # Mac specific
 export CLICOLOR=1
