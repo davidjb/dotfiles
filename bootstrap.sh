@@ -124,9 +124,10 @@ dependencies () {
             black                             # Python formatter
             cabextract                        # .cab file extraction with Wine
             cmake                             # Compilation
-            ctags                             #
-            curl                              # Updated curl
+            corepack                          # Node.js package manager tool
             coreutils                         # GNU coreutils like grm
+            ctags                             # Indexes for language objects
+            curl                              # Updated curl
             entr                              # Run commands on fs change
             fd                                # Faster find
             fzf                               # Command-line fuzzy finder
@@ -148,6 +149,7 @@ dependencies () {
             pipenv                            # Environments for Python
             python                            # Python 2 language
             python3                           # Python 3 language
+            rake-completion                   # Auto-complete for Rakefile
             rsync                             # GNU rsync
             sassc                             # SASS compiler
             shellcheck                        # Spelling
@@ -157,7 +159,6 @@ dependencies () {
             v8                                # Google's JS engine
             vim                               # Updated Vim
             wget                              # Internet file retriever
-            yarn                              # Node.js package manager
         )
         brew install "${packages[@]}"
         if [ -d "/usr/local/lib/node_modules/npm/" ]; then
