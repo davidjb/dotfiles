@@ -739,7 +739,7 @@ configure_mac () {
     killall Dock
 
     # Terminal: shell opens with brew-installed bash
-    defaults write com.apple.Terminal Shell -string "/usr/local/bin/bash"
+    defaults write com.apple.Terminal Shell -string "/opt/homebrew/bin/bash"
 
     # Xcode: always use spaces for indenting
     defaults write com.apple.dt.Xcode DVTTextIndentUsingTabs -bool false
