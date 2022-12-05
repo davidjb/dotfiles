@@ -3,7 +3,7 @@
 # Core
 export EDITOR="vim"
 export HISTTIMEFORMAT="%F %T "
-export DOTFILES_REPO="$HOME/dotfiles"
+export DOTFILES_REPOS="$HOME/dotfiles"
 export PATH="/usr/local/bin:/usr/local/sbin:$HOME/dotfiles/tools/python/bin:$HOME/dotfiles/tools/nodejs/bin:$HOME/dotfiles/tools/nodejs/node_modules/.bin:$HOME/dotfiles/tools/ruby/bin:$PATH"
 
 # Git
