@@ -112,6 +112,10 @@ export POWERLINE_BASH_CONTINUATION=1
 export POWERLINE_BASH_SELECT=1
 . ~/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh
 
+# vi mode indicators
+bind 'set show-mode-in-prompt on'
+bind 'set vi-ins-mode-string \1\e[38;5;25;48;5;252;1m\2 I \1\e[38;5;252;48;5;31;1m\2\1\e[0m\2'
+bind 'set vi-cmd-mode-string \1\e[38;5;22;48;5;10;1m\2 N \1\e[38;5;10;48;5;31;1m\2\1\e[0m\2'
 
 ##########################
 # External inclusions
