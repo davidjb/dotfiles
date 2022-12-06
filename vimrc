@@ -117,6 +117,8 @@ if v:progname ==? 'vim'
     \   'scss': ['prettier', 'stylelint'],
     \   'css': ['prettier'],
     \   'ruby': ['rubocop'],
+    \   'terraform': ['terraform'],
+    \   'hcl': ['terraform'],
     \}
     "let g:ale_python_auto_pipenv = 1
 
@@ -329,6 +331,9 @@ let g:vim_markdown_new_list_item_indent = 2
 Plug 'gu-fan/riv.vim', { 'for': 'rst' }
 let g:riv_python_rst_hl = 1
 let g:riv_ignored_vmaps='>,<'
+
+" Terraform
+Plug 'hashivim/vim-terraform'
 
 " Salt SLS
 Plug 'saltstack/salt-vim'
