@@ -625,7 +625,7 @@ configure_mac () {
     echo 'ulimit -n 8192' | sudo tee -a /etc/profile
 
     # Remap keyboard keys - keyboard brightness up/down
-    cp etc/com.local.KeyRemapping.plist /Library/LaunchAgents/com.local.KeyRemapping.plist
+    sudo cp etc/com.local.KeyRemapping.plist /Library/LaunchAgents/com.local.KeyRemapping.plist
     echo 'Keyboard remapping installed. Ensure you reboot for this to take effect.'
 
     # Faster key repeats
