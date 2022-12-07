@@ -670,11 +670,12 @@ configure_mac () {
     # Enforce hibernation and evict FileVault keys
     # See https://github.com/drduh/macOS-Security-and-Privacy-Guide#full-disk-encryption
     # and https://github.com/drduh/macOS-Security-and-Privacy-Guide/issues/124
+    # Note: this seems to be working correctly on macOS 13 Ventura
     sudo pmset -a destroyfvkeyonstandby 1
     sudo pmset -a hibernatemode 25
     sudo pmset -a powernap 0
-    sudo pmset -a standby 0
-    sudo pmset -a standbydelay 0
+    sudo pmset -a standby 1
+    sudo pmset -a standbydelay 180
     sudo pmset -a autopoweroff 0
     # Was womp 1 on old MacBook
     sudo pmset -a womp 0
