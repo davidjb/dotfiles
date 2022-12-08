@@ -643,6 +643,9 @@ configure_mac () {
     # Disable bounce at end of scroll
     defaults write -g NSScrollViewRubberbanding -int 0
 
+    # Ctrl + ⌘ Cmd + Mouse click in any window to move
+    defaults write -g NSWindowShouldDragOnGesture -bool true
+
     # Paths in Finder title
     defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
 
