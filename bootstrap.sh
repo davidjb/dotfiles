@@ -159,6 +159,7 @@ dependencies () {
             v8                                # Google's JS engine
             vim                               # Updated Vim
             wget                              # Internet file retriever
+            yq                                # YAML processor CLI
         )
         brew install "${packages[@]}"
         if [ -d "/usr/local/lib/node_modules/npm/" ]; then
@@ -386,6 +387,7 @@ applications () {
             httpstat                        # Cleaner, beautiful curl
             htop                            # Top, powered up
             imagemagick                     # Image conversion and processing
+            discount                        # Markdown tools -- get it?
             ncdu                            # Terminal-based disk usage analyser
             nmap                            # Network probing and monitoring
             oath-toolkit                    # OTP toolkit
