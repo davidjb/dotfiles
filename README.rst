@@ -40,14 +40,14 @@ you'd like to track, run this:
 
 .. code:: bash
 
-   dotfiles --add ~/.vimrc
+   dotfiles add ~/.vimrc
 
 For files within the repository that should be symlinked onto the system, use:
 
 .. code:: bash
 
    dotfiles status
-   dotfiles --sync
+   dotfiles enable
 
 
 Copyright/Licence

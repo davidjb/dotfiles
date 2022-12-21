@@ -246,6 +246,15 @@ let g:tagbar_type_rst = {
     \ },
     \ 'sort': 0,
 \ }
+let g:tagbar_type_markdown = {
+    \ 'ctagstype' : 'markdown',
+    \ 'kinds' : [
+    \ 'h:headings',
+    \ 'l:links',
+    \ 'i:images'
+    \ ],
+    \ "sort" : 0
+\ }
 
 " Tag handling (HTML, JSX, etc)
 Plug 'tpope/vim-ragtag'
@@ -378,6 +387,10 @@ let g:pymode_rope_show_doc_bind = '<c-e>d'
 let g:pymode_rope = 0
 let g:pymode_rope_lookup_project = 0
 let g:pymode_rope_autoimport_import_after_complete = 1
+
+" Ruby
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
 
 " All Plug calls must be above here!
 call plug#end()
