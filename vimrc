@@ -119,6 +119,7 @@ if v:progname ==? 'vim'
     \   'ruby': ['rubocop'],
     \   'terraform': ['terraform'],
     \   'hcl': ['terraform'],
+    \   'cpp': ['clang-format'],
     \}
     "let g:ale_python_auto_pipenv = 1
 
