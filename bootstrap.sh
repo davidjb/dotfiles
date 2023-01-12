@@ -147,7 +147,7 @@ dependencies () {
             p7zip                             # 7zip archives
             phantomjs                         # JS webpage runner
             pipenv                            # Environments for Python
-            python                            # Python 2 language
+            pre-commit                        # Manage repo pre-commit hooks
             python3                           # Python 3 language
             rake-completion                   # Auto-complete for Rakefile
             rsync                             # GNU rsync
