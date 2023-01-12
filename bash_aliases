@@ -162,9 +162,12 @@ csr-generate() {
 }
 
 # Development
+gemcd() {
+    pushd $(bundle info thor | grep Path: | cut -w -f 3)
+}
 alias eggdoc='python setup.py --long-description | rst2html > foo.html; x-www-browser foo.html'
 eggcd() {
-    cd "$(echo -n "$1" | sed -e 's/\./\//g')"
+    pushd "$(echo -n "$1" | sed -e 's/\./\//g')"
 }
 svn-authors() {
     svn log "$1" | grep -E '^r[0-9]+' | cut -d '|' -f2 | sort | uniq | xargs -I {} echo '{}= <>'
