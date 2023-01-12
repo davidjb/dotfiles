@@ -538,12 +538,14 @@ vim_configuration () {
     cp -R ~/.vim/bundle/powerline/powerline/config_files/* ~/.config/powerline/
     rm -rf ~/.config/powerline/config.json
     ln_if_missing "$DIR/powerline/config.json" ~/.config/powerline/
-    rm -rf ~/.config/powerline/colorschemes/vim/default.json
-    ln_if_missing "$DIR/powerline/colorschemes/vim/default.json" ~/.config/powerline/colorschemes/vim/default.json
+    rm -rf ~/.config/powerline/themes/shell/default.json
+    ln_if_missing "$DIR/powerline/themes/shell/default.json" ~/.config/powerline/themes/shell/default.json
     rm -rf ~/.config/powerline/themes/tmux/default.json
     ln_if_missing "$DIR/powerline/themes/tmux/default.json" ~/.config/powerline/themes/tmux/default.json
     rm -rf ~/.config/powerline/themes/vim/default.json
     ln_if_missing "$DIR/powerline/themes/vim/default.json" ~/.config/powerline/themes/vim/default.json
+    rm -rf ~/.config/powerline/colorschemes/vim/default.json
+    ln_if_missing "$DIR/powerline/colorschemes/vim/default.json" ~/.config/powerline/colorschemes/vim/default.json
 
     # Snippets and type detection
     mkdir -p ~/.vim/ftdetect/
