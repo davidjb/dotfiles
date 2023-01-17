@@ -163,7 +163,7 @@ csr-generate() {
 
 # Development
 gemcd() {
-    pushd $(bundle info thor | grep Path: | cut -w -f 3)
+    pushd $(bundle info "$1" | grep Path: | cut -w -f 3)
 }
 alias eggdoc='python setup.py --long-description | rst2html > foo.html; x-www-browser foo.html'
 eggcd() {
