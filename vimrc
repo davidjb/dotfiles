@@ -293,8 +293,8 @@ map co yo
 Plug 'vim-scripts/Align'
 
 " Sudo editing support
-Plug 'chrisbra/SudoEdit.vim'
-let g:sudo_no_gui=1
+"Plug 'chrisbra/SudoEdit.vim'
+"let g:sudo_no_gui=1
 
 " Tmux compatibility support
 Plug 'christoomey/vim-tmux-navigator'

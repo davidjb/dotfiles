@@ -1,3 +1,6 @@
 prefix=/Users/david/dotfiles/tools/nodejs
 metrics-registry=
 send-metrics=false
+@ranlytics:registry=https://npm.pkg.github.com/
+//npm.pkg.github.com/:_authToken=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
+
