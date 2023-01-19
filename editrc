@@ -1,2 +1,9 @@
 bind -v
 bind \\t rl_complete
+
+# Next and previous history, Emacs style
+bind ^P ed-prev-history
+bind ^N ed-next-history
+
+# Easy word manipulation
+bind ^w ed-delete-prev-word
