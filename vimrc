@@ -117,6 +117,7 @@ if v:progname ==? 'vim'
     \   'scss': ['prettier', 'stylelint'],
     \   'css': ['prettier'],
     \   'ruby': ['rubocop'],
+    \   'go': ['gofmt'],
     \   'terraform': ['terraform'],
     \   'hcl': ['terraform'],
     \   'cpp': ['clang-format'],
