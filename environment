@@ -4,7 +4,7 @@
 export EDITOR="vim"
 export HISTTIMEFORMAT="%F %T "
 export DOTFILES_REPOS="$HOME/dotfiles"
-export PATH="/usr/local/bin:/usr/local/sbin:$HOME/dotfiles/tools/python/bin:$HOME/dotfiles/tools/nodejs/bin:$HOME/dotfiles/tools/nodejs/node_modules/.bin:$HOME/dotfiles/tools/ruby/bin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:$HOME/dotfiles/tools/python/bin:$HOME/dotfiles/tools/nodejs/bin:$HOME/dotfiles/tools/nodejs/node_modules/.bin:$HOME/dotfiles/tools/ruby/bin:$HOME/.go/bin:$PATH"
 
 # Git
 export GIT_AUTHOR_NAME="D""a""v""i""d"" ""B""e""i""t""e""y"
@@ -21,6 +21,9 @@ export PIPENV_VENV_IN_PROJECT=1
 export NO_UPDATE_NOTIFIER=1
 export SCARF_ANALYTICS=false
 export GATSBY_TELEMETRY_DISABLED=1
+
+# Go
+export GOPATH="$HOME/.go"
 
 # Java
 export M2_HOME="/usr/share/maven2/"
