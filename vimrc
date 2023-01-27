@@ -106,21 +106,22 @@ if v:progname ==? 'vim'
     let g:ale_echo_msg_warning_str = 'W'
     let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
     let g:ale_linters = {
+    \   'go': ['gofmt', 'golangci-lint'],
     \   'javascript': ['prettier_eslint'],
     \   'python': ['flake8'],
     \}
     let g:ale_linter_aliases = {
     \}
     let g:ale_fixers = {
+    \   'cpp': ['clang-format'],
+    \   'css': ['prettier'],
+    \   'go': ['gofmt'],
+    \   'hcl': ['terraform'],
     \   'javascript': ['eslint', 'prettier'],
     \   'python': ['black', 'isort'],
-    \   'scss': ['prettier', 'stylelint'],
-    \   'css': ['prettier'],
     \   'ruby': ['rubocop'],
-    \   'go': ['gofmt', 'golangci-lint'],
+    \   'scss': ['prettier', 'stylelint'],
     \   'terraform': ['terraform'],
-    \   'hcl': ['terraform'],
-    \   'cpp': ['clang-format'],
     \}
     "let g:ale_python_auto_pipenv = 1
 
