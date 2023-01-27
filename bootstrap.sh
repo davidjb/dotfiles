@@ -387,6 +387,7 @@ applications () {
             httpstat                        # Cleaner, beautiful curl
             htop                            # Top, powered up
             imagemagick                     # Image conversion and processing
+            imhex                           # Hex editor
             discount                        # Markdown tools -- get it?
             ncdu                            # Terminal-based disk usage analyser
             nmap                            # Network probing and monitoring
