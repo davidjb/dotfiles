@@ -118,6 +118,7 @@ if v:progname ==? 'vim'
     \   'go': ['gofmt'],
     \   'hcl': ['terraform'],
     \   'javascript': ['eslint', 'prettier'],
+    \   'json': ['prettier'],
     \   'python': ['black', 'isort'],
     \   'ruby': ['rubocop'],
     \   'scss': ['prettier', 'stylelint'],
