@@ -178,8 +178,7 @@ dependencies () {
         pip3 install virtualenv
         brew cask install reactotron
 
-        $(brew --prefix)/opt/fzf/install
-
+        "$(brew --prefix fzf)/install"
     fi
 
     # Local Python-based tools
