@@ -225,6 +225,7 @@ dependencies () {
         jsonlint
         less
         linklocal
+        prettier                              # Opinionated code formatter
         remark
         standard                              # Style checker for JS
         stylelint
