@@ -124,5 +124,9 @@ bind 'set vi-cmd-mode-string \1\e[38;5;22;48;5;10;1m\2 N \1\e[38;5;10;48;5;31;
 # Enable direnv on `cd`
 eval "$(direnv hook bash)"
 
+# Generic command colouriser; see following grc.sh file for built-in commands
+export GRC_ALIASES=true
+. "$(brew --prefix grc)/.bottle/etc/grc.sh"
+
 export SHELL=$(which bash)
 ulimit -n 8192

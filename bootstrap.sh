@@ -133,6 +133,7 @@ dependencies () {
             fzf                               # Command-line fuzzy finder
             git                               # Version control
             git-lfs                           # Git Large File Storage
+            grc                               # Generic colouriser
             go                                # Go programming language
             gpg2                              # Encryption
             gnu-sed                           # Normalised sed usage
