@@ -11,4 +11,4 @@ debug-info-directories:
 - /usr/lib/debug/.build-id
 position: ""
 max-string-len: 256
-max-array_values-len: 64
+max-array-values: 64
