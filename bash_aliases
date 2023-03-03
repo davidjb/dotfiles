@@ -69,6 +69,7 @@ alias nautilus-fallback='dbus-launch nautilus --no-desktop'
 alias nautilus-mounts='cd "$XDG_RUNTIME_DIR/gvfs"'
 [ $_IS_MAC ] && alias restart-audio='sudo killall coreaudiod'
 [ $_IS_MAC ] && alias restart-camera='sudo killall VDCAssistant'
+[ $_IS_MAC ] && alias restart-ssh-agent='launchctl stop com.openssh.ssh-agent && launchctl start com.openssh.ssh-agent'
 alias random-mac="sudo ifconfig en0 ether $(openssl rand -hex 6 | sed 's%\(..\)%\1:%g; s%.$%%')"
 alias rcd='cd -P .' # Real cd
 alias qrreader='zbarimg -q --raw'
