@@ -60,8 +60,6 @@ shopt -u nullglob
 # Homebrew
 if [ $_IS_MAC ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
-    #if [[ "$CPU" == "arm" ]]; then
-    #fi
 fi
 
 
@@ -75,7 +73,6 @@ if [ -f /etc/bash_completion ]; then
 fi
 if type brew &>/dev/null
 then
-  HOMEBREW_PREFIX="$(brew --prefix)"
   if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]
   then
     source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
