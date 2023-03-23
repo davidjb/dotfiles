@@ -60,6 +60,7 @@ shopt -u nullglob
 # Homebrew
 if [ $_IS_MAC ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
+    export PATH="$GOPATH/bin:$PATH"
 fi
 
 

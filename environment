@@ -4,6 +4,7 @@
 export EDITOR="vim"
 export HISTTIMEFORMAT="%F %T "
 export DOTFILES_REPOS="$HOME/dotfiles"
+export PATH="/usr/local/bin:/usr/local/sbin:$HOME/dotfiles/tools/python/bin:$HOME/dotfiles/tools/nodejs/bin:$HOME/dotfiles/tools/nodejs/node_modules/.bin:$HOME/dotfiles/tools/ruby/bin:$PATH"
 
 # Git
 export GIT_AUTHOR_NAME="D""a""v""i""d"" ""B""e""i""t""e""y"
@@ -46,6 +47,3 @@ export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 export LC_ALL='en_AU.UTF-8'
 export LANG='en_AU.UTF-8'
-
-# Core
-export PATH="/usr/local/bin:/usr/local/sbin:$HOME/dotfiles/tools/python/bin:$HOME/dotfiles/tools/nodejs/bin:$HOME/dotfiles/tools/nodejs/node_modules/.bin:$HOME/dotfiles/tools/ruby/bin:$GOPATH/bin:$PATH"
