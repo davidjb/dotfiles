@@ -58,6 +58,7 @@ alias fix='tset'
 [ $_IS_MAC ] && alias flush-dns="sudo killall -HUP mDNSResponder"
 alias fuck='$(thefuck $(fc -ln -1))'
 alias duck='$(THEFUCK_REQUIRE_CONFIRMATION=true thefuck $(fc -ln -1))'
+alias go='$GOPATH/bin/go'
 alias gpg-forget='echo RELOADAGENT | gpg-connect-agent'
 alias h1='history 10'
 alias h2='history 20'
