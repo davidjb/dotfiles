@@ -23,6 +23,7 @@ export SCARF_ANALYTICS=false
 export GATSBY_TELEMETRY_DISABLED=1
 
 # Go
+export GOROOT="$HOME/.local/share/golang"
 export GOPATH="$HOME/.go"
 
 # Java
