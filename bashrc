@@ -29,28 +29,14 @@ set -o vi
 # Disable terminal flow via ^S and ^Q
 stty -ixon
 
-
-##############################
-# Personal external inclusions
-##############################
-
-# Alias definitions
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+####################
+# Environment setup
+####################
 
 # Environment variable definitions
 if [ -f ~/.environment ]; then
     . ~/.environment
 fi
-
-# Enable private Bash includes
-shopt -s nullglob
-for file in ~/.bash_private/*.sh
-do
-    . "$file"
-done
-shopt -u nullglob
 
 
 ##########################
@@ -62,7 +48,6 @@ if [ $_IS_MAC ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
     export PATH="$GOPATH/bin:$PATH"
 fi
-
 
 ##########################
 # Autocompletion features
@@ -114,6 +99,25 @@ export POWERLINE_BASH_SELECT=1
 bind 'set show-mode-in-prompt on'
 bind 'set vi-ins-mode-string \1\e[38;5;25;48;5;252;1m\2 I \1\e[38;5;252;48;5;31;1m\2\1\e[0m\2'
 bind 'set vi-cmd-mode-string \1\e[38;5;22;48;5;10;1m\2 N \1\e[38;5;10;48;5;31;1m\2\1\e[0m\2'
+
+
+##############################
+# Personal external inclusions
+##############################
+
+# Alias definitions
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# Enable private Bash includes
+shopt -s nullglob
+for file in ~/.bash_private/*.sh
+do
+    . "$file"
+done
+shopt -u nullglob
+
 
 ##########################
 # External inclusions
