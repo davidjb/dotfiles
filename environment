@@ -19,6 +19,7 @@ export PIPENV_VENV_IN_PROJECT=1
 
 # Node.js - disable update-notifier system-wide
 export NO_UPDATE_NOTIFIER=1
+export SLS_TELEMETRY_DISABLED=1
 export SCARF_ANALYTICS=false
 export GATSBY_TELEMETRY_DISABLED=1
 
