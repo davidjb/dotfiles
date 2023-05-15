@@ -82,8 +82,8 @@ _pip_completion()
 }
 complete -o default -F _pip_completion pip
 
-# Grunt
-eval "$(grunt --completion=bash)"
+# AWS
+complete -C "$(which aws_completer)" aws
 
 
 ##########################
