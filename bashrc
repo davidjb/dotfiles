@@ -129,6 +129,7 @@ eval "$(direnv hook bash)"
 # Generic command colouriser; see following grc.sh file for built-in commands
 export GRC_ALIASES=true
 . "$(brew --prefix grc)/.bottle/etc/grc.sh"
+alias make="grc -e --colour=auto make"
 
 export SHELL=$(which bash)
 ulimit -n 8192
