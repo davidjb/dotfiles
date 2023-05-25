@@ -115,7 +115,7 @@ if v:progname ==? 'vim'
     let g:ale_fixers = {
     \   'cpp': ['clang-format'],
     \   'css': ['prettier'],
-    \   'go': ['gofmt'],
+    \   'go': ['gofmt', 'golangci-lint'],
     \   'hcl': ['terraform'],
     \   'javascript': ['eslint', 'prettier'],
     \   'json': ['prettier'],
@@ -126,34 +126,15 @@ if v:progname ==? 'vim'
     \}
     "let g:ale_python_auto_pipenv = 1
 
+    " Disable --enable-all which conflicts with .golangci.yaml
+    let g:ale_go_golangci_lint_options = ''
+    let g:ale_go_golangci_lint_package = 1
+
     " Consider these options
     " let g:ale_lint_on_insert_leave = 1
     "nmap <silent> <C-k> <Plug>(ale_previous_wrap)
     "nmap <silent> <C-j> <Plug>(ale_next_wrap)
 endif
-
-"Plug 'scrooloose/syntastic'
-"let g:syntastic_aggregate_errors = 1
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_sass_check_partials = 1
-"let g:syntastic_html_checkers = ['tidy']
-"let g:syntastic_html_tidy_ignore_errors=[
-            "\ '<tal:',
-            "\ '<metal:',
-            "\ 'proprietary attribute "metal:',
-            "\ 'proprietary attribute "tal:"',
-            "\ 'discarding unexpected </tal:',
-            "\ 'discarding unexpected </metal:'
-            "\ ]
-"let g:syntastic_javascript_checkers = ['eslint']
-"let g:syntastic_json_checkers = ['jsonlint']
-"let g:syntastic_python_checkers = ['py3kwarn', 'pylama']
-"let g:syntastic_rst_checkers = ['rstcheck']
-"let g:syntastic_rst_rstcheck_quiet_messages = {"regex": [
-            "\ '\v"(ref|abbr|term|menuselection|ifconfig|glossary)"',
-            "\ 'Undefined substitution referenced: "project-',
-            "\ ]}
-"let g:syntastic_yaml_checkers = ['jsyaml']
 
 " Automatic formatting of code
 " You can manually autoindent, retab or remove trailing whitespace with the
@@ -395,6 +376,11 @@ let g:pymode_rope_autoimport_import_after_complete = 1
 " Ruby
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
+
+" Go
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+"Plug 'buoto/gotests-vim'
+Plug 'davidjb/gotests-vim'
 
 " All Plug calls must be above here!
 call plug#end()
