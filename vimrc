@@ -515,20 +515,6 @@ syntax sync minlines=32
 "Key Mappings
 """""""""""""
 
-" Breeze support
-" XXX Should only be applied to tag-based files
-map <leader>te :BreezeMatchTag<CR>
-nmap <leader>tf :BreezeJumpF<CR>
-nmap <leader>tb :BreezeJumpB<CR>
-nmap <leader>tsf :BreezeNextSibling<CR>
-nmap <leader>tsb :BreezePrevSibling<CR>
-nmap <leader>tp :BreezeParent<CR>
-nmap <leader>tw :BreezeWhatsWrong<CR>
-
-" YouCompleteMe support
-nmap <leader>jd :YcmCompleter GoTo<CR>
-nmap <leader>jf :YcmCompleter GoToDefinition<CR>
-
 " Easy out from insert mode
 inoremap jk <Esc>
 
@@ -545,6 +531,32 @@ nmap <leader>ln :lnext<CR>
 nmap <leader>lp :lprev<CR>
 nmap <leader>le :lopen<CR>
 nmap <leader>ll :llist<CR>
+
+" ALE support
+noremap <Leader>q :call QFixToggle()<CR>
+function! QFixToggle()
+  if exists('g:qfix_win')
+    cclose
+    unlet g:qfix_win
+  else
+    copen 10
+    let g:qfix_win = bufnr('$')
+  endif
+endfunction
+
+" YouCompleteMe support
+nmap <leader>jd :YcmCompleter GoTo<CR>
+nmap <leader>jf :YcmCompleter GoToDefinition<CR>
+
+" Breeze support
+" XXX Should only be applied to tag-based files
+map <leader>te :BreezeMatchTag<CR>
+nmap <leader>tf :BreezeJumpF<CR>
+nmap <leader>tb :BreezeJumpB<CR>
+nmap <leader>tsf :BreezeNextSibling<CR>
+nmap <leader>tsb :BreezePrevSibling<CR>
+nmap <leader>tp :BreezeParent<CR>
+nmap <leader>tw :BreezeWhatsWrong<CR>
 
 " Visual indenting should stay selected
 vmap < <gv
