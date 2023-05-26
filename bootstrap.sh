@@ -151,6 +151,7 @@ dependencies () {
             pre-commit                        # Manage repo pre-commit hooks
             python3                           # Python 3 language
             rake-completion                   # Auto-complete for Rakefile
+            rlwrap                            # Readline wrapper
             rsync                             # GNU rsync
             sassc                             # SASS compiler
             shellcheck                        # Spelling
