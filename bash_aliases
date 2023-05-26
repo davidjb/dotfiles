@@ -85,6 +85,7 @@ alias vi='vim'
 alias vimgit='vim . +Gstatus +"resize +5"'
 #alias wget='wget --no-check-certificate'
 alias wget-mirror='wget --no-parent --no-check-certificate --html-extension --convert-links --restrict-file-names=windows --recursive --level=inf --page-requisites -e robots=off --wait=0 --quota=inf'
+alias yaegi='rlwrap yaegi'
 
 jdk() {
     version=$1
