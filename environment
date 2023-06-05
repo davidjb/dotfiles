@@ -38,6 +38,7 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git --exclude .wine 
 export RCLONE_VERBOSE=1
 export RCLONE_PROGRESS=true
 export SAM_CLI_TELEMETRY=0
+export HASURA_GRAPHQL_ENABLE_TELEMETRY=false
 
 # Mac specific
 export CLICOLOR=1
