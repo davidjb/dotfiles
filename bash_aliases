@@ -59,6 +59,8 @@ alias fix='tset'
 alias fuck='$(thefuck $(fc -ln -1))'
 alias duck='$(THEFUCK_REQUIRE_CONFIRMATION=true thefuck $(fc -ln -1))'
 alias gpg-forget='echo RELOADAGENT | gpg-connect-agent'
+alias gr="go run"
+alias gt="go test -v ./..."
 alias h1='history 10'
 alias h2='history 20'
 alias h3='history 30'
