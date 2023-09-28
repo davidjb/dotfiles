@@ -1,6 +1,7 @@
 " Requires vim-plug plugin manager from https://github.com/junegunn/vim-plug/
+set encoding=utf-8                                  " Set preferred char encoding
 scriptencoding utf-8
-let g:mapleader=";"                          " Change the leader key to something typable
+let g:mapleader=';'                          " Change the leader key to something typable
 
 set nocompatible
 set t_Co=256
@@ -81,9 +82,9 @@ endif
 "Plug 'vim-scripts/tlib'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' | Plug 'zedr/zope-snipmate-bundle'
 "let g:UltiSnips = {}
-let g:UltiSnipsExpandTrigger="<c-x>"    " Compatibility with YouCompleteMe
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsExpandTrigger='<c-x>'    " Compatibility with YouCompleteMe
+let g:UltiSnipsJumpForwardTrigger='<c-j>'
+let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 "   let g:UltiSnipsSnippetDirectories=["UltiSnips", "mycoolsnippets"]
 
 " Status bar overhaul
@@ -106,8 +107,7 @@ if v:progname ==? 'vim'
     let g:ale_echo_msg_warning_str = 'W'
     let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
     let g:ale_linters = {
-    \   'go': ['gofmt', 'golangci-lint'],
-    \   'javascript': ['prettier_eslint'],
+    \   'javascript': ['eslint'],
     \   'python': ['flake8'],
     \}
     let g:ale_linter_aliases = {
@@ -115,9 +115,9 @@ if v:progname ==? 'vim'
     let g:ale_fixers = {
     \   'cpp': ['clang-format'],
     \   'css': ['prettier'],
-    \   'go': ['gofmt', 'golangci-lint'],
+    \   'go': ['gofmt', 'goimports'],
     \   'hcl': ['terraform'],
-    \   'javascript': ['eslint', 'prettier'],
+    \   'javascript': ['eslint'],
     \   'json': ['prettier'],
     \   'python': ['black', 'isort'],
     \   'ruby': ['rubocop'],
@@ -238,7 +238,7 @@ let g:tagbar_type_markdown = {
     \ 'l:links',
     \ 'i:images'
     \ ],
-    \ "sort" : 0
+    \ 'sort' : 0
 \ }
 
 " Tag handling (HTML, JSX, etc)
@@ -329,10 +329,6 @@ let g:riv_ignored_vmaps='>,<'
 " Terraform
 Plug 'hashivim/vim-terraform'
 
-" Salt SLS
-Plug 'saltstack/salt-vim'
-let g:sls_use_jinja_syntax = 1
-
 " Jinja2
 Plug 'Glench/Vim-Jinja2-Syntax'
 
@@ -404,7 +400,6 @@ set autoindent                                      " Copy indent to new line
 set backspace=indent,eol,start                      " Backspace over everything
 set background=light                                " Explicitly set background color
 set guifont=Ubuntu\ Mono\ derivative\ Powerline:h12 " Font for gui apps
-set encoding=utf-8                                  " Set preferred char encoding
 set formatoptions-=t                                " Stop auto wrapping of text
 set formatoptions+=j                                " Remove comment leaders when joining lines
 set nrformats-=octal                                " Avoid numbers with leading zeros
@@ -607,7 +602,7 @@ noremap <leader>= :Autoformat<CR>
 " ;rc, ;rv - Replace all characters in selection
 function! ReplaceOnLine() range
     let replacement = nr2char(getchar())
-    execute a:firstline . "," . a:lastline . 's/\S/' . replacement . '/g'
+    execute a:firstline . ',' . a:lastline . 's/\S/' . replacement . '/g'
 endfunction
 noremap <leader>rc :call ReplaceOnLine()<CR>
 vnoremap <leader>rv "ey:%s/<C-R>e//gc<left><left><left>
@@ -632,7 +627,7 @@ set pastetoggle=<F2>
 """"""""""""""
 " Autocommands
 """"""""""""""
-if has("autocmd")
+if has('autocmd')
 function! InitPlugins()
     " Command aliases
     " Search with `ag` instead
