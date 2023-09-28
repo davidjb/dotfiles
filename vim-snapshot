@@ -28,7 +28,6 @@ cd $PLUG_HOME/python-mode/ && git reset --hard c6a872a
 cd $PLUG_HOME/rainbow_parentheses.vim/ && git reset --hard eb8baa5
 cd $PLUG_HOME/riv.vim/ && git reset --hard 4562fbe
 cd $PLUG_HOME/rst2ctags/ && git reset --hard 4e0146a
-cd $PLUG_HOME/salt-vim/ && git reset --hard 7f30e33
 cd $PLUG_HOME/scss-syntax.vim/ && git reset --hard 35f47ff
 cd $PLUG_HOME/sparkup/ && git reset --hard b1b4374
 cd $PLUG_HOME/syntastic/ && git reset --hard a7fde99

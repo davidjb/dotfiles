@@ -331,7 +331,6 @@ applications () {
             pngcrush                        # PNG optimiser
             pwgen                           # Password generator
             rsnapshot                       # Backup manager via rsync
-            salt-ssh                        # Salt configuration management
             screen                          # Terminal sessions (like tmux, but ancient)
             silversearcher-ag               # Super-fast searching
             skype                           # Calls and messaging
@@ -401,7 +400,6 @@ applications () {
             pngcrush                        # PNG optimiser
             pwgen                           # Password generator
             reattach-to-user-namespace      # Support for pbcopy in tmux
-            saltstack                       # Remote systems orchestration
             tmux                            # Terminal multiplexer
             wakeonlan                       # WOL tools to send magic packets
             youtube-dl                      # Media downloader

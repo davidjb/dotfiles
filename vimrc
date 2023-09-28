@@ -667,9 +667,6 @@ au!
     " Always colourise parentheses
     au FileType json,python,javascript :RainbowParentheses
 
-    " Salt roster files
-    au BufNewFile,BufRead roster,master setlocal filetype=yaml
-
     " Different types of file support
     au FileType json map <leader>p :%!json_xs -f json -t json-pretty<CR>
     au FileType json map <leader>jm :%!json_xs -f json -t json<CR>
