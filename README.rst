@@ -77,7 +77,6 @@ To Do
   * Python support (refactoring etc)
   * PyMode and Rope for refactoring support
 
-* Convert to Salt provisioning
 * Handle private aliases for Bashrc
 * Handle private SSH configuration/generation
 * Determine other standard dependencies for development
