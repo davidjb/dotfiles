@@ -675,6 +675,11 @@ configure_mac () {
     # Disable Airport base station agent
     launchctl remove com.apple.AirPortBaseStationAgent
 
+    # Disable Universal Control (e.g. sharing keyboard/mouse between Mac/iPad)
+    launchctl disable gui/$UID/com.apple.ensemble
+    launchctl stop gui/$UID/com.apple.ensemble
+    sudo killall -9 UniversalControl
+
     # Enforce hibernation and evict FileVault keys
     # See https://github.com/drduh/macOS-Security-and-Privacy-Guide#full-disk-encryption
     # and https://github.com/drduh/macOS-Security-and-Privacy-Guide/issues/124
