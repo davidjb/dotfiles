@@ -743,6 +743,9 @@ au!
     " Lua
     au BufNewFile,BufRead *.lp setlocal ft=lua
 
+    " envrc
+    au BufNewFile,BufRead .envrc setlocal ft=sh
+
     " XXX May want to prefer expandtab for all files
     " Detect indentation of all files
     "au BufReadPost * :DetectIndent
