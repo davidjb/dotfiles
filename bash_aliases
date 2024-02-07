@@ -46,6 +46,11 @@ alias apt-whatprovides='apt-cache policy'
 alias calc='gnome-calculator &'
 [ $_IS_MAC ] && alias cdf="cd \"\$(osascript -e 'tell app \"Finder\" to POSIX path of (insertion location as alias)')\""
 [ $_IS_MAC ] && alias dev-mode="sudo /usr/sbin/DevToolsSecurity -enable"
+docker-clean() {
+    docker ps --filter status=dead --filter status=exited -aq | xargs -r docker rm -v
+    docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs -r docker rmi
+    docker volume ls -qf dangling=true | xargs -r docker volume rm
+}
 [ $_IS_MAC ] && alias eject='diskutil unmount'
 [ $_IS_MAC ] && alias eject-time-machine='sudo diskutil unmount force /Volumes/com.apple.TimeMachine.Time\ Machine-*'
 alias l='ls -FC'
