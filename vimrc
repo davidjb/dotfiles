@@ -1,9 +1,8 @@
 " Requires vim-plug plugin manager from https://github.com/junegunn/vim-plug/
-set encoding=utf-8                                  " Set preferred char encoding
+set encoding=utf-8                           " Set preferred char encoding
 scriptencoding utf-8
 let g:mapleader=';'                          " Change the leader key to something typable
 
-set nocompatible
 set t_Co=256
 call plug#begin('~/.vim/bundle')
 
@@ -350,7 +349,7 @@ endfunction
 
 " Python editing superpowers
 function! UpdateBlack(info)
-  if a:info.status != 'unchanged' || a:info.force
+  if a:info.status !=# 'unchanged' || a:info.force
     silent !rm -rf ~/.vim/black
     redraw!
     BlackUpgrade
