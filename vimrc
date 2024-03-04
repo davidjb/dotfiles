@@ -41,8 +41,6 @@ Plug 'bogado/file-line'
 if v:progname ==? 'vim'
     Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 ./install.py --clang-completer --tern-completer --ts-completer --go-completer' }
     let g:ycm_auto_hover = ''
-    " Disable signature help due to errors like https://github.com/ycm-core/YouCompleteMe/issues/3870
-    let g:ycm_disable_signature_help = 1
     let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
     let g:ycm_complete_in_comments = 1
     let g:ycm_use_ultisnips_completer = 1
@@ -50,7 +48,7 @@ if v:progname ==? 'vim'
     let g:ycm_always_populate_location_list = 1
     let g:ycm_min_num_of_chars_for_completion = 1
     let g:ycm_seed_identifiers_with_syntax = 1
-    let g:ycm_autoclose_preview_window_after_completion = 0
+    let g:ycm_autoclose_preview_window_after_completion = 1
     let g:ycm_autoclose_preview_window_after_insertion = 1
     let g:ycm_server_use_vim_stdout = 0
     let g:ycm_server_log_level = 'warn'
