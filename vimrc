@@ -98,7 +98,7 @@ nmap cog :GitGutterToggle<>
 " Syntax checking for Vim
 if v:progname ==? 'vim'
     Plug 'dense-analysis/ale'
-    let g:ale_completion_enabled = 1
+    let g:ale_completion_enabled = 0
     let g:ale_set_quickfix = 1
     let g:ale_lint_delay = 1000
     let g:ale_sign_error = '✗'
