@@ -133,3 +133,8 @@ alias make="grc -e --colour=auto make"
 
 export SHELL=$(which bash)
 ulimit -n 8192
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$(brew --prefix nvm)/nvm.sh" ] && \. "$(brew --prefix nvm)/nvm.sh"
+[ -s "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix nvm)/etc/bash_completion.d/nvm"
