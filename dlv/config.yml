@@ -10,5 +10,5 @@ source-list-comment-color: ""
 debug-info-directories:
 - /usr/lib/debug/.build-id
 position: ""
-max-string-len: 256
-max-array-values: 64
+max-string-len: 10000
+max-array-values: 256
