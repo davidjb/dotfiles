@@ -449,10 +449,11 @@ applications () {
             simple-comic                    # Comic reader
             slack                           # Chat and more for teams
             the-unarchiver                  # Archive extraction
-            virtualbox-beta                 # Virtual machines (beta for ARM)
-            wireshark                       # Network traffic monitor
+            utm                             # Virutal machines for ARM
             vagrant                         # Environment manager
+            virtualbox-beta                 # Virtual machines (beta for ARM)
             vlc                             # Video plaer
+            wireshark                       # Network traffic monitor
             wine-staging                    # Wine is not an emulator
         )
         brew install "${applications[@]}"
