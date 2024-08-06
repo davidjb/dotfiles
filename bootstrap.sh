@@ -380,6 +380,7 @@ applications () {
             coffeescript                    # Programming language
             diff-pdf                        # PDF visual diffing
             direnv                          # Load/unload env variables depending on cd
+            displayplacer                   # Display configuration CLI
             docker                          # Containers
             docker-compose                  # Container environment management
             figlet                          # ASCII art text
