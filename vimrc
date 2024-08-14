@@ -39,7 +39,7 @@ Plug 'bogado/file-line'
 " Press <TAB> to complete, <C-Space> to semantically complete
 " Automatically integrates with Ultisnips
 if v:progname ==? 'vim'
-    Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 ./install.py --clang-completer --tern-completer --ts-completer --go-completer' }
+    Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 ./install.py --clang-completer --clangd-completer --tern-completer --ts-completer --go-completer' }
     let g:ycm_auto_hover = ''
     let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
     let g:ycm_complete_in_comments = 1
