@@ -157,6 +157,7 @@ dependencies () {
             shellcheck                        # Spelling
             shyaml                            # YAML parsing for shells
             spidermonkey                      # Mozilla's JS engine
+            sqldiff                           # Show differences between SQLite databases
             tidy-html5                        # HTML5 validation tool
             v8                                # Google's JS engine
             vim                               # Updated Vim
