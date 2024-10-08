@@ -174,7 +174,7 @@ let g:NERDCustomDelimiters = {
 " Graphical undo tree viewer
 Plug 'simnalamburt/vim-mundo'
 let g:mundo_right = 1
-nnoremap <leader>u :MundoToggle<CR>
+nnoremap <leader>m :MundoToggle<CR>
 
 " File browser and explorer: Nerdtree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -279,6 +279,9 @@ Plug 'vim-scripts/Align'
 
 " Tmux compatibility support
 Plug 'christoomey/vim-tmux-navigator'
+
+" UUID generation
+Plug 'kburdett/vim-nuuid'
 
 
 """"""""""""""""""""""""""""""""
