@@ -171,6 +171,7 @@ dependencies () {
           popd
         fi
         brew link python3
+        go telemetry off
 
         brew tap caskroom/cask
         brew tap caskroom/drivers
