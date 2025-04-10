@@ -53,6 +53,7 @@ docker-clean() {
 }
 [ $_IS_MAC ] && alias eject='diskutil unmount'
 [ $_IS_MAC ] && alias eject-time-machine='sudo diskutil unmount force /Volumes/com.apple.TimeMachine.Time\ Machine-*'
+alias exts='find . -type f -name "*.*" | sed "s|.*\.||" | sort -u'
 alias l='ls -FC'
 alias la='ls -FAh'
 alias ll='ls -Flh'
