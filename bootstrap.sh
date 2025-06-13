@@ -212,6 +212,7 @@ dependencies () {
     # Local Node.js based tools, directory configured in ~/.npmrc
     ln_if_missing "$DIR/npmrc" ~/.npmrc
     yarn config set prefix ~/dotfiles/tools/nodejs/
+    yarn config set disable-self-update-check true
     packages=(
         browserify                            # 'Browser' packaging for npm
         babel-eslint                          # Babel plugin for eslint
