@@ -96,6 +96,7 @@ nmap cog :GitGutterToggle<>
 if v:progname ==? 'vim'
     Plug 'dense-analysis/ale'
     let g:ale_completion_enabled = 0
+    let g:ale_set_loclist = 0
     let g:ale_set_quickfix = 1
     let g:ale_lint_delay = 1000
     let g:ale_sign_error = '✗'
@@ -107,9 +108,13 @@ if v:progname ==? 'vim'
     \   'javascript': ['eslint'],
     \   'python': ['flake8'],
     \}
+    let g:ale_linters_ignore = {
+    \   'cpp': ['cc'],
+    \}
     let g:ale_linter_aliases = {
     \}
     let g:ale_fixers = {
+    \   'c': ['clang-format'],
     \   'cpp': ['clang-format'],
     \   'css': ['prettier'],
     \   'go': ['gofmt', 'goimports'],
@@ -119,6 +124,7 @@ if v:progname ==? 'vim'
     \   'python': ['black', 'isort'],
     \   'ruby': ['rubocop'],
     \   'scss': ['prettier', 'stylelint'],
+    \   'sql': ['sqlfluff'],
     \   'terraform': ['terraform'],
     \}
     "let g:ale_python_auto_pipenv = 1
@@ -374,7 +380,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 
 " Go
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 "Plug 'buoto/gotests-vim'
 Plug 'davidjb/gotests-vim'
 
@@ -622,6 +628,9 @@ nmap <leader>v :tabedit $MYVIMRC<CR>
 " F2 - Toggle paste mode
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
+
+" F6 - Open terminal
+nnoremap <F6> :let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>cd $VIM_DIR<CR>
 
 
 """"""""""""""
