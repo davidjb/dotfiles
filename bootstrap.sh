@@ -404,6 +404,9 @@ applications () {
             pngcrush                        # PNG optimiser
             pwgen                           # Password generator
             reattach-to-user-namespace      # Support for pbcopy in tmux
+            sqlfluff                        # Linter for SQL
+            sqlite-analyzer                 # Analyzer for SQLite
+            sqlite3                         # Self-contained SQL database engine
             tmux                            # Terminal multiplexer
             wakeonlan                       # WOL tools to send magic packets
             youtube-dl                      # Media downloader
